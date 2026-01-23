@@ -1,1 +1,88 @@
-index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name | Robotics & AI Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0a0a0a; color: #ededed; font-family: 'Inter', sans-serif; }
+        .gradient-text { background: linear-gradient(90deg, #4fd1c5, #6366f1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .card { background: #171717; border: 1px solid #262626; transition: 0.3s; }
+        .card:hover { border-color: #4fd1c5; }
+    </style>
+</head>
+<body class="p-6 md:p-12">
+
+    <header class="max-w-5xl mx-auto mb-16">
+        <h1 class="text-5xl font-bold mb-2">I'm <span class="gradient-text">Your Name</span></h1>
+        <p class="text-xl text-gray-400">Robotics Software & AI Engineer</p>
+        <p class="mt-4 max-w-2xl text-gray-500">Specializing in VLA models, GPS-denied navigation, and 3D perception for autonomous systems.</p>
+    </header>
+
+    <main class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <section class="md:col-span-2 card p-8 rounded-2xl">
+            <h2 class="text-2xl font-bold mb-6 flex items-center">🚀 Core Expertise</h2>
+            <div class="flex flex-wrap gap-3">
+                <span class="bg-teal-900/30 text-teal-400 px-3 py-1 rounded-full text-sm border border-teal-800">LLM & VLM</span>
+                <span class="bg-indigo-900/30 text-indigo-400 px-3 py-1 rounded-full text-sm border border-indigo-800">VLA Models</span>
+                <span class="bg-blue-900/30 text-blue-400 px-3 py-1 rounded-full text-sm border border-blue-800">Computer Vision</span>
+                <span class="bg-purple-900/30 text-purple-400 px-3 py-1 rounded-full text-sm border border-purple-800">3D Mapping (SLAM)</span>
+                <span class="bg-red-900/30 text-red-400 px-3 py-1 rounded-full text-sm border border-red-800">GPS-Denied Nav</span>
+                <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-sm">NLP</span>
+                <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-sm">ROS2 / C++</span>
+            </div>
+        </section>
+
+        <section class="card p-8 rounded-2xl">
+            <h2 class="text-xl font-bold mb-4">Experience</h2>
+            <div class="space-y-4 text-sm text-gray-400">
+                <div>
+                    <p class="text-white font-semibold">Lead AI Engineer</p>
+                    <p>Company Name • 2023-Present</p>
+                </div>
+                <div>
+                    <p class="text-white font-semibold">Robotics Researcher</p>
+                    <p>Lab Name • 2021-2023</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="card p-8 rounded-2xl">
+            <h2 class="text-xl font-bold mb-4">Qualifications</h2>
+            <ul class="text-sm text-gray-400 space-y-2">
+                <li>🎓 MS in Robotics / CS</li>
+                <li>📜 NVIDIA AI Certification</li>
+                <li>📜 AWS Machine Learning</li>
+            </ul>
+        </section>
+
+        <section class="md:col-span-2 card p-8 rounded-2xl">
+            <h2 class="text-2xl font-bold mb-6">Key Projects</h2>
+            <div class="space-y-6">
+                <div class="border-l-2 border-teal-500 pl-4">
+                    <h3 class="text-lg font-bold">Autonomous VLA Drone</h3>
+                    <p class="text-sm text-gray-400">Deployed a Vision-Language-Action model for intuitive drone-human interaction in complex environments.</p>
+                </div>
+                <div class="border-l-2 border-indigo-500 pl-4">
+                    <h3 class="text-lg font-bold">LIDAR-based 3D Mapping</h3>
+                    <p class="text-sm text-gray-400">Real-time point cloud generation and spatial awareness for GPS-denied warehouse robots.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="card p-8 rounded-2xl bg-gradient-to-br from-teal-900/20 to-transparent">
+            <h2 class="text-xl font-bold mb-4">Contact</h2>
+            <p class="text-sm text-gray-400 mb-6">Open for collaborations in Embodied AI & Autonomy.</p>
+            <a href="mailto:your@email.com" class="block text-center bg-white text-black py-2 rounded-lg font-bold hover:bg-teal-400 transition">Email Me</a>
+        </section>
+
+    </main>
+
+    <footer class="max-w-5xl mx-auto mt-16 text-center text-gray-600 text-xs">
+        &copy; 2026 • Built with GitHub Pages
+    </footer>
+
+</body>
+</html>
