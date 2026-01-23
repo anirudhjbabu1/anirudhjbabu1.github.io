@@ -3,86 +3,197 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name | Robotics & AI Engineer</title>
+    <title>AI & Robotics Engineer | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        body { background-color: #0a0a0a; color: #ededed; font-family: 'Inter', sans-serif; }
-        .gradient-text { background: linear-gradient(90deg, #4fd1c5, #6366f1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .card { background: #171717; border: 1px solid #262626; transition: 0.3s; }
-        .card:hover { border-color: #4fd1c5; }
+        body { 
+            background-color: #050505; 
+            color: #e5e5e5; 
+            font-family: 'Space Grotesk', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .glass { 
+            background: rgba(23, 23, 23, 0.7); 
+            backdrop-filter: blur(12px); 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+        }
+        .glow-teal:hover { box-shadow: 0 0 20px rgba(20, 184, 166, 0.2); }
+        .hero-gradient {
+            background: radial-gradient(circle at 50% 50%, rgba(20, 184, 166, 0.15) 0%, rgba(5, 5, 5, 1) 70%);
+        }
+        .nav-link:hover { color: #14b8a6; transition: 0.3s; }
     </style>
 </head>
-<body class="p-6 md:p-12">
+<body class="selection:bg-teal-500/30">
 
-    <header class="max-w-5xl mx-auto mb-16">
-        <h1 class="text-5xl font-bold mb-2">I'm <span class="gradient-text">Your Name</span></h1>
-        <p class="text-xl text-gray-400">Robotics Software & AI Engineer</p>
-        <p class="mt-4 max-w-2xl text-gray-500">Specializing in VLA models, GPS-denied navigation, and 3D perception for autonomous systems.</p>
-    </header>
-
-    <main class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-        
-        <section class="md:col-span-2 card p-8 rounded-2xl">
-            <h2 class="text-2xl font-bold mb-6 flex items-center">🚀 Core Expertise</h2>
-            <div class="flex flex-wrap gap-3">
-                <span class="bg-teal-900/30 text-teal-400 px-3 py-1 rounded-full text-sm border border-teal-800">LLM & VLM</span>
-                <span class="bg-indigo-900/30 text-indigo-400 px-3 py-1 rounded-full text-sm border border-indigo-800">VLA Models</span>
-                <span class="bg-blue-900/30 text-blue-400 px-3 py-1 rounded-full text-sm border border-blue-800">Computer Vision</span>
-                <span class="bg-purple-900/30 text-purple-400 px-3 py-1 rounded-full text-sm border border-purple-800">3D Mapping (SLAM)</span>
-                <span class="bg-red-900/30 text-red-400 px-3 py-1 rounded-full text-sm border border-red-800">GPS-Denied Nav</span>
-                <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-sm">NLP</span>
-                <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-sm">ROS2 / C++</span>
+    <nav class="fixed top-0 w-full z-50 glass px-6 py-4">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <span class="font-bold text-xl tracking-tighter">ROBOTICS<span class="text-teal-500">.AI</span></span>
+            <div class="hidden md:flex gap-8 text-sm font-medium">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#expertise" class="nav-link">Expertise</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#contact" class="nav-link">Contact</a>
             </div>
-        </section>
+        </div>
+    </nav>
 
-        <section class="card p-8 rounded-2xl">
-            <h2 class="text-xl font-bold mb-4">Experience</h2>
-            <div class="space-y-4 text-sm text-gray-400">
+    <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 hero-gradient">
+        <div class="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-widest uppercase bg-teal-500/10 text-teal-400 border border-teal-500/20 rounded-full">
+            Specializing in Vision-Language-Action Models
+        </div>
+        <h1 class="text-6xl md:text-8xl font-bold tracking-tight mb-6">
+            Building the <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500">Neural Link</span> <br>between AI & Action.
+        </h1>
+        <p class="max-w-2xl text-gray-400 text-lg md:text-xl mb-10 leading-relaxed">
+            Software Engineer expert in autonomous navigation, 3D perception, and LLM-driven robotics. I build machines that see, reason, and move through GPS-denied environments.
+        </p>
+        <div class="flex gap-4">
+            <a href="#projects" class="bg-teal-600 hover:bg-teal-500 text-white px-8 py-3 rounded-lg font-bold transition">View Systems</a>
+            <a href="#contact" class="glass px-8 py-3 rounded-lg font-bold hover:bg-white/5 transition">Get in Touch</a>
+        </div>
+    </section>
+
+    <section id="expertise" class="max-w-6xl mx-auto py-24 px-6">
+        <h2 class="text-3xl font-bold mb-12 flex items-center gap-4">
+            <i data-lucide="cpu" class="text-teal-500"></i> Technical Architecture
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="glass p-8 rounded-2xl glow-teal">
+                <h3 class="text-teal-400 font-bold mb-4 uppercase text-xs tracking-widest">Embodied AI</h3>
+                <ul class="space-y-3 text-sm">
+                    <li class="flex justify-between"><span>VLM / VLA Models</span> <span class="text-gray-500">Advanced</span></li>
+                    <li class="flex justify-between"><span>Computer Vision</span> <span class="text-gray-500">SOTA</span></li>
+                    <li class="flex justify-between"><span>NLP & LLM Tuning</span> <span class="text-gray-500">Expert</span></li>
+                    <li class="flex justify-between"><span>Transformer Architectures</span> <span class="text-gray-500">R&D</span></li>
+                </ul>
+            </div>
+            <div class="glass p-8 rounded-2xl glow-teal">
+                <h3 class="text-blue-400 font-bold mb-4 uppercase text-xs tracking-widest">Autonomy</h3>
+                <ul class="space-y-3 text-sm">
+                    <li class="flex justify-between"><span>GPS-Denied Navigation</span> <span class="text-gray-500">Core</span></li>
+                    <li class="flex justify-between"><span>3D SLAM / Mapping</span> <span class="text-gray-500">LiDAR/Visual</span></li>
+                    <li class="flex justify-between"><span>ROS2 / Gazebo</span> <span class="text-gray-500">Expert</span></li>
+                    <li class="flex justify-between"><span>Path Planning (A*, RRT*)</span> <span class="text-gray-500">Advanced</span></li>
+                </ul>
+            </div>
+            <div class="glass p-8 rounded-2xl glow-teal">
+                <h3 class="text-purple-400 font-bold mb-4 uppercase text-xs tracking-widest">Core Stack</h3>
+                <ul class="space-y-3 text-sm">
+                    <li class="flex justify-between"><span>C++ (17/20)</span> <span class="text-gray-500">Low-latency</span></li>
+                    <li class="flex justify-between"><span>Python / PyTorch</span> <span class="text-gray-500">Deep Learning</span></li>
+                    <li class="flex justify-between"><span>CUDA / TensorRT</span> <span class="text-gray-500">Edge Opt.</span></li>
+                    <li class="flex justify-between"><span>Docker / Git</span> <span class="text-gray-500">CI/CD</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="max-w-6xl mx-auto py-24 px-6">
+        <h2 class="text-3xl font-bold mb-12">Featured Research & Systems</h2>
+        <div class="grid gap-12">
+            <div class="grid md:grid-cols-2 gap-8 items-center border-b border-white/10 pb-12">
+                <div class="rounded-xl overflow-hidden glass aspect-video flex items-center justify-center border border-teal-500/20">
+                    <span class="text-gray-600">[ Insert Project Demo GIF/Video ]</span>
+                </div>
                 <div>
-                    <p class="text-white font-semibold">Lead AI Engineer</p>
-                    <p>Company Name • 2023-Present</p>
-                </div>
-                <div>
-                    <p class="text-white font-semibold">Robotics Researcher</p>
-                    <p>Lab Name • 2021-2023</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="card p-8 rounded-2xl">
-            <h2 class="text-xl font-bold mb-4">Qualifications</h2>
-            <ul class="text-sm text-gray-400 space-y-2">
-                <li>🎓 MS in Robotics / CS</li>
-                <li>📜 NVIDIA AI Certification</li>
-                <li>📜 AWS Machine Learning</li>
-            </ul>
-        </section>
-
-        <section class="md:col-span-2 card p-8 rounded-2xl">
-            <h2 class="text-2xl font-bold mb-6">Key Projects</h2>
-            <div class="space-y-6">
-                <div class="border-l-2 border-teal-500 pl-4">
-                    <h3 class="text-lg font-bold">Autonomous VLA Drone</h3>
-                    <p class="text-sm text-gray-400">Deployed a Vision-Language-Action model for intuitive drone-human interaction in complex environments.</p>
-                </div>
-                <div class="border-l-2 border-indigo-500 pl-4">
-                    <h3 class="text-lg font-bold">LIDAR-based 3D Mapping</h3>
-                    <p class="text-sm text-gray-400">Real-time point cloud generation and spatial awareness for GPS-denied warehouse robots.</p>
+                    <h3 class="text-2xl font-bold mb-4">Vision-Language-Action (VLA) for Industrial Arms</h3>
+                    <p class="text-gray-400 mb-6">Developed a multi-modal foundation model that allows a robotic manipulator to follow complex natural language instructions ("Pick up the blue container and place it near the toolset") without task-specific retraining.</p>
+                    <div class="flex flex-wrap gap-2 text-xs">
+                        <span class="bg-teal-500/10 text-teal-400 border border-teal-500/20 px-3 py-1 rounded">PyTorch</span>
+                        <span class="bg-teal-500/10 text-teal-400 border border-teal-500/20 px-3 py-1 rounded">VLM</span>
+                        <span class="bg-teal-500/10 text-teal-400 border border-teal-500/20 px-3 py-1 rounded">ROS2</span>
+                    </div>
                 </div>
             </div>
-        </section>
+            <div class="grid md:grid-cols-2 gap-8 items-center border-b border-white/10 pb-12">
+                <div class="order-2 md:order-1">
+                    <h3 class="text-2xl font-bold mb-4">GPS-Denied Autonomous UAV Navigation</h3>
+                    <p class="text-gray-400 mb-6">Designed a robust Visual-Inertial Odometry (VIO) system for drones operating in subterranean tunnels. Achieved sub-10cm drift over 1km flight using integrated IMU and Stereo-Vision fusion.</p>
+                    <div class="flex flex-wrap gap-2 text-xs">
+                        <span class="bg-blue-500/10 text-blue-400 border border-blue-500/20 px-3 py-1 rounded">C++</span>
+                        <span class="bg-blue-500/10 text-blue-400 border border-blue-500/20 px-3 py-1 rounded">OpenCV</span>
+                        <span class="bg-blue-500/10 text-blue-400 border border-blue-500/20 px-3 py-1 rounded">SLAM</span>
+                    </div>
+                </div>
+                <div class="rounded-xl overflow-hidden glass aspect-video flex items-center justify-center border border-blue-500/20 order-1 md:order-2">
+                    <span class="text-gray-600">[ Insert 3D Mapping GIF ]</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <section class="card p-8 rounded-2xl bg-gradient-to-br from-teal-900/20 to-transparent">
-            <h2 class="text-xl font-bold mb-4">Contact</h2>
-            <p class="text-sm text-gray-400 mb-6">Open for collaborations in Embodied AI & Autonomy.</p>
-            <a href="mailto:your@email.com" class="block text-center bg-white text-black py-2 rounded-lg font-bold hover:bg-teal-400 transition">Email Me</a>
-        </section>
+    <section id="experience" class="max-w-4xl mx-auto py-24 px-6">
+        <h2 class="text-3xl font-bold mb-12 text-center">Career Trajectory</h2>
+        <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-teal-500 before:to-transparent">
+            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                <div class="flex items-center justify-center w-10 h-10 rounded-full border border-teal-500 bg-black text-teal-500 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                    <i data-lucide="briefcase" class="w-5 h-5"></i>
+                </div>
+                <div class="w-[calc(100%-4rem)] md:w-[45%] glass p-6 rounded-xl">
+                    <time class="text-teal-500 font-bold">2023 - Present</time>
+                    <div class="font-bold text-lg">Senior AI Robotics Engineer</div>
+                    <div class="text-sm text-gray-500 mb-2">Autonomous Dynamics Corp.</div>
+                    <p class="text-sm text-gray-400">Leading the development of VLA models for edge deployment on mobile robots.</p>
+                </div>
+            </div>
+            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                <div class="flex items-center justify-center w-10 h-10 rounded-full border border-gray-600 bg-black text-gray-400 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                    <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+                </div>
+                <div class="w-[calc(100%-4rem)] md:w-[45%] glass p-6 rounded-xl">
+                    <time class="text-gray-500 font-bold">2021 - 2023</time>
+                    <div class="font-bold text-lg">MS in Robotics & AI</div>
+                    <div class="text-sm text-gray-500 mb-2">Global Technical University</div>
+                    <p class="text-sm text-gray-400">Thesis on "Transformer-based 3D Spatial Awareness in Dense Urban Environments."</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    </main>
+    <section class="max-w-6xl mx-auto py-24 px-6 grid grid-cols-1 md:grid-cols-2 gap-12 border-t border-white/5">
+        <div>
+            <h3 class="text-xl font-bold mb-6 italic">Certifications</h3>
+            <div class="space-y-4">
+                <div class="flex items-center gap-4 glass p-4 rounded-lg">
+                    <i data-lucide="award" class="text-teal-500"></i>
+                    <div>
+                        <p class="font-bold">NVIDIA Jetson AI Specialist</p>
+                        <p class="text-xs text-gray-500">Edge Computing & Optimization</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 glass p-4 rounded-lg">
+                    <i data-lucide="award" class="text-blue-500"></i>
+                    <div>
+                        <p class="font-bold">AWS Machine Learning Specialty</p>
+                        <p class="text-xs text-gray-500">Cloud-scale model training</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="contact">
+            <h3 class="text-xl font-bold mb-6">Initialize Connection</h3>
+            <div class="glass p-8 rounded-2xl">
+                <p class="text-gray-400 mb-6 italic">"The best way to predict the future is to build it."</p>
+                <div class="flex gap-4">
+                    <a href="mailto:your@email.com" class="p-3 glass rounded-full hover:text-teal-400 transition"><i data-lucide="mail"></i></a>
+                    <a href="#" class="p-3 glass rounded-full hover:text-teal-400 transition"><i data-lucide="github"></i></a>
+                    <a href="#" class="p-3 glass rounded-full hover:text-teal-400 transition"><i data-lucide="linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <footer class="max-w-5xl mx-auto mt-16 text-center text-gray-600 text-xs">
-        &copy; 2026 • Built with GitHub Pages
+    <footer class="py-12 text-center text-gray-600 text-xs border-t border-white/5">
+        DEPLOYED ON GITHUB PAGES // AUTHORED BY [YOUR NAME] // 2026
     </footer>
 
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+    </script>
 </body>
 </html>
