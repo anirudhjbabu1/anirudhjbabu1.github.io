@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anirudh | Technical Projects</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root { --accent: #14b8a6; --bg: #030303; }
+        body { background-color: var(--bg); color: #fafafa; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .glass { background: rgba(15, 15, 15, 0.7); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 1rem; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+    </style>
+</head>
+<body class="p-6 md:p-12">
+
+    <nav class="max-w-6xl mx-auto mb-16">
+        <a href="index.html" class="flex items-center gap-2 text-gray-400 hover:text-teal-400 transition mono text-sm">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i> BACK_TO_SYSTEM_OVERVIEW
+        </a>
+    </nav>
+
+    <header class="max-w-6xl mx-auto mb-20">
+        <h1 class="text-5xl md:text-7xl font-bold tracking-tighter mb-4 italic">Technical <span class="text-teal-500">Logbook</span></h1>
+        <p class="text-gray-500 max-w-xl uppercase tracking-widest text-xs">A comprehensive breakdown of autonomous systems development, research, and deployment.</p>
+    </header>
+
+    <main class="max-w-6xl mx-auto space-y-32">
+
+        <section id="vla-research" class="grid md:grid-cols-3 gap-12 border-t border-white/10 pt-12">
+            <div class="space-y-8">
+                <div>
+                    <h2 class="text-3xl font-bold mb-2">VLA Foundation</h2>
+                    <p class="text-teal-500 mono text-xs uppercase tracking-widest">Embodied AI / Transformers</p>
+                </div>
+                <div class="glass p-6 rounded-2xl space-y-4">
+                    <div class="flex justify-between text-xs"> <span class="text-gray-500">Stack:</span> <span class="mono">PyTorch, ROS2, CUDA</span> </div>
+                    <div class="flex justify-between text-xs"> <span class="text-gray-500">Model:</span> <span class="mono">Modified RT-2</span> </div>
+                    <div class="flex justify-between text-xs"> <span class="text-gray-500">Latency:</span> <span class="mono">< 45ms Inference</span> </div>
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    This project focuses on bridging high-level semantic reasoning with low-level robotic control. By utilizing Vision-Language-Action (VLA) models, I enabled a 7-DOF arm to interpret natural language commands within dynamic, unstructured environments.
+                </p>
+            </div>
+
+            <div class="md:col-span-2 space-y-6">
+                <div class="video-container glass border border-white/10">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="rounded-2xl overflow-hidden glass aspect-square flex items-center justify-center text-gray-700 text-[10px] uppercase"> [ Project Image 1 ] </div>
+                    <div class="rounded-2xl overflow-hidden glass aspect-square flex items-center justify-center text-gray-700 text-[10px] uppercase"> [ Project Image 2 ] </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="navigation" class="grid md:grid-cols-3 gap-12 border-t border-white/10 pt-12">
+            <div class="space-y-8">
+                <div>
+                    <h2 class="text-3xl font-bold mb-2">GPS-Denied Autonomy</h2>
+                    <p class="text-blue-500 mono text-xs uppercase tracking-widest">SLAM / VIO / Path Planning</p>
+                </div>
+                <div class="glass p-6 rounded-2xl space-y-4">
+                    <div class="flex justify-between text-xs"> <span class="text-gray-500">Hardware:</span> <span class="mono">OAK-D, Jetson Orin</span> </div>
+                    <div class="flex justify-between text-xs"> <span class="text-gray-500">Algo:</span> <span class="mono">Fast-LIO2 / VINS-Mono</span> </div>
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Developed a robust navigation stack for a quadrotor in confined indoor environments. The system utilizes Visual-Inertial Fusion to maintain localization during high-dynamic maneuvers where GPS signals are completely absent.
+                </p>
+            </div>
+
+            <div class="md:col-span-2 space-y-6">
+                <div class="video-container glass border border-white/10">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="rounded-2xl glass p-8">
+                    <h4 class="mono text-xs text-teal-500 mb-4 tracking-widest uppercase font-bold text-center">Trajectory Visualization</h4>
+                    
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-20 text-center text-gray-700 mono text-[10px] uppercase tracking-[0.5em]">
+        Technical Log // Anirudh // End of Transmission
+    </footer>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>
