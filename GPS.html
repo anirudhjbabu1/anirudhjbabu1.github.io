@@ -3,97 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anirudh | Project Deep-Dives</title>
+    <title>Anirudh | Project Detail</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        :root { --accent: #14b8a6; --bg: #030303; }
-        body { background-color: var(--bg); color: #fafafa; font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.6; }
+        :root { --accent: #14b8a6; --bg: #050505; }
+        body { background-color: var(--bg); color: #fafafa; font-family: 'Plus Jakarta Sans', sans-serif; }
         .mono { font-family: 'JetBrains Mono', monospace; }
-        .glass { background: rgba(15, 15, 15, 0.7); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.08); }
-        .sticky-sidebar { position: sticky; top: 100px; }
-        .media-glow { box-shadow: 0 0 40px rgba(20, 184, 166, 0.1); }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .video-box { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
+        .video-box iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 1.5rem; }
     </style>
 </head>
-<body class="selection:bg-teal-500/30">
+<body>
 
-    <nav class="fixed top-0 w-full z-50 glass py-4 px-8 border-b border-white/5">
-        <div class="max-w-7xl mx-auto">
-            <a href="index.html" class="flex items-center gap-2 text-teal-500 font-bold mono text-xs uppercase tracking-widest hover:text-white transition">
-                <i data-lucide="chevron-left" class="w-4 h-4"></i> Return to Command Center
-            </a>
-        </div>
+    <nav class="p-6 flex justify-between items-center fixed top-0 w-full z-50 bg-black/50 backdrop-blur-md">
+        <a href="index.html" class="mono text-xs text-gray-400 hover:text-teal-400 flex items-center gap-2">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i> HUB_OVERVIEW
+        </a>
+        <span class="mono text-[10px] text-gray-600 tracking-[0.3em]">PROJECT_LOG_v2.0</span>
     </nav>
 
-    <main class="max-w-7xl mx-auto pt-32 pb-20 px-6">
+    <main class="max-w-4xl mx-auto pt-32 pb-20 px-6">
         
-        <section class="grid lg:grid-cols-12 gap-12 mb-40 border-b border-white/5 pb-24">
-            <div class="lg:col-span-4 sticky-sidebar h-fit">
-                <span class="mono text-teal-500 text-xs font-bold uppercase tracking-[0.3em]">Project_01</span>
-                <h2 class="text-4xl font-bold mt-4 mb-6 italic">Vision-Language-Action Models</h2>
-                <div class="glass p-6 rounded-2xl mb-6">
-                    <h4 class="mono text-[10px] text-gray-500 uppercase mb-4 tracking-widest border-b border-white/5 pb-2">Technical Specs</h4>
-                    <ul class="space-y-3 text-sm">
-                        <li class="flex justify-between"><span class="text-gray-500">Architecture:</span> <span class="mono">Transformer</span></li>
-                        <li class="flex justify-between"><span class="text-gray-500">Framework:</span> <span class="mono">PyTorch / ROS2</span></li>
-                        <li class="flex justify-between"><span class="text-gray-500">Compute:</span> <span class="mono">NVIDIA Orin</span></li>
+        <header class="mb-12">
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tighter mb-6 italic text-white">Vision-Language-Action <span class="text-teal-500">Model.</span></h1>
+            <div class="flex flex-wrap gap-4 text-xs mono">
+                <span class="bg-teal-500/10 text-teal-400 px-3 py-1 rounded-full border border-teal-500/20">ROBOTICS_AI</span>
+                <span class="bg-white/5 text-gray-400 px-3 py-1 rounded-full border border-white/10">C++ / PYTORCH</span>
+                <span class="bg-white/5 text-gray-400 px-3 py-1 rounded-full border border-white/10">EMBODIED_INTELLIGENCE</span>
+            </div>
+        </header>
+
+        <section class="mb-16">
+            <div class="video-box glass rounded-3xl overflow-hidden shadow-2xl shadow-teal-500/5">
+                <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <p class="mt-4 text-center italic text-gray-500 text-sm italic">Fig 1.0: Demonstration of real-time VLA inference on an industrial manipulator.</p>
+        </section>
+
+        <section class="grid md:grid-cols-3 gap-12 mb-20">
+            <div class="md:col-span-2 space-y-8">
+                <h3 class="text-2xl font-bold italic border-b border-teal-500/30 pb-2">The Architecture</h3>
+                <p class="text-gray-400 leading-relaxed">
+                    This system integrates a large-scale Vision-Language model with a real-time robotic action controller. The primary challenge was the <strong>GPS-denied environment</strong> navigation while maintaining semantic awareness of objects in the scene.
+                </p>
+                
+                <p class="text-gray-400 leading-relaxed">
+                    By tokenizing both visual frames and natural language instructions, the transformer outputs high-frequency motor commands (Joint Velocities) directly. This bypasses the need for traditional modular planning stacks, reducing latency by 40%.
+                </p>
+            </div>
+            
+            <div class="space-y-6">
+                <div class="glass p-6 rounded-2xl">
+                    <h4 class="font-bold text-sm mb-4 flex items-center gap-2"><i data-lucide="layers" class="w-4 h-4 text-teal-500"></i> Tech Stack</h4>
+                    <ul class="text-xs space-y-2 text-gray-400 mono">
+                        <li>• NVIDIA TensorRT</li>
+                        <li>• ROS2 Humble</li>
+                        <li>• Transformers (HuggingFace)</li>
+                        <li>• CUDA Optimization</li>
                     </ul>
                 </div>
-                <p class="text-gray-400 text-sm">Focused on enabling zero-shot generalization for robotic manipulators. The model interprets "Fetch the red object" by processing visual features and linguistic tokens simultaneously.</p>
-            </div>
-
-            <div class="lg:col-span-8 space-y-10">
-                <div class="aspect-video glass rounded-3xl overflow-hidden media-glow border border-teal-500/20">
-                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="glass p-2 rounded-2xl aspect-square">
-                        <img src="images/vla-photo-1.jpg" alt="VLA setup" class="w-full h-full object-cover rounded-xl opacity-80 hover:opacity-100 transition">
-                    </div>
-                    <div class="glass p-2 rounded-2xl aspect-square">
-                        <img src="images/vla-photo-2.jpg" alt="VLA inference" class="w-full h-full object-cover rounded-xl opacity-80 hover:opacity-100 transition">
-                    </div>
+                <div class="glass p-6 rounded-2xl">
+                    <h4 class="font-bold text-sm mb-4 flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-teal-500"></i> Key Results</h4>
+                    <ul class="text-xs space-y-2 text-gray-400 mono">
+                        <li>• 94% Task Accuracy</li>
+                        <li>• Zero-shot adaptation</li>
+                        <li>• 15Hz Inference Speed</li>
+                    </ul>
                 </div>
             </div>
         </section>
 
-        <section class="grid lg:grid-cols-12 gap-12 mb-40 border-b border-white/5 pb-24">
-            <div class="lg:col-span-4 sticky-sidebar h-fit">
-                <span class="mono text-blue-500 text-xs font-bold uppercase tracking-[0.3em]">Project_02</span>
-                <h2 class="text-4xl font-bold mt-4 mb-6 italic">GPS-Denied Autonomy</h2>
-                <div class="glass p-6 rounded-2xl mb-6">
-                    <h4 class="mono text-[10px] text-gray-500 uppercase mb-4 tracking-widest border-b border-white/5 pb-2">Technical Specs</h4>
-                    <ul class="space-y-3 text-sm">
-                        <li class="flex justify-between"><span class="text-gray-500">Method:</span> <span class="mono">Visual-Inertial SLAM</span></li>
-                        <li class="flex justify-between"><span class="text-gray-500">Sensor:</span> <span class="mono">Stereo Camera / IMU</span></li>
-                        <li class="flex justify-between"><span class="text-gray-500">Platform:</span> <span class="mono">Custom UAV</span></li>
-                    </ul>
-                </div>
-                <p class="text-gray-400 text-sm">Implementation of robust localization in environments where GNSS is unavailable. Integrated EKF (Extended Kalman Filter) for state estimation and local path planning.</p>
+        <section class="grid grid-cols-2 gap-4 mb-32">
+            <div class="rounded-3xl glass aspect-video overflow-hidden border border-white/5">
+                <img src="images/project-photo-1.jpg" alt="Robot in lab" class="w-full h-full object-cover opacity-70 hover:opacity-100 transition duration-500">
             </div>
+            <div class="rounded-3xl glass aspect-video overflow-hidden border border-white/5">
+                <img src="images/project-photo-2.jpg" alt="Software inference screen" class="w-full h-full object-cover opacity-70 hover:opacity-100 transition duration-500">
+            </div>
+        </section>
 
-            <div class="lg:col-span-8 space-y-10">
-                <div class="aspect-video glass rounded-3xl overflow-hidden media-glow border border-blue-500/20">
-                     <iframe class="w-full h-full" src="https://www.youtube.com/embed/YOUR_VIDEO_ID_2" frameborder="0" allowfullscreen></iframe>
-                </div>
-                
-                
-                <div class="glass p-8 rounded-3xl">
-                    <h4 class="mono text-teal-500 text-xs mb-4 uppercase">Navigation Performance</h4>
-                    <p class="text-gray-400 text-sm mb-6">Real-time point cloud generation using LIO-SAM. Drifting corrected via loop closure detection in feature-rich environments.</p>
-                    <img src="images/mapping-results.png" alt="Mapping results" class="w-full rounded-xl border border-white/5">
-                </div>
+        <section class="border-t border-white/10 pt-20">
+            <h4 class="mono text-[10px] text-center text-gray-600 tracking-[0.5em] mb-12 uppercase">Switch System</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <a href="slam-project.html" class="glass p-8 rounded-3xl flex justify-between items-center group hover:border-teal-500/50 transition">
+                    <div>
+                        <span class="text-xs text-gray-500 mono uppercase">Next Module</span>
+                        <h5 class="text-xl font-bold group-hover:text-teal-400 transition">GPS-Denied SLAM</h5>
+                    </div>
+                    <i data-lucide="chevron-right" class="text-gray-700 group-hover:text-teal-400 transform group-hover:translate-x-2 transition"></i>
+                </a>
+
+                <a href="3d-mapping.html" class="glass p-8 rounded-3xl flex justify-between items-center group hover:border-blue-500/50 transition">
+                    <div>
+                        <span class="text-xs text-gray-500 mono uppercase">Alternative System</span>
+                        <h5 class="text-xl font-bold group-hover:text-blue-400 transition">3D Semantic Mapping</h5>
+                    </div>
+                    <i data-lucide="chevron-right" class="text-gray-700 group-hover:text-blue-400 transform group-hover:translate-x-2 transition"></i>
+                </a>
             </div>
         </section>
 
     </main>
-
-    <footer class="py-10 text-center border-t border-white/5">
-        <p class="mono text-[10px] text-gray-600 uppercase tracking-widest">Designed & Built by Anirudh // 2026</p>
-    </footer>
 
     <script>lucide.createIcons();</script>
 </body>
