@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anirudh | Robotics & AI Systems Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root { --accent: #14b8a6; --bg: #020202; }
+        body { background-color: var(--bg); color: #fafafa; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.07); transition: 0.3s ease; }
+        .glass:hover { border-color: var(--accent); background: rgba(20, 184, 166, 0.05); }
+        .hero-gradient { background: radial-gradient(circle at 50% 50%, rgba(20, 184, 166, 0.12) 0%, transparent 70%); }
+    </style>
+</head>
+<body>
+
+    <nav class="fixed top-0 w-full z-50 glass py-4 px-8 flex justify-between items-center">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-teal-500 rounded-xl flex items-center justify-center font-bold text-black italic text-xl">A</div>
+            <span class="font-bold tracking-tighter text-lg uppercase">Anirudh</span>
+        </div>
+        <div class="hidden md:flex gap-8 text-[10px] mono uppercase tracking-widest text-gray-400">
+            <a href="#about" class="hover:text-teal-400 transition">Identity</a>
+            <a href="#experience" class="hover:text-teal-400 transition">Trajectory</a>
+            <a href="#services" class="hover:text-teal-400 transition">Services</a>
+            <a href="#contact" class="hover:text-teal-400 transition">Contact</a>
+        </div>
+    </nav>
+
+    <section id="about" class="min-h-screen flex flex-col justify-center px-6 hero-gradient pt-20">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <span class="mono text-teal-500 text-xs font-bold uppercase tracking-[0.4em] mb-4 block">System.Initialize(Anirudh)</span>
+                <h1 class="text-6xl md:text-8xl font-bold tracking-tighter leading-none mb-8">Engineering <br> <span class="text-teal-500">Autonomy.</span></h1>
+                <p class="text-gray-400 text-lg leading-relaxed mb-10 max-w-lg">
+                    I am a **Robotics Software & AI Engineer** specialized in creating the neural fabric for autonomous machines. My expertise spans from **VLA models** to **GPS-denied navigation**, ensuring robots can see, reason, and act in the most complex physical environments.
+                </p>
+                <div class="flex gap-4">
+                    <a href="#experience" class="bg-white text-black px-8 py-4 rounded-full font-bold hover:bg-teal-400 transition">View History</a>
+                    <a href="projects.html" class="glass px-8 py-4 rounded-full font-bold hover:bg-white/5 transition flex items-center gap-2">Project Logs <i data-lucide="external-link" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+            <div class="hidden md:block">
+                
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-32 px-6 border-t border-white/5 bg-white/[0.01]">
+        <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-20">
+            <div>
+                <h3 class="mono text-xs text-gray-500 uppercase tracking-widest mb-12 flex items-center gap-2">
+                    <i data-lucide="briefcase" class="w-4 h-4"></i> Professional Experience
+                </h3>
+                <div class="space-y-10 border-l border-white/10 pl-8">
+                    <div class="relative">
+                        <div class="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-teal-500 border-4 border-black"></div>
+                        <h4 class="text-xl font-bold italic">Robotics Software Engineer</h4>
+                        <p class="text-teal-500 mono text-[10px] mb-2">2023 — PRESENT // TECH_CORP</p>
+                        <p class="text-sm text-gray-400">Leading the deployment of VLA models for industrial manipulators and edge AI optimization.</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-gray-700 border-4 border-black"></div>
+                        <h4 class="text-xl font-bold italic">AI Research Intern</h4>
+                        <p class="text-gray-500 mono text-[10px] mb-2">2022 — 2023 // GLOBAL_LABS</p>
+                        <p class="text-sm text-gray-400">Developed SLAM algorithms for GPS-denied environments in subterranean tunnels.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="mono text-xs text-gray-500 uppercase tracking-widest mb-12 flex items-center gap-2">
+                    <i data-lucide="graduation-cap" class="w-4 h-4"></i> Education
+                </h3>
+                <div class="space-y-10">
+                    <div class="glass p-6 rounded-3xl">
+                        <h4 class="text-lg font-bold">MS in Robotics & AI</h4>
+                        <p class="text-gray-500 text-sm">Top Tier Technical University</p>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="text-[9px] mono bg-white/5 px-2 py-1 rounded">Computer Vision</span>
+                            <span class="text-[9px] mono bg-white/5 px-2 py-1 rounded">Control Systems</span>
+                        </div>
+                    </div>
+                    <div class="glass p-6 rounded-3xl">
+                        <h4 class="text-lg font-bold">B.Tech in Computer Science</h4>
+                        <p class="text-gray-500 text-sm">Undergraduate Excellence Institute</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-32 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h3 class="mono text-xs text-gray-500 uppercase tracking-widest mb-16 text-center italic">Deployment Capabilities</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass p-10 rounded-3xl text-center">
+                    <i data-lucide="bot" class="w-10 h-10 text-teal-500 mx-auto mb-6"></i>
+                    <h4 class="text-xl font-bold mb-4">Embodied AI</h4>
+                    <p class="text-sm text-gray-400 leading-relaxed">End-to-end integration of LLMs/VLMs into robotic hardware for semantic task execution.</p>
+                </div>
+                <div class="glass p-10 rounded-3xl text-center">
+                    <i data-lucide="map" class="w-10 h-10 text-teal-500 mx-auto mb-6"></i>
+                    <h4 class="text-xl font-bold mb-4">Spatial Intelligence</h4>
+                    <p class="text-sm text-gray-400 leading-relaxed">High-precision 3D SLAM, LiDAR fusion, and GPS-denied navigation stacks for UAVs and UGVs.</p>
+                </div>
+                <div class="glass p-10 rounded-3xl text-center">
+                    <i data-lucide="zap" class="w-10 h-10 text-teal-500 mx-auto mb-6"></i>
+                    <h4 class="text-xl font-bold mb-4">Edge Optimization</h4>
+                    <p class="text-sm text-gray-400 leading-relaxed">Low-latency C++ 20 development and TensorRT model deployment on Jetson Orin/Xavier.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-32 px-6 border-t border-white/5">
+        <div class="max-w-4xl mx-auto glass p-12 md:p-20 rounded-[3rem] text-center relative overflow-hidden">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-6xl font-bold tracking-tighter mb-6">Let's build the <br> autonomous future.</h2>
+                <p class="text-gray-500 mb-10 max-w-md mx-auto italic">Available for research collaborations and advanced engineering roles.</p>
+                <div class="flex flex-wrap justify-center gap-6">
+                    <a href="mailto:anirudh@email.com" class="bg-teal-500 text-black px-10 py-4 rounded-full font-bold hover:scale-105 transition">Email Anirudh</a>
+                    <div class="flex items-center gap-4 text-gray-400">
+                        <a href="#" class="hover:text-white transition"><i data-lucide="linkedin"></i></a>
+                        <a href="#" class="hover:text-white transition"><i data-lucide="github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl"></div>
+        </div>
+    </section>
+
+    <footer class="py-12 text-center text-gray-700 text-[10px] mono uppercase tracking-[0.5em]">
+        Anirudh &copy; 2026 // Robotics & AI Engineer // Bengaluru, IN
+    </footer>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>
