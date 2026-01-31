@@ -3,124 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anirudh | Robotics & AI Systems</title>
+    <title>Anirudh | Technical Projects</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         :root { --accent: #14b8a6; --bg: #030303; }
-        body { background-color: var(--bg); color: #fafafa; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
+        body { background-color: var(--bg); color: #fafafa; font-family: 'Plus Jakarta Sans', sans-serif; }
         .mono { font-family: 'JetBrains Mono', monospace; }
         .glass { background: rgba(15, 15, 15, 0.7); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.08); }
-        .swiper-pagination-bullet { background: #555 !important; }
-        .swiper-pagination-bullet-active { background: var(--accent) !important; }
-        .hero-glow { background: radial-gradient(circle at 50% 50%, rgba(20, 184, 166, 0.1) 0%, transparent 70%); }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 1rem; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
     </style>
 </head>
-<body>
+<body class="p-6 md:p-12">
 
-    <main class="hero-glow pt-40 pb-20 px-6 max-w-6xl mx-auto">
-        <div class="mono text-teal-500 text-sm mb-4 tracking-tighter">System Status: Operational // Anirudh v1.0</div>
-        <h1 class="text-6xl md:text-8xl font-bold tracking-tighter leading-none mb-12">Building <br> Autonomous <span class="text-white/20">Realities.</span></h1>
+    <nav class="max-w-6xl mx-auto mb-16">
+        <a href="index.html" class="flex items-center gap-2 text-gray-400 hover:text-teal-400 transition mono text-sm">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i> BACK_TO_SYSTEM_OVERVIEW
+        </a>
+    </nav>
+
+    <header class="max-w-6xl mx-auto mb-20">
+        <h1 class="text-5xl md:text-7xl font-bold tracking-tighter mb-4 italic">Technical <span class="text-teal-500">Logbook</span></h1>
+        <p class="text-gray-500 max-w-xl uppercase tracking-widest text-xs">A comprehensive breakdown of autonomous systems development, research, and deployment.</p>
+    </header>
+
+    <main class="max-w-6xl mx-auto space-y-32">
+
+        <section id="vla-research" class="grid md:grid-cols-3 gap-12 border-t border-white/10 pt-12">
+            <div class="space-y-8">
+                <div>
+                    <h2 class="text-3xl font-bold mb-2">VLA Foundation</h2>
+                    <p class="text-teal-500 mono text-xs uppercase tracking-widest">Embodied AI / Transformers</p>
+                </div>
+                <div class="glass p-6 rounded-2xl space-y-4">
+                    <div class="flex justify-between text-xs"> <span class="text-gray-500">Stack:</span> <span class="mono">PyTorch, ROS2, CUDA</span> </div>
+                    <div class="flex justify-between text-xs"> <span class="text-gray-500">Model:</span> <span class="mono">Modified RT-2</span> </div>
+                    <div class="flex justify-between text-xs"> <span class="text-gray-500">Latency:</span> <span class="mono">< 45ms Inference</span> </div>
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    This project focuses on bridging high-level semantic reasoning with low-level robotic control. By utilizing Vision-Language-Action (VLA) models, I enabled a 7-DOF arm to interpret natural language commands within dynamic, unstructured environments.
+                </p>
+            </div>
+
+            <div class="md:col-span-2 space-y-6">
+                <div class="video-container glass border border-white/10">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="rounded-2xl overflow-hidden glass aspect-square flex items-center justify-center text-gray-700 text-[10px] uppercase"> [ Project Image 1 ] </div>
+                    <div class="rounded-2xl overflow-hidden glass aspect-square flex items-center justify-center text-gray-700 text-[10px] uppercase"> [ Project Image 2 ] </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="navigation" class="grid md:grid-cols-3 gap-12 border-t border-white/10 pt-12">
+            <div class="space-y-8">
+                <div>
+                    <h2 class="text-3xl font-bold mb-2">GPS-Denied Autonomy</h2>
+                    <p class="text-blue-500 mono text-xs uppercase tracking-widest">SLAM / VIO / Path Planning</p>
+                </div>
+                <div class="glass p-6 rounded-2xl space-y-4">
+                    <div class="flex justify-between text-xs"> <span class="text-gray-500">Hardware:</span> <span class="mono">OAK-D, Jetson Orin</span> </div>
+                    <div class="flex justify-between text-xs"> <span class="text-gray-500">Algo:</span> <span class="mono">Fast-LIO2 / VINS-Mono</span> </div>
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Developed a robust navigation stack for a quadrotor in confined indoor environments. The system utilizes Visual-Inertial Fusion to maintain localization during high-dynamic maneuvers where GPS signals are completely absent.
+                </p>
+            </div>
+
+            <div class="md:col-span-2 space-y-6">
+                <div class="video-container glass border border-white/10">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="rounded-2xl glass p-8">
+                    <h4 class="mono text-xs text-teal-500 mb-4 tracking-widest uppercase font-bold text-center">Trajectory Visualization</h4>
+                    
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <section id="projects" class="py-24 px-6 overflow-hidden">
-        <div class="max-w-6xl mx-auto mb-12 flex justify-between items-end">
-            <div>
-                <h2 class="mono text-xs uppercase tracking-[0.4em] text-gray-500 mb-2">Portfolio</h2>
-                <h3 class="text-4xl font-bold italic">Projects Library</h3>
-            </div>
-            <div class="flex gap-4 mb-2">
-                <button class="prev-btn p-3 rounded-full border border-white/10 hover:border-teal-500 transition"><i data-lucide="arrow-left"></i></button>
-                <button class="next-btn p-3 rounded-full border border-white/10 hover:border-teal-500 transition"><i data-lucide="arrow-right"></i></button>
-            </div>
-        </div>
+    <footer class="py-20 text-center text-gray-700 mono text-[10px] uppercase tracking-[0.5em]">
+        Technical Log // Anirudh // End of Transmission
+    </footer>
 
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="swiper projectSwiper">
-                <div class="swiper-wrapper">
-                    
-                    <div class="swiper-slide glass p-8 rounded-3xl h-auto flex flex-col justify-between">
-                        <div>
-                            <div class="aspect-video bg-white/5 rounded-2xl mb-6 flex items-center justify-center text-gray-600 text-xs italic border border-white/5"> [ Simulation: VLA Task Execution ] </div>
-                            <h4 class="text-2xl font-bold mb-3">Vision-Language-Action (VLA)</h4>
-                            <p class="text-gray-400 text-sm leading-relaxed mb-6">Developing end-to-end transformers for robotic manipulation, mapping natural language intent directly to motor velocities.</p>
-                        </div>
-                        <div class="flex flex-wrap gap-2 mb-8">
-                            <span class="px-3 py-1 bg-white/5 rounded-full text-[10px] mono">PyTorch</span>
-                            <span class="px-3 py-1 bg-white/5 rounded-full text-[10px] mono">Transformers</span>
-                        </div>
-                        <a href="#" class="text-teal-500 font-bold uppercase text-[10px] tracking-widest flex items-center gap-2">Exploration <i data-lucide="external-link" class="w-3 h-3"></i></a>
-                    </div>
-
-                    <div class="swiper-slide glass p-8 rounded-3xl h-auto flex flex-col justify-between">
-                        <div>
-                            <div class="aspect-video bg-white/5 rounded-2xl mb-6 flex items-center justify-center text-gray-600 text-xs italic border border-white/5"> [ Visual Odometry Plot ] </div>
-                            <h4 class="text-2xl font-bold mb-3">GPS-Denied Autonomy</h4>
-                            <p class="text-gray-400 text-sm leading-relaxed mb-6">Robust EKF-based fusion for UAVs in subterranean environments using Stereo-Visual Inertial Odometry (VIO).</p>
-                        </div>
-                        <div class="flex flex-wrap gap-2 mb-8">
-                            <span class="px-3 py-1 bg-white/5 rounded-full text-[10px] mono">C++ 20</span>
-                            <span class="px-3 py-1 bg-white/5 rounded-full text-[10px] mono">OpenCV</span>
-                        </div>
-                        <a href="#" class="text-teal-500 font-bold uppercase text-[10px] tracking-widest flex items-center gap-2">Exploration <i data-lucide="external-link" class="w-3 h-3"></i></a>
-                    </div>
-
-                    <div class="swiper-slide glass p-8 rounded-3xl h-auto flex flex-col justify-between">
-                        <div>
-                            <div class="aspect-video bg-white/5 rounded-2xl mb-6 flex items-center justify-center text-gray-600 text-xs italic border border-white/5"> [ PointCloud2 Visualization ] </div>
-                            <h4 class="text-2xl font-bold mb-3">Lidar-Visual SLAM</h4>
-                            <p class="text-gray-400 text-sm leading-relaxed mb-6">Real-time 3D Semantic Mapping using LIO-SAM and custom segmentation masks for obstacle avoidance.</p>
-                        </div>
-                        <div class="flex flex-wrap gap-2 mb-8">
-                            <span class="px-3 py-1 bg-white/5 rounded-full text-[10px] mono">ROS2</span>
-                            <span class="px-3 py-1 bg-white/5 rounded-full text-[10px] mono">PCL</span>
-                        </div>
-                        <a href="#" class="text-teal-500 font-bold uppercase text-[10px] tracking-widest flex items-center gap-2">Exploration <i data-lucide="external-link" class="w-3 h-3"></i></a>
-                    </div>
-
-                    <div class="swiper-slide glass p-8 rounded-3xl h-auto flex flex-col justify-between">
-                        <div>
-                            <div class="aspect-video bg-white/5 rounded-2xl mb-6 flex items-center justify-center text-gray-600 text-xs italic border border-white/5"> [ LLM Inference Architecture ] </div>
-                            <h4 class="text-2xl font-bold mb-3">LLM for Robotics</h4>
-                            <p class="text-gray-400 text-sm leading-relaxed mb-6">Fine-tuning Llama-3 for robotic plan generation and hierarchical task decomposition (HTN).</p>
-                        </div>
-                        <div class="flex flex-wrap gap-2 mb-8">
-                            <span class="px-3 py-1 bg-white/5 rounded-full text-[10px] mono">NLP</span>
-                            <span class="px-3 py-1 bg-white/5 rounded-full text-[10px] mono">LangChain</span>
-                        </div>
-                        <a href="#" class="text-teal-500 font-bold uppercase text-[10px] tracking-widest flex items-center gap-2">Exploration <i data-lucide="external-link" class="w-3 h-3"></i></a>
-                    </div>
-
-                </div>
-                <div class="swiper-pagination mt-10 !static"></div>
-            </div>
-        </div>
-    </section>
-
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-        lucide.createIcons();
-
-        // Initialize Swiper
-        const swiper = new Swiper(".projectSwiper", {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            loop: true,
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-            navigation: {
-                nextEl: ".next-btn",
-                prevEl: ".prev-btn",
-            },
-            breakpoints: {
-                768: { slidesPerView: 2 },
-                1024: { slidesPerView: 3 }
-            }
-        });
-    </script>
+    <script>lucide.createIcons();</script>
 </body>
 </html>
