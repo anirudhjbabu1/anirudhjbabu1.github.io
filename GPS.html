@@ -3,91 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anirudh | Technical Projects</title>
+    <title>Anirudh | Project Deep-Dives</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         :root { --accent: #14b8a6; --bg: #030303; }
-        body { background-color: var(--bg); color: #fafafa; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background-color: var(--bg); color: #fafafa; font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.6; }
         .mono { font-family: 'JetBrains Mono', monospace; }
         .glass { background: rgba(15, 15, 15, 0.7); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.08); }
-        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 1rem; }
-        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        .sticky-sidebar { position: sticky; top: 100px; }
+        .media-glow { box-shadow: 0 0 40px rgba(20, 184, 166, 0.1); }
     </style>
 </head>
-<body class="p-6 md:p-12">
+<body class="selection:bg-teal-500/30">
 
-    <nav class="max-w-6xl mx-auto mb-16">
-        <a href="index.html" class="flex items-center gap-2 text-gray-400 hover:text-teal-400 transition mono text-sm">
-            <i data-lucide="arrow-left" class="w-4 h-4"></i> BACK_TO_SYSTEM_OVERVIEW
-        </a>
+    <nav class="fixed top-0 w-full z-50 glass py-4 px-8 border-b border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <a href="index.html" class="flex items-center gap-2 text-teal-500 font-bold mono text-xs uppercase tracking-widest hover:text-white transition">
+                <i data-lucide="chevron-left" class="w-4 h-4"></i> Return to Command Center
+            </a>
+        </div>
     </nav>
 
-    <header class="max-w-6xl mx-auto mb-20">
-        <h1 class="text-5xl md:text-7xl font-bold tracking-tighter mb-4 italic">Technical <span class="text-teal-500">Logbook</span></h1>
-        <p class="text-gray-500 max-w-xl uppercase tracking-widest text-xs">A comprehensive breakdown of autonomous systems development, research, and deployment.</p>
-    </header>
-
-    <main class="max-w-6xl mx-auto space-y-32">
-
-        <section id="vla-research" class="grid md:grid-cols-3 gap-12 border-t border-white/10 pt-12">
-            <div class="space-y-8">
-                <div>
-                    <h2 class="text-3xl font-bold mb-2">VLA Foundation</h2>
-                    <p class="text-teal-500 mono text-xs uppercase tracking-widest">Embodied AI / Transformers</p>
+    <main class="max-w-7xl mx-auto pt-32 pb-20 px-6">
+        
+        <section class="grid lg:grid-cols-12 gap-12 mb-40 border-b border-white/5 pb-24">
+            <div class="lg:col-span-4 sticky-sidebar h-fit">
+                <span class="mono text-teal-500 text-xs font-bold uppercase tracking-[0.3em]">Project_01</span>
+                <h2 class="text-4xl font-bold mt-4 mb-6 italic">Vision-Language-Action Models</h2>
+                <div class="glass p-6 rounded-2xl mb-6">
+                    <h4 class="mono text-[10px] text-gray-500 uppercase mb-4 tracking-widest border-b border-white/5 pb-2">Technical Specs</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex justify-between"><span class="text-gray-500">Architecture:</span> <span class="mono">Transformer</span></li>
+                        <li class="flex justify-between"><span class="text-gray-500">Framework:</span> <span class="mono">PyTorch / ROS2</span></li>
+                        <li class="flex justify-between"><span class="text-gray-500">Compute:</span> <span class="mono">NVIDIA Orin</span></li>
+                    </ul>
                 </div>
-                <div class="glass p-6 rounded-2xl space-y-4">
-                    <div class="flex justify-between text-xs"> <span class="text-gray-500">Stack:</span> <span class="mono">PyTorch, ROS2, CUDA</span> </div>
-                    <div class="flex justify-between text-xs"> <span class="text-gray-500">Model:</span> <span class="mono">Modified RT-2</span> </div>
-                    <div class="flex justify-between text-xs"> <span class="text-gray-500">Latency:</span> <span class="mono">< 45ms Inference</span> </div>
-                </div>
-                <p class="text-gray-400 text-sm leading-relaxed">
-                    This project focuses on bridging high-level semantic reasoning with low-level robotic control. By utilizing Vision-Language-Action (VLA) models, I enabled a 7-DOF arm to interpret natural language commands within dynamic, unstructured environments.
-                </p>
+                <p class="text-gray-400 text-sm">Focused on enabling zero-shot generalization for robotic manipulators. The model interprets "Fetch the red object" by processing visual features and linguistic tokens simultaneously.</p>
             </div>
 
-            <div class="md:col-span-2 space-y-6">
-                <div class="video-container glass border border-white/10">
-                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+            <div class="lg:col-span-8 space-y-10">
+                <div class="aspect-video glass rounded-3xl overflow-hidden media-glow border border-teal-500/20">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="rounded-2xl overflow-hidden glass aspect-square flex items-center justify-center text-gray-700 text-[10px] uppercase"> [ Project Image 1 ] </div>
-                    <div class="rounded-2xl overflow-hidden glass aspect-square flex items-center justify-center text-gray-700 text-[10px] uppercase"> [ Project Image 2 ] </div>
+                
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="glass p-2 rounded-2xl aspect-square">
+                        <img src="images/vla-photo-1.jpg" alt="VLA setup" class="w-full h-full object-cover rounded-xl opacity-80 hover:opacity-100 transition">
+                    </div>
+                    <div class="glass p-2 rounded-2xl aspect-square">
+                        <img src="images/vla-photo-2.jpg" alt="VLA inference" class="w-full h-full object-cover rounded-xl opacity-80 hover:opacity-100 transition">
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="navigation" class="grid md:grid-cols-3 gap-12 border-t border-white/10 pt-12">
-            <div class="space-y-8">
-                <div>
-                    <h2 class="text-3xl font-bold mb-2">GPS-Denied Autonomy</h2>
-                    <p class="text-blue-500 mono text-xs uppercase tracking-widest">SLAM / VIO / Path Planning</p>
+        <section class="grid lg:grid-cols-12 gap-12 mb-40 border-b border-white/5 pb-24">
+            <div class="lg:col-span-4 sticky-sidebar h-fit">
+                <span class="mono text-blue-500 text-xs font-bold uppercase tracking-[0.3em]">Project_02</span>
+                <h2 class="text-4xl font-bold mt-4 mb-6 italic">GPS-Denied Autonomy</h2>
+                <div class="glass p-6 rounded-2xl mb-6">
+                    <h4 class="mono text-[10px] text-gray-500 uppercase mb-4 tracking-widest border-b border-white/5 pb-2">Technical Specs</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex justify-between"><span class="text-gray-500">Method:</span> <span class="mono">Visual-Inertial SLAM</span></li>
+                        <li class="flex justify-between"><span class="text-gray-500">Sensor:</span> <span class="mono">Stereo Camera / IMU</span></li>
+                        <li class="flex justify-between"><span class="text-gray-500">Platform:</span> <span class="mono">Custom UAV</span></li>
+                    </ul>
                 </div>
-                <div class="glass p-6 rounded-2xl space-y-4">
-                    <div class="flex justify-between text-xs"> <span class="text-gray-500">Hardware:</span> <span class="mono">OAK-D, Jetson Orin</span> </div>
-                    <div class="flex justify-between text-xs"> <span class="text-gray-500">Algo:</span> <span class="mono">Fast-LIO2 / VINS-Mono</span> </div>
-                </div>
-                <p class="text-gray-400 text-sm leading-relaxed">
-                    Developed a robust navigation stack for a quadrotor in confined indoor environments. The system utilizes Visual-Inertial Fusion to maintain localization during high-dynamic maneuvers where GPS signals are completely absent.
-                </p>
+                <p class="text-gray-400 text-sm">Implementation of robust localization in environments where GNSS is unavailable. Integrated EKF (Extended Kalman Filter) for state estimation and local path planning.</p>
             </div>
 
-            <div class="md:col-span-2 space-y-6">
-                <div class="video-container glass border border-white/10">
-                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+            <div class="lg:col-span-8 space-y-10">
+                <div class="aspect-video glass rounded-3xl overflow-hidden media-glow border border-blue-500/20">
+                     <iframe class="w-full h-full" src="https://www.youtube.com/embed/YOUR_VIDEO_ID_2" frameborder="0" allowfullscreen></iframe>
                 </div>
-                <div class="rounded-2xl glass p-8">
-                    <h4 class="mono text-xs text-teal-500 mb-4 tracking-widest uppercase font-bold text-center">Trajectory Visualization</h4>
-                    
+                
+                
+                <div class="glass p-8 rounded-3xl">
+                    <h4 class="mono text-teal-500 text-xs mb-4 uppercase">Navigation Performance</h4>
+                    <p class="text-gray-400 text-sm mb-6">Real-time point cloud generation using LIO-SAM. Drifting corrected via loop closure detection in feature-rich environments.</p>
+                    <img src="images/mapping-results.png" alt="Mapping results" class="w-full rounded-xl border border-white/5">
                 </div>
             </div>
         </section>
 
     </main>
 
-    <footer class="py-20 text-center text-gray-700 mono text-[10px] uppercase tracking-[0.5em]">
-        Technical Log // Anirudh // End of Transmission
+    <footer class="py-10 text-center border-t border-white/5">
+        <p class="mono text-[10px] text-gray-600 uppercase tracking-widest">Designed & Built by Anirudh // 2026</p>
     </footer>
 
     <script>lucide.createIcons();</script>
