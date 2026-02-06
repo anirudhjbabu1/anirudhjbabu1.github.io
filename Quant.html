@@ -28,7 +28,7 @@
     <main class="max-w-4xl mx-auto pt-32 pb-20 px-6">
         
         <header class="mb-12">
-            <h1 class="text-5xl md:text-7xl font-bold tracking-tighter mb-6 italic text-white">Quantitative Researcher <span class="text-teal-500">Projects.</span></h1>
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tighter mb-6 italic text-white">Quantitative Research <span class="text-teal-500">Projects.</span></h1>
             <div class="flex flex-wrap gap-4 text-xs mono">
                 <span class="bg-teal-500/10 text-teal-400 px-3 py-1 rounded-full border border-teal-500/20">ROBOTICS_AI</span>
                 <span class="bg-white/5 text-gray-400 px-3 py-1 rounded-full border border-white/10">C++ / PYTORCH</span>
@@ -40,22 +40,58 @@
             <div class="md:col-span-2 space-y-8">
                 <h3 class="text-2xl font-bold italic border-b border-teal-500/30 pb-2">The Architecture</h3>
                 <p class="text-gray-400 leading-relaxed">
-                    This system integrates a large-scale Vision-Language model with a real-time robotic action controller. The primary challenge was the <strong>GPS-denied environment</strong> navigation while maintaining semantic awareness of objects in the scene.
-                </p>
+1. Statistical Arbitrage: Pairs Trading (Beginner-Intermediate)
+Instead of predicting one stock, you predict the relationship between two.
+
+The Goal: Find two stocks that are historically correlated (e.g., ICICI Bank and HDFC Bank). When the spread between them widens significantly, you short the "expensive" one and buy the "cheap" one, betting they will converge.
+
+Key Skills: Cointegration (Augmented Dickey-Fuller test), Z-score calculation, and Mean Reversion.
+
+Dataset: Daily or hourly data from yfinance or NSE historical archives.
+
+Implementation: Use Python (Statsmodels, Pandas).
+
+2. Limit Order Book (LOB) Imbalance (Intermediate-Advanced)
+This is a classic "Quant Researcher" project that bridges the gap between ML and HFT.
+
+The Goal: Use Level-2 market data (the "Order Book") to predict short-term price movements (the next 10–60 seconds).
+
+The ML Angle: Train a Random Forest or LightGBM on "Order Flow Imbalance" (OFI) and "Bid-Ask Spread" to determine if a "buy" or "sell" wall is about to break.
+
+Key Skills: Data cleaning of high-frequency tick data, feature engineering (VWAP, micro-price), and avoiding "Look-ahead bias."
+
+Dataset: Crypto tick data (Binance/Coinbase API) or LOB datasets from Kaggle.
+
+3. Reinforcement Learning for Execution (Advanced)
+Move away from "Signal" and focus on "Execution."
+
+The Goal: Train an RL agent (PPO or DQN) to execute a large order (e.g., buying 10,000 shares) without moving the market price too much.
+
+The ML Angle: The "Reward" is the difference between your execution price and the market VWAP (Volume Weighted Average Price).
+
+Key Skills: OpenAI Gym environments, Reward function design, and Market Impact modeling.
+
+Implementation: Stable-Baselines3 in Python.
+
+4. Sentiment-Based "Alpha" Factor (Alternative Data)
+Show that you can handle unstructured data—a huge trend in 2026.
+
+The Goal: Scrape financial news or "FinTwit" (Financial Twitter/X) to create a sentiment score for a specific sector.
+
+The ML Angle: Use a Transformer (FinBERT) to classify news as Bullish/Bearish. Correlate this score with the next day's returns to see if it’s a valid "Alpha" signal.
+
+Key Skills: NLP, API scraping, and Cross-correlation analysis.                </p>
                 
-                <p class="text-gray-400 leading-relaxed">
-                    By tokenizing both visual frames and natural language instructions, the transformer outputs high-frequency motor commands (Joint Velocities) directly. This bypasses the need for traditional modular planning stacks, reducing latency by 40%.
-                </p>
             </div>
             
             <div class="space-y-6">
                 <div class="glass p-6 rounded-2xl">
-                    <h4 class="font-bold text-sm mb-4 flex items-center gap-2"><i data-lucide="layers" class="w-4 h-4 text-teal-500"></i> Tech Stack</h4>
+                    <h4 class="font-bold text-sm mb-4 flex items-center gap-2"><i data-lucide="layers" class="w-4 h-4 text-teal-500"></i> Projects</h4>
                     <ul class="text-xs space-y-2 text-gray-400 mono">
-                        <li>• NVIDIA TensorRT</li>
-                        <li>• ROS2 Humble</li>
-                        <li>• Transformers (HuggingFace)</li>
-                        <li>• CUDA Optimization</li>
+                        <li>• Statistical Arbitrage: Pairs Trading</li>
+                        <li>• Limit Order Book (LOB) Imbalance</li>
+                        <li>• Reinforcement Learning for Execution</li>
+                        <li>• Sentiment-Based "Alpha" Factor</li>
                     </ul>
                 </div>
                 <div class="glass p-6 rounded-2xl">
