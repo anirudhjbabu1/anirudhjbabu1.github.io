@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,31 +29,21 @@
     <main class="max-w-4xl mx-auto pt-32 pb-20 px-6">
         
         <header class="mb-12">
-            <h1 class="text-5xl md:text-7xl font-bold tracking-tighter mb-6 italic text-white">Vision-Language-Action <span class="text-teal-500">Model.</span></h1>
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tighter mb-6 italic text-white">Lidar Based 3D Object Detection <span class="text-teal-500">Model.</span></h1>
             <div class="flex flex-wrap gap-4 text-xs mono">
-                <span class="bg-teal-500/10 text-teal-400 px-3 py-1 rounded-full border border-teal-500/20">ROBOTICS_AI</span>
+                <span class="bg-teal-500/10 text-teal-400 px-3 py-1 rounded-full border border-teal-500/20">LIDAR</span>
                 <span class="bg-white/5 text-gray-400 px-3 py-1 rounded-full border border-white/10">C++ / PYTORCH</span>
                 <span class="bg-white/5 text-gray-400 px-3 py-1 rounded-full border border-white/10">EMBODIED_INTELLIGENCE</span>
             </div>
         </header>
 
-        <section class="mb-16">
-            <div class="video-box glass rounded-3xl overflow-hidden shadow-2xl shadow-teal-500/5">
-                <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <p class="mt-4 text-center italic text-gray-500 text-sm italic">Fig 1.0: Demonstration of real-time VLA inference on an industrial manipulator.</p>
-        </section>
-
         <section class="grid md:grid-cols-3 gap-12 mb-20">
             <div class="md:col-span-2 space-y-8">
                 <h3 class="text-2xl font-bold italic border-b border-teal-500/30 pb-2">The Architecture</h3>
                 <p class="text-gray-400 leading-relaxed">
-                    This system integrates a large-scale Vision-Language model with a real-time robotic action controller. The primary challenge was the <strong>GPS-denied environment</strong> navigation while maintaining semantic awareness of objects in the scene.
+                    process that assists with identifying and localizing objects of interest in a <strong>3-dimensional space </strong>. In autonomous systems and advanced spatial analysis, the evolution of object detection methodologies has been pivotal. Among these technologies, 3D LiDAR object detection is a transformative approach, offering unprecedented accuracy and depth in environmental perception.
                 </p>
                 
-                <p class="text-gray-400 leading-relaxed">
-                    By tokenizing both visual frames and natural language instructions, the transformer outputs high-frequency motor commands (Joint Velocities) directly. This bypasses the need for traditional modular planning stacks, reducing latency by 40%.
-                </p>
             </div>
             
             <div class="space-y-6">
@@ -78,11 +69,18 @@
 
         <section class="grid grid-cols-2 gap-4 mb-32">
             <div class="rounded-3xl glass aspect-video overflow-hidden border border-white/5">
-                <img src="images/project-photo-1.jpg" alt="Robot in lab" class="w-full h-full object-cover opacity-70 hover:opacity-100 transition duration-500">
+                <img src="images/Lidar3DObjectDetectionUsingPointPillarsExample_03.png" alt="Robot in lab" class="w-full h-full object-cover opacity-70 hover:opacity-100 transition duration-500">
             </div>
             <div class="rounded-3xl glass aspect-video overflow-hidden border border-white/5">
-                <img src="images/project-photo-2.jpg" alt="Software inference screen" class="w-full h-full object-cover opacity-70 hover:opacity-100 transition duration-500">
+                <img src="images/Lidar3DObjectDetectionUsingPointPillarsExample_01.png" alt="Software inference screen" class="w-full h-full object-cover opacity-70 hover:opacity-100 transition duration-500">
             </div>
+             <a href="https://github.com/anirudhjbabu1/LOD-3D" class="glass p-8 rounded-3xl flex justify-between items-center group hover:border-teal-500/50 transition">
+                    <div>
+                        <span class="text-xs text-gray-500 mono uppercase">GITHUB REPO</span>
+                        <h5 class="text-xl font-bold group-hover:text-teal-400 transition">LOD-3D</h5>
+                    </div>
+                    <i data-lucide="chevron-right" class="text-gray-700 group-hover:text-teal-400 transform group-hover:translate-x-2 transition"></i>
+                </a>
         </section>
 
         <section class="border-t border-white/10 pt-20">
