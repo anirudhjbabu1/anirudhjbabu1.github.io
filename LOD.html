@@ -1,1 +1,107 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anirudh | Project Detail</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root { --accent: #14b8a6; --bg: #050505; }
+        body { background-color: var(--bg); color: #fafafa; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .video-box { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
+        .video-box iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 1.5rem; }
+    </style>
+</head>
+<body>
+
+    <nav class="p-6 flex justify-between items-center fixed top-0 w-full z-50 bg-black/50 backdrop-blur-md">
+        <a href="index.html" class="mono text-xs text-gray-400 hover:text-teal-400 flex items-center gap-2">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i> HUB_OVERVIEW
+        </a>
+        <span class="mono text-[10px] text-gray-600 tracking-[0.3em]">PROJECT_LOG_v2.0</span>
+    </nav>
+
+    <main class="max-w-4xl mx-auto pt-32 pb-20 px-6">
+        
+        <header class="mb-12">
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tighter mb-6 italic text-white">Lidar Based 3D Object Detection <span class="text-teal-500">Model.</span></h1>
+            <div class="flex flex-wrap gap-4 text-xs mono">
+                <span class="bg-teal-500/10 text-teal-400 px-3 py-1 rounded-full border border-teal-500/20">LIDAR</span>
+                <span class="bg-white/5 text-gray-400 px-3 py-1 rounded-full border border-white/10">C++ / PYTORCH</span>
+                <span class="bg-white/5 text-gray-400 px-3 py-1 rounded-full border border-white/10">EMBODIED_INTELLIGENCE</span>
+            </div>
+        </header>
+
+        <section class="grid md:grid-cols-3 gap-12 mb-20">
+            <div class="md:col-span-2 space-y-8">
+                <h3 class="text-2xl font-bold italic border-b border-teal-500/30 pb-2">The Architecture</h3>
+                <p class="text-gray-400 leading-relaxed">
+                    process that assists with identifying and localizing objects of interest in a <strong>3-dimensional space </strong>. In autonomous systems and advanced spatial analysis, the evolution of object detection methodologies has been pivotal. Among these technologies, 3D LiDAR object detection is a transformative approach, offering unprecedented accuracy and depth in environmental perception.
+                </p>
+                
+                <p class="text-gray-400 leading-relaxed">
+                    By tokenizing both visual frames and natural language instructions, the transformer outputs high-frequency motor commands (Joint Velocities) directly. This bypasses the need for traditional modular planning stacks, reducing latency by 40%.
+                </p>
+            </div>
+            
+            <div class="space-y-6">
+                <div class="glass p-6 rounded-2xl">
+                    <h4 class="font-bold text-sm mb-4 flex items-center gap-2"><i data-lucide="layers" class="w-4 h-4 text-teal-500"></i> Tech Stack</h4>
+                    <ul class="text-xs space-y-2 text-gray-400 mono">
+                        <li>• NVIDIA TensorRT</li>
+                        <li>• ROS2 Humble</li>
+                        <li>• Transformers (HuggingFace)</li>
+                        <li>• CUDA Optimization</li>
+                    </ul>
+                </div>
+                <div class="glass p-6 rounded-2xl">
+                    <h4 class="font-bold text-sm mb-4 flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-teal-500"></i> Key Results</h4>
+                    <ul class="text-xs space-y-2 text-gray-400 mono">
+                        <li>• 94% Task Accuracy</li>
+                        <li>• Zero-shot adaptation</li>
+                        <li>• 15Hz Inference Speed</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid grid-cols-2 gap-4 mb-32">
+            <div class="rounded-3xl glass aspect-video overflow-hidden border border-white/5">
+                <img src="images/project-photo-1.jpg" alt="Robot in lab" class="w-full h-full object-cover opacity-70 hover:opacity-100 transition duration-500">
+            </div>
+            <div class="rounded-3xl glass aspect-video overflow-hidden border border-white/5">
+                <img src="images/project-photo-2.jpg" alt="Software inference screen" class="w-full h-full object-cover opacity-70 hover:opacity-100 transition duration-500">
+            </div>
+        </section>
+
+        <section class="border-t border-white/10 pt-20">
+            <h4 class="mono text-[10px] text-center text-gray-600 tracking-[0.5em] mb-12 uppercase">Switch System</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <a href="slam-project.html" class="glass p-8 rounded-3xl flex justify-between items-center group hover:border-teal-500/50 transition">
+                    <div>
+                        <span class="text-xs text-gray-500 mono uppercase">Next Module</span>
+                        <h5 class="text-xl font-bold group-hover:text-teal-400 transition">GPS-Denied SLAM</h5>
+                    </div>
+                    <i data-lucide="chevron-right" class="text-gray-700 group-hover:text-teal-400 transform group-hover:translate-x-2 transition"></i>
+                </a>
+
+                <a href="3d-mapping.html" class="glass p-8 rounded-3xl flex justify-between items-center group hover:border-blue-500/50 transition">
+                    <div>
+                        <span class="text-xs text-gray-500 mono uppercase">Alternative System</span>
+                        <h5 class="text-xl font-bold group-hover:text-blue-400 transition">3D Semantic Mapping</h5>
+                    </div>
+                    <i data-lucide="chevron-right" class="text-gray-700 group-hover:text-blue-400 transform group-hover:translate-x-2 transition"></i>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>
