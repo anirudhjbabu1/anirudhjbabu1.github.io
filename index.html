@@ -121,10 +121,7 @@
             .project-slide-3d { width: 360px; height: 440px; }
         }
 
-        /* PREMIUM Crisp Card Styling
-           We explicitly removed 'backdrop-filter: blur' from project cards. 
-           This prevents the web browser hardware-acceleration bug that makes text blurry inside a 3D perspective context.
-        */
+        /* PREMIUM Crisp Card Styling (No Blur Filter inside cards to avoid rendering bug) */
         .glass-card {
             background: #ffffff;
             border: 1px solid rgba(226, 232, 240, 0.9);
@@ -138,7 +135,7 @@
             flex-direction: column;
             justify-content: space-between;
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            opacity: 0.65; /* Elegant visual cue for non-focused slides without using blur filters */
+            opacity: 0.65;
             transform: scale(0.92);
         }
 
@@ -184,6 +181,42 @@
             transform: scale(1) translateY(0);
         }
 
+        /* Icon Nav Hover Expand Transition */
+        .nav-item-pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            max-width: 42px;
+            height: 42px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 9999px;
+        }
+        .nav-item-pill:hover {
+            max-width: 140px;
+            padding-left: 1rem;
+            padding-right: 1.25rem;
+            background-color: rgba(16, 185, 129, 0.08);
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+        .dark .nav-item-pill:hover {
+            background-color: rgba(52, 211, 153, 0.12);
+            border-color: rgba(52, 211, 153, 0.4);
+        }
+        .nav-text-label {
+            width: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+            white-space: nowrap;
+        }
+        .nav-item-pill:hover .nav-text-label {
+            width: auto;
+            opacity: 1;
+            margin-left: 0.5rem;
+        }
+
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
@@ -202,13 +235,37 @@
                     Anirudh<span class="text-emerald-600 dark:text-emerald-400">.J Babu</span>
                 </a>
                 <span class="hidden sm:inline-block w-[1px] h-4 bg-slate-300 dark:bg-slate-700"></span>
+                <div class="hidden sm:flex mono text-[9px] tracking-tighter font-semibold items-center gap-2 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/20">
+                    <div class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
+                    <span>SYSTEM_OK // NAV_MAPPED</span>
+                </div>
             </div>
             
-            <div class="flex items-center space-x-4 md:space-x-8 mono text-[10px] uppercase tracking-wider font-semibold">
-                <a href="#about" class="text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all">About</a>
-                <a href="#skills" class="text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all">Skills</a>
-                <a href="#work" class="text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all">Deployments</a>
-                <a href="#career" class="text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all">Experience</a>
+            <!-- Icon-First Minimalist Navigation System -->
+            <div class="flex items-center space-x-2 md:space-x-3 mono text-[10px] uppercase tracking-wider font-semibold">
+                <!-- About Pill -->
+                <a href="#about" class="nav-item-pill border border-slate-200/60 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400" title="About Me">
+                    <i class="fa-solid fa-user-gear text-sm flex items-center justify-center w-[40px] h-[40px]"></i>
+                    <span class="nav-text-label text-[9px]">About</span>
+                </a>
+
+                <!-- Skills Pill -->
+                <a href="#skills" class="nav-item-pill border border-slate-200/60 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400" title="Technical Skills">
+                    <i class="fa-solid fa-layer-group text-sm flex items-center justify-center w-[40px] h-[40px]"></i>
+                    <span class="nav-text-label text-[9px]">Skills</span>
+                </a>
+
+                <!-- Deployments Pill -->
+                <a href="#work" class="nav-item-pill border border-slate-200/60 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400" title="Active Deployments">
+                    <i class="fa-solid fa-terminal text-sm flex items-center justify-center w-[40px] h-[40px]"></i>
+                    <span class="nav-text-label text-[9px]">Work</span>
+                </a>
+
+                <!-- Career Pill -->
+                <a href="#career" class="nav-item-pill border border-slate-200/60 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400" title="Professional Experience">
+                    <i class="fa-solid fa-timeline text-sm flex items-center justify-center w-[40px] h-[40px]"></i>
+                    <span class="nav-text-label text-[9px]">History</span>
+                </a>
                 
                 <!-- Theme Toggle Button -->
                 <button id="theme-toggle" class="relative p-2.5 rounded-full border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all hover:scale-105 active:scale-95" aria-label="Toggle visual theme">
@@ -228,9 +285,7 @@
             <div class="inline-flex items-center gap-2 mono text-emerald-600 dark:text-emerald-400 text-[10px] mb-6 md:mb-8 tracking-[0.25em] uppercase font-bold py-2 px-5 border border-emerald-100 dark:border-emerald-950/50 rounded-full bg-emerald-50/50 dark:bg-emerald-950/20 backdrop-blur-sm shadow-sm">
                 <i class="fa-solid fa-microchip animate-pulse text-emerald-500"></i> Autonomous Systems & Cognitive Embodied AI
             </div>
-              <h1 class="heading-tech text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-8 text-slate-900 dark:text-slate-100 leading-[1.1] md:leading-[1.05]">
-                <br><span class="text-emerald-600 dark:text-emerald-400 bg-clip-text">Under Development...............</span>
-            </h1>
+            
             <h1 class="heading-tech text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-8 text-slate-900 dark:text-slate-100 leading-[1.1] md:leading-[1.05]">
                 Bridging physical robotics with<br><span class="text-emerald-600 dark:text-emerald-400 bg-clip-text">Agentic Embodied AI.</span>
             </h1>
@@ -408,7 +463,7 @@
             <div class="text-center mb-16">
                 <span class="mono text-xs uppercase tracking-widest text-emerald-500 dark:text-emerald-400 font-bold block mb-4">Deployments // System Lab</span>
                 <h2 class="heading-tech text-3xl md:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-4 tracking-tight">Active Unmanned Deployments</h2>
-                <p class="text-slate-500 dark:text-slate-400 font-light text-sm md:text-base">Spin the wheel or drag horizontally on your touch screen to explore active flight projects.</p>
+                <p class="text-slate-500 dark:text-slate-400 font-light text-sm md:text-base">Spin the wheel or drag horizontally on your touch screen to explore active projects.</p>
             </div>
 
             <!-- 3D Interactive Carousel Viewport -->
@@ -500,7 +555,7 @@
                 Feel free to reach out regarding flight control stacks, Edge cognitive AI systems, or visual navigation consulting.
             </p>
             
-            <a href="mailto:hello@AnirudhJ Babu.dev" class="heading-tech text-2xl md:text-4xl font-bold text-slate-900 dark:text-slate-100 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all underline decoration-emerald-200 dark:decoration-emerald-900 underline-offset-8">
+            <a href="mailto:anirudhjbabu@gmail.com" class="heading-tech text-2xl md:text-4xl font-bold text-slate-900 dark:text-slate-100 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all underline decoration-emerald-200 dark:decoration-emerald-900 underline-offset-8">
                 anirudhjbabu@gmail.com
             </a>
             
@@ -509,8 +564,8 @@
                     &copy; 2026 Anirudh J Babu / Flight System Core
                 </div>
                 <div class="flex space-x-8 text-slate-400 dark:text-slate-500">
-                    <a href="#" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"><i class="fa-brands fa-github text-xl"></i></a>
-                    <a href="#" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"><i class="fa-brands fa-linkedin-in text-xl"></i></a>
+                    <a href="https://github.com" target="_blank" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"><i class="fa-brands fa-github text-xl"></i></a>
+                    <a href="https://linkedin.com" target="_blank" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"><i class="fa-brands fa-linkedin-in text-xl"></i></a>
                 </div>
             </div>
         </div>
