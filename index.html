@@ -78,91 +78,6 @@
             transition: background 0.5s ease;
         }
 
-        /* 3D Carousel layout rules */
-        .carousel-container {
-            perspective: 2500px;
-            width: 100%;
-            height: 480px;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: visible;
-        }
-
-        @media (min-width: 768px) {
-            .carousel-container { height: 580px; }
-        }
-
-        .carousel-wheel {
-            width: 290px;
-            height: 390px;
-            position: absolute;
-            transform-style: preserve-3d;
-            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        @media (min-width: 768px) {
-            .carousel-wheel { width: 360px; height: 440px; }
-        }
-
-        .project-slide-3d {
-            position: absolute;
-            width: 290px;
-            height: 390px;
-            left: 0;
-            top: 0;
-            backface-visibility: hidden;
-            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-            cursor: pointer;
-        }
-
-        @media (min-width: 768px) {
-            .project-slide-3d { width: 360px; height: 440px; }
-        }
-
-        .glass-card {
-            background: #ffffff;
-            border: 1px solid rgba(226, 232, 240, 0.9);
-            box-shadow: 
-                0 4px 10px -1px rgba(0, 0, 0, 0.03),
-                0 10px 25px -3px rgba(0, 0, 0, 0.05);
-            height: 100%;
-            border-radius: 1.5rem;
-            padding: 2.25rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            opacity: 0.65;
-            transform: scale(0.92);
-        }
-
-        .dark .glass-card {
-            background: #0f172a; 
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            box-shadow: 
-                0 4px 12px -1px rgba(0, 0, 0, 0.3),
-                0 12px 30px -3px rgba(0, 0, 0, 0.5);
-        }
-
-        .project-slide-3d.active .glass-card {
-            border-color: var(--accent);
-            background: #ffffff;
-            box-shadow: 
-                0 10px 25px -10px rgba(16, 185, 129, 0.2),
-                0 30px 60px -15px rgba(16, 185, 129, 0.12);
-            transform: scale(1.02);
-            opacity: 1; 
-        }
-
-        .dark .project-slide-3d.active .glass-card {
-            background: #1e293b; 
-            box-shadow: 
-                0 10px 25px -10px rgba(52, 211, 153, 0.35),
-                0 30px 60px -15px rgba(52, 211, 153, 0.18);
-        }
-
         #modal-overlay {
             transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
             opacity: 0;
@@ -239,6 +154,7 @@
                 </div>
             </div>
             
+            <!-- Icon-First Minimalist Navigation Control Menu -->
             <div class="flex items-center space-x-2 md:space-x-3 mono text-[10px] uppercase tracking-wider font-semibold">
                 <a href="#about" class="nav-item-pill border border-slate-200/60 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400" title="About Me">
                     <i class="fa-solid fa-user-gear text-sm flex items-center justify-center w-[40px] h-[40px]"></i>
@@ -250,9 +166,9 @@
                     <span class="nav-text-label text-[9px]">Skills</span>
                 </a>
 
-                <a href="#work" class="nav-item-pill border border-slate-200/60 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400" title="Active Deployments">
+                <a href="#projects-section" class="nav-item-pill border border-slate-200/60 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400" title="Projects Registry">
                     <i class="fa-solid fa-terminal text-sm flex items-center justify-center w-[40px] h-[40px]"></i>
-                    <span class="nav-text-label text-[9px]">Work</span>
+                    <span class="nav-text-label text-[9px]">Projects</span>
                 </a>
 
                 <a href="#career" class="nav-item-pill border border-slate-200/60 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400" title="Professional Experience">
@@ -285,8 +201,8 @@
             </p>
             
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#work" class="w-full sm:w-auto px-8 py-4 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-950 rounded-full font-medium shadow-lg hover:shadow-emerald-500/10 hover:bg-emerald-600 dark:hover:bg-emerald-400 hover:-translate-y-0.5 transition-all">
-                    Explore Deployments
+                <a href="#projects-section" class="w-full sm:w-auto px-8 py-4 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-950 rounded-full font-medium shadow-lg hover:shadow-emerald-500/10 hover:bg-emerald-600 dark:hover:bg-emerald-400 hover:-translate-y-0.5 transition-all">
+                    Explore Projects
                 </a>
                 <a href="#contact" class="w-full sm:w-auto px-8 py-4 border border-slate-200/80 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm rounded-full font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:-translate-y-0.5 transition-all">
                     Initiate Connection
@@ -443,71 +359,32 @@
         </div>
     </section>
 
-    <!-- COMPREHENSIVE PROJECT HUB SECTION -->
-    <section id="work" class="py-24 border-t border-slate-100 dark:border-slate-900/60 overflow-hidden relative z-10">
+    <!-- RENAME TO PROJECTS SECTION WITHOUT 3D VISUALIZER OR HEAVY SEARCH MATRIX -->
+    <section id="projects-section" class="py-24 border-t border-slate-100 dark:border-slate-900/60 overflow-hidden relative z-10">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-12">
-                <span class="mono text-xs uppercase tracking-widest text-emerald-500 dark:text-emerald-400 font-bold block mb-4">Deployments // System Lab</span>
-                <h2 class="heading-tech text-3xl md:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-4 tracking-tight">Active Deployments Database</h2>
-                <p class="text-slate-500 dark:text-slate-400 font-light text-sm md:text-base max-w-xl mx-auto">Explore flagged active aerospace & deep learning projects below.</p>
+                <span class="mono text-xs uppercase tracking-widest text-emerald-500 dark:text-emerald-400 font-bold block mb-4">Engineering ledger // Portfolio Hub</span>
+                <h2 class="heading-tech text-3xl md:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-4 tracking-tight">Technical Projects Registry</h2>
+                <p class="text-slate-500 dark:text-slate-400 font-light text-sm md:text-base max-w-xl mx-auto">Explore structured project listings filtered by field and core system technology.</p>
                 
-                <!-- ROUTER CONTROLS / MODE TOGGLES -->
-                <div class="inline-flex p-1 bg-slate-100 dark:bg-slate-900 rounded-full border border-slate-200/50 dark:border-slate-800/80 mt-8 gap-1 shadow-inner">
-                    <button id="btn-carousel-mode" onclick="setProjectViewMode('carousel')" class="px-6 py-2 rounded-full text-[10px] mono tracking-widest uppercase font-bold transition-all bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-sm">
-                        <i class="fa-solid fa-cube mr-1.5"></i> 3D Visualizer
-                    </button>
-                    <button id="btn-matrix-mode" onclick="setProjectViewMode('matrix')" class="px-6 py-2 rounded-full text-[10px] mono tracking-widest uppercase font-bold transition-all text-slate-400 hover:text-slate-800 dark:hover:text-slate-100">
-                        <i class="fa-solid fa-database mr-1.5"></i> Search Matrix
-                    </button>
+                <!-- Premium Minimalist Category Selectors -->
+                <div class="flex flex-wrap justify-center gap-2 mt-8">
+                    <button id="filter-btn-all" onclick="filterProjects('all')" class="project-filter-pill px-5 py-2.5 rounded-full text-xs mono uppercase tracking-wider font-semibold border bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-950 transition-all">All</button>
+                    <button id="filter-btn-robotics" onclick="filterProjects('robotics')" class="project-filter-pill px-5 py-2.5 rounded-full text-xs mono uppercase tracking-wider font-semibold border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 hover:border-emerald-500 hover:text-emerald-500 dark:hover:text-emerald-400 transition-all">Robotics & Control</button>
+                    <button id="filter-btn-vision" onclick="filterProjects('vision')" class="project-filter-pill px-5 py-2.5 rounded-full text-xs mono uppercase tracking-wider font-semibold border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 hover:border-emerald-500 hover:text-emerald-500 dark:hover:text-emerald-400 transition-all">Vision & Localization</button>
+                    <button id="filter-btn-genai" onclick="filterProjects('genai')" class="project-filter-pill px-5 py-2.5 rounded-full text-xs mono uppercase tracking-wider font-semibold border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 hover:border-emerald-500 hover:text-emerald-500 dark:hover:text-emerald-400 transition-all">Generative & Agentic AI</button>
+                    <button id="filter-btn-quant" onclick="filterProjects('quant')" class="project-filter-pill px-5 py-2.5 rounded-full text-xs mono uppercase tracking-wider font-semibold border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 hover:border-emerald-500 hover:text-emerald-500 dark:hover:text-emerald-400 transition-all">Quantitative Finance</button>
                 </div>
             </div>
 
-            <!-- VIEW MODE 1: 3D CAROUSEL -->
-            <div id="view-carousel-container" class="transition-opacity duration-500">
-                <div class="carousel-container" id="touch-area">
-                    <div id="carousel-wheel" class="carousel-wheel">
-                        <!-- Dynamically populated via JS -->
-                    </div>
-                </div>
-
-                <!-- Carousel UI Navigation controls -->
-                <div class="flex justify-center items-center gap-6 mt-8 md:mt-12">
-                    <button onclick="rotateCarousel(-1)" class="w-12 h-12 rounded-full border border-slate-200 dark:border-slate-850 bg-white/70 dark:bg-slate-900/50 backdrop-blur-md flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-emerald-600 dark:hover:bg-emerald-500 hover:text-white dark:hover:text-white hover:border-emerald-600 dark:hover:border-emerald-500 transition-all hover:scale-105 active:scale-95 shadow-sm">
-                        <i class="fa-solid fa-chevron-left text-sm"></i>
-                    </button>
-                    <div id="carousel-indicator" class="mono text-[10px] uppercase tracking-widest font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-100 dark:border-emerald-900/40 px-4 py-1.5 rounded-full">
-                        PROJECT 1 / 4
-                    </div>
-                    <button onclick="rotateCarousel(1)" class="w-12 h-12 rounded-full border border-slate-200 dark:border-slate-850 bg-white/70 dark:bg-slate-900/50 backdrop-blur-md flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-emerald-600 dark:hover:bg-emerald-500 hover:text-white dark:hover:text-white hover:border-emerald-600 dark:hover:border-emerald-500 transition-all hover:scale-105 active:scale-95 shadow-sm">
-                        <i class="fa-solid fa-chevron-right text-sm"></i>
-                    </button>
-                </div>
+            <!-- Pristine Zero-Blur Project Card Grid Showcase -->
+            <div id="projects-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 transition-all duration-500">
+                <!-- Dynamically populated via JS for categorized viewing -->
             </div>
-
-            <!-- VIEW MODE 2: ADVANCED MATRIX DATABASE (All 30+ Projects) -->
-            <div id="view-matrix-container" class="hidden transition-opacity duration-500">
-                <div class="max-w-4xl mx-auto mb-12 flex flex-col md:flex-row gap-4 items-center">
-                    <div class="relative w-full">
-                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                        <input type="text" id="matrix-search" oninput="filterMatrixGrid()" placeholder="Search project tags, stacks, concepts..." class="w-full pl-12 pr-6 py-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 text-slate-900 dark:text-slate-100">
-                    </div>
-                    <div class="flex gap-2 w-full md:w-auto overflow-x-auto pb-2 md:pb-0 scrollbar-none">
-                        <button onclick="filterMatrixCategory('all')" class="matrix-filter-pill px-4 py-2 rounded-xl text-xs mono uppercase tracking-wider font-semibold border bg-emerald-500 border-emerald-500 text-white transition-all">All</button>
-                        <button onclick="filterMatrixCategory('robotics')" class="matrix-filter-pill px-4 py-2 rounded-xl text-xs mono uppercase tracking-wider font-semibold border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 hover:border-emerald-500 hover:text-emerald-500 transition-all">Robotics</button>
-                        <button onclick="filterMatrixCategory('vision')" class="matrix-filter-pill px-4 py-2 rounded-xl text-xs mono uppercase tracking-wider font-semibold border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 hover:border-emerald-500 hover:text-emerald-500 transition-all">Vision</button>
-                        <button onclick="filterMatrixCategory('genai')" class="matrix-filter-pill px-4 py-2 rounded-xl text-xs mono uppercase tracking-wider font-semibold border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 hover:border-emerald-500 hover:text-emerald-500 transition-all">Gen-AI</button>
-                        <button onclick="filterMatrixCategory('quant')" class="matrix-filter-pill px-4 py-2 rounded-xl text-xs mono uppercase tracking-wider font-semibold border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 hover:border-emerald-500 hover:text-emerald-500 transition-all">Finance</button>
-                    </div>
-                </div>
-
-                <div id="matrix-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Dynamically populated via JS for grid viewing -->
-                </div>
-                
-                <div id="matrix-empty-state" class="hidden text-center py-16">
-                    <i class="fa-solid fa-folder-open text-slate-300 dark:text-slate-700 text-4xl mb-4"></i>
-                    <p class="mono text-xs text-slate-400">0 records matching current telemetry query.</p>
-                </div>
+            
+            <div id="projects-empty-state" class="hidden text-center py-16">
+                <i class="fa-solid fa-folder-open text-slate-300 dark:text-slate-700 text-4xl mb-4"></i>
+                <p class="mono text-xs text-slate-400">0 records matching telemetry category query.</p>
             </div>
         </div>
     </section>
@@ -619,7 +496,7 @@
                 
                 <div class="space-y-8">
                     <div>
-                        <h4 class="mono text-[10px] uppercase tracking-wider text-slate-400 dark:text-slate-500 font-bold mb-4">Core Flight Architecture Features</h4>
+                        <h4 class="mono text-[10px] uppercase tracking-wider text-slate-400 dark:text-slate-500 font-bold mb-4">Core System Architecture Features</h4>
                         <ul id="modal-features" class="space-y-3 text-xs md:text-sm text-slate-600 dark:text-slate-300">
                             <!-- Dynamically injected features -->
                         </ul>
@@ -669,7 +546,6 @@
             }
         };
 
-        // COMPREHENSIVE PROJECT DATA (33 Projects)
         const projects = [
             { 
                 title: "Model-Context-Protocol Robot Agent", 
@@ -698,9 +574,9 @@
                 stack: ["Nvidia TensorRT", "OpenCV CUDA", "C++ Engine", "ROS2 Humble"]
             },
             { 
-                title: "Instance-segmentation Engine", 
+                title: "Instance-Segmentation Engine", 
                 desc: "Pixel-level classification layer deployed for real-time item sorting and dynamic object boundary detection.", 
-                tag: "Computer Vision / segmentation", 
+                tag: "Computer Vision / Segmentation", 
                 category: "vision",
                 icon: "fa-puzzle-piece",
                 features: [
@@ -727,7 +603,7 @@
                 title: "LOD-3D Reconstruction", 
                 desc: "Multi-resolution spatial mesh mapping generating adaptive 3D structures from visual telemetry feeds.", 
                 tag: "Spatial Computing / 3D Mapping", 
-                category: "robotics",
+                category: "vision",
                 icon: "fa-cubes",
                 features: [
                     "Created progressive Level-of-Detail (LOD) pipelines for terrain visualization.",
@@ -793,7 +669,7 @@
                 desc: "Compact, hardware-optimized attention execution models configured for low-power edge computer targets.", 
                 tag: "Deep Learning / NLP", 
                 category: "genai",
-                icon: "fa-network-wired",
+                icon: "fa-microchip",
                 features: [
                     "Wrote optimized matrix multiplication loops using custom C++ libraries.",
                     "Implemented flexible tokenization layers managing continuous sensor signals.",
@@ -985,42 +861,7 @@
             }
         ];
 
-        let currRotation = 0;
-        const wheel = document.getElementById('carousel-wheel');
-        let radius = 0;
-        let activeViewMode = 'carousel'; // 'carousel' or 'matrix'
         let selectedCategory = 'all';
-
-        function setProjectViewMode(mode) {
-            activeViewMode = mode;
-            const carouselContainer = document.getElementById('view-carousel-container');
-            const matrixContainer = document.getElementById('view-matrix-container');
-            const btnCarousel = document.getElementById('btn-carousel-mode');
-            const btnMatrix = document.getElementById('btn-matrix-mode');
-
-            if (mode === 'carousel') {
-                carouselContainer.classList.remove('hidden');
-                matrixContainer.classList.add('hidden');
-                btnCarousel.className = "px-6 py-2 rounded-full text-[10px] mono tracking-widest uppercase font-bold transition-all bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-sm";
-                btnMatrix.className = "px-6 py-2 rounded-full text-[10px] mono tracking-widest uppercase font-bold transition-all text-slate-400 hover:text-slate-800 dark:hover:text-slate-100";
-                setTimeout(() => {
-                    initCarousel();
-                }, 100);
-            } else {
-                carouselContainer.classList.add('hidden');
-                matrixContainer.classList.remove('hidden');
-                btnMatrix.className = "px-6 py-2 rounded-full text-[10px] mono tracking-widest uppercase font-bold transition-all bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-sm";
-                btnCarousel.className = "px-6 py-2 rounded-full text-[10px] mono tracking-widest uppercase font-bold transition-all text-slate-400 hover:text-slate-800 dark:hover:text-slate-100";
-                initMatrixGrid();
-            }
-        }
-
-        function updateRadius() {
-            const w = window.innerWidth;
-            if (w < 480) radius = 260;
-            else if (w < 768) radius = 330;
-            else radius = 450;
-        }
 
         // Background canvas elements configuration
         const canvas = document.getElementById('bg-canvas');
@@ -1134,180 +975,69 @@
             requestAnimationFrame(animate);
         }
 
-        // 3D Carousel setup logic (Flagship selection of 4 projects)
-        const carouselProjectsIndexes = [0, 1, 4, 7]; // MCP, ADAS, LOD-3D, Algorithmic Trading
-
-        function initCarousel() {
-            updateRadius();
-            wheel.innerHTML = '';
-            const angleStep = 360 / carouselProjectsIndexes.length;
-            
-            carouselProjectsIndexes.forEach((projIndex, i) => {
-                const p = projects[projIndex];
-                const slide = document.createElement('div');
-                slide.className = `project-slide-3d ${i === 0 ? 'active' : ''}`;
-                slide.style.transform = `rotateY(${i * angleStep}deg) translateZ(${radius}px)`;
-                
-                slide.onclick = () => {
-                    const step = 360 / carouselProjectsIndexes.length;
-                    let rawIndex = (currRotation / step) % carouselProjectsIndexes.length;
-                    let normalizedIndex = Math.round(rawIndex);
-                    normalizedIndex = (normalizedIndex % carouselProjectsIndexes.length + carouselProjectsIndexes.length) % carouselProjectsIndexes.length;
-                    if (normalizedIndex !== 0) {
-                        normalizedIndex = carouselProjectsIndexes.length - normalizedIndex;
-                    }
-
-                    if (i === normalizedIndex) {
-                        openModal(projIndex);
-                    } else {
-                        rotateTo(i);
-                    }
-                };
-                
-                slide.innerHTML = `
-                    <div class="glass-card">
-                        <div>
-                            <div class="flex justify-between items-start mb-6">
-                                <div class="w-12 h-12 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-100/50 dark:border-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shadow-inner">
-                                    <i class="fa-solid ${p.icon} text-lg"></i>
-                                </div>
-                                <span class="mono text-[8px] bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 font-bold border border-emerald-100/50 dark:border-emerald-900/40 px-2.5 py-1 rounded-full tracking-wider uppercase">ACTIVE</span>
-                            </div>
-                            <h3 class="heading-tech text-xl md:text-2xl font-bold mb-3 text-slate-900 dark:text-slate-100">${p.title}</h3>
-                            <p class="text-slate-500 dark:text-slate-400 font-light text-xs md:text-sm leading-relaxed line-clamp-4">${p.desc}</p>
-                        </div>
-                        <div class="flex justify-between items-center mt-6 pt-4 border-t border-slate-100 dark:border-slate-800/80">
-                            <span class="mono text-[10px] text-slate-400 dark:text-slate-500 font-semibold">${p.tag}</span>
-                            <div class="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold mono group flex items-center gap-1.5">
-                                OVERVIEW <i class="fa-solid fa-arrow-right text-[8px] transition-transform group-hover:translate-x-1"></i>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                wheel.appendChild(slide);
-            });
-            updateActiveCard();
-        }
-
-        function rotateTo(index) {
-            const step = 360 / carouselProjectsIndexes.length;
-            let targetRotation = -index * step;
-            
-            let diff = (targetRotation - currRotation) % 360;
-            if (diff > 180) diff -= 360;
-            if (diff < -180) diff += 360;
-            
-            currRotation += diff;
-            wheel.style.transform = `rotateY(${currRotation}deg)`;
-            updateActiveCard();
-        }
-
-        function rotateCarousel(dir) {
-            currRotation -= dir * (360 / carouselProjectsIndexes.length);
-            wheel.style.transform = `rotateY(${currRotation}deg)`;
-            updateActiveCard();
-        }
-
-        function updateActiveCard() {
-            const step = 360 / carouselProjectsIndexes.length;
-            let rawIndex = (currRotation / step) % carouselProjectsIndexes.length;
-            let normalizedIndex = Math.round(rawIndex);
-            normalizedIndex = (normalizedIndex % carouselProjectsIndexes.length + carouselProjectsIndexes.length) % carouselProjectsIndexes.length;
-            if (normalizedIndex !== 0) {
-                normalizedIndex = carouselProjectsIndexes.length - normalizedIndex;
-            }
-
-            document.querySelectorAll('.project-slide-3d').forEach((s, i) => {
-                const isActive = (i === normalizedIndex);
-                s.classList.toggle('active', isActive);
-            });
-
-            document.getElementById('carousel-indicator').innerText = `PROJECT ${normalizedIndex + 1} / ${carouselProjectsIndexes.length}`;
-        }
-
-        // SEARCH MATRIX LAYOUT GENERATION
-        function initMatrixGrid() {
-            const grid = document.getElementById('matrix-grid');
+        function buildProjectsGrid() {
+            const grid = document.getElementById('projects-grid');
             grid.innerHTML = '';
+            let visibleCount = 0;
             
             projects.forEach((p, idx) => {
-                const card = document.createElement('div');
-                card.className = "matrix-project-card bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 rounded-3xl p-6 flex flex-col justify-between hover:border-emerald-500 hover:shadow-lg transition-all duration-300 cursor-pointer shadow-sm relative overflow-hidden group";
-                card.setAttribute('data-index', idx);
-                card.setAttribute('data-category', p.category);
-                card.setAttribute('data-tags', p.tag.toLowerCase());
-                card.setAttribute('data-title', p.title.toLowerCase());
-                card.setAttribute('data-stack', p.stack.join(' ').toLowerCase());
+                const matchesCategory = (selectedCategory === 'all' || p.category === selectedCategory);
                 
-                card.onclick = () => openModal(idx);
-
-                card.innerHTML = `
-                    <div>
-                        <div class="flex justify-between items-start mb-6">
-                            <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-100/50 dark:border-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shadow-inner group-hover:scale-110 transition-transform">
-                                <i class="fa-solid ${p.icon} text-md"></i>
-                            </div>
-                            <span class="mono text-[8px] bg-slate-50 dark:bg-slate-950 text-slate-400 dark:text-slate-500 font-bold border border-slate-200 dark:border-slate-800 px-2.5 py-1 rounded-full tracking-wider uppercase">${p.category}</span>
-                        </div>
-                        <h3 class="heading-tech text-lg font-bold mb-2 text-slate-900 dark:text-slate-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">${p.title}</h3>
-                        <p class="text-slate-500 dark:text-slate-400 font-light text-xs leading-relaxed line-clamp-3 mb-6">${p.desc}</p>
-                    </div>
-                    <div>
-                        <div class="flex flex-wrap gap-1.5 mb-4">
-                            ${p.stack.slice(0, 3).map(s => `<span class="px-2 py-0.5 bg-slate-50 dark:bg-slate-950 text-[9px] font-semibold text-slate-400 rounded-lg">${s}</span>`).join('')}
-                            ${p.stack.length > 3 ? `<span class="px-2 py-0.5 bg-slate-50 dark:bg-slate-950 text-[9px] font-semibold text-slate-400 rounded-lg">+${p.stack.length - 3}</span>` : ''}
-                        </div>
-                        <div class="flex justify-between items-center pt-3 border-t border-slate-100 dark:border-slate-800/80">
-                            <span class="mono text-[9px] text-slate-400 dark:text-slate-500 font-semibold">${p.tag}</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity"></i>
-                        </div>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
-            filterMatrixGrid();
-        }
-
-        function filterMatrixCategory(cat) {
-            selectedCategory = cat;
-            
-            // Adjust active state of navigation pills
-            document.querySelectorAll('.matrix-filter-pill').forEach(pill => {
-                pill.className = "matrix-filter-pill px-4 py-2 rounded-xl text-xs mono uppercase tracking-wider font-semibold border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 hover:border-emerald-500 hover:text-emerald-500 transition-all";
-            });
-            event.target.className = "matrix-filter-pill px-4 py-2 rounded-xl text-xs mono uppercase tracking-wider font-semibold border bg-emerald-500 border-emerald-500 text-white transition-all";
-            
-            filterMatrixGrid();
-        }
-
-        function filterMatrixGrid() {
-            const query = document.getElementById('matrix-search').value.toLowerCase();
-            const cards = document.querySelectorAll('.matrix-project-card');
-            let visibleCount = 0;
-
-            cards.forEach(card => {
-                const title = card.getAttribute('data-title');
-                const tags = card.getAttribute('data-tags');
-                const stack = card.getAttribute('data-stack');
-                const category = card.getAttribute('data-category');
-
-                const matchesSearch = title.includes(query) || tags.includes(query) || stack.includes(query);
-                const matchesCategory = (selectedCategory === 'all' || category === selectedCategory);
-
-                if (matchesSearch && matchesCategory) {
-                    card.style.display = 'flex';
+                if (matchesCategory) {
                     visibleCount++;
-                } else {
-                    card.style.display = 'none';
+                    const card = document.createElement('div');
+                    // ZERO BLUR STYLING: clean slate white/dark background card with sharp outlines
+                    card.className = "project-card bg-white dark:bg-slate-900/90 border border-slate-200/60 dark:border-slate-800 rounded-3xl p-6 flex flex-col justify-between hover:border-emerald-500 hover:shadow-lg transition-all duration-300 cursor-pointer shadow-sm relative overflow-hidden group";
+                    card.onclick = () => openModal(idx);
+
+                    card.innerHTML = `
+                        <div>
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-100/50 dark:border-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shadow-inner group-hover:scale-110 transition-transform">
+                                    <i class="fa-solid ${p.icon} text-md"></i>
+                                </div>
+                                <span class="mono text-[8px] bg-slate-50 dark:bg-slate-950 text-slate-400 dark:text-slate-500 font-bold border border-slate-200 dark:border-slate-800 px-2.5 py-1 rounded-full tracking-wider uppercase">${p.category}</span>
+                            </div>
+                            <h3 class="heading-tech text-lg font-bold mb-2 text-slate-900 dark:text-slate-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">${p.title}</h3>
+                            <p class="text-slate-500 dark:text-slate-400 font-light text-xs leading-relaxed line-clamp-3 mb-6">${p.desc}</p>
+                        </div>
+                        <div>
+                            <div class="flex flex-wrap gap-1.5 mb-4">
+                                ${p.stack.slice(0, 3).map(s => `<span class="px-2 py-0.5 bg-slate-50 dark:bg-slate-950 text-[9px] font-semibold text-slate-400 rounded-lg">${s}</span>`).join('')}
+                                ${p.stack.length > 3 ? `<span class="px-2 py-0.5 bg-slate-50 dark:bg-slate-950 text-[9px] font-semibold text-slate-400 rounded-lg">+${p.stack.length - 3}</span>` : ''}
+                            </div>
+                            <div class="flex justify-between items-center pt-3 border-t border-slate-100 dark:border-slate-800/80">
+                                <span class="mono text-[9px] text-slate-400 dark:text-slate-500 font-semibold">${p.tag}</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                            </div>
+                        </div>
+                    `;
+                    grid.appendChild(card);
                 }
             });
-
-            const emptyState = document.getElementById('matrix-empty-state');
+            
+            const emptyState = document.getElementById('projects-empty-state');
             if (visibleCount === 0) {
                 emptyState.classList.remove('hidden');
             } else {
                 emptyState.classList.add('hidden');
             }
+        }
+
+        function filterProjects(cat) {
+            selectedCategory = cat;
+            
+            // Adjust active state of filter control navigation buttons
+            document.querySelectorAll('.project-filter-pill').forEach(pill => {
+                pill.className = "project-filter-pill px-5 py-2.5 rounded-full text-xs mono uppercase tracking-wider font-semibold border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 hover:border-emerald-500 hover:text-emerald-500 dark:hover:text-emerald-400 transition-all";
+            });
+            
+            const activeBtn = document.getElementById(`filter-btn-${cat}`);
+            if (activeBtn) {
+                activeBtn.className = "project-filter-pill px-5 py-2.5 rounded-full text-xs mono uppercase tracking-wider font-semibold border bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-950 transition-all";
+            }
+            
+            buildProjectsGrid();
         }
 
         function openModal(index) {
@@ -1345,26 +1075,9 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Swipe & drag events for touchscreens
-        let touchStartX = 0;
-        const touchArea = document.getElementById('touch-area');
-
-        touchArea.addEventListener('touchstart', (e) => {
-            touchStartX = e.touches[0].clientX;
-        }, {passive: true});
-
-        touchArea.addEventListener('touchend', (e) => {
-            const touchEndX = e.changedTouches[0].clientX;
-            const diff = touchStartX - touchEndX;
-            if (Math.abs(diff) > 40) {
-                rotateCarousel(diff > 0 ? 1 : -1);
-            }
-        }, {passive: true});
-
         // Global Event listeners
         window.addEventListener('resize', () => { 
             initBackground(); 
-            if (activeViewMode === 'carousel') initCarousel(); 
         });
 
         window.addEventListener('mousemove', (e) => { 
@@ -1384,7 +1097,7 @@
         window.onload = () => {
             systemState.init();
             initBackground();
-            initCarousel();
+            buildProjectsGrid();
             animate();
         };
     </script>
