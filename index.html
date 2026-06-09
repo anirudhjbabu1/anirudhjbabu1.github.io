@@ -121,7 +121,6 @@
             .project-slide-3d { width: 360px; height: 440px; }
         }
 
-        /* PREMIUM Crisp Card Styling (No Blur Filter inside cards to avoid rendering bug) */
         .glass-card {
             background: #ffffff;
             border: 1px solid rgba(226, 232, 240, 0.9);
@@ -140,7 +139,7 @@
         }
 
         .dark .glass-card {
-            background: #0f172a; /* Solid Slate 900 backing for perfect dark contrast */
+            background: #0f172a; 
             border: 1px solid rgba(255, 255, 255, 0.06);
             box-shadow: 
                 0 4px 12px -1px rgba(0, 0, 0, 0.3),
@@ -154,11 +153,11 @@
                 0 10px 25px -10px rgba(16, 185, 129, 0.2),
                 0 30px 60px -15px rgba(16, 185, 129, 0.12);
             transform: scale(1.02);
-            opacity: 1; /* Crisp active focal card */
+            opacity: 1; 
         }
 
         .dark .project-slide-3d.active .glass-card {
-            background: #1e293b; /* Deepened active color */
+            background: #1e293b; 
             box-shadow: 
                 0 10px 25px -10px rgba(52, 211, 153, 0.35),
                 0 30px 60px -15px rgba(52, 211, 153, 0.18);
@@ -181,7 +180,6 @@
             transform: scale(1) translateY(0);
         }
 
-        /* Icon Nav Hover Expand Transition */
         .nav-item-pill {
             display: inline-flex;
             align-items: center;
@@ -241,37 +239,29 @@
                 </div>
             </div>
             
-            <!-- Icon-First Minimalist Navigation System -->
             <div class="flex items-center space-x-2 md:space-x-3 mono text-[10px] uppercase tracking-wider font-semibold">
-                <!-- About Pill -->
                 <a href="#about" class="nav-item-pill border border-slate-200/60 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400" title="About Me">
                     <i class="fa-solid fa-user-gear text-sm flex items-center justify-center w-[40px] h-[40px]"></i>
                     <span class="nav-text-label text-[9px]">About</span>
                 </a>
 
-                <!-- Skills Pill -->
                 <a href="#skills" class="nav-item-pill border border-slate-200/60 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400" title="Technical Skills">
                     <i class="fa-solid fa-layer-group text-sm flex items-center justify-center w-[40px] h-[40px]"></i>
                     <span class="nav-text-label text-[9px]">Skills</span>
                 </a>
 
-                <!-- Deployments Pill -->
                 <a href="#work" class="nav-item-pill border border-slate-200/60 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400" title="Active Deployments">
                     <i class="fa-solid fa-terminal text-sm flex items-center justify-center w-[40px] h-[40px]"></i>
                     <span class="nav-text-label text-[9px]">Work</span>
                 </a>
 
-                <!-- Career Pill -->
                 <a href="#career" class="nav-item-pill border border-slate-200/60 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400" title="Professional Experience">
                     <i class="fa-solid fa-timeline text-sm flex items-center justify-center w-[40px] h-[40px]"></i>
                     <span class="nav-text-label text-[9px]">History</span>
                 </a>
                 
-                <!-- Theme Toggle Button -->
                 <button id="theme-toggle" class="relative p-2.5 rounded-full border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all hover:scale-105 active:scale-95" aria-label="Toggle visual theme">
-                    <!-- Sun icon -->
                     <svg id="theme-toggle-light" class="hidden w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 17.95a1 1 0 01-1.414 0l-.707-.707a1 1 0 011.414-1.414l.707.707a1 1 0 010 1.414zm0-12.728a1 1 0 010-1.414l.707-.707a1 1 0 111.414 1.414l-.707.707a1 1 0 01-1.414 0zM4 11a1 1 0 100-2H3a1 1 0 100 2h1z"></path></svg>
-                    <!-- Moon icon -->
                     <svg id="theme-toggle-dark" class="hidden w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
                 </button>
 
@@ -287,11 +277,11 @@
             </div>
             
             <h1 class="heading-tech text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-8 text-slate-900 dark:text-slate-100 leading-[1.1] md:leading-[1.05]">
-                Under<br><span class="text-emerald-600 dark:text-emerald-400 bg-clip-text">Development.</span>
+                Bridging physical control with<br><span class="text-emerald-600 dark:text-emerald-400 bg-clip-text">Cognitive Intelligence.</span>
             </h1>
             
             <p class="text-slate-600 dark:text-slate-400 text-base sm:text-lg md:text-xl leading-relaxed mb-12 max-w-3xl mx-auto font-light">
-                Passionate about bridging cognitive intelligence with real-world execution. Specialize in transforming generative foundation models into intuitive, real-time autonomous actions.
+                Passionate about bridging cognitive intelligence with real-world execution. Specialized in transforming vision models, real-time SLAM stacks, and decentralized networks into reliable autonomous actions.
             </p>
             
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -304,7 +294,6 @@
             </div>
         </div>
 
-        <!-- Subtle down-arrow scroll indicator -->
         <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 text-slate-400 dark:text-slate-500 text-[10px] mono tracking-widest uppercase">
             <span>Diagnostics</span>
             <div class="w-1 h-8 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden relative">
@@ -322,7 +311,7 @@
                         Cognitive decisions, real-time control.
                     </h2>
                     <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
-                        My development focuses on running large vision-language models and high-frequency spatial localization loops simultaneously on size, weight, and power-constrained (SWaP) edge systems—ranging from wheeled ground systems to aerial vehicles.
+                        My development focuses on running large vision-language models and high-frequency spatial localization loops simultaneously on size, weight, and power-constrained (SWaP) edge systems—ranging from ground robotic agents to automated aerial vehicles.
                     </p>
                     <div class="flex items-center gap-4 border-l-2 border-emerald-500 dark:border-emerald-400 pl-4 py-2">
                         <div class="text-slate-900 dark:text-slate-100 font-medium italic text-sm">
@@ -372,9 +361,7 @@
                 <h2 class="heading-tech text-3xl md:text-4xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">Technical Capability Matrix</h2>
             </div>
 
-            <!-- Bento Box Grid Layout -->
             <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-                <!-- Large Skill Block: System Architecture -->
                 <div class="md:col-span-8 p-8 bg-white/80 dark:bg-slate-900/60 border border-slate-200/50 dark:border-slate-800/80 rounded-3xl flex flex-col justify-between relative overflow-hidden group hover:border-emerald-300 dark:hover:border-emerald-700 transition-all shadow-sm">
                     <div class="absolute -right-10 -bottom-10 opacity-5 group-hover:opacity-10 transition-opacity">
                         <i class="fa-solid fa-microchip text-[180px] text-emerald-600"></i>
@@ -398,7 +385,6 @@
                     </div>
                 </div>
 
-                <!-- Small Skill Block: Robotics Middleware -->
                 <div class="md:col-span-4 p-8 bg-white/80 dark:bg-slate-900/60 border border-slate-200/50 dark:border-slate-800/80 rounded-3xl flex flex-col justify-between group hover:border-emerald-300 dark:hover:border-emerald-700 transition-all shadow-sm">
                     <div>
                         <div class="flex items-center gap-3 mb-6">
@@ -429,11 +415,10 @@
                     <div class="flex flex-wrap gap-2">
                         <span class="px-3 py-1.5 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-900 text-xs font-semibold text-slate-600 dark:text-slate-400 rounded-xl">OpenCV</span>
                         <span class="px-3 py-1.5 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-900 text-xs font-semibold text-slate-600 dark:text-slate-400 rounded-xl">SLAM / VIO</span>
-                        <span class="px-3 py-1.5 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-900 text-xs font-semibold text-slate-600 dark:text-slate-400 rounded-xl">YOLOv10 Edge</span>
+                        <span class="px-3 py-1.5 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-900 text-xs font-semibold text-slate-600 dark:text-slate-400 rounded-xl">YOLOv5 & v10</span>
                     </div>
                 </div>
 
-                <!-- Large Skill Block: Simulation & Embedded AI -->
                 <div class="md:col-span-8 p-8 bg-white/80 dark:bg-slate-900/60 border border-slate-200/50 dark:border-slate-800/80 rounded-3xl flex flex-col justify-between relative overflow-hidden group hover:border-emerald-300 dark:hover:border-emerald-700 transition-all shadow-sm">
                     <div class="absolute -right-10 -bottom-10 opacity-5 group-hover:opacity-10 transition-opacity">
                         <i class="fa-solid fa-brain text-[180px] text-emerald-600"></i>
@@ -458,32 +443,71 @@
         </div>
     </section>
 
+    <!-- COMPREHENSIVE PROJECT HUB SECTION -->
     <section id="work" class="py-24 border-t border-slate-100 dark:border-slate-900/60 overflow-hidden relative z-10">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
+            <div class="text-center mb-12">
                 <span class="mono text-xs uppercase tracking-widest text-emerald-500 dark:text-emerald-400 font-bold block mb-4">Deployments // System Lab</span>
-                <h2 class="heading-tech text-3xl md:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-4 tracking-tight">Active Unmanned Deployments</h2>
-                <p class="text-slate-500 dark:text-slate-400 font-light text-sm md:text-base">Spin the wheel or drag horizontally on your touch screen to explore active projects.</p>
-            </div>
-
-            <!-- 3D Interactive Carousel Viewport -->
-            <div class="carousel-container" id="touch-area">
-                <div id="carousel-wheel" class="carousel-wheel">
-                    <!-- Dynamically populated via JS -->
+                <h2 class="heading-tech text-3xl md:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-4 tracking-tight">Active Deployments Database</h2>
+                <p class="text-slate-500 dark:text-slate-400 font-light text-sm md:text-base max-w-xl mx-auto">Explore flagged active aerospace & deep learning projects below.</p>
+                
+                <!-- ROUTER CONTROLS / MODE TOGGLES -->
+                <div class="inline-flex p-1 bg-slate-100 dark:bg-slate-900 rounded-full border border-slate-200/50 dark:border-slate-800/80 mt-8 gap-1 shadow-inner">
+                    <button id="btn-carousel-mode" onclick="setProjectViewMode('carousel')" class="px-6 py-2 rounded-full text-[10px] mono tracking-widest uppercase font-bold transition-all bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-sm">
+                        <i class="fa-solid fa-cube mr-1.5"></i> 3D Visualizer
+                    </button>
+                    <button id="btn-matrix-mode" onclick="setProjectViewMode('matrix')" class="px-6 py-2 rounded-full text-[10px] mono tracking-widest uppercase font-bold transition-all text-slate-400 hover:text-slate-800 dark:hover:text-slate-100">
+                        <i class="fa-solid fa-database mr-1.5"></i> Search Matrix
+                    </button>
                 </div>
             </div>
 
-            <!-- Carousel UI Navigation controls -->
-            <div class="flex justify-center items-center gap-6 mt-8 md:mt-12">
-                <button onclick="rotateCarousel(-1)" class="w-12 h-12 rounded-full border border-slate-200 dark:border-slate-850 bg-white/70 dark:bg-slate-900/50 backdrop-blur-md flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-emerald-600 dark:hover:bg-emerald-500 hover:text-white dark:hover:text-white hover:border-emerald-600 dark:hover:border-emerald-500 transition-all hover:scale-105 active:scale-95 shadow-sm">
-                    <i class="fa-solid fa-chevron-left text-sm"></i>
-                </button>
-                <div id="carousel-indicator" class="mono text-[10px] uppercase tracking-widest font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-100 dark:border-emerald-900/40 px-4 py-1.5 rounded-full">
-                    PROJECT 1 / 4
+            <!-- VIEW MODE 1: 3D CAROUSEL -->
+            <div id="view-carousel-container" class="transition-opacity duration-500">
+                <div class="carousel-container" id="touch-area">
+                    <div id="carousel-wheel" class="carousel-wheel">
+                        <!-- Dynamically populated via JS -->
+                    </div>
                 </div>
-                <button onclick="rotateCarousel(1)" class="w-12 h-12 rounded-full border border-slate-200 dark:border-slate-850 bg-white/70 dark:bg-slate-900/50 backdrop-blur-md flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-emerald-600 dark:hover:bg-emerald-500 hover:text-white dark:hover:text-white hover:border-emerald-600 dark:hover:border-emerald-500 transition-all hover:scale-105 active:scale-95 shadow-sm">
-                    <i class="fa-solid fa-chevron-right text-sm"></i>
-                </button>
+
+                <!-- Carousel UI Navigation controls -->
+                <div class="flex justify-center items-center gap-6 mt-8 md:mt-12">
+                    <button onclick="rotateCarousel(-1)" class="w-12 h-12 rounded-full border border-slate-200 dark:border-slate-850 bg-white/70 dark:bg-slate-900/50 backdrop-blur-md flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-emerald-600 dark:hover:bg-emerald-500 hover:text-white dark:hover:text-white hover:border-emerald-600 dark:hover:border-emerald-500 transition-all hover:scale-105 active:scale-95 shadow-sm">
+                        <i class="fa-solid fa-chevron-left text-sm"></i>
+                    </button>
+                    <div id="carousel-indicator" class="mono text-[10px] uppercase tracking-widest font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-100 dark:border-emerald-900/40 px-4 py-1.5 rounded-full">
+                        PROJECT 1 / 4
+                    </div>
+                    <button onclick="rotateCarousel(1)" class="w-12 h-12 rounded-full border border-slate-200 dark:border-slate-850 bg-white/70 dark:bg-slate-900/50 backdrop-blur-md flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-emerald-600 dark:hover:bg-emerald-500 hover:text-white dark:hover:text-white hover:border-emerald-600 dark:hover:border-emerald-500 transition-all hover:scale-105 active:scale-95 shadow-sm">
+                        <i class="fa-solid fa-chevron-right text-sm"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- VIEW MODE 2: ADVANCED MATRIX DATABASE (All 30+ Projects) -->
+            <div id="view-matrix-container" class="hidden transition-opacity duration-500">
+                <div class="max-w-4xl mx-auto mb-12 flex flex-col md:flex-row gap-4 items-center">
+                    <div class="relative w-full">
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                        <input type="text" id="matrix-search" oninput="filterMatrixGrid()" placeholder="Search project tags, stacks, concepts..." class="w-full pl-12 pr-6 py-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 text-slate-900 dark:text-slate-100">
+                    </div>
+                    <div class="flex gap-2 w-full md:w-auto overflow-x-auto pb-2 md:pb-0 scrollbar-none">
+                        <button onclick="filterMatrixCategory('all')" class="matrix-filter-pill px-4 py-2 rounded-xl text-xs mono uppercase tracking-wider font-semibold border bg-emerald-500 border-emerald-500 text-white transition-all">All</button>
+                        <button onclick="filterMatrixCategory('robotics')" class="matrix-filter-pill px-4 py-2 rounded-xl text-xs mono uppercase tracking-wider font-semibold border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 hover:border-emerald-500 hover:text-emerald-500 transition-all">Robotics</button>
+                        <button onclick="filterMatrixCategory('vision')" class="matrix-filter-pill px-4 py-2 rounded-xl text-xs mono uppercase tracking-wider font-semibold border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 hover:border-emerald-500 hover:text-emerald-500 transition-all">Vision</button>
+                        <button onclick="filterMatrixCategory('genai')" class="matrix-filter-pill px-4 py-2 rounded-xl text-xs mono uppercase tracking-wider font-semibold border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 hover:border-emerald-500 hover:text-emerald-500 transition-all">Gen-AI</button>
+                        <button onclick="filterMatrixCategory('quant')" class="matrix-filter-pill px-4 py-2 rounded-xl text-xs mono uppercase tracking-wider font-semibold border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 hover:border-emerald-500 hover:text-emerald-500 transition-all">Finance</button>
+                    </div>
+                </div>
+
+                <div id="matrix-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Dynamically populated via JS for grid viewing -->
+                </div>
+                
+                <div id="matrix-empty-state" class="hidden text-center py-16">
+                    <i class="fa-solid fa-folder-open text-slate-300 dark:text-slate-700 text-4xl mb-4"></i>
+                    <p class="mono text-xs text-slate-400">0 records matching current telemetry query.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -553,8 +577,6 @@
             <h2 class="heading-tech text-4xl md:text-5xl font-bold mb-6 text-slate-900 dark:text-slate-100 tracking-tight">Sync requested.</h2>
             <p class="text-slate-500 dark:text-slate-400 mb-10 max-w-md mx-auto font-light text-sm md:text-base">
                 Feel free to reach out regarding Robotic automation stacks, Edge cognitive AI systems, or visual navigation consulting.
-
-                Getting up to be a GEN-AI Engineer along with learning financial modelling and HFT model development
             </p>
             
             <a href="mailto:anirudhjbabu@gmail.com" class="heading-tech text-2xl md:text-4xl font-bold text-slate-900 dark:text-slate-100 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all underline decoration-emerald-200 dark:decoration-emerald-900 underline-offset-8">
@@ -573,6 +595,7 @@
         </div>
     </footer>
 
+    <!-- COMPREHENSIVE MODAL SYSTEM -->
     <div id="modal-overlay" class="fixed inset-0 z-[100] bg-slate-950/40 dark:bg-black/70 backdrop-blur-md flex items-center justify-center p-4 md:p-10">
         <div id="modal-content" class="bg-white dark:bg-slate-900 rounded-3xl w-full max-w-4xl max-h-[90vh] overflow-hidden shadow-2xl relative flex flex-col md:flex-row border border-slate-200/50 dark:border-slate-800">
             <!-- Modal Close button -->
@@ -591,8 +614,8 @@
             <!-- Modal text details container -->
             <div class="w-full md:w-1/2 p-6 md:p-12 overflow-y-auto">
                 <div id="modal-tag" class="mono text-[10px] text-emerald-600 dark:text-emerald-400 font-bold tracking-widest uppercase mb-4">CATEGORY</div>
-                <h3 id="modal-title" class="heading-tech text-3xl md:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-6">Project Title</h3>
-                <p id="modal-desc" class="text-slate-500 dark:text-slate-400 leading-relaxed mb-8 text-sm md:text-base">Description...</p>
+                <h3 id="modal-title" class="heading-tech text-2xl md:text-3xl font-bold text-slate-900 dark:text-slate-100 mb-6">Project Title</h3>
+                <p id="modal-desc" class="text-slate-500 dark:text-slate-400 leading-relaxed mb-8 text-xs md:text-sm">Description...</p>
                 
                 <div class="space-y-8">
                     <div>
@@ -617,7 +640,6 @@
         const systemState = {
             isDarkMode: false,
             init() {
-                // Determine system preference or local storage
                 const savedTheme = localStorage.getItem('theme');
                 const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
                 
@@ -627,7 +649,6 @@
                     this.setTheme(false);
                 }
 
-                // Add Toggle Button Listener
                 document.getElementById('theme-toggle').addEventListener('click', () => {
                     this.setTheme(!this.isDarkMode);
                 });
@@ -648,62 +669,352 @@
             }
         };
 
+        // COMPREHENSIVE PROJECT DATA (33 Projects)
         const projects = [
             { 
-                title: "Agentic Action Core", 
-                desc: "An onboard LLM-driven reasoning agent deployed on NVIDIA Jetson Orin. Allows mobile robot systems to translate natural language objectives ('Locate physical abnormalities in corridor C') into structured operational commands via a custom Agentic graph planner.", 
-                tag: "Agentic AI / Orin C++", 
-                icon: "fa-brain",
-                features: [
-                    "Synthesized customized on-board llama.cpp reasoning cycles targeted for edge computing.",
-                    "Engineered a failsafe C++ action-server linking Agentic graphs to raw ROS2 control protocols.",
-                    "Formulated continuous fallback constraints validating generated motion paths in real-time."
-                ],
-                stack: ["llama.cpp", "Agentic Workflows", "NVIDIA Jetson AGX Orin", "ROS2", "Python C++"]
-            },
-            { 
-                title: "VIO Visual Tracking", 
-                desc: "Real-time visual navigation engine performing robust feature extraction and Visual Inertial Odometry. Focused on high-speed autonomous navigation in complex, GPS-denied indoor warehouse and industrial environments.", 
-                tag: "Computer Vision / Localization", 
-                icon: "fa-satellite-dish",
-                features: [
-                    "Integrated high-speed OpenCV CUDA filters for immediate feature extraction on Qualcomm boards.",
-                    "Fitted robust Extended Kalman Filter layers fusing IMU metrics and visual keypoints.",
-                    "Reduced translation drift to under 0.8% over extended navigation runs without GPS lock."
-                ],
-                stack: ["OpenCV CUDA", "Qualcomm Compute Boards", "Visual Odometry", "EKF Fusion", "Ubuntu"]
-            },
-            { 
-                title: "Edge Object Tracker", 
-                desc: "High-efficiency edge detection tracking pipeline utilizing deep convolutional models optimized for low-power platform targets. Specifically handles multi-object dynamic tracking on constrained computing architectures.", 
-                tag: "Computer Vision / Embedded", 
-                icon: "fa-microchip",
-                features: [
-                    "Deployed YOLOv10 object tracking models running hardware-accelerated via optimized engines.",
-                    "Maximized frame processing metrics to 45 FPS on Qualcomm compute constraints.",
-                    "Implemented autonomous predictive target lead indicators using state space equations."
-                ],
-                stack: ["SNPE Engine", "Qualcomm boards", "YOLOv10 Tracking", "ROS2", "Linux Kernel"]
-            },
-            { 
-                title: "Simulated Swarm Grid", 
-                desc: "Large-scale multi-robot swarm simulator operating inside Gazebo Garden. Evaluates decentralized swarm avoidance, collaborative mapping networks, and dynamic meshes on Ubuntu environments.", 
-                tag: "Gazebo / Swarm Physics", 
+                title: "Model-Context-Protocol Robot Agent", 
+                desc: "Implementation of Anthropic's Model Context Protocol (MCP) for remote tool use and telemetry reporting in distributed robot systems.", 
+                tag: "Robotics / Remote Tooling", 
+                category: "robotics",
                 icon: "fa-network-wired",
                 features: [
-                    "Configured dynamic Gazebo Garden environments simulating physical obstacle and surface drag variables.",
-                    "Implemented parallelized software-in-the-loop nodes evaluating 24+ active physical agents simultaneously.",
-                    "Created automated Python test matrices injecting localized sensor and network failures."
+                    "Engineered structured schema-driven tool definitions allowing LLMs to directly read vehicle state.",
+                    "Created robust security isolation protocol for shell executive action servers.",
+                    "Implemented telemetry caching layer to minimize vehicle communication latency over LTE grids."
                 ],
-                stack: ["Gazebo Garden", "Swarm Coordination", "ROS Humble", "Ubuntu 22.04 LTS", "Python"]
+                stack: ["MCP Protocol", "ROS2 Nodes", "Python Asyncio", "LTE telemetry"]
+            },
+            { 
+                title: "ADAS Autonomous Pilot", 
+                desc: "Integrated lane keeping, visual hazard tracking, and dynamic trajectory planner matching advanced driver-assistance architectures.", 
+                tag: "Computer Vision / ADAS", 
+                category: "vision",
+                icon: "fa-car",
+                features: [
+                    "Fitted robust vision tracking networks identifying road borders, obstacles, and markers.",
+                    "Built adaptive speed control layer responding to dynamic obstacle kinematics.",
+                    "Optimized network structures using TensorRT for 60 FPS performance."
+                ],
+                stack: ["Nvidia TensorRT", "OpenCV CUDA", "C++ Engine", "ROS2 Humble"]
+            },
+            { 
+                title: "Instance-segmentation Engine", 
+                desc: "Pixel-level classification layer deployed for real-time item sorting and dynamic object boundary detection.", 
+                tag: "Computer Vision / segmentation", 
+                category: "vision",
+                icon: "fa-puzzle-piece",
+                features: [
+                    "Implemented localized mask layers isolating tightly packed dynamic entities.",
+                    "Achieved 20ms processing execution speed per frame on constrained embedded GPUs.",
+                    "Created automatic synthesis pipeline for complex environmental edge rendering."
+                ],
+                stack: ["PyTorch", "Segment Anything", "CUDA Kernels", "Nvidia Orin"]
+            },
+            { 
+                title: "Counting Challenge Engine", 
+                desc: "High-accuracy crowd density and entity detection solver operating over high-resolution visual inputs.", 
+                tag: "Computer Vision / Analytics", 
+                category: "vision",
+                icon: "fa-calculator",
+                features: [
+                    "Utilized regression models predicting structural density matrices across clustered arrays.",
+                    "Integrated real-time tracking loops validating unique counts across boundaries.",
+                    "Configured dynamic scale layers adjusting to wide-angle lens distortion."
+                ],
+                stack: ["Density Regression", "YOLOv8 Detect", "C++ Pipelines", "Jetson Nano"]
+            },
+            { 
+                title: "LOD-3D Reconstruction", 
+                desc: "Multi-resolution spatial mesh mapping generating adaptive 3D structures from visual telemetry feeds.", 
+                tag: "Spatial Computing / 3D Mapping", 
+                category: "robotics",
+                icon: "fa-cubes",
+                features: [
+                    "Created progressive Level-of-Detail (LOD) pipelines for terrain visualization.",
+                    "Fitted octree voxel mapping modules optimizing memory usage during 3D meshes.",
+                    "Compiled direct integrations for point cloud data imports."
+                ],
+                stack: ["Open3D", "Voxels", "CUDA Meshes", "C++ Engine"]
+            },
+            { 
+                title: "VLA Autonomous Navigation Core", 
+                desc: "Vision-Language-Action navigation model coordinating real-time flight decisions directly from visual parameters and semantic inputs.", 
+                tag: "Agentic AI / VLA", 
+                category: "genai",
+                icon: "fa-brain",
+                features: [
+                    "Deployed unified visual and language representations to generate direct robotic motion decisions.",
+                    "Constructed dynamic action execution vectors using quantized models.",
+                    "Fitted fallback control stacks managing erratic neural instructions."
+                ],
+                stack: ["VLA Models", "Onboard Quantization", "Nvidia Jetson Orin", "MAVSDK"]
+            },
+            { 
+                title: "VLA-MAVSDK Integration Node", 
+                desc: "Closed-loop visual planning flight controller connecting VLA outputs directly to PX4 avionics arrays via MAVSDK APIs.", 
+                tag: "Aerospace / Control", 
+                category: "robotics",
+                icon: "fa-paper-plane",
+                features: [
+                    "Designed secure translation layer converting visual models outputs into low-level MAVSDK guide points.",
+                    "Optimized payload flight loops ensuring constant safety check overrides.",
+                    "Tested visual navigation inside high-fidelity simulated SITL setups."
+                ],
+                stack: ["MAVSDK API", "PX4 SITL", "ROS2 Nodes", "Python Control"]
+            },
+            { 
+                title: "Algorithmic Trading Engines", 
+                desc: "Multi-agent quantitative trading system deploying signal tracking, real-time analytics, and automated action execution.", 
+                tag: "Quantitative Finance", 
+                category: "quant",
+                icon: "fa-chart-line",
+                features: [
+                    "Formulated latency-sensitive signal generation algorithms evaluating stock anomalies.",
+                    "Integrated automated risk limits managing localized position exposures.",
+                    "Built simulated backtesting engines reviewing structural price histories."
+                ],
+                stack: ["Quantitative Signals", "Pandas & Numpy", "Redis Queues", "Backtesting API"]
+            },
+            { 
+                title: "Paper Implementation Sandbox", 
+                desc: "An execution sandbox compiling, testing, and deploying cutting-edge deep learning papers directly on localized hardware.", 
+                tag: "Deep Learning Research", 
+                category: "genai",
+                icon: "fa-book-open",
+                features: [
+                    "Reproduced high-performance paper architectures detailing spatial mapping concepts.",
+                    "Compiled localized benchmarking metrics evaluating latency and memory allocations.",
+                    "Deployed multi-threading routines to handle parallel data ingestion profiles."
+                ],
+                stack: ["PyTorch Core", "TensorRT", "C++ Benchmarking", "Git Actions"]
+            },
+            { 
+                title: "Custom Transformers Engine", 
+                desc: "Compact, hardware-optimized attention execution models configured for low-power edge computer targets.", 
+                tag: "Deep Learning / NLP", 
+                category: "genai",
+                icon: "fa-network-wired",
+                features: [
+                    "Wrote optimized matrix multiplication loops using custom C++ libraries.",
+                    "Implemented flexible tokenization layers managing continuous sensor signals.",
+                    "Tuned weight allocation profiles reducing operational RAM requirements."
+                ],
+                stack: ["Transformers C++", "ONNX Run", "Custom Kernels", "Nvidia AGX Orin"]
+            },
+            { 
+                title: "RTOS Flight Scheduler", 
+                desc: "High-frequency real-time operating system task planner coordinating safety-critical drone tasks.", 
+                tag: "Embedded Systems / RTOS", 
+                category: "robotics",
+                icon: "fa-microchip",
+                features: [
+                    "Engineered preemptive scheduling systems dividing processor time among flight control loops.",
+                    "Managed direct register allocations minimizing actuator latency parameters.",
+                    "Wrote specialized fail-safe drivers securing power distribution states."
+                ],
+                stack: ["FreeRTOS", "STM32 Hardware", "C Programming", "Logic Analyzers"]
+            },
+            { 
+                title: "Attention Mechanism Analyzer", 
+                desc: "Interactive visual analytics engine mapping neural attention weights to pinpoint feature dependencies.", 
+                tag: "Deep Learning / Analysis", 
+                category: "genai",
+                icon: "fa-eye",
+                features: [
+                    "Engineered visual heatmaps tracing visual focus zones across segmentation sequences.",
+                    "Calculated real-time entropy metrics highlighting signal drift problems.",
+                    "Optimized gradient evaluation matrices over complex training runs."
+                ],
+                stack: ["Matplotlib", "React Dashboard", "PyTorch Analytics", "Flask"]
+            },
+            { 
+                title: "Twitter Sentiment Scanner", 
+                desc: "Real-time distributed scraper and transformer analyzing trending semantic dynamics across raw social posts.", 
+                tag: "NLP / Sentiment Analysis", 
+                category: "genai",
+                icon: "fa-hashtag",
+                features: [
+                    "Configured parallel pipeline engines indexing public social data vectors.",
+                    "Trained specialized models identifying localized dialect cues and idioms.",
+                    "Built streaming dashboard layers presenting active mood trends."
+                ],
+                stack: ["Apache Kafka", "Quantized BERT", "MongoDB", "Python Dash"]
+            },
+            { 
+                title: "YOLOv5 Edge Optimization", 
+                desc: "Deep visual detection models compiled and quantized to run at 60 FPS on constrained NVIDIA hardware.", 
+                tag: "Computer Vision / YOLO", 
+                category: "vision",
+                icon: "fa-crosshairs",
+                features: [
+                    "Converted floating point models to integer formats using TensorRT quantization.",
+                    "Slashed execution memory allocations without degrading accuracy metrics.",
+                    "Constructed streaming input layers handling multiple sensor outputs."
+                ],
+                stack: ["YOLOv5 Engine", "TensorRT Engine", "OpenCV", "Jetson Nano"]
+            },
+            { 
+                title: "Android Whisper Integration", 
+                desc: "Native Android implementation of OpenAI's Whisper model for low-latency, offline voice tracking.", 
+                tag: "Speech / Mobile AI", 
+                category: "genai",
+                icon: "fa-mobile-screen-button",
+                features: [
+                    "Compiled Whisper model libraries for native ARM processing platforms.",
+                    "Wrote efficient memory allocation loops preventing audio data leaks.",
+                    "Constructed speech-activated triggers operating inside low-power standby modes."
+                ],
+                stack: ["Whisper.cpp", "Android NDK", "Kotlin UI", "ARM Neon Instruction"]
+            },
+            { 
+                title: "Smart Glasses Compute Hub", 
+                desc: "Sleek embedded glasses platform incorporating visual tracking sensors, real-time HUDs, and localized voice systems.", 
+                tag: "Spatial Computing / IoT", 
+                category: "robotics",
+                icon: "fa-glasses",
+                features: [
+                    "Engineered low-profile electronic designs for localized power stability.",
+                    "Integrated bone conduction sound outputs communicating system notifications.",
+                    "Wrote lightweight display layers mapping context menus directly to HUD modules."
+                ],
+                stack: ["Raspberry Pi Zero", "Micro-OLED Modules", "C++ Engines", "BLE Protocol"]
+            },
+            { 
+                title: "Smart Camera Summarizer", 
+                desc: "Onboard visual parsing camera running continuous local processing to generate textual reports of scene changes.", 
+                tag: "Computer Vision / Edge AI", 
+                category: "vision",
+                icon: "fa-camera-retro",
+                features: [
+                    "Fitted localized visual language models parsing environmental change inputs.",
+                    "Created delta frame tracking loops ensuring models run only when needed.",
+                    "Configured dynamic compression modules preparing text data for IoT transmission."
+                ],
+                stack: ["Vision LLM", "Embedded C++", "GStreamer Core", "Raspberry Pi"]
+            },
+            { 
+                title: "TAC-GAN Asset Generator", 
+                desc: "Text-to-Attribute-to-Class Generative Adversarial Network compiling customized terrain models from textual directives.", 
+                tag: "Generative AI / GANs", 
+                category: "genai",
+                icon: "fa-images",
+                features: [
+                    "Formulated specific generator loss formulations stabilizing early epoch outputs.",
+                    "Designed granular attribute control layers defining mesh layouts.",
+                    "Accelerated processing using optimized multi-GPU training clusters."
+                ],
+                stack: ["TAC-GAN", "PyTorch Core", "TensorBoard", "Linux Clusters"]
+            },
+            { 
+                title: "Equity Research Assistant", 
+                desc: "Automated report analyzer parsing complex earnings filings, highlighting performance shifts.", 
+                tag: "NLP / Quant Finance", 
+                category: "quant",
+                icon: "fa-file-invoice-dollar",
+                features: [
+                    "Wrote parsing scripts processing complex data documents.",
+                    "Configured smart retrieval processes extracting critical financial telemetry metrics.",
+                    "Engineered automated summaries comparing report updates over time."
+                ],
+                stack: ["LangChain", "ChromaDB Vectors", "OpenAI API", "Python Streamlit"]
+            },
+            { 
+                title: "LangChain Tool Sandbox", 
+                desc: "Comprehensive testing arena for dynamic agent frameworks executing sequential system automation commands.", 
+                tag: "Agentic AI / LangChain", 
+                category: "genai",
+                icon: "fa-terminal",
+                features: [
+                    "Created structured multi-agent loops routing instructions across localized software arrays.",
+                    "Configured robust error fallback logic managing failed model queries.",
+                    "Implemented caching buffers reducing repetitive API call structures."
+                ],
+                stack: ["LangChain Library", "OpenAI LLM", "Python FastAPI", "WebSockets"]
+            },
+            { 
+                title: "Geospatial Analysis Pipeline", 
+                desc: "Continuous mapping systems processing visual inputs to categorize terrain dynamics and layout changes.", 
+                tag: "Spatial Computing / GIS", 
+                category: "vision",
+                icon: "fa-earth-americas",
+                features: [
+                    "Wrote specialized raster coordinate math processing geospatial datasets.",
+                    "Built classification layers mapping terrain transitions across years.",
+                    "Integrated high-speed coordinate translation libraries."
+                ],
+                stack: ["GDAL Core", "Python Geopandas", "OpenCV", "PostGIS Databases"]
+            },
+            { 
+                title: "Accident & Theft Scanner", 
+                desc: "Autonomous visual tracking pipeline detecting road accidents and dynamic security anomalies.", 
+                tag: "Computer Vision / Safety", 
+                category: "vision",
+                icon: "fa-shield-halved",
+                features: [
+                    "Trained anomaly detection networks classifying vehicle trajectory deformations.",
+                    "Integrated streaming communication systems initiating localized alerts.",
+                    "Optimized visual frames processing models to execute on edge hardware."
+                ],
+                stack: ["PyTorch Core", "OpenCV Pipelines", "Twilio API Node", "Ubuntu Server"]
+            },
+            { 
+                title: "Nifty50 Stock Predictor (LSTM)", 
+                desc: "Recurrent Neural Networks utilizing LSTM configurations to process indices momentum shifts.", 
+                tag: "Time Series / LSTM", 
+                category: "quant",
+                icon: "fa-arrow-trend-up",
+                features: [
+                    "Configured multiple sequence windows handling stock price trends.",
+                    "Wrote complex normalization modules handling volatile market data.",
+                    "Generated signal scoring parameters measuring model confidence scores."
+                ],
+                stack: ["Keras Core", "TensorFlow Node", "Time Series Models", "Python API"]
+            },
+            { 
+                title: "Whisper Speech Translator", 
+                desc: "Bilateral high-fidelity translator matching quantized Whisper inputs with localized voice generation modules.", 
+                tag: "Speech Synthesis / AI", 
+                category: "genai",
+                icon: "fa-volume-high",
+                features: [
+                    "Configured real-time sound processing buffers handling streaming audio signals.",
+                    "Integrated speech generation libraries creating realistic voice patterns.",
+                    "Reduced translation processing latency to sub-second parameters."
+                ],
+                stack: ["Whisper Node", "Tacotron 2 TTS", "PyAudio Hub", "C++ Buffers"]
             }
         ];
 
         let currRotation = 0;
         const wheel = document.getElementById('carousel-wheel');
         let radius = 0;
+        let activeViewMode = 'carousel'; // 'carousel' or 'matrix'
+        let selectedCategory = 'all';
 
-        // Dynamic 3D positioning adaptation for screens
+        function setProjectViewMode(mode) {
+            activeViewMode = mode;
+            const carouselContainer = document.getElementById('view-carousel-container');
+            const matrixContainer = document.getElementById('view-matrix-container');
+            const btnCarousel = document.getElementById('btn-carousel-mode');
+            const btnMatrix = document.getElementById('btn-matrix-mode');
+
+            if (mode === 'carousel') {
+                carouselContainer.classList.remove('hidden');
+                matrixContainer.classList.add('hidden');
+                btnCarousel.className = "px-6 py-2 rounded-full text-[10px] mono tracking-widest uppercase font-bold transition-all bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-sm";
+                btnMatrix.className = "px-6 py-2 rounded-full text-[10px] mono tracking-widest uppercase font-bold transition-all text-slate-400 hover:text-slate-800 dark:hover:text-slate-100";
+                setTimeout(() => {
+                    initCarousel();
+                }, 100);
+            } else {
+                carouselContainer.classList.add('hidden');
+                matrixContainer.classList.remove('hidden');
+                btnMatrix.className = "px-6 py-2 rounded-full text-[10px] mono tracking-widest uppercase font-bold transition-all bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-sm";
+                btnCarousel.className = "px-6 py-2 rounded-full text-[10px] mono tracking-widest uppercase font-bold transition-all text-slate-400 hover:text-slate-800 dark:hover:text-slate-100";
+                initMatrixGrid();
+            }
+        }
+
         function updateRadius() {
             const w = window.innerWidth;
             if (w < 480) radius = 260;
@@ -711,6 +1022,7 @@
             else radius = 450;
         }
 
+        // Background canvas elements configuration
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         let width, height, points = [];
@@ -736,7 +1048,6 @@
                 if (this.y < -20) this.reset();
             }
             draw() {
-                // Measure mouse relative influence
                 const dist = Math.hypot(this.x - mouse.x, this.y - mouse.y);
                 const mouseRad = 200;
                 let finalX = this.x;
@@ -745,17 +1056,15 @@
 
                 if (dist < mouseRad) {
                     const factor = (mouseRad - dist) / mouseRad;
-                    // Gentle repelling force simulation
                     finalX += Math.cos(Math.atan2(this.y - mouse.y, this.x - mouse.x)) * factor * 25;
                     finalY += Math.sin(Math.atan2(this.y - mouse.y, this.x - mouse.x)) * factor * 25;
                     opacity = this.brightness + (factor * 0.6);
                 }
 
-                // Adjust color scheme dynamically matching the toggle state to Green
                 if (systemState.isDarkMode) {
-                    ctx.fillStyle = `rgba(52, 211, 153, ${opacity})`; // Mint Green 400
+                    ctx.fillStyle = `rgba(52, 211, 153, ${opacity})`; 
                 } else {
-                    ctx.fillStyle = `rgba(16, 185, 129, ${opacity})`; // Emerald Green 500
+                    ctx.fillStyle = `rgba(16, 185, 129, ${opacity})`; 
                 }
                 
                 ctx.beginPath();
@@ -776,17 +1085,14 @@
             }
         }
 
-        // Combined render cycle: sweeps LiDAR visualization lines
         function animate() {
-            // Background Canvas Paint (Adapts to Light/Dark Mode)
             if (systemState.isDarkMode) {
-                ctx.fillStyle = 'rgba(3, 7, 18, 0.4)'; // Slate 950 trails
+                ctx.fillStyle = 'rgba(3, 7, 18, 0.4)'; 
             } else {
-                ctx.fillStyle = 'rgba(249, 250, 251, 0.4)'; // Gray 50 trails
+                ctx.fillStyle = 'rgba(249, 250, 251, 0.4)'; 
             }
             ctx.fillRect(0, 0, width, height);
             
-            // Render subtle sweep lines representing a 2D scanning radar
             sweepAngle += 0.003;
             if (systemState.isDarkMode) {
                 ctx.strokeStyle = 'rgba(52, 211, 153, 0.025)';
@@ -807,7 +1113,6 @@
                 return p.draw();
             });
 
-            // Draw constrained local mesh links matching adjacent proximity
             if (systemState.isDarkMode) {
                 ctx.strokeStyle = 'rgba(52, 211, 153, 0.08)';
             } else {
@@ -829,28 +1134,31 @@
             requestAnimationFrame(animate);
         }
 
+        // 3D Carousel setup logic (Flagship selection of 4 projects)
+        const carouselProjectsIndexes = [0, 1, 4, 7]; // MCP, ADAS, LOD-3D, Algorithmic Trading
+
         function initCarousel() {
             updateRadius();
             wheel.innerHTML = '';
-            const angleStep = 360 / projects.length;
+            const angleStep = 360 / carouselProjectsIndexes.length;
             
-            projects.forEach((p, i) => {
+            carouselProjectsIndexes.forEach((projIndex, i) => {
+                const p = projects[projIndex];
                 const slide = document.createElement('div');
                 slide.className = `project-slide-3d ${i === 0 ? 'active' : ''}`;
                 slide.style.transform = `rotateY(${i * angleStep}deg) translateZ(${radius}px)`;
                 
-                // Allow dynamic clicks to either focus the card or inspect details
                 slide.onclick = () => {
-                    const step = 360 / projects.length;
-                    let rawIndex = (currRotation / step) % projects.length;
+                    const step = 360 / carouselProjectsIndexes.length;
+                    let rawIndex = (currRotation / step) % carouselProjectsIndexes.length;
                     let normalizedIndex = Math.round(rawIndex);
-                    normalizedIndex = (normalizedIndex % projects.length + projects.length) % projects.length;
+                    normalizedIndex = (normalizedIndex % carouselProjectsIndexes.length + carouselProjectsIndexes.length) % carouselProjectsIndexes.length;
                     if (normalizedIndex !== 0) {
-                        normalizedIndex = projects.length - normalizedIndex;
+                        normalizedIndex = carouselProjectsIndexes.length - normalizedIndex;
                     }
 
                     if (i === normalizedIndex) {
-                        openModal(i);
+                        openModal(projIndex);
                     } else {
                         rotateTo(i);
                     }
@@ -881,9 +1189,8 @@
             updateActiveCard();
         }
 
-        // Rotate directly to a targeted project index smoothly via the shortest path
         function rotateTo(index) {
-            const step = 360 / projects.length;
+            const step = 360 / carouselProjectsIndexes.length;
             let targetRotation = -index * step;
             
             let diff = (targetRotation - currRotation) % 360;
@@ -895,23 +1202,19 @@
             updateActiveCard();
         }
 
-        // Core 3D cylinder step algorithm
         function rotateCarousel(dir) {
-            currRotation -= dir * (360 / projects.length);
+            currRotation -= dir * (360 / carouselProjectsIndexes.length);
             wheel.style.transform = `rotateY(${currRotation}deg)`;
             updateActiveCard();
         }
 
         function updateActiveCard() {
-            const step = 360 / projects.length;
-            
-            let rawIndex = (currRotation / step) % projects.length;
+            const step = 360 / carouselProjectsIndexes.length;
+            let rawIndex = (currRotation / step) % carouselProjectsIndexes.length;
             let normalizedIndex = Math.round(rawIndex);
-            
-            normalizedIndex = (normalizedIndex % projects.length + projects.length) % projects.length;
-            
+            normalizedIndex = (normalizedIndex % carouselProjectsIndexes.length + carouselProjectsIndexes.length) % carouselProjectsIndexes.length;
             if (normalizedIndex !== 0) {
-                normalizedIndex = projects.length - normalizedIndex;
+                normalizedIndex = carouselProjectsIndexes.length - normalizedIndex;
             }
 
             document.querySelectorAll('.project-slide-3d').forEach((s, i) => {
@@ -919,7 +1222,92 @@
                 s.classList.toggle('active', isActive);
             });
 
-            document.getElementById('carousel-indicator').innerText = `PROJECT ${normalizedIndex + 1} / ${projects.length}`;
+            document.getElementById('carousel-indicator').innerText = `PROJECT ${normalizedIndex + 1} / ${carouselProjectsIndexes.length}`;
+        }
+
+        // SEARCH MATRIX LAYOUT GENERATION
+        function initMatrixGrid() {
+            const grid = document.getElementById('matrix-grid');
+            grid.innerHTML = '';
+            
+            projects.forEach((p, idx) => {
+                const card = document.createElement('div');
+                card.className = "matrix-project-card bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 rounded-3xl p-6 flex flex-col justify-between hover:border-emerald-500 hover:shadow-lg transition-all duration-300 cursor-pointer shadow-sm relative overflow-hidden group";
+                card.setAttribute('data-index', idx);
+                card.setAttribute('data-category', p.category);
+                card.setAttribute('data-tags', p.tag.toLowerCase());
+                card.setAttribute('data-title', p.title.toLowerCase());
+                card.setAttribute('data-stack', p.stack.join(' ').toLowerCase());
+                
+                card.onclick = () => openModal(idx);
+
+                card.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-100/50 dark:border-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shadow-inner group-hover:scale-110 transition-transform">
+                                <i class="fa-solid ${p.icon} text-md"></i>
+                            </div>
+                            <span class="mono text-[8px] bg-slate-50 dark:bg-slate-950 text-slate-400 dark:text-slate-500 font-bold border border-slate-200 dark:border-slate-800 px-2.5 py-1 rounded-full tracking-wider uppercase">${p.category}</span>
+                        </div>
+                        <h3 class="heading-tech text-lg font-bold mb-2 text-slate-900 dark:text-slate-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">${p.title}</h3>
+                        <p class="text-slate-500 dark:text-slate-400 font-light text-xs leading-relaxed line-clamp-3 mb-6">${p.desc}</p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            ${p.stack.slice(0, 3).map(s => `<span class="px-2 py-0.5 bg-slate-50 dark:bg-slate-950 text-[9px] font-semibold text-slate-400 rounded-lg">${s}</span>`).join('')}
+                            ${p.stack.length > 3 ? `<span class="px-2 py-0.5 bg-slate-50 dark:bg-slate-950 text-[9px] font-semibold text-slate-400 rounded-lg">+${p.stack.length - 3}</span>` : ''}
+                        </div>
+                        <div class="flex justify-between items-center pt-3 border-t border-slate-100 dark:border-slate-800/80">
+                            <span class="mono text-[9px] text-slate-400 dark:text-slate-500 font-semibold">${p.tag}</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+            filterMatrixGrid();
+        }
+
+        function filterMatrixCategory(cat) {
+            selectedCategory = cat;
+            
+            // Adjust active state of navigation pills
+            document.querySelectorAll('.matrix-filter-pill').forEach(pill => {
+                pill.className = "matrix-filter-pill px-4 py-2 rounded-xl text-xs mono uppercase tracking-wider font-semibold border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 hover:border-emerald-500 hover:text-emerald-500 transition-all";
+            });
+            event.target.className = "matrix-filter-pill px-4 py-2 rounded-xl text-xs mono uppercase tracking-wider font-semibold border bg-emerald-500 border-emerald-500 text-white transition-all";
+            
+            filterMatrixGrid();
+        }
+
+        function filterMatrixGrid() {
+            const query = document.getElementById('matrix-search').value.toLowerCase();
+            const cards = document.querySelectorAll('.matrix-project-card');
+            let visibleCount = 0;
+
+            cards.forEach(card => {
+                const title = card.getAttribute('data-title');
+                const tags = card.getAttribute('data-tags');
+                const stack = card.getAttribute('data-stack');
+                const category = card.getAttribute('data-category');
+
+                const matchesSearch = title.includes(query) || tags.includes(query) || stack.includes(query);
+                const matchesCategory = (selectedCategory === 'all' || category === selectedCategory);
+
+                if (matchesSearch && matchesCategory) {
+                    card.style.display = 'flex';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            const emptyState = document.getElementById('matrix-empty-state');
+            if (visibleCount === 0) {
+                emptyState.classList.remove('hidden');
+            } else {
+                emptyState.classList.add('hidden');
+            }
         }
 
         function openModal(index) {
@@ -946,7 +1334,6 @@
             document.body.style.overflow = 'hidden';
         }
 
-        // Click outside modal content to close
         document.getElementById('modal-overlay').addEventListener('click', (e) => {
             if (e.target === document.getElementById('modal-overlay')) {
                 closeModal();
@@ -958,7 +1345,7 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Swipe & drag events for high performance gesture interaction
+        // Swipe & drag events for touchscreens
         let touchStartX = 0;
         const touchArea = document.getElementById('touch-area');
 
@@ -977,7 +1364,7 @@
         // Global Event listeners
         window.addEventListener('resize', () => { 
             initBackground(); 
-            initCarousel(); 
+            if (activeViewMode === 'carousel') initCarousel(); 
         });
 
         window.addEventListener('mousemove', (e) => { 
@@ -994,7 +1381,6 @@
             if(e.key === 'Escape') closeModal(); 
         });
 
-        // Initialize systems after DOM loads
         window.onload = () => {
             systemState.init();
             initBackground();
