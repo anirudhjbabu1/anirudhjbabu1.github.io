@@ -1,958 +1,221 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth dark">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anirudh J Babu | Robotics & Cognitive AI</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    },
-                    colors: {
-                        brand: {
-                            50: '#fafafa',
-                            100: '#f4f4f5',
-                            200: '#e4e4e7',
-                            300: '#d4d4d8',
-                            400: '#a1a1aa',
-                            500: '#71717a',
-                            600: '#52525b',
-                            700: '#3f3f46',
-                            800: '#27272a',
-                            900: '#18181b',
-                            950: '#09090b', // Extreme dark
-                        }
-                    },
-                    letterSpacing: {
-                        tighter: '-0.04em',
-                        widest: '0.2em',
-                    },
-                    animation: {
-                        'scan': 'scan 6s linear infinite',
-                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    },
-                    keyframes: {
-                        scan: {
-                            '0%': { transform: 'translateY(-100%)' },
-                            '100%': { transform: 'translateY(100vh)' }
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
-    
-    <style>
-        :root {
-            --grid-color: rgba(0, 0, 0, 0.04);
-            --bg-color: #fafafa;
-            --text-color: #09090b;
-        }
-
-        .dark {
-            --grid-color: rgba(255, 255, 255, 0.03);
-            --bg-color: #09090b;
-            --text-color: #fafafa;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        /* Stark, unrounded scrollbar */
-        ::-webkit-scrollbar { width: 4px; height: 4px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #d4d4d8; border-radius: 0; }
-        .dark ::-webkit-scrollbar-thumb { background: #3f3f46; }
-        ::-webkit-scrollbar-thumb:hover { background: #a1a1aa; }
-
-        /* Engineering Grid Background */
-        .bg-grid {
-            background-image: 
-                linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
-                linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
-            background-size: 48px 48px;
-            background-position: center top;
-        }
-
-        /* Structural Borders for the Anduril Look */
-        .tech-border {
-            border-color: #e4e4e7;
-            transition: border-color 0.3s ease;
-        }
-        .dark .tech-border {
-            border-color: #27272a;
-        }
-
-        /* Hover Invert for stark buttons */
-        .hover-invert {
-            transition: all 0.2s ease;
-        }
-        .hover-invert:hover {
-            background-color: var(--text-color);
-            color: var(--bg-color);
-        }
-
-        /* Modal specific animations */
-        #modal-overlay {
-            transition: opacity 0.3s ease, backdrop-filter 0.3s ease;
-            opacity: 0;
-            pointer-events: none;
-            backdrop-filter: blur(0px);
-        }
-        #modal-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-            backdrop-filter: blur(8px);
-        }
-        #modal-content {
-            transform: translateY(20px);
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        #modal-overlay.active #modal-content {
-            transform: translateY(0);
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0%;
-            height: 1px;
-            background-color: currentColor;
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover::after {
-            width: 100%;
-        }
-    </style>
-</head>
-<body class="selection:bg-brand-900 selection:text-white dark:selection:bg-white dark:selection:text-black">
-
-    <div class="fixed inset-0 z-[-1] bg-grid opacity-100 pointer-events-none transition-colors duration-300"></div>
-    
-    <!-- Vertical structural lines -->
-    <div class="fixed inset-y-0 left-6 md:left-12 w-[1px] tech-border border-l z-[-1] hidden sm:block"></div>
-    <div class="fixed inset-y-0 right-6 md:right-12 w-[1px] tech-border border-r z-[-1] hidden sm:block"></div>
-
-    <nav id="main-nav" class="fixed top-0 w-full z-40 bg-brand-50/90 dark:bg-brand-950/90 backdrop-blur-md tech-border border-b transition-all duration-300">
-        <div class="max-w-[1400px] mx-auto px-6 md:px-12 h-16 flex justify-between items-center">
-            <div class="flex items-center gap-6">
-                <a href="#" class="font-sans text-xl font-bold tracking-tighter text-brand-950 dark:text-white uppercase">
-                    Anirudh <span class="font-light opacity-50">J Babu</span>
-                </a>
-                <div class="hidden md:flex items-center gap-3 tech-border border-l pl-6 h-8">
-                    <div class="w-1.5 h-1.5 bg-brand-950 dark:bg-white animate-pulse-slow"></div>
-                    <span class="font-mono text-[10px] tracking-widest uppercase text-brand-500 dark:text-brand-400">Sys_Online</span>
-                </div>
+<!-- ... existing code ... -->
+    <header class="relative min-h-screen flex items-center justify-center px-6 pt-24 pb-12 overflow-hidden">
+        <!-- Grid overlay for stark technical feel -->
+        <div class="absolute inset-0 bg-[linear-gradient(rgba(226,232,240,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(226,232,240,0.1)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(30,41,59,0.2)_1px,transparent_1px),linear-gradient(90deg,rgba(30,41,59,0.2)_1px,transparent_1px)] bg-[size:40px_40px] z-0"></div>
+        
+        <div class="max-w-5xl w-full text-center relative z-10 mt-10">
+            <div class="inline-flex items-center gap-3 mono text-slate-500 text-[10px] mb-8 tracking-[0.2em] uppercase font-bold py-2 px-4 border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm">
+                <div class="w-1.5 h-1.5 bg-slate-900 dark:bg-slate-100 animate-pulse"></div>
+                Personnel File: Active
             </div>
             
-            <div class="hidden md:flex items-center space-x-10 font-mono text-[10px] uppercase tracking-widest font-semibold">
-                <a href="#about" class="relative nav-link text-brand-600 dark:text-brand-400 hover:text-brand-950 dark:hover:text-white transition-colors">Profile</a>
-                <a href="#career" class="relative nav-link text-brand-600 dark:text-brand-400 hover:text-brand-950 dark:hover:text-white transition-colors">Experience</a>
-                <a href="#projects" class="relative nav-link text-brand-600 dark:text-brand-400 hover:text-brand-950 dark:hover:text-white transition-colors">Registry</a>
-                <a href="#skills" class="relative nav-link text-brand-600 dark:text-brand-400 hover:text-brand-950 dark:hover:text-white transition-colors">Matrix</a>
-                <a href="#metrics" class="relative nav-link text-brand-600 dark:text-brand-400 hover:text-brand-950 dark:hover:text-white transition-colors">Metrics</a>
-            </div>
-
-            <div class="flex items-center gap-4">
-                <!-- Theme Toggle -->
-                <button id="theme-toggle" class="w-8 h-8 flex items-center justify-center tech-border border text-brand-600 dark:text-brand-400 hover:text-brand-950 dark:hover:text-white transition-colors" aria-label="Toggle Theme">
-                    <i id="theme-toggle-light" class="fa-solid fa-sun hidden text-sm"></i>
-                    <i id="theme-toggle-dark" class="fa-solid fa-moon text-sm hidden"></i>
-                </button>
-                <a href="#contact" class="hidden sm:block px-6 py-2 border border-brand-950 dark:border-white text-brand-950 dark:text-white text-[10px] font-mono font-bold tracking-widest uppercase hover-invert">
-                    Init Sync
-                </a>
-            </div>
-        </div>
-    </nav>
-
-    <header class="relative min-h-[90vh] flex items-center pt-24 pb-12 overflow-hidden">
-        <div class="max-w-[1400px] mx-auto px-6 md:px-12 w-full relative z-10 flex flex-col items-start">
-            
-            <div class="font-mono text-[10px] text-brand-500 dark:text-brand-400 tracking-widest uppercase mb-8 flex items-center gap-4 font-semibold">
-                <span class="w-12 h-[1px] bg-brand-950 dark:bg-white"></span>
-                Personnel Profile // Robotics Software & Cognitive AI
-            </div>
-            
-            <h1 class="font-sans text-5xl sm:text-7xl md:text-[6.5rem] font-bold tracking-tighter text-brand-950 dark:text-white leading-[0.95] mb-10 max-w-6xl uppercase">
-                Bridging physical control <br />
-                <span class="text-brand-400 dark:text-brand-600">with cognitive intelligence.</span>
+            <h1 class="heading-tech text-5xl sm:text-7xl md:text-8xl font-bold tracking-tight mb-8 text-slate-900 dark:text-slate-100 leading-[1] uppercase">
+                Anirudh <span class="text-transparent border-text stroke-slate-900 dark:stroke-slate-100" style="-webkit-text-stroke: 1px currentColor;">J Babu</span>
             </h1>
             
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 w-full">
-                <div class="md:col-span-6 lg:col-span-5">
-                    <p class="text-brand-700 dark:text-brand-300 text-sm md:text-base leading-relaxed font-medium">
-                        Connecting generative AI and algorithmic logic to real-time physical systems. Specializing in transforming complex, real-time data streams into low-latency, high-frequency execution for autonomous aerospace and ground agents.
-                    </p>
-                </div>
-                <div class="md:col-span-6 lg:col-span-7 flex flex-col sm:flex-row items-end justify-start md:justify-end gap-4 pt-4 md:pt-0">
-                    <a href="#projects" class="px-8 py-4 bg-brand-950 text-white dark:bg-white dark:text-brand-950 font-mono text-xs uppercase tracking-widest font-bold hover:bg-brand-800 dark:hover:bg-brand-200 transition-colors w-full sm:w-auto text-center border border-brand-950 dark:border-white">
-                        Access Registry
-                    </a>
-                    <a href="#about" class="px-8 py-4 bg-transparent text-brand-950 dark:text-white border border-brand-950 dark:border-white font-mono text-xs uppercase tracking-widest font-bold hover:bg-brand-100 dark:hover:bg-brand-900 transition-colors w-full sm:w-auto text-center">
-                        View System Specs
-                    </a>
-                </div>
+            <h2 class="heading-tech text-xl sm:text-2xl md:text-3xl font-medium tracking-tight mb-8 text-slate-700 dark:text-slate-300 leading-snug max-w-4xl mx-auto">
+                Robotics Software & Cognitive AI Engineer.
+                <br><span class="text-slate-500 dark:text-slate-500">Bridging deterministic physical control with adaptive generative intelligence.</span>
+            </h2>
+            
+            <p class="text-slate-600 dark:text-slate-400 text-sm md:text-base leading-relaxed mb-12 max-w-2xl mx-auto font-light">
+                Specializing in transforming complex, real-time data streams into low-latency, high-frequency execution for SWaP-constrained edge systems.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-0">
+                <a href="#projects-section" class="w-full sm:w-auto px-10 py-4 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-950 font-bold mono text-xs uppercase tracking-widest hover:bg-slate-800 dark:hover:bg-white transition-colors border border-slate-900 dark:border-slate-100">
+                    View Portfolio
+                </a>
+                <a href="#contact" class="w-full sm:w-auto px-10 py-4 bg-transparent text-slate-900 dark:text-slate-100 font-bold mono text-xs uppercase tracking-widest hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors border border-l-0 sm:border-t border-slate-200 dark:border-slate-800 backdrop-blur-sm">
+                    Contact Me
+                </a>
             </div>
         </div>
-
-        <!-- Scanning line effect in background -->
-        <div class="absolute right-12 md:right-24 top-0 bottom-0 w-[1px] tech-border border-r hidden lg:block overflow-hidden">
-            <div class="w-full h-32 bg-brand-950 dark:bg-white absolute top-0 animate-scan"></div>
+        
+        <div class="absolute bottom-8 right-8 flex flex-col items-end gap-2 text-slate-400 dark:text-slate-500 text-[10px] mono tracking-widest uppercase z-10">
+            <span>Sys. Status</span>
+            <div class="flex gap-1">
+                <div class="w-1 h-3 bg-slate-300 dark:bg-slate-700"></div>
+                <div class="w-1 h-4 bg-slate-400 dark:bg-slate-600"></div>
+                <div class="w-1 h-5 bg-slate-900 dark:bg-slate-100 animate-pulse"></div>
+            </div>
         </div>
     </header>
 
-    <section id="about" class="py-32 tech-border border-t relative z-10 bg-brand-50 dark:bg-brand-950">
-        <div class="max-w-[1400px] mx-auto px-6 md:px-12">
-            <div class="grid grid-cols-1 lg:grid-cols-12 tech-border border-b pb-16 mb-16">
-                <div class="lg:col-span-4 mb-8 lg:mb-0">
-                    <span class="font-mono text-[10px] uppercase tracking-widest text-brand-500 dark:text-brand-400 font-bold block mb-4">[01] // ENGINEERING PHILOSOPHY</span>
-                    <h2 class="font-sans text-3xl md:text-5xl font-bold text-brand-950 dark:text-white tracking-tighter uppercase">
-                        Embodied Autonomy
+    <section id="about" class="py-24 border-t border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-950/50 backdrop-blur-sm relative z-10">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                <div class="lg:col-span-5">
+                    <span class="mono text-xs uppercase tracking-widest text-slate-500 font-bold block mb-4">01 // Profile</span>
+                    <h2 class="heading-tech text-3xl md:text-5xl font-bold text-slate-900 dark:text-slate-100 mb-6 leading-[1.1] uppercase tracking-tight">
+                        Mission<br>Statement
                     </h2>
-                </div>
-                <div class="lg:col-span-8 lg:border-l tech-border lg:pl-12">
-                    <p class="text-brand-700 dark:text-brand-300 text-base md:text-lg leading-relaxed font-medium mb-8">
-                        My development focuses on running large vision-language models and high-frequency spatial localization loops simultaneously on size, weight, and power-constrained (SWaP) edge systems—ranging from ground robotic agents to automated aerial vehicles.
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6 font-light">
+                        My engineering focus centers on running large vision-language models and high-frequency spatial localization loops simultaneously on size, weight, and power-constrained (SWaP) edge systems—ranging from ground robotic agents to automated aerial vehicles.
                     </p>
-                    <blockquote class="font-mono text-sm text-brand-950 dark:text-white font-semibold tech-border border-l-2 pl-6 py-2 uppercase tracking-wide">
-                        "Modern robotics requires the strict unification of deterministic motion stacks with adaptive, LLM-driven reasoners."
-                    </blockquote>
-                </div>
-            </div>
-            
-            <!-- Strict Grid for Core Competencies -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[1px] bg-brand-200 dark:bg-brand-800 tech-border border">
-                
-                <div class="bg-brand-50 dark:bg-brand-950 p-8 group">
-                    <div class="mb-8 text-brand-400 dark:text-brand-600 group-hover:text-brand-950 dark:group-hover:text-white transition-colors">
-                        <i class="fa-solid fa-brain text-3xl"></i>
-                    </div>
-                    <h4 class="font-mono text-xs font-bold uppercase tracking-widest text-brand-950 dark:text-white mb-4">Cognitive Autonomy</h4>
-                    <p class="text-brand-600 dark:text-brand-400 text-sm font-medium leading-relaxed">Implementing Agentic AI workflows and onboard LLM action-planners to solve unstructured physical environment objectives.</p>
-                </div>
-                
-                <div class="bg-brand-50 dark:bg-brand-950 p-8 group">
-                    <div class="mb-8 text-brand-400 dark:text-brand-600 group-hover:text-brand-950 dark:group-hover:text-white transition-colors">
-                        <i class="fa-solid fa-location-crosshairs text-3xl"></i>
-                    </div>
-                    <h4 class="font-mono text-xs font-bold uppercase tracking-widest text-brand-950 dark:text-white mb-4">State Estimation</h4>
-                    <p class="text-brand-600 dark:text-brand-400 text-sm font-medium leading-relaxed">Fusing wheel odometry, Visual Inertial Odometry (VIO), GNSS, and LiDAR data to maintain centimeter-level accuracy.</p>
-                </div>
-                
-                <div class="bg-brand-50 dark:bg-brand-950 p-8 group">
-                    <div class="mb-8 text-brand-400 dark:text-brand-600 group-hover:text-brand-950 dark:group-hover:text-white transition-colors">
-                        <i class="fa-solid fa-microchip text-3xl"></i>
-                    </div>
-                    <h4 class="font-mono text-xs font-bold uppercase tracking-widest text-brand-950 dark:text-white mb-4">Heterogeneous Edge</h4>
-                    <p class="text-brand-600 dark:text-brand-400 text-sm font-medium leading-relaxed">Developing cross-platform deployment pipelines targeted for NVIDIA Jetson Orin/Nano and Qualcomm compute boards.</p>
-                </div>
-                
-                <div class="bg-brand-50 dark:bg-brand-950 p-8 group">
-                    <div class="mb-8 text-brand-400 dark:text-brand-600 group-hover:text-brand-950 dark:group-hover:text-white transition-colors">
-                        <i class="fa-solid fa-cube text-3xl"></i>
-                    </div>
-                    <h4 class="font-mono text-xs font-bold uppercase tracking-widest text-brand-950 dark:text-white mb-4">Physics & Sim</h4>
-                    <p class="text-brand-600 dark:text-brand-400 text-sm font-medium leading-relaxed">Simulating complex rigid-body kinetics, obstacle interaction, and vehicle dynamics inside Gazebo grid setups.</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="career" class="py-32 tech-border border-t relative z-10">
-        <div class="max-w-[1400px] mx-auto px-6 md:px-12">
-            <div class="mb-20">
-                <span class="font-mono text-[10px] uppercase tracking-widest text-brand-500 dark:text-brand-400 font-bold block mb-4">[02] // EXPERIENCE TIMELINE</span>
-                <h2 class="font-sans text-3xl md:text-5xl font-bold text-brand-950 dark:text-white tracking-tighter uppercase">Professional Experience</h2>
-            </div>
-
-            <!-- Highly structured timeline -->
-            <div class="tech-border border-t border-l">
-                
-                <!-- Timeline Item 1 -->
-                <div class="grid grid-cols-1 md:grid-cols-12 tech-border border-b relative hover:bg-brand-100/50 dark:hover:bg-brand-900/30 transition-colors">
-                    <div class="absolute -left-[5px] top-8 w-2.5 h-2.5 bg-brand-950 dark:bg-white hidden md:block"></div>
-                    
-                    <div class="md:col-span-3 p-8 border-r tech-border flex flex-col justify-start">
-                        <div class="font-mono text-sm font-bold text-brand-950 dark:text-white uppercase tracking-widest mb-2">2024 — Present</div>
-                        <div class="font-mono text-[10px] text-brand-500 dark:text-brand-400 uppercase tracking-widest">Active Status</div>
-                    </div>
-                    
-                    <div class="md:col-span-9 p-8">
-                        <h3 class="font-sans text-2xl font-bold text-brand-950 dark:text-white mb-2 uppercase">Software Engineer</h3>
-                        <h4 class="font-mono text-xs font-bold tracking-widest uppercase text-brand-600 dark:text-brand-400 mb-6">Tsalla Aerospace</h4>
-                        <p class="text-brand-700 dark:text-brand-300 text-base font-medium leading-relaxed max-w-3xl">
-                            Pioneering cognitive onboard mission agents running dynamic visual planning systems on Qualcomm and Nvidia hardware. Architecting high-reliability ROS2 robotic controllers interacting directly with specialized Ubuntu environments.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Timeline Item 2 -->
-                <div class="grid grid-cols-1 md:grid-cols-12 tech-border border-b relative hover:bg-brand-100/50 dark:hover:bg-brand-900/30 transition-colors">
-                    <div class="absolute -left-[4px] top-8 w-2 h-2 bg-brand-300 dark:bg-brand-700 hidden md:block"></div>
-                    
-                    <div class="md:col-span-3 p-8 border-r tech-border flex flex-col justify-start">
-                        <div class="font-mono text-sm font-bold text-brand-950 dark:text-white uppercase tracking-widest mb-2">2024 — 2024</div>
-                        <div class="font-mono text-[10px] text-brand-500 dark:text-brand-400 uppercase tracking-widest">Archived</div>
-                    </div>
-                    
-                    <div class="md:col-span-9 p-8">
-                        <h3 class="font-sans text-2xl font-bold text-brand-950 dark:text-white mb-2 uppercase">AI-ML Intern</h3>
-                        <h4 class="font-mono text-xs font-bold tracking-widest uppercase text-brand-600 dark:text-brand-400 mb-6">Tsalla Aerospace</h4>
-                        <p class="text-brand-700 dark:text-brand-300 text-base font-medium leading-relaxed max-w-3xl">
-                            Designed real-time vision algorithms (SLAM/VIO) for robust, GPS-denied autonomous ground scanning. Scaled physics-compliant robot fleet simulations inside Gazebo, running massive parameter test matrices.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Timeline Item 3 -->
-                <div class="grid grid-cols-1 md:grid-cols-12 tech-border border-b relative hover:bg-brand-100/50 dark:hover:bg-brand-900/30 transition-colors">
-                    <div class="absolute -left-[4px] top-8 w-2 h-2 bg-brand-300 dark:bg-brand-700 hidden md:block"></div>
-                    
-                    <div class="md:col-span-3 p-8 border-r tech-border flex flex-col justify-start">
-                        <div class="font-mono text-sm font-bold text-brand-950 dark:text-white uppercase tracking-widest mb-2">2024 — 2025</div>
-                        <div class="font-mono text-[10px] text-brand-500 dark:text-brand-400 uppercase tracking-widest">Archived</div>
-                    </div>
-                    
-                    <div class="md:col-span-9 p-8">
-                        <h3 class="font-sans text-2xl font-bold text-brand-950 dark:text-white mb-2 uppercase">SWE Consultant</h3>
-                        <h4 class="font-mono text-xs font-bold tracking-widest uppercase text-brand-600 dark:text-brand-400 mb-6">Freelance / Startups</h4>
-                        <p class="text-brand-700 dark:text-brand-300 text-base font-medium leading-relaxed max-w-3xl">
-                            Built embedded camera streaming integrations, low-latency sensor drivers, and hardware-in-the-loop validation setups on Nvidia Jetson Nano and Orin evaluation platforms using ROS.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="py-32 tech-border border-t relative z-10 bg-brand-50 dark:bg-brand-950">
-        <div class="max-w-[1400px] mx-auto px-6 md:px-12">
-            <div class="flex flex-col xl:flex-row xl:items-end justify-between mb-16 gap-10">
+<!-- ... existing code ... -->
+    <section id="career" class="py-24 border-t border-slate-200 dark:border-slate-800 relative z-10 bg-white/40 dark:bg-slate-950/10 backdrop-blur-sm">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
                 <div>
-                    <span class="font-mono text-[10px] uppercase tracking-widest text-brand-500 dark:text-brand-400 font-bold block mb-4">[03] // PROJECT REGISTRY</span>
-                    <h2 class="font-sans text-3xl md:text-5xl font-bold text-brand-950 dark:text-white tracking-tighter uppercase">Portfolio Archive</h2>
+                    <span class="mono text-xs uppercase tracking-widest text-slate-500 font-bold block mb-4">02 // Career</span>
+                    <h2 class="heading-tech text-3xl md:text-5xl font-bold text-slate-900 dark:text-slate-100 tracking-tight uppercase">Operational History</h2>
                 </div>
-                
-                <!-- Filter Controls - Sharp rectangular buttons -->
-                <div class="flex flex-wrap gap-2 font-mono text-[10px] uppercase tracking-widest font-bold">
-                    <button onclick="filterProjects('all')" id="filter-btn-all" class="filter-btn px-6 py-3 border border-brand-950 bg-brand-950 text-white dark:border-white dark:bg-white dark:text-brand-950 transition-colors">All Files</button>
-                    <button onclick="filterProjects('robotics')" id="filter-btn-robotics" class="filter-btn px-6 py-3 border border-brand-300 text-brand-600 hover:bg-brand-200 dark:border-brand-700 dark:text-brand-400 dark:hover:bg-brand-800 transition-colors">Robotics/Control</button>
-                    <button onclick="filterProjects('vision')" id="filter-btn-vision" class="filter-btn px-6 py-3 border border-brand-300 text-brand-600 hover:bg-brand-200 dark:border-brand-700 dark:text-brand-400 dark:hover:bg-brand-800 transition-colors">Vision/Localization</button>
-                    <button onclick="filterProjects('genai')" id="filter-btn-genai" class="filter-btn px-6 py-3 border border-brand-300 text-brand-600 hover:bg-brand-200 dark:border-brand-700 dark:text-brand-400 dark:hover:bg-brand-800 transition-colors">Gen AI/Agentic</button>
-                    <button onclick="filterProjects('quant')" id="filter-btn-quant" class="filter-btn px-6 py-3 border border-brand-300 text-brand-600 hover:bg-brand-200 dark:border-brand-700 dark:text-brand-400 dark:hover:bg-brand-800 transition-colors">Quantitative</button>
+                <div class="text-right">
+                    <p class="text-slate-500 dark:text-slate-400 font-light text-sm max-w-xs ml-auto">Verified timeline of professional engagements and engineering deployments.</p>
                 </div>
             </div>
 
-            <!-- Project Grid - Strict 1px border grid layout -->
-            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[1px] bg-brand-200 dark:bg-brand-800 tech-border border">
-                <!-- Dynamically populated via JS -->
+            <div class="relative border-l border-slate-200 dark:border-slate-800 ml-4 md:ml-32 space-y-16">
+<!-- ... existing code ... -->
+    <section id="projects-section" class="py-24 border-t border-slate-200 dark:border-slate-800 overflow-hidden relative z-10 bg-slate-50/50 dark:bg-slate-950/20 backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <span class="mono text-xs uppercase tracking-widest text-slate-500 font-bold block mb-4">03 // Archive</span>
+                    <h2 class="heading-tech text-3xl md:text-5xl font-bold text-slate-900 dark:text-slate-100 mb-2 tracking-tight uppercase">Project Portfolio</h2>
+                </div>
+                <div class="text-right">
+                    <p class="text-slate-500 dark:text-slate-400 font-light text-sm max-w-xs ml-auto">Classified log of algorithms, frameworks, and structural architectures engineered.</p>
+                </div>
             </div>
             
-            <!-- Empty State -->
-            <div id="projects-empty-state" class="hidden text-center py-32 tech-border border bg-brand-50 dark:bg-brand-950">
-                <i class="fa-solid fa-triangle-exclamation text-brand-400 dark:text-brand-600 text-4xl mb-6"></i>
-                <p class="font-mono text-xs tracking-widest uppercase text-brand-500 dark:text-brand-400 font-bold">0 records matching telemetry parameters.</p>
+            <!-- Structural Category Selectors -->
+<!-- ... existing code ... -->
+    <section id="skills" class="py-24 border-t border-slate-200 dark:border-slate-800 relative z-10 bg-white dark:bg-slate-950">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                <div>
+                    <span class="mono text-xs uppercase tracking-widest text-slate-500 font-bold block mb-4">04 // Systems</span>
+                    <h2 class="heading-tech text-3xl md:text-5xl font-bold text-slate-900 dark:text-slate-100 tracking-tight uppercase">Technical Arsenal</h2>
+                </div>
+                <div class="text-right">
+                    <p class="text-slate-500 dark:text-slate-400 font-light text-sm max-w-xs ml-auto">Matrix of languages, hardwares, and middleware platforms mastered for deployment.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-px bg-slate-200 dark:bg-slate-800 border border-slate-200 dark:border-slate-800">
+<!-- ... existing code ... -->
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">Agentic AI Workflows</span>
+                        <span class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">Onboard LLMs / Quantization</span>
+                        <span class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">Gazebo Sim Classic/Garden</span>
+                        <span class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">Hardware-in-the-Loop (HIL)</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="skills" class="py-32 tech-border border-t relative z-10">
-        <div class="max-w-[1400px] mx-auto px-6 md:px-12">
-            <div class="mb-16">
-                <span class="font-mono text-[10px] uppercase tracking-widest text-brand-500 dark:text-brand-400 font-bold block mb-4">[04] // CORE COMPETENCIES</span>
-                <h2 class="font-sans text-3xl md:text-5xl font-bold text-brand-950 dark:text-white tracking-tighter uppercase">Capability Matrix</h2>
+    <!-- ACTIVE DEVELOPMENT & METRICS SECTION -->
+    <section id="metrics" class="py-24 border-t border-slate-200 dark:border-slate-800 relative z-10 bg-slate-50/50 dark:bg-slate-900/20 backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                <div>
+                    <span class="mono text-xs uppercase tracking-widest text-slate-500 font-bold block mb-4">05 // Continuous Integration</span>
+                    <h2 class="heading-tech text-3xl md:text-5xl font-bold text-slate-900 dark:text-slate-100 tracking-tight uppercase">Active Development</h2>
+                </div>
+                <div class="text-right">
+                    <p class="text-slate-500 dark:text-slate-400 font-light text-sm max-w-xs ml-auto">Live telemetry and ongoing skill acquisition pipelines.</p>
+                </div>
             </div>
 
-            <!-- Stacked grid format -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-[1px] bg-brand-200 dark:bg-brand-800 tech-border border">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-px bg-slate-200 dark:bg-slate-800 border border-slate-200 dark:border-slate-800">
                 
-                <!-- Skill Block 1 -->
-                <div class="lg:col-span-8 bg-brand-50 dark:bg-brand-950 p-8 md:p-12 relative group">
-                    <div class="absolute right-8 bottom-8 text-brand-200 dark:text-brand-800/50 pointer-events-none">
-                        <i class="fa-solid fa-microchip text-[120px]"></i>
-                    </div>
-                    <div class="relative z-10 h-full flex flex-col justify-between">
-                        <div>
-                            <span class="font-mono text-[10px] uppercase tracking-widest text-brand-500 dark:text-brand-400 font-bold block mb-4">Domain 01</span>
-                            <h3 class="font-sans text-3xl font-bold text-brand-950 dark:text-white mb-6 uppercase">Embedded Systems & Compute</h3>
-                            <p class="text-brand-700 dark:text-brand-300 text-base font-medium leading-relaxed max-w-2xl mb-12">
-                                Experienced in configuring and deploying navigation stacks on NVIDIA Jetson AGX Orin / Nano and Qualcomm boards. Mastering high-speed serial bus integration, hardware-accelerated deep learning pipelines, and real-time sensor loops.
-                            </p>
-                        </div>
-                        <div class="flex flex-wrap gap-2 font-mono text-[10px] uppercase tracking-widest font-bold">
-                            <span class="px-4 py-2 border tech-border text-brand-950 dark:text-white bg-white dark:bg-brand-900">Jetson Orin/Nano</span>
-                            <span class="px-4 py-2 border tech-border text-brand-950 dark:text-white bg-white dark:bg-brand-900">Qualcomm</span>
-                            <span class="px-4 py-2 border tech-border text-brand-950 dark:text-white bg-white dark:bg-brand-900">Ubuntu OS</span>
-                            <span class="px-4 py-2 border tech-border text-brand-950 dark:text-white bg-white dark:bg-brand-900">PX4 / Micro-ROS</span>
-                            <span class="px-4 py-2 border tech-border text-brand-950 dark:text-white bg-white dark:bg-brand-900">CUDA / Gstreamer</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Skill Block 2 -->
-                <div class="lg:col-span-4 bg-brand-50 dark:bg-brand-950 p-8 md:p-12 relative group">
-                     <div class="relative z-10 h-full flex flex-col justify-between">
-                        <div>
-                            <span class="font-mono text-[10px] uppercase tracking-widest text-brand-500 dark:text-brand-400 font-bold block mb-4">Domain 02</span>
-                            <h3 class="font-sans text-2xl font-bold text-brand-950 dark:text-white mb-4 uppercase">ROS Architecture</h3>
-                            <p class="text-brand-700 dark:text-brand-300 text-sm font-medium leading-relaxed mb-10">
-                                Architecting distributed networks utilizing ROS/ROS2 node topologies, custom DDS profiles, and real-time lifecycle configurations.
-                            </p>
-                        </div>
-                        <div class="flex flex-wrap gap-2 font-mono text-[10px] uppercase tracking-widest font-bold">
-                            <span class="px-4 py-2 border tech-border text-brand-950 dark:text-white bg-white dark:bg-brand-900">ROS2 Humble</span>
-                            <span class="px-4 py-2 border tech-border text-brand-950 dark:text-white bg-white dark:bg-brand-900">DDS Tuning</span>
-                            <span class="px-4 py-2 border tech-border text-brand-950 dark:text-white bg-white dark:bg-brand-900">rclcpp</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Skill Block 3 -->
-                <div class="lg:col-span-4 bg-brand-50 dark:bg-brand-950 p-8 md:p-12 relative group">
-                     <div class="relative z-10 h-full flex flex-col justify-between">
-                        <div>
-                            <span class="font-mono text-[10px] uppercase tracking-widest text-brand-500 dark:text-brand-400 font-bold block mb-4">Domain 03</span>
-                            <h3 class="font-sans text-2xl font-bold text-brand-950 dark:text-white mb-4 uppercase">Sensing & Vision</h3>
-                            <p class="text-brand-700 dark:text-brand-300 text-sm font-medium leading-relaxed mb-10">
-                                Designing custom CV algorithms for visual tracking, real-time mapping, and VIO localization modules.
-                            </p>
-                        </div>
-                        <div class="flex flex-wrap gap-2 font-mono text-[10px] uppercase tracking-widest font-bold">
-                            <span class="px-4 py-2 border tech-border text-brand-950 dark:text-white bg-white dark:bg-brand-900">OpenCV</span>
-                            <span class="px-4 py-2 border tech-border text-brand-950 dark:text-white bg-white dark:bg-brand-900">SLAM/VIO</span>
-                            <span class="px-4 py-2 border tech-border text-brand-950 dark:text-white bg-white dark:bg-brand-900">YOLO Arch</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Skill Block 4 -->
-                <div class="lg:col-span-8 bg-brand-50 dark:bg-brand-950 p-8 md:p-12 relative group">
-                    <div class="absolute right-8 bottom-8 text-brand-200 dark:text-brand-800/50 pointer-events-none">
-                        <i class="fa-solid fa-network-wired text-[120px]"></i>
-                    </div>
-                    <div class="relative z-10 h-full flex flex-col justify-between">
-                        <div>
-                            <span class="font-mono text-[10px] uppercase tracking-widest text-brand-500 dark:text-brand-400 font-bold block mb-4">Domain 04</span>
-                            <h3 class="font-sans text-3xl font-bold text-brand-950 dark:text-white mb-6 uppercase">Embodied Cognition</h3>
-                            <p class="text-brand-700 dark:text-brand-300 text-base font-medium leading-relaxed max-w-2xl mb-12">
-                                Pioneering integration of onboard Large Language Models (LLMs) and Agentic reasoning graphs to act as autonomous payload planners. Simulating frameworks inside Gazebo and PX4 SITL environments.
-                            </p>
-                        </div>
-                        <div class="flex flex-wrap gap-2 font-mono text-[10px] uppercase tracking-widest font-bold">
-                            <span class="px-4 py-2 border tech-border text-brand-950 dark:text-white bg-white dark:bg-brand-900">Agentic Workflows</span>
-                            <span class="px-4 py-2 border tech-border text-brand-950 dark:text-white bg-white dark:bg-brand-900">Onboard LLMs</span>
-                            <span class="px-4 py-2 border tech-border text-brand-950 dark:text-white bg-white dark:bg-brand-900">Gazebo Sim</span>
-                            <span class="px-4 py-2 border tech-border text-brand-950 dark:text-white bg-white dark:bg-brand-900">HIL Testing</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- NEW SECTION: Continuous Integration (Active Courses, Skills, GitHub, LeetCode) -->
-    <section id="metrics" class="py-32 tech-border border-t relative z-10 bg-brand-50 dark:bg-brand-950">
-        <div class="max-w-[1400px] mx-auto px-6 md:px-12">
-            <div class="mb-16">
-                <span class="font-mono text-[10px] uppercase tracking-widest text-brand-500 dark:text-brand-400 font-bold block mb-4">[05] // ACTIVE DEVELOPMENT & METRICS</span>
-                <h2 class="font-sans text-3xl md:text-5xl font-bold text-brand-950 dark:text-white tracking-tighter uppercase">Continuous Integration</h2>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-[1px] bg-brand-200 dark:bg-brand-800 tech-border border">
-                
-                <!-- Active Training & Skillsets Panel -->
-                <div class="lg:col-span-7 bg-brand-50 dark:bg-brand-950 p-8 md:p-12">
-                    <h3 class="font-mono text-sm font-bold tracking-widest uppercase text-brand-950 dark:text-white mb-8 border-b tech-border pb-4 flex items-center justify-between">
-                        <span><i class="fa-solid fa-spinner fa-spin mr-3 text-brand-500"></i> Active Operations</span>
-                        <span class="text-[9px] text-brand-500 dark:text-brand-400">SYS_UPDATING</span>
-                    </h3>
+                <!-- Current Courses & Skills -->
+                <div class="bg-white dark:bg-slate-950 p-8 md:p-12 flex flex-col h-full">
+                    <h3 class="heading-tech text-xl font-bold text-slate-900 dark:text-slate-100 mb-8 border-b border-slate-100 dark:border-slate-900 pb-4 uppercase tracking-wide">Ongoing R&D</h3>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                        <!-- Courses -->
+                    <div class="space-y-10">
                         <div>
-                            <h4 class="font-mono text-[10px] uppercase tracking-widest text-brand-500 dark:text-brand-400 font-bold mb-4">Current Training Directives</h4>
+                            <h4 class="mono text-[10px] text-slate-400 font-bold uppercase tracking-widest mb-4">Active Coursework</h4>
                             <ul class="space-y-4">
-                                <li class="tech-border border-l-2 pl-4 py-1">
-                                    <div class="text-xs font-mono font-bold text-brand-950 dark:text-white uppercase mb-1">Advanced VIO & SLAM Mathematics</div>
-                                    <div class="text-[10px] font-mono text-brand-600 dark:text-brand-400">Institution / Platform Name</div>
+                                <li class="border-l-2 border-slate-900 dark:border-slate-100 pl-4">
+                                    <span class="block text-sm text-slate-900 dark:text-slate-100 font-bold heading-tech tracking-wide mb-1">Advanced Robotics: Kinematics & Dynamics</span>
+                                    <span class="block text-xs text-slate-500 mono leading-relaxed">Focusing on rigid body transforms, manipulator Jacobian, and trajectory generation logic.</span>
                                 </li>
-                                <li class="tech-border border-l-2 pl-4 py-1 border-brand-950 dark:border-white">
-                                    <div class="text-xs font-mono font-bold text-brand-950 dark:text-white uppercase mb-1">CUDA Parallel Computing Optimization</div>
-                                    <div class="text-[10px] font-mono text-brand-600 dark:text-brand-400">Institution / Platform Name</div>
-                                </li>
-                                <li class="tech-border border-l-2 pl-4 py-1">
-                                    <div class="text-xs font-mono font-bold text-brand-950 dark:text-white uppercase mb-1">Agentic AI Architecture for Edge Devices</div>
-                                    <div class="text-[10px] font-mono text-brand-600 dark:text-brand-400">Institution / Platform Name</div>
+                                <li class="border-l-2 border-slate-900 dark:border-slate-100 pl-4">
+                                    <span class="block text-sm text-slate-900 dark:text-slate-100 font-bold heading-tech tracking-wide mb-1">Deep Reinforcement Learning Specialization</span>
+                                    <span class="block text-xs text-slate-500 mono leading-relaxed">Implementing PPO and SAC algorithms for continuous control in simulated physics environments.</span>
                                 </li>
                             </ul>
                         </div>
                         
-                        <!-- Developing Skills & Ongoing Projects -->
                         <div>
-                            <h4 class="font-mono text-[10px] uppercase tracking-widest text-brand-500 dark:text-brand-400 font-bold mb-4">Developing Skillsets</h4>
-                            <div class="flex flex-wrap gap-2 mb-8">
-                                <span class="px-3 py-1 bg-brand-100 dark:bg-brand-900 tech-border border text-[9px] font-mono font-bold text-brand-950 dark:text-white uppercase tracking-widest animate-pulse">Rust (Embedded)</span>
-                                <span class="px-3 py-1 bg-brand-100 dark:bg-brand-900 tech-border border text-[9px] font-mono font-bold text-brand-950 dark:text-white uppercase tracking-widest">TensorRT-LLM</span>
-                                <span class="px-3 py-1 bg-brand-100 dark:bg-brand-900 tech-border border text-[9px] font-mono font-bold text-brand-950 dark:text-white uppercase tracking-widest">WebRTC Streaming</span>
+                            <h4 class="mono text-[10px] text-slate-400 font-bold uppercase tracking-widest mb-4">Developing Skillsets</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">TensorRT Optimization</span>
+                                <span class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">CUDA C++ Kernels</span>
+                                <span class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">Multi-Agent Systems</span>
+                                <span class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">Low-Level Memory Access</span>
                             </div>
-
-                            <h4 class="font-mono text-[10px] uppercase tracking-widest text-brand-500 dark:text-brand-400 font-bold mb-4">Current Ongoing Project</h4>
-                            <a href="https://github.com/anirudhjbabu1" target="_blank" class="block tech-border border p-4 bg-white dark:bg-brand-900 hover:bg-brand-100 dark:hover:bg-brand-800 transition-colors group">
-                                <div class="text-xs font-mono font-bold text-brand-950 dark:text-white uppercase mb-2 group-hover:text-brand-600 dark:group-hover:text-brand-300 transition-colors">Project_Codename_Alpha <i class="fa-solid fa-arrow-up-right-from-square text-[9px] ml-1"></i></div>
-                                <div class="text-xs text-brand-700 dark:text-brand-300 font-medium">Developing a real-time semantic mapping interface fusing LiDAR point clouds with onboard LLM inference.</div>
-                            </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Telemetry & Metrics Panel -->
-                <div class="lg:col-span-5 bg-brand-100 dark:bg-brand-900 p-8 md:p-12 flex flex-col justify-between">
-                    <h3 class="font-mono text-sm font-bold tracking-widest uppercase text-brand-950 dark:text-white mb-8 border-b tech-border pb-4 flex items-center justify-between">
-                        <span><i class="fa-solid fa-satellite-dish mr-3 text-brand-500"></i> Live Telemetry</span>
-                        <span class="text-[9px] text-brand-500 dark:text-brand-400">EXTERNAL_SYNC</span>
-                    </h3>
+                <!-- Live Metrics -->
+                <div class="bg-white dark:bg-slate-950 p-8 md:p-12 flex flex-col h-full">
+                    <h3 class="heading-tech text-xl font-bold text-slate-900 dark:text-slate-100 mb-8 border-b border-slate-100 dark:border-slate-900 pb-4 uppercase tracking-wide">Live Telemetry</h3>
+                    
+                    <div class="space-y-8 flex-grow flex flex-col justify-center">
+                        
+                        <!-- GitHub Activity -->
+                        <div class="w-full">
+                            <div class="flex justify-between items-center mb-4">
+                                <h4 class="mono text-[10px] text-slate-400 font-bold uppercase tracking-widest">GitHub Commits</h4>
+                                <a href="https://github.com/anirudhjbabu1" target="_blank" class="text-[10px] mono text-slate-900 dark:text-slate-100 hover:underline">View Repository <i class="fa-solid fa-arrow-right ml-1"></i></a>
+                            </div>
+                            <div class="w-full overflow-x-auto border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 p-4 grayscale hover:grayscale-0 transition-all duration-500">
+                                <a href="https://github.com/anirudhjbabu1" target="_blank">
+                                    <img src="https://ghchart.rshah.org/64748b/anirudhjbabu1" alt="GitHub Contributions" class="w-full min-w-[500px] opacity-80 hover:opacity-100 transition-opacity" />
+                                </a>
+                            </div>
+                        </div>
 
-                    <!-- GitHub Stats Mockup -->
-                    <a href="https://github.com/anirudhjbabu1" target="_blank" class="block mb-8 group">
-                        <div class="flex justify-between items-end mb-4">
-                            <div class="font-mono text-xs font-bold uppercase tracking-widest text-brand-950 dark:text-white group-hover:opacity-70 transition-opacity"><i class="fa-brands fa-github mr-2 text-lg"></i> GitHub Repository Activity</div>
-                            <i class="fa-solid fa-arrow-right text-xs text-brand-950 dark:text-white group-hover:translate-x-1 transition-transform"></i>
-                        </div>
-                        <div class="tech-border border p-4 bg-brand-50 dark:bg-brand-950">
-                            <!-- Simulated commit graph -->
-                            <div class="grid grid-cols-12 gap-1 opacity-80">
-                                <!-- Dynamically generating grid cells for aesthetic -->
-                                <script>
-                                    for(let i=0; i<84; i++) {
-                                        let intensity = Math.random();
-                                        let bgClass = "bg-brand-200 dark:bg-brand-800";
-                                        if(intensity > 0.8) bgClass = "bg-brand-950 dark:bg-white";
-                                        else if(intensity > 0.5) bgClass = "bg-brand-600 dark:bg-brand-400";
-                                        else if(intensity > 0.3) bgClass = "bg-brand-400 dark:bg-brand-600";
-                                        document.write(`<div class="w-full pt-[100%] rounded-sm ${bgClass}"></div>`);
-                                    }
-                                </script>
+                        <!-- LeetCode Activity -->
+                        <div class="w-full">
+                            <div class="flex justify-between items-center mb-4">
+                                <h4 class="mono text-[10px] text-slate-400 font-bold uppercase tracking-widest">LeetCode Operations</h4>
+                                <a href="https://leetcode.com/anirudhjbabu1" target="_blank" class="text-[10px] mono text-slate-900 dark:text-slate-100 hover:underline">View Profile <i class="fa-solid fa-arrow-right ml-1"></i></a>
                             </div>
-                            <div class="flex justify-between mt-4 font-mono text-[9px] text-brand-500 dark:text-brand-400 uppercase tracking-widest">
-                                <span>Total Commits: ~850</span>
-                                <span>anirudhjbabu1</span>
+                            <div class="w-full overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 p-4 flex justify-center grayscale hover:grayscale-0 transition-all duration-500">
+                                <a href="https://leetcode.com/anirudhjbabu1" target="_blank" class="w-full max-w-[500px]">
+                                    <img src="https://leetcard.jacoblin.cool/anirudhjbabu1?ext=activity" alt="LeetCode Stats" class="w-full dark:hidden opacity-80 hover:opacity-100 transition-opacity" />
+                                    <img src="https://leetcard.jacoblin.cool/anirudhjbabu1?theme=dark&ext=activity" alt="LeetCode Stats" class="w-full hidden dark:block opacity-80 hover:opacity-100 transition-opacity" />
+                                </a>
                             </div>
                         </div>
-                    </a>
-
-                    <!-- LeetCode Stats Mockup -->
-                    <a href="#" target="_blank" class="block group"> <!-- Add specific leetcode URL if available -->
-                        <div class="flex justify-between items-end mb-4">
-                            <div class="font-mono text-xs font-bold uppercase tracking-widest text-brand-950 dark:text-white group-hover:opacity-70 transition-opacity"><i class="fa-solid fa-code mr-2 text-lg"></i> Algorithmic Problem Solving</div>
-                            <i class="fa-solid fa-arrow-right text-xs text-brand-950 dark:text-white group-hover:translate-x-1 transition-transform"></i>
-                        </div>
-                        <div class="tech-border border p-4 bg-brand-50 dark:bg-brand-950 flex flex-col md:flex-row gap-6 items-center">
-                            <!-- Donut Chart placeholder -->
-                            <div class="relative w-20 h-20 shrink-0">
-                                <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
-                                    <circle cx="18" cy="18" r="16" fill="none" class="stroke-brand-200 dark:stroke-brand-800" stroke-width="2"></circle>
-                                    <!-- Hard (Red/Dark) -->
-                                    <circle cx="18" cy="18" r="16" fill="none" class="stroke-brand-950 dark:stroke-white" stroke-width="2" stroke-dasharray="10 100" stroke-dashoffset="0"></circle>
-                                    <!-- Med (Grey) -->
-                                    <circle cx="18" cy="18" r="16" fill="none" class="stroke-brand-600 dark:stroke-brand-400" stroke-width="2" stroke-dasharray="40 100" stroke-dashoffset="-10"></circle>
-                                    <!-- Easy (Light Grey) -->
-                                    <circle cx="18" cy="18" r="16" fill="none" class="stroke-brand-400 dark:stroke-brand-600" stroke-width="2" stroke-dasharray="30 100" stroke-dashoffset="-50"></circle>
-                                </svg>
-                                <div class="absolute inset-0 flex flex-col items-center justify-center font-mono">
-                                    <span class="text-xs font-bold text-brand-950 dark:text-white">350+</span>
-                                </div>
-                            </div>
-                            
-                            <div class="w-full font-mono text-xs space-y-3 uppercase font-bold tracking-wider">
-                                <div class="flex justify-between items-center text-brand-950 dark:text-white">
-                                    <span><span class="inline-block w-2 h-2 bg-brand-400 dark:bg-brand-600 mr-2"></span>Easy</span>
-                                    <span>150</span>
-                                </div>
-                                <div class="flex justify-between items-center text-brand-950 dark:text-white">
-                                    <span><span class="inline-block w-2 h-2 bg-brand-600 dark:bg-brand-400 mr-2"></span>Medium</span>
-                                    <span>175</span>
-                                </div>
-                                <div class="flex justify-between items-center text-brand-950 dark:text-white">
-                                    <span><span class="inline-block w-2 h-2 bg-brand-950 dark:bg-white mr-2"></span>Hard</span>
-                                    <span>25</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-
+                        
+                    </div>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <footer id="contact" class="pt-32 pb-16 tech-border border-t relative z-10 bg-brand-100 dark:bg-brand-900">
-        <div class="max-w-[1400px] mx-auto px-6 md:px-12 flex flex-col items-center">
-            <span class="font-mono text-[10px] uppercase tracking-widest text-brand-500 dark:text-brand-400 font-bold block mb-6">[06] // COMMUNICATIONS TERMINAL</span>
-            <h2 class="font-sans text-5xl md:text-7xl font-bold text-brand-950 dark:text-white tracking-tighter uppercase mb-10 text-center">
-                Initiate Sync.
-            </h2>
-            <p class="text-brand-700 dark:text-brand-300 text-base font-medium max-w-xl text-center mb-16">
-                Available for high-level discussions regarding Robotic automation stacks, Edge cognitive AI systems, or visual navigation consulting architectures.
+    <footer id="contact" class="py-24 border-t border-slate-200 dark:border-slate-800 px-6 relative z-10 bg-white dark:bg-slate-950">
+        <div class="max-w-4xl mx-auto text-center">
+            <span class="mono text-xs uppercase tracking-widest text-slate-500 font-bold block mb-4"> // Transmission //</span>
+            <h2 class="heading-tech text-4xl md:text-5xl font-bold mb-6 text-slate-900 dark:text-slate-100 tracking-tight uppercase">Initiate Contact</h2>
+            <p class="text-slate-500 dark:text-slate-400 mb-10 max-w-md mx-auto font-light text-sm md:text-base">
+                Available for inquiries regarding robotics automation stacks, edge cognitive AI systems, or visual navigation consulting.
             </p>
             
-            <a href="mailto:anirudhjbabu@gmail.com" class="font-mono text-xl md:text-3xl font-bold text-brand-950 dark:text-white tracking-widest hover:opacity-70 transition-opacity border-b-2 tech-border pb-2 mb-8 uppercase">
-                ANIRUDHJBABU@GMAIL.COM
+            <a href="mailto:anirudhjbabu@gmail.com" class="heading-tech text-xl md:text-3xl font-bold text-slate-900 dark:text-slate-100 hover:text-slate-500 dark:hover:text-slate-400 transition-all border-b-2 border-slate-900 dark:border-slate-100 pb-1 uppercase tracking-wider">
+                anirudhjbabu@gmail.com
             </a>
-
-            <div class="flex space-x-6 mb-32 font-mono text-xs uppercase font-bold tracking-widest text-brand-600 dark:text-brand-400">
-                <a href="https://anirudhjbabu1.github.io/" target="_blank" class="hover:text-brand-950 dark:hover:text-white transition-colors border tech-border px-4 py-2 hover:bg-brand-200 dark:hover:bg-brand-800">
-                    <i class="fa-solid fa-link mr-2"></i> System Index
-                </a>
-            </div>
             
-            <div class="w-full flex flex-col md:flex-row justify-between items-center tech-border border-t pt-8">
-                <div class="font-mono text-[10px] text-brand-600 dark:text-brand-400 font-bold uppercase tracking-widest mb-6 md:mb-0">
-                    SYS_BUILD 2026 // ALL RIGHTS RESERVED
+            <div class="mt-24 pt-10 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="mono text-[10px] text-slate-400 dark:text-slate-500 uppercase tracking-widest">
+                    &copy; 2026 Anirudh J Babu / Software Engineer
                 </div>
-                <div class="flex space-x-8 text-brand-600 dark:text-brand-400">
-                    <a href="https://github.com/anirudhjbabu1" target="_blank" class="hover:text-brand-950 dark:hover:text-white transition-colors text-xl" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/anirudh-j-babu-117ab6202" target="_blank" class="hover:text-brand-950 dark:hover:text-white transition-colors text-xl" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <div class="flex space-x-6 text-slate-400 dark:text-slate-500">
+                    <a href="https://github.com/anirudhjbabu1" target="_blank" class="hover:text-slate-900 dark:hover:text-slate-100 transition-colors border border-slate-200 dark:border-slate-800 p-3 hover:bg-slate-100 dark:hover:bg-slate-900"><i class="fa-brands fa-github text-lg"></i></a>
+                    <a href="https://www.linkedin.com/in/anirudh-j-babu-117ab6202" target="_blank" class="hover:text-slate-900 dark:hover:text-slate-100 transition-colors border border-slate-200 dark:border-slate-800 p-3 hover:bg-slate-100 dark:hover:bg-slate-900"><i class="fa-brands fa-linkedin-in text-lg"></i></a>
+                    <a href="https://anirudhjbabu1.github.io/" target="_blank" class="hover:text-slate-900 dark:hover:text-slate-100 transition-colors border border-slate-200 dark:border-slate-800 p-3 hover:bg-slate-100 dark:hover:bg-slate-900"><i class="fa-solid fa-globe text-lg"></i></a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <div id="modal-overlay" class="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-brand-50/90 dark:bg-brand-950/90 backdrop-blur-md">
-        <!-- Sharp rectangle, high contrast borders -->
-        <div id="modal-content" class="bg-brand-50 dark:bg-brand-950 tech-border border w-full max-w-5xl max-h-[90vh] overflow-hidden flex flex-col md:flex-row relative shadow-2xl">
-            
-            <!-- Close Button -->
-            <button onclick="closeModal()" class="absolute top-0 right-0 z-10 w-12 h-12 flex items-center justify-center bg-brand-100 dark:bg-brand-900 tech-border border-l border-b text-brand-600 dark:text-brand-400 hover:text-brand-950 dark:hover:text-white hover:bg-brand-200 dark:hover:bg-brand-800 transition-colors">
-                <i class="fa-solid fa-xmark text-lg"></i>
-            </button>
-            
-            <!-- Icon/Visual Section -->
-            <div class="w-full md:w-2/5 h-48 md:h-auto bg-brand-100 dark:bg-brand-900 tech-border md:border-r relative flex items-center justify-center overflow-hidden">
-                <div class="absolute inset-0 bg-grid opacity-50"></div>
-                <!-- Boxed icon -->
-                <div class="relative z-10 w-32 h-32 tech-border border bg-brand-50 dark:bg-brand-950 flex items-center justify-center text-brand-950 dark:text-white text-5xl shadow-xl">
-                    <i id="modal-icon" class="fa-solid fa-microchip"></i>
-                </div>
-            </div>
-
-            <!-- Details Section -->
-            <div class="w-full md:w-3/5 p-8 md:p-12 overflow-y-auto">
-                <div id="modal-tag" class="font-mono text-[10px] font-bold text-brand-500 dark:text-brand-400 tracking-widest uppercase mb-4">CATEGORY // TAG</div>
-                <h3 id="modal-title" class="font-sans text-3xl font-bold text-brand-950 dark:text-white mb-6 uppercase tracking-tighter">Project Title</h3>
-                
-                <p id="modal-desc" class="text-brand-700 dark:text-brand-300 text-sm font-medium leading-relaxed mb-10 pb-10 tech-border border-b">
-                    Description...
-                </p>
-                
-                <div class="space-y-10">
-                    <div>
-                        <h4 class="font-mono text-[10px] uppercase tracking-widest font-bold text-brand-950 dark:text-white mb-6 flex items-center gap-3">
-                            <span class="w-3 h-3 bg-brand-950 dark:bg-white block"></span> System Specs
-                        </h4>
-                        <ul id="modal-features" class="space-y-4">
-                            <!-- Injected Features -->
-                        </ul>
-                    </div>
-                    
-                    <div class="pt-6">
-                        <h4 class="font-mono text-[10px] uppercase tracking-widest font-bold text-brand-950 dark:text-white mb-6 flex items-center gap-3">
-                            <span class="w-3 h-3 border-2 border-brand-950 dark:border-white block"></span> Tech Stack Architecture
-                        </h4>
-                        <div id="modal-stack" class="flex flex-wrap gap-2">
-                            <!-- Injected Stack -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Theme Management Logic
-        const systemState = {
-            isDarkMode: true, // Default to dark for that classified look
-            init() {
-                const savedTheme = localStorage.getItem('theme');
-                if (savedTheme === 'light') {
-                    this.setTheme(false);
-                } else {
-                    this.setTheme(true); // Default dark
-                }
-
-                document.getElementById('theme-toggle').addEventListener('click', () => {
-                    this.setTheme(!this.isDarkMode);
-                });
-            },
-            setTheme(dark) {
-                this.isDarkMode = dark;
-                if (dark) {
-                    document.documentElement.classList.add('dark');
-                    localStorage.setItem('theme', 'dark');
-                    document.getElementById('theme-toggle-light').classList.remove('hidden');
-                    document.getElementById('theme-toggle-dark').classList.add('hidden');
-                } else {
-                    document.documentElement.classList.remove('dark');
-                    localStorage.setItem('theme', 'light');
-                    document.getElementById('theme-toggle-light').classList.add('hidden');
-                    document.getElementById('theme-toggle-dark').classList.remove('hidden');
-                }
-            }
-        };
-
-        // Project Data Configuration
-        const projects = [
-            { 
-                title: "Model-Context-Protocol Robot Agent", 
-                desc: "Implementation of Anthropic's Model Context Protocol (MCP) for remote tool use and telemetry reporting in distributed robot systems.", 
-                tag: "Remote Tooling", 
-                category: "robotics",
-                icon: "fa-network-wired",
-                features: [
-                    "Engineered structured schema-driven tool definitions allowing LLMs to directly read vehicle state.",
-                    "Created robust security isolation protocol for shell executive action servers.",
-                    "Implemented telemetry caching layer to minimize vehicle communication latency over LTE grids."
-                ],
-                stack: ["MCP Protocol", "ROS2 Nodes", "Python Asyncio", "LTE"]
-            },
-            { 
-                title: "ADAS Autonomous Pilot", 
-                desc: "Integrated lane keeping, visual hazard tracking, and dynamic trajectory planner matching advanced driver-assistance architectures.", 
-                tag: "ADAS Vision", 
-                category: "vision",
-                icon: "fa-car",
-                features: [
-                    "Fitted robust vision tracking networks identifying road borders, obstacles, and markers.",
-                    "Built adaptive speed control layer responding to dynamic obstacle kinematics.",
-                    "Optimized network structures using TensorRT for 60 FPS performance."
-                ],
-                stack: ["Nvidia TensorRT", "OpenCV CUDA", "C++ Engine", "ROS2"]
-            },
-            { 
-                title: "Instance-Segmentation Engine", 
-                desc: "Pixel-level classification layer deployed for real-time item sorting and dynamic object boundary detection.", 
-                tag: "Segmentation", 
-                category: "vision",
-                icon: "fa-puzzle-piece",
-                features: [
-                    "Implemented localized mask layers isolating tightly packed dynamic entities.",
-                    "Achieved 20ms processing execution speed per frame on constrained embedded GPUs.",
-                    "Created automatic synthesis pipeline for complex environmental edge rendering."
-                ],
-                stack: ["PyTorch", "Segment Anything", "CUDA", "Nvidia Orin"]
-            },
-            { 
-                title: "VLA Autonomous Navigation Core", 
-                desc: "Vision-Language-Action navigation model coordinating real-time flight decisions directly from visual parameters and semantic inputs.", 
-                tag: "VLA Systems", 
-                category: "genai",
-                icon: "fa-brain",
-                features: [
-                    "Deployed unified visual and language representations to generate direct robotic motion decisions.",
-                    "Constructed dynamic action execution vectors using quantized models.",
-                    "Fitted fallback control stacks managing erratic neural instructions."
-                ],
-                stack: ["VLA Models", "Quantization", "Jetson Orin", "MAVSDK"]
-            },
-            { 
-                title: "VLA-MAVSDK Integration Node", 
-                desc: "Closed-loop visual planning flight controller connecting VLA outputs directly to PX4 avionics arrays via MAVSDK APIs.", 
-                tag: "Aerospace Control", 
-                category: "robotics",
-                icon: "fa-paper-plane",
-                features: [
-                    "Designed secure translation layer converting visual models outputs into low-level MAVSDK guide points.",
-                    "Optimized payload flight loops ensuring constant safety check overrides.",
-                    "Tested visual navigation inside high-fidelity simulated SITL setups."
-                ],
-                stack: ["MAVSDK API", "PX4 SITL", "ROS2", "Python Control"]
-            },
-            { 
-                title: "Algorithmic Trading Engines", 
-                desc: "Multi-agent quantitative trading system deploying signal tracking, real-time analytics, and automated action execution.", 
-                tag: "Quant Finance", 
-                category: "quant",
-                icon: "fa-chart-line",
-                features: [
-                    "Formulated latency-sensitive signal generation algorithms evaluating stock anomalies.",
-                    "Integrated automated risk limits managing localized position exposures.",
-                    "Built simulated backtesting engines reviewing structural price histories."
-                ],
-                stack: ["Quant Signals", "Pandas", "Redis", "Backtesting API"]
-            },
-            { 
-                title: "Custom Transformers Engine", 
-                desc: "Compact, hardware-optimized attention execution models configured for low-power edge computer targets.", 
-                tag: "Edge NLP", 
-                category: "genai",
-                icon: "fa-microchip",
-                features: [
-                    "Wrote optimized matrix multiplication loops using custom C++ libraries.",
-                    "Implemented flexible tokenization layers managing continuous sensor signals.",
-                    "Tuned weight allocation profiles reducing operational RAM requirements."
-                ],
-                stack: ["Transformers C++", "ONNX", "Custom Kernels", "AGX Orin"]
-            },
-            { 
-                title: "RTOS Flight Scheduler", 
-                desc: "High-frequency real-time operating system task planner coordinating safety-critical drone tasks.", 
-                tag: "Embedded RTOS", 
-                category: "robotics",
-                icon: "fa-tachometer-alt",
-                features: [
-                    "Engineered preemptive scheduling systems dividing processor time among flight control loops.",
-                    "Managed direct register allocations minimizing actuator latency parameters.",
-                    "Wrote specialized fail-safe drivers securing power distribution states."
-                ],
-                stack: ["FreeRTOS", "STM32", "C Programming", "Logic Analyzers"]
-            },
-            { 
-                title: "Smart Camera Summarizer", 
-                desc: "Onboard visual parsing camera running continuous local processing to generate textual reports of scene changes.", 
-                tag: "Edge Vision AI", 
-                category: "vision",
-                icon: "fa-camera-retro",
-                features: [
-                    "Fitted localized visual language models parsing environmental change inputs.",
-                    "Created delta frame tracking loops ensuring models run only when needed.",
-                    "Configured dynamic compression modules preparing text data for IoT transmission."
-                ],
-                stack: ["Vision LLM", "Embedded C++", "GStreamer", "Raspberry Pi"]
-            }
-        ];
-
-        let selectedCategory = 'all';
-
-        function buildProjectsGrid() {
-            const grid = document.getElementById('projects-grid');
-            grid.innerHTML = '';
-            let visibleCount = 0;
-            
-            projects.forEach((p, idx) => {
-                if (selectedCategory === 'all' || p.category === selectedCategory) {
-                    visibleCount++;
-                    const card = document.createElement('div');
-                    // Sharp cards, zero rounding, tech-borders, hover inverse effects
-                    card.className = "bg-brand-50 dark:bg-brand-950 p-8 group cursor-pointer hover:bg-brand-950 hover:text-white dark:hover:bg-white dark:hover:text-brand-950 transition-colors duration-300 relative flex flex-col justify-between";
-                    card.onclick = () => openModal(idx);
-
-                    card.innerHTML = `
-                        <div>
-                            <div class="flex justify-between items-start mb-8">
-                                <div class="text-brand-400 dark:text-brand-600 group-hover:text-white dark:group-hover:text-brand-950 transition-colors text-2xl">
-                                    <i class="fa-solid ${p.icon}"></i>
-                                </div>
-                                <span class="font-mono text-[9px] font-bold tracking-widest uppercase border tech-border px-3 py-1 group-hover:border-white dark:group-hover:border-brand-950 transition-colors">${p.category}</span>
-                            </div>
-                            <h3 class="font-sans text-xl font-bold mb-3 text-brand-950 dark:text-white group-hover:text-white dark:group-hover:text-brand-950 transition-colors leading-tight uppercase tracking-tighter">${p.title}</h3>
-                            <p class="text-brand-600 dark:text-brand-400 font-medium text-sm leading-relaxed line-clamp-3 mb-8 group-hover:text-brand-300 dark:group-hover:text-brand-700 transition-colors">${p.desc}</p>
-                        </div>
-                        <div>
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                ${p.stack.slice(0, 3).map(s => `<span class="font-mono text-[9px] font-bold uppercase tracking-widest text-brand-500 dark:text-brand-500 group-hover:text-brand-400 dark:group-hover:text-brand-600 transition-colors">${s}</span>`).join('<span class="text-brand-300 dark:text-brand-700 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">/</span>')}
-                            </div>
-                            <div class="flex justify-between items-center pt-4 tech-border border-t group-hover:border-brand-800 dark:group-hover:border-brand-200 transition-colors">
-                                <span class="font-mono text-[9px] font-bold tracking-widest uppercase text-brand-500 dark:text-brand-400 group-hover:text-white dark:group-hover:text-brand-950 transition-colors">View Record</span>
-                                <i class="fa-solid fa-arrow-right text-xs text-brand-400 group-hover:text-white dark:group-hover:text-brand-950 group-hover:translate-x-1 transition-all"></i>
-                            </div>
-                        </div>
-                    `;
-                    grid.appendChild(card);
-                }
-            });
-            
-            const emptyState = document.getElementById('projects-empty-state');
-            if (visibleCount === 0) {
-                emptyState.classList.remove('hidden');
-                grid.classList.add('hidden');
-            } else {
-                emptyState.classList.add('hidden');
-                grid.classList.remove('hidden');
-            }
-        }
-
-        function filterProjects(cat) {
-            selectedCategory = cat;
-            
-            // Update UI filter buttons (Stark aesthetic)
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.className = "filter-btn px-6 py-3 border border-brand-300 text-brand-600 hover:bg-brand-200 dark:border-brand-700 dark:text-brand-400 dark:hover:bg-brand-800 transition-colors";
-            });
-            
-            const activeBtn = document.getElementById(`filter-btn-${cat}`);
-            if (activeBtn) {
-                activeBtn.className = "filter-btn px-6 py-3 border border-brand-950 bg-brand-950 text-white dark:border-white dark:bg-white dark:text-brand-950 transition-colors";
-            }
-            
-            buildProjectsGrid();
-        }
-
-        function openModal(index) {
-            const p = projects[index];
-            document.getElementById('modal-title').innerText = p.title;
-            document.getElementById('modal-desc').innerText = p.desc;
-            document.getElementById('modal-tag').innerText = `[ ${p.category.toUpperCase()} ] // ${p.tag}`;
-            document.getElementById('modal-icon').className = `fa-solid ${p.icon}`;
-            
-            const featuresList = document.getElementById('modal-features');
-            featuresList.innerHTML = p.features.map(f => `
-                <li class="flex items-start gap-3">
-                    <span class="text-brand-400 dark:text-brand-600 font-mono text-sm mt-0.5 font-bold">></span>
-                    <span class="text-brand-700 dark:text-brand-300 text-sm font-medium leading-relaxed">${f}</span>
-                </li>
-            `).join('');
-            
-            const stackContainer = document.getElementById('modal-stack');
-            stackContainer.innerHTML = p.stack.map(s => `
-                <span class="px-4 py-2 tech-border border bg-brand-100 dark:bg-brand-900 text-[10px] font-mono font-bold text-brand-950 dark:text-white uppercase tracking-widest">${s}</span>
-            `).join('');
-            
-            document.getElementById('modal-overlay').classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
-        }
-
-        function closeModal() {
-            document.getElementById('modal-overlay').classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        document.getElementById('modal-overlay').addEventListener('click', (e) => {
-            if (e.target === document.getElementById('modal-overlay')) closeModal();
-        });
-
-        window.addEventListener('keydown', (e) => { 
-            if(e.key === 'Escape') closeModal(); 
-        });
-
-        // Initialize Data
-        window.onload = () => {
-            systemState.init();
-            buildProjectsGrid();
-        };
-    </script>
-</body>
-</html>
+    <!-- COMPREHENSIVE MODAL SYSTEM -->
+<!-- ... existing code ... -->
