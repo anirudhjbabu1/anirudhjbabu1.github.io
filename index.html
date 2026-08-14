@@ -1,16 +1,142 @@
-<!-- ... existing code ... -->
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anirudh J Babu | Robotics Software & Cognitive AI Engineer</title>
+    
+    <!-- Tailwind CSS configuration -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Space Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        slate: {
+                            850: '#151e2e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=300;400;500;600;700&family=Space+Grotesk:wght=400;500;600;700&family=JetBrains+Mono:wght=400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    
+    <style>
+        :root {
+            --border-tech: rgba(226, 232, 240, 1);
+        }
+        .dark {
+            --border-tech: rgba(30, 41, 59, 1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+            margin: 0;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .dark body {
+            background-color: #020617; /* Very dark slate, almost black */
+            color: #94a3b8;
+        }
+
+        .heading-tech {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .mono { 
+            font-family: 'JetBrains Mono', monospace; 
+        }
+
+        /* Sharp structural borders instead of rounded corners for tactical feel */
+        .tech-panel {
+            border: 1px solid var(--border-tech);
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 0; /* Sharp corners */
+        }
+        .dark .tech-panel {
+            background-color: rgba(15, 23, 42, 0.6);
+        }
+
+        #modal-overlay {
+            transition: opacity 0.3s ease, visibility 0.3s;
+            opacity: 0;
+            visibility: hidden;
+        }
+        #modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        #modal-content {
+            transform: translateY(10px);
+            transition: transform 0.3s ease;
+            border-radius: 0; /* Sharp corners for modal */
+        }
+        #modal-overlay.active #modal-content {
+            transform: translateY(0);
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; border-left: 1px solid var(--border-tech); }
+        ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 0; }
+        .dark ::-webkit-scrollbar-thumb { background: #475569; }
+        ::-webkit-scrollbar-thumb:hover { background: #64748b; }
+    </style>
+</head>
+<body class="selection:bg-slate-900 selection:text-white dark:selection:bg-slate-100 dark:selection:text-slate-900 transition-colors duration-300">
+
+    <nav id="main-nav" class="fixed top-0 w-full z-50 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md transition-transform duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <a href="#" class="heading-tech text-xl font-bold tracking-tighter text-slate-900 dark:text-slate-100 uppercase">
+                    A.J.B <span class="text-slate-400 dark:text-slate-600 font-light">// Sys</span>
+                </a>
+                <span class="hidden sm:inline-block w-px h-4 bg-slate-300 dark:bg-slate-700"></span>
+                <div class="hidden sm:flex mono text-[10px] tracking-widest font-bold items-center gap-2 text-slate-500 uppercase">
+                    Status: <span class="text-slate-900 dark:text-slate-100 flex items-center gap-2"><div class="w-1.5 h-1.5 bg-slate-900 dark:bg-slate-100 animate-pulse"></div> Online</span>
+                </div>
+            </div>
+            
+            <div class="flex items-center space-x-6 mono text-[10px] uppercase tracking-widest font-bold">
+                <a href="#about" class="text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 transition-colors hidden md:block">01. Profile</a>
+                <a href="#career" class="text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 transition-colors hidden md:block">02. Career</a>
+                <a href="#projects-section" class="text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 transition-colors hidden md:block">03. Archive</a>
+                <a href="#skills" class="text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 transition-colors hidden md:block">04. Systems</a>
+                
+                <!-- Tactical Theme Toggle -->
+                <button id="theme-toggle" class="w-8 h-8 flex items-center justify-center border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" aria-label="Toggle visual theme">
+                    <i id="theme-icon" class="fa-solid fa-moon text-slate-600 dark:text-slate-400 text-xs"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
     <header class="relative min-h-screen flex items-center justify-center px-6 pt-24 pb-12 overflow-hidden">
         <!-- Grid overlay for stark technical feel -->
-        <div class="absolute inset-0 bg-[linear-gradient(rgba(226,232,240,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(226,232,240,0.1)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(30,41,59,0.2)_1px,transparent_1px),linear-gradient(90deg,rgba(30,41,59,0.2)_1px,transparent_1px)] bg-[size:40px_40px] z-0"></div>
+        <div class="absolute inset-0 bg-[linear-gradient(rgba(226,232,240,0.4)_1px,transparent_1px),linear-gradient(90deg,rgba(226,232,240,0.4)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(30,41,59,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(30,41,59,0.5)_1px,transparent_1px)] bg-[size:40px_40px] z-0"></div>
         
         <div class="max-w-5xl w-full text-center relative z-10 mt-10">
-            <div class="inline-flex items-center gap-3 mono text-slate-500 text-[10px] mb-8 tracking-[0.2em] uppercase font-bold py-2 px-4 border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm">
+            <div class="inline-flex items-center gap-3 mono text-slate-500 text-[10px] mb-8 tracking-[0.2em] uppercase font-bold py-2 px-4 border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm shadow-[0_0_15px_rgba(0,0,0,0.05)] dark:shadow-[0_0_15px_rgba(255,255,255,0.02)]">
                 <div class="w-1.5 h-1.5 bg-slate-900 dark:bg-slate-100 animate-pulse"></div>
                 Personnel File: Active
             </div>
             
             <h1 class="heading-tech text-5xl sm:text-7xl md:text-8xl font-bold tracking-tight mb-8 text-slate-900 dark:text-slate-100 leading-[1] uppercase">
-                Anirudh <span class="text-transparent border-text stroke-slate-900 dark:stroke-slate-100" style="-webkit-text-stroke: 1px currentColor;">J Babu</span>
+                Anirudh <span class="text-transparent border-text stroke-slate-900 dark:stroke-slate-100" style="-webkit-text-stroke: 2px currentColor;">J Babu</span>
             </h1>
             
             <h2 class="heading-tech text-xl sm:text-2xl md:text-3xl font-medium tracking-tight mb-8 text-slate-700 dark:text-slate-300 leading-snug max-w-4xl mx-auto">
@@ -53,7 +179,47 @@
                     <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6 font-light">
                         My engineering focus centers on running large vision-language models and high-frequency spatial localization loops simultaneously on size, weight, and power-constrained (SWaP) edge systems—ranging from ground robotic agents to automated aerial vehicles.
                     </p>
-<!-- ... existing code ... -->
+                    <div class="border-l-2 border-slate-900 dark:border-slate-100 pl-4 py-1">
+                        <div class="mono text-slate-900 dark:text-slate-100 font-bold text-[10px] uppercase tracking-widest">
+                            Directive: Unification of deterministic motion stacks with adaptive reasoners.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-px bg-slate-200 dark:bg-slate-800 border border-slate-200 dark:border-slate-800">
+                    <div class="p-8 bg-white dark:bg-slate-950 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors">
+                        <div class="text-slate-900 dark:text-slate-100 mb-4 border border-slate-200 dark:border-slate-800 w-10 h-10 flex items-center justify-center">
+                            <i class="fa-solid fa-microchip text-sm"></i>
+                        </div>
+                        <h4 class="heading-tech font-bold text-slate-900 dark:text-slate-100 mb-2 uppercase tracking-wide">Heterogeneous Edge</h4>
+                        <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed mono">Developing cross-platform deployment pipelines targeted for NVIDIA Jetson and Qualcomm compute boards.</p>
+                    </div>
+                    <div class="p-8 bg-white dark:bg-slate-950 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors">
+                        <div class="text-slate-900 dark:text-slate-100 mb-4 border border-slate-200 dark:border-slate-800 w-10 h-10 flex items-center justify-center">
+                            <i class="fa-solid fa-brain text-sm"></i>
+                        </div>
+                        <h4 class="heading-tech font-bold text-slate-900 dark:text-slate-100 mb-2 uppercase tracking-wide">Cognitive Autonomy</h4>
+                        <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed mono">Implementing Agentic AI workflows and onboard LLM action-planners to solve unstructured objectives.</p>
+                    </div>
+                    <div class="p-8 bg-white dark:bg-slate-950 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors">
+                        <div class="text-slate-900 dark:text-slate-100 mb-4 border border-slate-200 dark:border-slate-800 w-10 h-10 flex items-center justify-center">
+                            <i class="fa-solid fa-location-crosshairs text-sm"></i>
+                        </div>
+                        <h4 class="heading-tech font-bold text-slate-900 dark:text-slate-100 mb-2 uppercase tracking-wide">State Estimation</h4>
+                        <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed mono">Fusing odometry, VIO, GNSS, and LiDAR data to maintain high-accuracy spatial awareness.</p>
+                    </div>
+                    <div class="p-8 bg-white dark:bg-slate-950 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors">
+                        <div class="text-slate-900 dark:text-slate-100 mb-4 border border-slate-200 dark:border-slate-800 w-10 h-10 flex items-center justify-center">
+                            <i class="fa-solid fa-cube text-sm"></i>
+                        </div>
+                        <h4 class="heading-tech font-bold text-slate-900 dark:text-slate-100 mb-2 uppercase tracking-wide">Simulation Environments</h4>
+                        <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed mono">Validating rigid-body kinetics and complex vehicle dynamics inside detailed Gazebo grids.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="career" class="py-24 border-t border-slate-200 dark:border-slate-800 relative z-10 bg-white/40 dark:bg-slate-950/10 backdrop-blur-sm">
         <div class="max-w-5xl mx-auto px-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
@@ -67,7 +233,57 @@
             </div>
 
             <div class="relative border-l border-slate-200 dark:border-slate-800 ml-4 md:ml-32 space-y-16">
-<!-- ... existing code ... -->
+                <!-- Timeline item 1 -->
+                <div class="relative pl-8 group">
+                    <div class="absolute -left-[5px] top-1.5 w-2 h-2 bg-slate-900 dark:bg-slate-100 group-hover:scale-150 transition-transform"></div>
+                    <div class="absolute left-[-115px] top-1 text-[10px] mono text-slate-400 font-bold uppercase tracking-widest hidden md:block text-right w-24">
+                        2024 — Pres
+                    </div>
+                    <div class="md:hidden text-[10px] mono text-slate-900 dark:text-slate-100 font-bold uppercase tracking-widest mb-2 border border-slate-200 dark:border-slate-800 inline-block px-2 py-1">
+                        2024 — Present
+                    </div>
+                    <h3 class="heading-tech text-2xl font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wide">Software Engineer</h3>
+                    <h4 class="mono text-xs text-slate-500 font-bold mb-4 uppercase tracking-wider">Tsalla Aerospace</h4>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-2xl font-light">
+                        Pioneering cognitive onboard mission agents running dynamic visual planning systems on Qualcomm and Nvidia hardware. Architecting high-reliability ROS2 robotic controllers interacting directly with specialized Ubuntu environments.
+                    </p>
+                </div>
+
+                <!-- Timeline item 2 -->
+                <div class="relative pl-8 group">
+                    <div class="absolute -left-[5px] top-1.5 w-2 h-2 bg-slate-300 dark:bg-slate-700 group-hover:bg-slate-900 dark:group-hover:bg-slate-100 transition-colors"></div>
+                    <div class="absolute left-[-115px] top-1 text-[10px] mono text-slate-400 font-bold uppercase tracking-widest hidden md:block text-right w-24">
+                        2024 — 2024
+                    </div>
+                    <div class="md:hidden text-[10px] mono text-slate-500 font-bold uppercase tracking-widest mb-2 border border-slate-200 dark:border-slate-800 inline-block px-2 py-1">
+                        2024 — 2024
+                    </div>
+                    <h3 class="heading-tech text-2xl font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wide">AI-ML Intern</h3>
+                    <h4 class="mono text-xs text-slate-500 font-bold mb-4 uppercase tracking-wider">Tsalla Aerospace</h4>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-2xl font-light">
+                        Designed real-time vision algorithms (SLAM/VIO) for robust, GPS-denied autonomous ground scanning. Scaled physics-compliant robot fleet simulations inside Gazebo, running massive parameter test matrices.
+                    </p>
+                </div>
+
+                <!-- Timeline item 3 -->
+                <div class="relative pl-8 group">
+                    <div class="absolute -left-[5px] top-1.5 w-2 h-2 bg-slate-300 dark:bg-slate-700 group-hover:bg-slate-900 dark:group-hover:bg-slate-100 transition-colors"></div>
+                    <div class="absolute left-[-115px] top-1 text-[10px] mono text-slate-400 font-bold uppercase tracking-widest hidden md:block text-right w-24">
+                        2024 — 2025
+                    </div>
+                    <div class="md:hidden text-[10px] mono text-slate-500 font-bold uppercase tracking-widest mb-2 border border-slate-200 dark:border-slate-800 inline-block px-2 py-1">
+                        2024 — 2025
+                    </div>
+                    <h3 class="heading-tech text-2xl font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wide">Software Engineer (Contract)</h3>
+                    <h4 class="mono text-xs text-slate-500 font-bold mb-4 uppercase tracking-wider">Independent Consulting</h4>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-2xl font-light">
+                        Built embedded camera streaming integrations, low-latency sensor drivers, and hardware-in-the-loop validation setups on Nvidia Jetson Nano and Orin evaluation platforms utilizing ROS.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="projects-section" class="py-24 border-t border-slate-200 dark:border-slate-800 overflow-hidden relative z-10 bg-slate-50/50 dark:bg-slate-950/20 backdrop-blur-sm">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
@@ -81,7 +297,26 @@
             </div>
             
             <!-- Structural Category Selectors -->
-<!-- ... existing code ... -->
+            <div class="flex flex-wrap gap-0 mb-12 border border-slate-200 dark:border-slate-800 inline-flex">
+                <button id="filter-btn-all" onclick="filterProjects('all')" class="project-filter-btn px-6 py-3 text-[10px] mono uppercase tracking-widest font-bold bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 border-r border-slate-200 dark:border-slate-800 transition-colors">All</button>
+                <button id="filter-btn-robotics" onclick="filterProjects('robotics')" class="project-filter-btn px-6 py-3 text-[10px] mono uppercase tracking-widest font-bold text-slate-500 bg-white dark:bg-slate-950 hover:bg-slate-50 dark:hover:bg-slate-900 border-r border-slate-200 dark:border-slate-800 transition-colors">Robotics</button>
+                <button id="filter-btn-vision" onclick="filterProjects('vision')" class="project-filter-btn px-6 py-3 text-[10px] mono uppercase tracking-widest font-bold text-slate-500 bg-white dark:bg-slate-950 hover:bg-slate-50 dark:hover:bg-slate-900 border-r border-slate-200 dark:border-slate-800 transition-colors">Vision</button>
+                <button id="filter-btn-genai" onclick="filterProjects('genai')" class="project-filter-btn px-6 py-3 text-[10px] mono uppercase tracking-widest font-bold text-slate-500 bg-white dark:bg-slate-950 hover:bg-slate-50 dark:hover:bg-slate-900 border-r border-slate-200 dark:border-slate-800 transition-colors">Gen AI</button>
+                <button id="filter-btn-quant" onclick="filterProjects('quant')" class="project-filter-btn px-6 py-3 text-[10px] mono uppercase tracking-widest font-bold text-slate-500 bg-white dark:bg-slate-950 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors">Finance</button>
+            </div>
+
+            <!-- Zero-Blur Project Card Grid -->
+            <div id="projects-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-slate-200 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 transition-all duration-500">
+                <!-- Dynamically populated via JS -->
+            </div>
+            
+            <div id="projects-empty-state" class="hidden text-center py-20 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 mt-1">
+                <i class="fa-solid fa-ban text-slate-300 dark:text-slate-700 text-3xl mb-4"></i>
+                <p class="mono text-[10px] text-slate-400 uppercase tracking-widest">No records found for specified query.</p>
+            </div>
+        </div>
+    </section>
+
     <section id="skills" class="py-24 border-t border-slate-200 dark:border-slate-800 relative z-10 bg-white dark:bg-slate-950">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
@@ -95,8 +330,80 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-12 gap-px bg-slate-200 dark:bg-slate-800 border border-slate-200 dark:border-slate-800">
-<!-- ... existing code ... -->
+                <!-- Embedded Core Panel -->
+                <div class="md:col-span-8 p-10 bg-white dark:bg-slate-950 flex flex-col justify-between relative overflow-hidden group hover:bg-slate-50 dark:hover:bg-slate-900/80 transition-colors">
+                    <div class="absolute -right-10 -bottom-10 opacity-5">
+                        <i class="fa-solid fa-microchip text-[180px] text-slate-900 dark:text-slate-100"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <div class="mb-6 inline-block border border-slate-900 dark:border-slate-100 px-3 py-1 mono text-[10px] text-slate-900 dark:text-slate-100 font-bold uppercase tracking-widest">
+                            Embedded Systems & Compute
+                        </div>
+                        <h3 class="heading-tech text-2xl font-bold text-slate-900 dark:text-slate-100 mb-4 uppercase tracking-wide">Onboard Heterogeneous Compute</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm max-w-xl mb-8 leading-relaxed font-light">
+                            Experienced in configuring and deploying navigation stacks on NVIDIA Jetson AGX Orin / Nano and Qualcomm boards. Mastering high-speed serial bus integration, hardware-accelerated deep learning pipelines, and real-time sensor loops.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 relative z-10">
+                        <span class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">Jetson Orin/Nano</span>
+                        <span class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">Qualcomm Boards</span>
+                        <span class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">Ubuntu OS</span>
+                        <span class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">PX4 / Micro-ROS</span>
+                        <span class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">CUDA / Gstreamer</span>
+                    </div>
+                </div>
+
+                <!-- Middleware Panel -->
+                <div class="md:col-span-4 p-10 bg-white dark:bg-slate-950 flex flex-col justify-between group hover:bg-slate-50 dark:hover:bg-slate-900/80 transition-colors">
+                    <div>
+                        <div class="mb-6 inline-block border border-slate-200 dark:border-slate-700 px-3 py-1 mono text-[10px] text-slate-500 font-bold uppercase tracking-widest">
+                            Middleware
+                        </div>
+                        <h3 class="heading-tech text-xl font-bold text-slate-900 dark:text-slate-100 mb-4 uppercase tracking-wide">ROS Architecture</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed mb-8 font-light">
+                            Architecting distributed publish-subscribe networks utilizing ROS/ROS2 node topologies, custom DDS profiles, action servers, and real-time configurations.
+                        </p>
+                    </div>
                     <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">ROS2 Humble</span>
+                        <span class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">DDS Tuning</span>
+                        <span class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">rclcpp</span>
+                    </div>
+                </div>
+
+                <!-- Sensing Panel -->
+                <div class="md:col-span-4 p-10 bg-white dark:bg-slate-950 flex flex-col justify-between group hover:bg-slate-50 dark:hover:bg-slate-900/80 transition-colors">
+                    <div>
+                        <div class="mb-6 inline-block border border-slate-200 dark:border-slate-700 px-3 py-1 mono text-[10px] text-slate-500 font-bold uppercase tracking-widest">
+                            Sensing & Vision
+                        </div>
+                        <h3 class="heading-tech text-xl font-bold text-slate-900 dark:text-slate-100 mb-4 uppercase tracking-wide">CV & Localize</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed mb-8 font-light">
+                            Designing custom computer vision algorithms for visual object tracking, real-time spatial mapping, and Visual Inertial Odometry (VIO).
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">OpenCV</span>
+                        <span class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">SLAM / VIO</span>
+                        <span class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">YOLO Models</span>
+                    </div>
+                </div>
+
+                <!-- Simulation Panel -->
+                <div class="md:col-span-8 p-10 bg-white dark:bg-slate-950 flex flex-col justify-between relative overflow-hidden group hover:bg-slate-50 dark:hover:bg-slate-900/80 transition-colors">
+                    <div class="absolute -right-10 -bottom-10 opacity-5">
+                        <i class="fa-solid fa-cube text-[180px] text-slate-900 dark:text-slate-100"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <div class="mb-6 inline-block border border-slate-900 dark:border-slate-100 px-3 py-1 mono text-[10px] text-slate-900 dark:text-slate-100 font-bold uppercase tracking-widest">
+                            Embodied Cognition & Sim
+                        </div>
+                        <h3 class="heading-tech text-2xl font-bold text-slate-900 dark:text-slate-100 mb-4 uppercase tracking-wide">Generative AI & Agentic Systems</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm max-w-xl mb-8 leading-relaxed font-light">
+                            Pioneering integration of onboard Large Language Models (LLMs) and Agentic reasoning graphs to act as autonomous payload planners. Simulating these frameworks inside highly detailed Gazebo and PX4 SITL physics environments.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 relative z-10">
                         <span class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">Agentic AI Workflows</span>
                         <span class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">Onboard LLMs / Quantization</span>
                         <span class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">Gazebo Sim Classic/Garden</span>
@@ -107,7 +414,6 @@
         </div>
     </section>
 
-    <!-- ACTIVE DEVELOPMENT & METRICS SECTION -->
     <section id="metrics" class="py-24 border-t border-slate-200 dark:border-slate-800 relative z-10 bg-slate-50/50 dark:bg-slate-900/20 backdrop-blur-sm">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
@@ -167,7 +473,7 @@
                     </div>
                 </div>
 
-                <!-- Live Metrics Replaced with Literature & Sandbox -->
+                <!-- Literature & Sandbox -->
                 <div class="bg-white dark:bg-slate-950 p-8 md:p-12 flex flex-col h-full">
                     <h3 class="heading-tech text-xl font-bold text-slate-900 dark:text-slate-100 mb-8 border-b border-slate-100 dark:border-slate-900 pb-4 uppercase tracking-wide">Literature & Sandbox</h3>
                     
@@ -237,4 +543,514 @@
     </footer>
 
     <!-- COMPREHENSIVE MODAL SYSTEM -->
-<!-- ... existing code ... -->
+    <div id="modal-overlay" class="fixed inset-0 z-[100] bg-slate-100/80 dark:bg-slate-950/90 backdrop-blur-sm flex items-center justify-center p-4 md:p-10">
+        <div id="modal-content" class="bg-white dark:bg-slate-900 w-full max-w-4xl max-h-[90vh] overflow-hidden relative flex flex-col md:flex-row border border-slate-900 dark:border-slate-100 shadow-[0_0_30px_rgba(0,0,0,0.1)] dark:shadow-[0_0_30px_rgba(255,255,255,0.05)]">
+            <!-- Close button -->
+            <button onclick="closeModal()" class="absolute top-4 right-4 z-10 w-8 h-8 bg-slate-900 dark:bg-slate-100 border border-slate-900 dark:border-slate-100 flex items-center justify-center text-white dark:text-slate-900 hover:bg-transparent hover:text-slate-900 dark:hover:text-slate-100 transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <div class="w-full md:w-2/5 h-48 md:h-auto bg-slate-50 dark:bg-slate-950 flex items-center justify-center border-b md:border-b-0 md:border-r border-slate-200 dark:border-slate-800 p-8 relative overflow-hidden">
+                <div class="absolute inset-0 bg-[linear-gradient(rgba(226,232,240,0.4)_1px,transparent_1px),linear-gradient(90deg,rgba(226,232,240,0.4)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(30,41,59,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(30,41,59,0.5)_1px,transparent_1px)] bg-[size:10px_10px] opacity-50"></div>
+                <div id="modal-icon-container" class="w-24 h-24 bg-white dark:bg-slate-900 border border-slate-900 dark:border-slate-100 flex items-center justify-center text-slate-900 dark:text-slate-100 text-4xl relative z-10">
+                    <i id="modal-icon" class="fa-solid fa-plane"></i>
+                </div>
+            </div>
+
+            <div class="w-full md:w-3/5 p-8 md:p-12 overflow-y-auto">
+                <div id="modal-tag" class="mono text-[10px] text-slate-500 font-bold tracking-widest uppercase mb-4 border border-slate-200 dark:border-slate-800 inline-block px-2 py-1">CATEGORY</div>
+                <h3 id="modal-title" class="heading-tech text-3xl font-bold text-slate-900 dark:text-slate-100 mb-6 uppercase tracking-tight">Project Title</h3>
+                <p id="modal-desc" class="text-slate-600 dark:text-slate-400 leading-relaxed mb-8 text-sm font-light">Description...</p>
+                
+                <div class="space-y-8">
+                    <div>
+                        <h4 class="mono text-[10px] uppercase tracking-widest text-slate-900 dark:text-slate-100 font-bold mb-4 border-b border-slate-200 dark:border-slate-800 pb-2">Core System Features</h4>
+                        <ul id="modal-features" class="space-y-3 text-sm text-slate-600 dark:text-slate-400 font-light list-none pl-0">
+                            <!-- Injected features -->
+                        </ul>
+                    </div>
+                    <div class="pt-6">
+                        <h4 class="mono text-[10px] uppercase tracking-widest text-slate-900 dark:text-slate-100 font-bold mb-4 border-b border-slate-200 dark:border-slate-800 pb-2">Onboard Stack</h4>
+                        <div id="modal-stack" class="flex flex-wrap gap-2">
+                            <!-- Injected stack -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const systemState = {
+            isDarkMode: true, // Default to dark for the technical aesthetic
+            init() {
+                const savedTheme = localStorage.getItem('theme');
+                const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                
+                if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+                    this.setTheme(true);
+                } else if (savedTheme === 'light') {
+                    this.setTheme(false);
+                } else {
+                    this.setTheme(true); // Enforce dark default
+                }
+
+                document.getElementById('theme-toggle').addEventListener('click', () => {
+                    this.setTheme(!this.isDarkMode);
+                });
+            },
+            setTheme(dark) {
+                this.isDarkMode = dark;
+                const icon = document.getElementById('theme-icon');
+                if (dark) {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                }
+            }
+        };
+
+        const projects = [
+            { 
+                title: "Model-Context-Protocol Robot Agent", 
+                desc: "Implementation of Anthropic's Model Context Protocol (MCP) for remote tool use and telemetry reporting in distributed robot systems.", 
+                tag: "Robotics / Remote Tooling", 
+                category: "robotics",
+                icon: "fa-network-wired",
+                features: [
+                    "Engineered structured schema-driven tool definitions allowing LLMs to directly read vehicle state.",
+                    "Created robust security isolation protocol for shell executive action servers.",
+                    "Implemented telemetry caching layer to minimize vehicle communication latency over LTE grids."
+                ],
+                stack: ["MCP Protocol", "ROS2 Nodes", "Python Asyncio", "LTE telemetry"]
+            },
+            { 
+                title: "ADAS Autonomous Pilot", 
+                desc: "Integrated lane keeping, visual hazard tracking, and dynamic trajectory planner matching advanced driver-assistance architectures.", 
+                tag: "Computer Vision / ADAS", 
+                category: "vision",
+                icon: "fa-car",
+                features: [
+                    "Fitted robust vision tracking networks identifying road borders, obstacles, and markers.",
+                    "Built adaptive speed control layer responding to dynamic obstacle kinematics.",
+                    "Optimized network structures using TensorRT for 60 FPS performance."
+                ],
+                stack: ["Nvidia TensorRT", "OpenCV CUDA", "C++ Engine", "ROS2 Humble"]
+            },
+            { 
+                title: "Instance-Segmentation Engine", 
+                desc: "Pixel-level classification layer deployed for real-time item sorting and dynamic object boundary detection.", 
+                tag: "Computer Vision / Segmentation", 
+                category: "vision",
+                icon: "fa-puzzle-piece",
+                features: [
+                    "Implemented localized mask layers isolating tightly packed dynamic entities.",
+                    "Achieved 20ms processing execution speed per frame on constrained embedded GPUs.",
+                    "Created automatic synthesis pipeline for complex environmental edge rendering."
+                ],
+                stack: ["PyTorch", "Segment Anything", "CUDA Kernels", "Nvidia Orin"]
+            },
+            { 
+                title: "Counting Challenge Engine", 
+                desc: "High-accuracy crowd density and entity detection solver operating over high-resolution visual inputs.", 
+                tag: "Computer Vision / Analytics", 
+                category: "vision",
+                icon: "fa-calculator",
+                features: [
+                    "Utilized regression models predicting structural density matrices across clustered arrays.",
+                    "Integrated real-time tracking loops validating unique counts across boundaries.",
+                    "Configured dynamic scale layers adjusting to wide-angle lens distortion."
+                ],
+                stack: ["Density Regression", "YOLOv8 Detect", "C++ Pipelines", "Jetson Nano"]
+            },
+            { 
+                title: "LOD-3D Reconstruction", 
+                desc: "Multi-resolution spatial mesh mapping generating adaptive 3D structures from visual telemetry feeds.", 
+                tag: "Spatial Computing / 3D Mapping", 
+                category: "vision",
+                icon: "fa-cubes",
+                features: [
+                    "Created progressive Level-of-Detail (LOD) pipelines for terrain visualization.",
+                    "Fitted octree voxel mapping modules optimizing memory usage during 3D meshes.",
+                    "Compiled direct integrations for point cloud data imports."
+                ],
+                stack: ["Open3D", "Voxels", "CUDA Meshes", "C++ Engine"]
+            },
+            { 
+                title: "VLA Autonomous Navigation Core", 
+                desc: "Vision-Language-Action navigation model coordinating real-time flight decisions directly from visual parameters and semantic inputs.", 
+                tag: "Agentic AI / VLA", 
+                category: "genai",
+                icon: "fa-brain",
+                features: [
+                    "Deployed unified visual and language representations to generate direct robotic motion decisions.",
+                    "Constructed dynamic action execution vectors using quantized models.",
+                    "Fitted fallback control stacks managing erratic neural instructions."
+                ],
+                stack: ["VLA Models", "Onboard Quantization", "Nvidia Jetson Orin", "MAVSDK"]
+            },
+            { 
+                title: "VLA-MAVSDK Integration Node", 
+                desc: "Closed-loop visual planning flight controller connecting VLA outputs directly to PX4 avionics arrays via MAVSDK APIs.", 
+                tag: "Aerospace / Control", 
+                category: "robotics",
+                icon: "fa-paper-plane",
+                features: [
+                    "Designed secure translation layer converting visual models outputs into low-level MAVSDK guide points.",
+                    "Optimized payload flight loops ensuring constant safety check overrides.",
+                    "Tested visual navigation inside high-fidelity simulated SITL setups."
+                ],
+                stack: ["MAVSDK API", "PX4 SITL", "ROS2 Nodes", "Python Control"]
+            },
+            { 
+                title: "Algorithmic Trading Engines", 
+                desc: "Multi-agent quantitative trading system deploying signal tracking, real-time analytics, and automated action execution.", 
+                tag: "Quantitative Finance", 
+                category: "quant",
+                icon: "fa-chart-line",
+                features: [
+                    "Formulated latency-sensitive signal generation algorithms evaluating stock anomalies.",
+                    "Integrated automated risk limits managing localized position exposures.",
+                    "Built simulated backtesting engines reviewing structural price histories."
+                ],
+                stack: ["Quantitative Signals", "Pandas & Numpy", "Redis Queues", "Backtesting API"]
+            },
+            { 
+                title: "Paper Implementation Sandbox", 
+                desc: "An execution sandbox compiling, testing, and deploying cutting-edge deep learning papers directly on localized hardware.", 
+                tag: "Deep Learning Research", 
+                category: "genai",
+                icon: "fa-book-open",
+                features: [
+                    "Reproduced high-performance paper architectures detailing spatial mapping concepts.",
+                    "Compiled localized benchmarking metrics evaluating latency and memory allocations.",
+                    "Deployed multi-threading routines to handle parallel data ingestion profiles."
+                ],
+                stack: ["PyTorch Core", "TensorRT", "C++ Benchmarking", "Git Actions"]
+            },
+            { 
+                title: "Custom Transformers Engine", 
+                desc: "Compact, hardware-optimized attention execution models configured for low-power edge computer targets.", 
+                tag: "Deep Learning / NLP", 
+                category: "genai",
+                icon: "fa-microchip",
+                features: [
+                    "Wrote optimized matrix multiplication loops using custom C++ libraries.",
+                    "Implemented flexible tokenization layers managing continuous sensor signals.",
+                    "Tuned weight allocation profiles reducing operational RAM requirements."
+                ],
+                stack: ["Transformers C++", "ONNX Run", "Custom Kernels", "Nvidia AGX Orin"]
+            },
+            { 
+                title: "RTOS Flight Scheduler", 
+                desc: "High-frequency real-time operating system task planner coordinating safety-critical drone tasks.", 
+                tag: "Embedded Systems / RTOS", 
+                category: "robotics",
+                icon: "fa-microchip",
+                features: [
+                    "Engineered preemptive scheduling systems dividing processor time among flight control loops.",
+                    "Managed direct register allocations minimizing actuator latency parameters.",
+                    "Wrote specialized fail-safe drivers securing power distribution states."
+                ],
+                stack: ["FreeRTOS", "STM32 Hardware", "C Programming", "Logic Analyzers"]
+            },
+            { 
+                title: "Attention Mechanism Analyzer", 
+                desc: "Interactive visual analytics engine mapping neural attention weights to pinpoint feature dependencies.", 
+                tag: "Deep Learning / Analysis", 
+                category: "genai",
+                icon: "fa-eye",
+                features: [
+                    "Engineered visual heatmaps tracing visual focus zones across segmentation sequences.",
+                    "Calculated real-time entropy metrics highlighting signal drift problems.",
+                    "Optimized gradient evaluation matrices over complex training runs."
+                ],
+                stack: ["Matplotlib", "React Dashboard", "PyTorch Analytics", "Flask"]
+            },
+            { 
+                title: "Twitter Sentiment Scanner", 
+                desc: "Real-time distributed scraper and transformer analyzing trending semantic dynamics across raw social posts.", 
+                tag: "NLP / Sentiment Analysis", 
+                category: "genai",
+                icon: "fa-hashtag",
+                features: [
+                    "Configured parallel pipeline engines indexing public social data vectors.",
+                    "Trained specialized models identifying localized dialect cues and idioms.",
+                    "Built streaming dashboard layers presenting active mood trends."
+                ],
+                stack: ["Apache Kafka", "Quantized BERT", "MongoDB", "Python Dash"]
+            },
+            { 
+                title: "YOLOv5 Edge Optimization", 
+                desc: "Deep visual detection models compiled and quantized to run at 60 FPS on constrained NVIDIA hardware.", 
+                tag: "Computer Vision / YOLO", 
+                category: "vision",
+                icon: "fa-crosshairs",
+                features: [
+                    "Converted floating point models to integer formats using TensorRT quantization.",
+                    "Slashed execution memory allocations without degrading accuracy metrics.",
+                    "Constructed streaming input layers handling multiple sensor outputs."
+                ],
+                stack: ["YOLOv5 Engine", "TensorRT Engine", "OpenCV", "Jetson Nano"]
+            },
+            { 
+                title: "Android Whisper Integration", 
+                desc: "Native Android implementation of OpenAI's Whisper model for low-latency, offline voice tracking.", 
+                tag: "Speech / Mobile AI", 
+                category: "genai",
+                icon: "fa-mobile-screen-button",
+                features: [
+                    "Compiled Whisper model libraries for native ARM processing platforms.",
+                    "Wrote efficient memory allocation loops preventing audio data leaks.",
+                    "Constructed speech-activated triggers operating inside low-power standby modes."
+                ],
+                stack: ["Whisper.cpp", "Android NDK", "Kotlin UI", "ARM Neon Instruction"]
+            },
+            { 
+                title: "Smart Glasses Compute Hub", 
+                desc: "Sleek embedded glasses platform incorporating visual tracking sensors, real-time HUDs, and localized voice systems.", 
+                tag: "Spatial Computing / IoT", 
+                category: "robotics",
+                icon: "fa-glasses",
+                features: [
+                    "Engineered low-profile electronic designs for localized power stability.",
+                    "Integrated bone conduction sound outputs communicating system notifications.",
+                    "Wrote lightweight display layers mapping context menus directly to HUD modules."
+                ],
+                stack: ["Raspberry Pi Zero", "Micro-OLED Modules", "C++ Engines", "BLE Protocol"]
+            },
+            { 
+                title: "Smart Camera Summarizer", 
+                desc: "Onboard visual parsing camera running continuous local processing to generate textual reports of scene changes.", 
+                tag: "Computer Vision / Edge AI", 
+                category: "vision",
+                icon: "fa-camera-retro",
+                features: [
+                    "Fitted localized visual language models parsing environmental change inputs.",
+                    "Created delta frame tracking loops ensuring models run only when needed.",
+                    "Configured dynamic compression modules preparing text data for IoT transmission."
+                ],
+                stack: ["Vision LLM", "Embedded C++", "GStreamer Core", "Raspberry Pi"]
+            },
+            { 
+                title: "TAC-GAN Asset Generator", 
+                desc: "Text-to-Attribute-to-Class Generative Adversarial Network compiling customized terrain models from textual directives.", 
+                tag: "Generative AI / GANs", 
+                category: "genai",
+                icon: "fa-images",
+                features: [
+                    "Formulated specific generator loss formulations stabilizing early epoch outputs.",
+                    "Designed granular attribute control layers defining mesh layouts.",
+                    "Accelerated processing using optimized multi-GPU training clusters."
+                ],
+                stack: ["TAC-GAN", "PyTorch Core", "TensorBoard", "Linux Clusters"]
+            },
+            { 
+                title: "Equity Research Assistant", 
+                desc: "Automated report analyzer parsing complex earnings filings, highlighting performance shifts.", 
+                tag: "NLP / Quant Finance", 
+                category: "quant",
+                icon: "fa-file-invoice-dollar",
+                features: [
+                    "Wrote parsing scripts processing complex data documents.",
+                    "Configured smart retrieval processes extracting critical financial telemetry metrics.",
+                    "Engineered automated summaries comparing report updates over time."
+                ],
+                stack: ["LangChain", "ChromaDB Vectors", "OpenAI API", "Python Streamlit"]
+            },
+            { 
+                title: "LangChain Tool Sandbox", 
+                desc: "Comprehensive testing arena for dynamic agent frameworks executing sequential system automation commands.", 
+                tag: "Agentic AI / LangChain", 
+                category: "genai",
+                icon: "fa-terminal",
+                features: [
+                    "Created structured multi-agent loops routing instructions across localized software arrays.",
+                    "Configured robust error fallback logic managing failed model queries.",
+                    "Implemented caching buffers reducing repetitive API call structures."
+                ],
+                stack: ["LangChain Library", "OpenAI LLM", "Python FastAPI", "WebSockets"]
+            },
+            { 
+                title: "Geospatial Analysis Pipeline", 
+                desc: "Continuous mapping systems processing visual inputs to categorize terrain dynamics and layout changes.", 
+                tag: "Spatial Computing / GIS", 
+                category: "vision",
+                icon: "fa-earth-americas",
+                features: [
+                    "Wrote specialized raster coordinate math processing geospatial datasets.",
+                    "Built classification layers mapping terrain transitions across years.",
+                    "Integrated high-speed coordinate translation libraries."
+                ],
+                stack: ["GDAL Core", "Python Geopandas", "OpenCV", "PostGIS Databases"]
+            },
+            { 
+                title: "Accident & Theft Scanner", 
+                desc: "Autonomous visual tracking pipeline detecting road accidents and dynamic security anomalies.", 
+                tag: "Computer Vision / Safety", 
+                category: "vision",
+                icon: "fa-shield-halved",
+                features: [
+                    "Trained anomaly detection networks classifying vehicle trajectory deformations.",
+                    "Integrated streaming communication systems initiating localized alerts.",
+                    "Optimized visual frames processing models to execute on edge hardware."
+                ],
+                stack: ["PyTorch Core", "OpenCV Pipelines", "Twilio API Node", "Ubuntu Server"]
+            },
+            { 
+                title: "Nifty50 Stock Predictor (LSTM)", 
+                desc: "Recurrent Neural Networks utilizing LSTM configurations to process indices momentum shifts.", 
+                tag: "Time Series / LSTM", 
+                category: "quant",
+                icon: "fa-arrow-trend-up",
+                features: [
+                    "Configured multiple sequence windows handling stock price trends.",
+                    "Wrote complex normalization modules handling volatile market data.",
+                    "Generated signal scoring parameters measuring model confidence scores."
+                ],
+                stack: ["Keras Core", "TensorFlow Node", "Time Series Models", "Python API"]
+            },
+            { 
+                title: "Whisper Speech Translator", 
+                desc: "Bilateral high-fidelity translator matching quantized Whisper inputs with localized voice generation modules.", 
+                tag: "Speech Synthesis / AI", 
+                category: "genai",
+                icon: "fa-volume-high",
+                features: [
+                    "Configured real-time sound processing buffers handling streaming audio signals.",
+                    "Integrated speech generation libraries creating realistic voice patterns.",
+                    "Reduced translation processing latency to sub-second parameters."
+                ],
+                stack: ["Whisper Node", "Tacotron 2 TTS", "PyAudio Hub", "C++ Buffers"]
+            }
+        ];
+
+        let selectedCategory = 'all';
+
+        function buildProjectsGrid() {
+            const grid = document.getElementById('projects-grid');
+            grid.innerHTML = '';
+            let visibleCount = 0;
+            
+            projects.forEach((p, idx) => {
+                const matchesCategory = (selectedCategory === 'all' || p.category === selectedCategory);
+                
+                if (matchesCategory) {
+                    visibleCount++;
+                    const card = document.createElement('div');
+                    card.className = "p-8 bg-white dark:bg-slate-950 flex flex-col justify-between hover:bg-slate-50 dark:hover:bg-slate-900 cursor-pointer group transition-colors";
+                    card.onclick = () => openModal(idx);
+
+                    card.innerHTML = `
+                        <div>
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="w-10 h-10 border border-slate-900 dark:border-slate-100 flex items-center justify-center text-slate-900 dark:text-slate-100 bg-transparent group-hover:bg-slate-900 dark:group-hover:bg-slate-100 group-hover:text-white dark:group-hover:text-slate-900 transition-colors">
+                                    <i class="fa-solid ${p.icon} text-md"></i>
+                                </div>
+                                <span class="mono text-[8px] bg-transparent text-slate-500 font-bold border border-slate-200 dark:border-slate-800 px-2 py-1 uppercase tracking-widest">${p.category}</span>
+                            </div>
+                            <h3 class="heading-tech text-lg font-bold mb-3 text-slate-900 dark:text-slate-100 uppercase tracking-wide group-hover:underline underline-offset-4 decoration-2">${p.title}</h3>
+                            <p class="text-slate-500 dark:text-slate-400 font-light text-xs leading-relaxed line-clamp-3 mb-6">${p.desc}</p>
+                        </div>
+                        <div>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                ${p.stack.slice(0, 3).map(s => `<span class="border-b border-slate-300 dark:border-slate-700 pb-0.5 text-[9px] mono uppercase text-slate-500">${s}</span>`).join('')}
+                                ${p.stack.length > 3 ? `<span class="border-b border-slate-300 dark:border-slate-700 pb-0.5 text-[9px] mono uppercase text-slate-500">+${p.stack.length - 3}</span>` : ''}
+                            </div>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                }
+            });
+            
+            const emptyState = document.getElementById('projects-empty-state');
+            if (visibleCount === 0) {
+                emptyState.classList.remove('hidden');
+            } else {
+                emptyState.classList.add('hidden');
+            }
+        }
+
+        function filterProjects(cat) {
+            selectedCategory = cat;
+            
+            // Adjust active state
+            document.querySelectorAll('.project-filter-btn').forEach(btn => {
+                btn.className = "project-filter-btn px-6 py-3 text-[10px] mono uppercase tracking-widest font-bold text-slate-500 bg-white dark:bg-slate-950 hover:bg-slate-50 dark:hover:bg-slate-900 border-r border-slate-200 dark:border-slate-800 transition-colors";
+            });
+            
+            const activeBtn = document.getElementById(`filter-btn-${cat}`);
+            if (activeBtn) {
+                activeBtn.className = "project-filter-btn px-6 py-3 text-[10px] mono uppercase tracking-widest font-bold bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 border-r border-slate-200 dark:border-slate-800 transition-colors";
+            }
+            
+            buildProjectsGrid();
+        }
+
+        function openModal(index) {
+            const p = projects[index];
+            document.getElementById('modal-title').innerText = p.title;
+            document.getElementById('modal-desc').innerText = p.desc;
+            document.getElementById('modal-tag').innerText = p.tag;
+            document.getElementById('modal-icon').className = `fa-solid ${p.icon}`;
+            
+            const featuresList = document.getElementById('modal-features');
+            featuresList.innerHTML = p.features.map(f => `
+                <li class="flex items-start gap-3">
+                    <span class="w-1 h-1 bg-slate-900 dark:bg-slate-100 mt-2 shrink-0"></span>
+                    <span>${f}</span>
+                </li>
+            `).join('');
+            
+            const stackContainer = document.getElementById('modal-stack');
+            stackContainer.innerHTML = p.stack.map(s => `
+                <span class="px-3 py-1 bg-transparent border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400 font-bold uppercase tracking-widest">${s}</span>
+            `).join('');
+            
+            document.getElementById('modal-overlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        document.getElementById('modal-overlay').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('modal-overlay')) {
+                closeModal();
+            }
+        });
+
+        function closeModal() {
+            document.getElementById('modal-overlay').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        window.addEventListener('keydown', (e) => { 
+            if(e.key === 'Escape') closeModal(); 
+        });
+
+        let lastScrollY = window.scrollY;
+        const mainNav = document.getElementById('main-nav');
+        
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            
+            if (currentScrollY > lastScrollY && currentScrollY > 80) {
+                mainNav.classList.add('-translate-y-full');
+            } else {
+                mainNav.classList.remove('-translate-y-full');
+            }
+            
+            lastScrollY = currentScrollY;
+        }, { passive: true });
+
+        window.onload = () => {
+            systemState.init();
+            buildProjectsGrid();
+        };
+    </script>
+</body>
+</html>
