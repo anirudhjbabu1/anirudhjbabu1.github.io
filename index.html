@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anirudh J Babu | Robotics Software & Cognitive AI Engineer</title>
+    <title>Anirudh J Babu | Robotics & Cognitive AI</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -13,24 +13,30 @@
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif'],
                         mono: ['JetBrains Mono', 'monospace'],
                     },
                     colors: {
                         brand: {
-                            black: '#030303',
-                            dark: '#0a0a0a',
-                            border: 'rgba(255, 255, 255, 0.1)',
-                            text: '#a1a1aa', // zinc-400
-                            highlight: '#f4f4f5', // zinc-100
+                            50: '#fafafa',
+                            100: '#f4f4f5',
+                            200: '#e4e4e7',
+                            300: '#d4d4d8',
+                            400: '#a1a1aa',
+                            500: '#71717a',
+                            600: '#52525b',
+                            700: '#3f3f46',
+                            800: '#27272a',
+                            900: '#18181b',
+                            950: '#09090b', // Extreme dark
                         }
                     },
-                    backgroundImage: {
-                        'grid-pattern': 'linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px)',
+                    letterSpacing: {
+                        tighter: '-0.04em',
+                        widest: '0.2em',
                     },
                     animation: {
-                        'scan-line': 'scan 8s linear infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'scan': 'scan 6s linear infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                     },
                     keyframes: {
                         scan: {
@@ -45,36 +51,67 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     
     <style>
+        :root {
+            --grid-color: rgba(0, 0, 0, 0.04);
+            --bg-color: #fafafa;
+            --text-color: #09090b;
+        }
+
+        .dark {
+            --grid-color: rgba(255, 255, 255, 0.03);
+            --bg-color: #09090b;
+            --text-color: #fafafa;
+        }
+
         body {
-            background-color: #030303;
-            color: #a1a1aa;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        .font-display { font-family: 'Space Grotesk', sans-serif; }
-        .font-mono { font-family: 'JetBrains Mono', monospace; }
-
-        /* Custom Scrollbar for technical feel */
+        /* Stark, unrounded scrollbar */
         ::-webkit-scrollbar { width: 4px; height: 4px; }
-        ::-webkit-scrollbar-track { background: #030303; }
-        ::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 0; }
-        ::-webkit-scrollbar-thumb:hover { background: #71717a; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #d4d4d8; border-radius: 0; }
+        .dark ::-webkit-scrollbar-thumb { background: #3f3f46; }
+        ::-webkit-scrollbar-thumb:hover { background: #a1a1aa; }
 
-        /* Structural lines to emulate schematic diagrams */
-        .schematic-border { border: 1px solid rgba(255, 255, 255, 0.08); }
-        .schematic-border-b { border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
-        .schematic-border-t { border-top: 1px solid rgba(255, 255, 255, 0.08); }
-        .schematic-border-l { border-left: 1px solid rgba(255, 255, 255, 0.08); }
-        .schematic-border-r { border-right: 1px solid rgba(255, 255, 255, 0.08); }
+        /* Engineering Grid Background */
+        .bg-grid {
+            background-image: 
+                linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+            background-size: 48px 48px;
+            background-position: center top;
+        }
 
-        /* Modal Transitions */
+        /* Structural Borders for the Anduril Look */
+        .tech-border {
+            border-color: #e4e4e7;
+            transition: border-color 0.3s ease;
+        }
+        .dark .tech-border {
+            border-color: #27272a;
+        }
+
+        /* Hover Invert for stark buttons */
+        .hover-invert {
+            transition: all 0.2s ease;
+        }
+        .hover-invert:hover {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+        }
+
+        /* Modal specific animations */
         #modal-overlay {
             transition: opacity 0.3s ease, backdrop-filter 0.3s ease;
             opacity: 0;
@@ -87,358 +124,347 @@
             backdrop-filter: blur(8px);
         }
         #modal-content {
-            transform: scale(0.98) translateY(10px);
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(20px);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
         #modal-overlay.active #modal-content {
-            transform: scale(1) translateY(0);
+            transform: translateY(0);
         }
 
-        /* Hover effects */
-        .hover-invert {
-            transition: all 0.2s ease;
-        }
-        .hover-invert:hover {
-            background-color: #f4f4f5;
-            color: #030303;
-        }
-
-        /* Background Grid Setup */
-        #bg-container {
-            position: fixed;
-            inset: 0;
-            z-index: -1;
-            background-size: 40px 40px;
-            background-position: center top;
-            pointer-events: none;
-        }
-        
-        .glow-point {
+        .nav-link::after {
+            content: '';
             position: absolute;
-            width: 2px;
-            height: 2px;
-            background: white;
-            box-shadow: 0 0 10px 2px rgba(255,255,255,0.5);
+            bottom: -2px;
+            left: 0;
+            width: 0%;
+            height: 1px;
+            background-color: currentColor;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
         }
     </style>
 </head>
-<body class="selection:bg-white selection:text-black">
+<body class="selection:bg-brand-900 selection:text-white dark:selection:bg-white dark:selection:text-black">
 
-    <div id="bg-container" class="bg-grid-pattern opacity-50 relative">
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-brand-black/80 to-brand-black"></div>
-        <!-- Scanning line -->
-        <div class="absolute left-0 right-0 h-[1px] bg-white/20 shadow-[0_0_15px_rgba(255,255,255,0.3)] animate-scan-line"></div>
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#030303_100%)]"></div>
-    </div>
+    <div class="fixed inset-0 z-[-1] bg-grid opacity-100 pointer-events-none transition-colors duration-300"></div>
+    
+    <!-- Vertical structural lines -->
+    <div class="fixed inset-y-0 left-6 md:left-12 w-[1px] tech-border border-l z-[-1] hidden sm:block"></div>
+    <div class="fixed inset-y-0 right-6 md:right-12 w-[1px] tech-border border-r z-[-1] hidden sm:block"></div>
 
-    <nav id="main-nav" class="fixed top-0 w-full z-40 bg-brand-black/90 backdrop-blur-md schematic-border-b transition-transform duration-300">
-        <div class="max-w-[1400px] mx-auto px-6 h-16 flex justify-between items-center">
-            <div class="flex items-center gap-4">
-                <a href="#" class="font-display text-lg font-semibold tracking-wide text-brand-highlight hover:opacity-80 transition-opacity">
-                    ANIRUDH J BABU
+    <nav id="main-nav" class="fixed top-0 w-full z-40 bg-brand-50/90 dark:bg-brand-950/90 backdrop-blur-md tech-border border-b transition-all duration-300">
+        <div class="max-w-[1400px] mx-auto px-6 md:px-12 h-16 flex justify-between items-center">
+            <div class="flex items-center gap-6">
+                <a href="#" class="font-sans text-xl font-bold tracking-tighter text-brand-950 dark:text-white uppercase">
+                    Anirudh <span class="font-light opacity-50">J Babu</span>
                 </a>
-                <div class="hidden sm:flex items-center gap-2 schematic-border-l pl-4 py-1">
-                    <div class="w-1.5 h-1.5 bg-white animate-pulse-slow"></div>
-                    <span class="font-mono text-[9px] tracking-widest uppercase text-white/50">Sys_Online</span>
+                <div class="hidden md:flex items-center gap-3 tech-border border-l pl-6 h-8">
+                    <div class="w-1.5 h-1.5 bg-brand-950 dark:bg-white animate-pulse-slow"></div>
+                    <span class="font-mono text-[10px] tracking-widest uppercase text-brand-500 dark:text-brand-400">Sys_Online</span>
                 </div>
             </div>
             
-            <div class="hidden md:flex items-center space-x-8 font-mono text-[10px] uppercase tracking-widest">
-                <a href="#about" class="text-brand-text hover:text-white transition-colors">Philosophy</a>
-                <a href="#career" class="text-brand-text hover:text-white transition-colors">Operations</a>
-                <a href="#projects" class="text-brand-text hover:text-white transition-colors">Registry</a>
-                <a href="#skills" class="text-brand-text hover:text-white transition-colors">Matrix</a>
+            <div class="hidden md:flex items-center space-x-10 font-mono text-[10px] uppercase tracking-widest font-semibold">
+                <a href="#about" class="relative nav-link text-brand-600 dark:text-brand-400 hover:text-brand-950 dark:hover:text-white transition-colors">Spec</a>
+                <a href="#career" class="relative nav-link text-brand-600 dark:text-brand-400 hover:text-brand-950 dark:hover:text-white transition-colors">Operations</a>
+                <a href="#projects" class="relative nav-link text-brand-600 dark:text-brand-400 hover:text-brand-950 dark:hover:text-white transition-colors">Registry</a>
+                <a href="#skills" class="relative nav-link text-brand-600 dark:text-brand-400 hover:text-brand-950 dark:hover:text-white transition-colors">Matrix</a>
             </div>
 
             <div class="flex items-center gap-4">
-                <a href="#contact" class="px-5 py-2 schematic-border text-white text-[10px] font-mono tracking-widest uppercase hover-invert">
-                    Initiate Sync
+                <!-- Theme Toggle -->
+                <button id="theme-toggle" class="w-8 h-8 flex items-center justify-center tech-border border text-brand-600 dark:text-brand-400 hover:text-brand-950 dark:hover:text-white transition-colors" aria-label="Toggle Theme">
+                    <i id="theme-toggle-light" class="fa-solid fa-sun hidden text-sm"></i>
+                    <i id="theme-toggle-dark" class="fa-solid fa-moon text-sm hidden"></i>
+                </button>
+                <a href="#contact" class="hidden sm:block px-6 py-2 border border-brand-950 dark:border-white text-brand-950 dark:text-white text-[10px] font-mono font-bold tracking-widest uppercase hover-invert">
+                    Init Sync
                 </a>
             </div>
         </div>
     </nav>
 
-    <header class="relative min-h-screen flex items-center justify-center px-6 pt-24 pb-12 overflow-hidden">
-        <!-- Technical Crosshairs -->
-        <div class="absolute top-1/4 left-1/4 w-4 h-4 border-t border-l border-white/20"></div>
-        <div class="absolute top-1/4 right-1/4 w-4 h-4 border-t border-r border-white/20"></div>
-        <div class="absolute bottom-1/4 left-1/4 w-4 h-4 border-b border-l border-white/20"></div>
-        <div class="absolute bottom-1/4 right-1/4 w-4 h-4 border-b border-r border-white/20"></div>
-
-        <div class="max-w-[1200px] w-full relative z-10 flex flex-col items-start">
-            <div class="font-mono text-[10px] text-white/50 tracking-[0.3em] uppercase mb-6 flex items-center gap-3">
-                <span class="w-8 h-[1px] bg-white/30"></span>
+    <header class="relative min-h-[90vh] flex items-center pt-24 pb-12 overflow-hidden">
+        <div class="max-w-[1400px] mx-auto px-6 md:px-12 w-full relative z-10 flex flex-col items-start">
+            
+            <div class="font-mono text-[10px] text-brand-500 dark:text-brand-400 tracking-widest uppercase mb-8 flex items-center gap-4 font-semibold">
+                <span class="w-12 h-[1px] bg-brand-950 dark:bg-white"></span>
                 Identification // Robotics Software & Cognitive AI
             </div>
             
-            <h1 class="font-display text-5xl sm:text-7xl md:text-[5.5rem] font-medium tracking-tight text-brand-highlight leading-[1.05] mb-8 max-w-5xl">
-                Bridging physical control with <br />
-                <span class="text-white/60">cognitive intelligence.</span>
+            <h1 class="font-sans text-5xl sm:text-7xl md:text-[6.5rem] font-bold tracking-tighter text-brand-950 dark:text-white leading-[0.95] mb-10 max-w-6xl uppercase">
+                Bridging physical control <br />
+                <span class="text-brand-400 dark:text-brand-600">with cognitive intelligence.</span>
             </h1>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl">
-                <p class="text-brand-text text-sm md:text-base leading-relaxed font-light">
-                    Connecting generative AI and algorithmic logic to real-time physical systems. Specializing in transforming complex, real-time data streams into low-latency, high-frequency execution for autonomous agents.
-                </p>
-                <div class="flex flex-col sm:flex-row items-start gap-4 pt-2 md:pt-0">
-                    <a href="#projects" class="px-6 py-3 bg-white text-black font-mono text-[11px] uppercase tracking-widest font-semibold hover:bg-gray-200 transition-colors w-full sm:w-auto text-center">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 w-full">
+                <div class="md:col-span-6 lg:col-span-5">
+                    <p class="text-brand-700 dark:text-brand-300 text-sm md:text-base leading-relaxed font-medium">
+                        Connecting generative AI and algorithmic logic to real-time physical systems. Specializing in transforming complex, real-time data streams into low-latency, high-frequency execution for autonomous aerospace and ground agents.
+                    </p>
+                </div>
+                <div class="md:col-span-6 lg:col-span-7 flex flex-col sm:flex-row items-end justify-start md:justify-end gap-4 pt-4 md:pt-0">
+                    <a href="#projects" class="px-8 py-4 bg-brand-950 text-white dark:bg-white dark:text-brand-950 font-mono text-xs uppercase tracking-widest font-bold hover:bg-brand-800 dark:hover:bg-brand-200 transition-colors w-full sm:w-auto text-center border border-brand-950 dark:border-white">
                         Access Registry
                     </a>
-                    <a href="#about" class="px-6 py-3 schematic-border text-white font-mono text-[11px] uppercase tracking-widest hover:bg-white/5 transition-colors w-full sm:w-auto text-center">
-                        View Specs
+                    <a href="#about" class="px-8 py-4 bg-transparent text-brand-950 dark:text-white border border-brand-950 dark:border-white font-mono text-xs uppercase tracking-widest font-bold hover:bg-brand-100 dark:hover:bg-brand-900 transition-colors w-full sm:w-auto text-center">
+                        View System Specs
                     </a>
                 </div>
             </div>
         </div>
 
-        <div class="absolute bottom-12 left-6 md:left-12 font-mono text-[9px] text-white/30 tracking-widest uppercase">
-            <div class="flex flex-col gap-1">
-                <span>Lat: 12.9716° N</span>
-                <span>Lon: 77.5946° E</span>
-                <span>Status: Optimal</span>
-            </div>
-        </div>
-        
-        <div class="absolute bottom-12 right-6 md:right-12">
-            <div class="w-[1px] h-16 bg-white/20 relative overflow-hidden">
-                <div class="w-full h-1/3 bg-white absolute top-0 animate-scan-line"></div>
-            </div>
+        <!-- Scanning line effect in background -->
+        <div class="absolute right-12 md:right-24 top-0 bottom-0 w-[1px] tech-border border-r hidden lg:block overflow-hidden">
+            <div class="w-full h-32 bg-brand-950 dark:bg-white absolute top-0 animate-scan"></div>
         </div>
     </header>
 
-    <section id="about" class="py-32 schematic-border-t relative z-10">
-        <div class="max-w-[1400px] mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-x-8 gap-y-16">
+    <section id="about" class="py-32 tech-border border-t relative z-10 bg-brand-50 dark:bg-brand-950">
+        <div class="max-w-[1400px] mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 tech-border border-b pb-16 mb-16">
+                <div class="lg:col-span-4 mb-8 lg:mb-0">
+                    <span class="font-mono text-[10px] uppercase tracking-widest text-brand-500 dark:text-brand-400 font-bold block mb-4">[01] // PHILOSOPHY</span>
+                    <h2 class="font-sans text-3xl md:text-5xl font-bold text-brand-950 dark:text-white tracking-tighter uppercase">
+                        Embodied Autonomy
+                    </h2>
+                </div>
+                <div class="lg:col-span-8 lg:border-l tech-border lg:pl-12">
+                    <p class="text-brand-700 dark:text-brand-300 text-base md:text-lg leading-relaxed font-medium mb-8">
+                        My development focuses on running large vision-language models and high-frequency spatial localization loops simultaneously on size, weight, and power-constrained (SWaP) edge systems—ranging from ground robotic agents to automated aerial vehicles.
+                    </p>
+                    <blockquote class="font-mono text-sm text-brand-950 dark:text-white font-semibold tech-border border-l-2 pl-6 py-2 uppercase tracking-wide">
+                        "Modern robotics requires the strict unification of deterministic motion stacks with adaptive, LLM-driven reasoners."
+                    </blockquote>
+                </div>
+            </div>
+            
+            <!-- Strict Grid for Core Competencies -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[1px] bg-brand-200 dark:bg-brand-800 tech-border border">
                 
-                <div class="lg:col-span-4">
-                    <div class="sticky top-32">
-                        <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-white/50 block mb-4">[01] // PHILOSOPHY</span>
-                        <h2 class="font-display text-3xl md:text-4xl font-medium text-brand-highlight leading-tight mb-6">
-                            Embodied Autonomy
-                        </h2>
-                        <div class="w-12 h-[1px] bg-white/30 mb-6"></div>
-                        <p class="text-brand-text text-sm leading-relaxed mb-6 font-light">
-                            My development focuses on running large vision-language models and high-frequency spatial localization loops simultaneously on size, weight, and power-constrained (SWaP) edge systems—ranging from ground robotic agents to automated aerial vehicles.
-                        </p>
-                        <blockquote class="font-mono text-xs text-white/70 italic schematic-border-l pl-4 py-2 bg-white/[0.02]">
-                            "Modern robotics requires the unification of deterministic motion stacks with adaptive, LLM-driven reasoners."
-                        </blockquote>
+                <div class="bg-brand-50 dark:bg-brand-950 p-8 group">
+                    <div class="mb-8 text-brand-400 dark:text-brand-600 group-hover:text-brand-950 dark:group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-brain text-3xl"></i>
                     </div>
+                    <h4 class="font-mono text-xs font-bold uppercase tracking-widest text-brand-950 dark:text-white mb-4">Cognitive Autonomy</h4>
+                    <p class="text-brand-600 dark:text-brand-400 text-sm font-medium leading-relaxed">Implementing Agentic AI workflows and onboard LLM action-planners to solve unstructured physical environment objectives.</p>
                 </div>
                 
-                <div class="lg:col-span-8 lg:col-start-6">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-px bg-white/10 schematic-border">
-                        
-                        <div class="bg-brand-black p-8 group hover:bg-brand-dark transition-colors">
-                            <div class="mb-6 text-white/40 group-hover:text-white transition-colors">
-                                <i class="fa-solid fa-brain text-2xl"></i>
-                            </div>
-                            <h4 class="font-mono text-[11px] uppercase tracking-widest text-white mb-3">Cognitive Autonomy</h4>
-                            <p class="text-brand-text text-sm font-light leading-relaxed">Implementing Agentic AI workflows and onboard LLM action-planners to solve unstructured physical environment objectives.</p>
-                        </div>
-                        
-                        <div class="bg-brand-black p-8 group hover:bg-brand-dark transition-colors">
-                            <div class="mb-6 text-white/40 group-hover:text-white transition-colors">
-                                <i class="fa-solid fa-location-crosshairs text-2xl"></i>
-                            </div>
-                            <h4 class="font-mono text-[11px] uppercase tracking-widest text-white mb-3">State Estimation</h4>
-                            <p class="text-brand-text text-sm font-light leading-relaxed">Fusing wheel odometry, Visual Inertial Odometry (VIO), GNSS, and LiDAR data to maintain centimeter-level accuracy in complex grids.</p>
-                        </div>
-                        
-                        <div class="bg-brand-black p-8 group hover:bg-brand-dark transition-colors">
-                            <div class="mb-6 text-white/40 group-hover:text-white transition-colors">
-                                <i class="fa-solid fa-microchip text-2xl"></i>
-                            </div>
-                            <h4 class="font-mono text-[11px] uppercase tracking-widest text-white mb-3">Heterogeneous Edge</h4>
-                            <p class="text-brand-text text-sm font-light leading-relaxed">Developing cross-platform deployment pipelines targeted for NVIDIA Jetson Orin/Nano and Qualcomm compute boards.</p>
-                        </div>
-                        
-                        <div class="bg-brand-black p-8 group hover:bg-brand-dark transition-colors">
-                            <div class="mb-6 text-white/40 group-hover:text-white transition-colors">
-                                <i class="fa-solid fa-circle-nodes text-2xl"></i>
-                            </div>
-                            <h4 class="font-mono text-[11px] uppercase tracking-widest text-white mb-3">Physics & Sim</h4>
-                            <p class="text-brand-text text-sm font-light leading-relaxed">Simulating complex rigid-body kinetics, obstacle interaction, and vehicle-specific dynamics inside Gazebo grid setups.</p>
-                        </div>
+                <div class="bg-brand-50 dark:bg-brand-950 p-8 group">
+                    <div class="mb-8 text-brand-400 dark:text-brand-600 group-hover:text-brand-950 dark:group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-location-crosshairs text-3xl"></i>
+                    </div>
+                    <h4 class="font-mono text-xs font-bold uppercase tracking-widest text-brand-950 dark:text-white mb-4">State Estimation</h4>
+                    <p class="text-brand-600 dark:text-brand-400 text-sm font-medium leading-relaxed">Fusing wheel odometry, Visual Inertial Odometry (VIO), GNSS, and LiDAR data to maintain centimeter-level accuracy.</p>
+                </div>
+                
+                <div class="bg-brand-50 dark:bg-brand-950 p-8 group">
+                    <div class="mb-8 text-brand-400 dark:text-brand-600 group-hover:text-brand-950 dark:group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-microchip text-3xl"></i>
+                    </div>
+                    <h4 class="font-mono text-xs font-bold uppercase tracking-widest text-brand-950 dark:text-white mb-4">Heterogeneous Edge</h4>
+                    <p class="text-brand-600 dark:text-brand-400 text-sm font-medium leading-relaxed">Developing cross-platform deployment pipelines targeted for NVIDIA Jetson Orin/Nano and Qualcomm compute boards.</p>
+                </div>
+                
+                <div class="bg-brand-50 dark:bg-brand-950 p-8 group">
+                    <div class="mb-8 text-brand-400 dark:text-brand-600 group-hover:text-brand-950 dark:group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-cube text-3xl"></i>
+                    </div>
+                    <h4 class="font-mono text-xs font-bold uppercase tracking-widest text-brand-950 dark:text-white mb-4">Physics & Sim</h4>
+                    <p class="text-brand-600 dark:text-brand-400 text-sm font-medium leading-relaxed">Simulating complex rigid-body kinetics, obstacle interaction, and vehicle dynamics inside Gazebo grid setups.</p>
+                </div>
 
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
-    <section id="career" class="py-32 schematic-border-t relative z-10 bg-brand-dark/50">
-        <div class="max-w-[1000px] mx-auto px-6">
-            <div class="mb-16">
-                <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-white/50 block mb-4">[02] // OPERATIONAL HOURS</span>
-                <h2 class="font-display text-3xl md:text-4xl font-medium text-brand-highlight tracking-tight">Professional Operations</h2>
+    <section id="career" class="py-32 tech-border border-t relative z-10">
+        <div class="max-w-[1400px] mx-auto px-6 md:px-12">
+            <div class="mb-20">
+                <span class="font-mono text-[10px] uppercase tracking-widest text-brand-500 dark:text-brand-400 font-bold block mb-4">[02] // OPERATIONAL TIMELINE</span>
+                <h2 class="font-sans text-3xl md:text-5xl font-bold text-brand-950 dark:text-white tracking-tighter uppercase">Professional Operations</h2>
             </div>
 
-            <div class="relative schematic-border-l ml-2 md:ml-32 space-y-16 py-4">
+            <!-- Highly structured timeline -->
+            <div class="tech-border border-t border-l">
                 
                 <!-- Timeline Item 1 -->
-                <div class="relative pl-10 group">
-                    <div class="absolute -left-[3.5px] top-1.5 w-1.5 h-1.5 bg-white group-hover:shadow-[0_0_8px_rgba(255,255,255,0.8)] transition-all"></div>
-                    <div class="absolute left-[-140px] top-0 text-[11px] font-mono text-white/60 uppercase tracking-widest hidden md:block text-right w-28">
-                        2024 — Pres
+                <div class="grid grid-cols-1 md:grid-cols-12 tech-border border-b relative hover:bg-brand-100/50 dark:hover:bg-brand-900/30 transition-colors">
+                    <div class="absolute -left-[5px] top-8 w-2.5 h-2.5 bg-brand-950 dark:bg-white hidden md:block"></div>
+                    
+                    <div class="md:col-span-3 p-8 border-r tech-border flex flex-col justify-start">
+                        <div class="font-mono text-sm font-bold text-brand-950 dark:text-white uppercase tracking-widest mb-2">2024 — Present</div>
+                        <div class="font-mono text-[10px] text-brand-500 dark:text-brand-400 uppercase tracking-widest">Active Status</div>
                     </div>
-                    <div class="md:hidden text-[10px] font-mono text-white/60 uppercase tracking-widest mb-3">
-                        2024 — Present
+                    
+                    <div class="md:col-span-9 p-8">
+                        <h3 class="font-sans text-2xl font-bold text-brand-950 dark:text-white mb-2 uppercase">Software Engineer</h3>
+                        <h4 class="font-mono text-xs font-bold tracking-widest uppercase text-brand-600 dark:text-brand-400 mb-6">Tsalla Aerospace</h4>
+                        <p class="text-brand-700 dark:text-brand-300 text-base font-medium leading-relaxed max-w-3xl">
+                            Pioneering cognitive onboard mission agents running dynamic visual planning systems on Qualcomm and Nvidia hardware. Architecting high-reliability ROS2 robotic controllers interacting directly with specialized Ubuntu environments.
+                        </p>
                     </div>
-                    <h3 class="font-display text-xl font-medium text-white mb-1">Software Engineer</h3>
-                    <h4 class="font-mono text-[10px] tracking-widest uppercase text-white/40 mb-4">Tsalla Aerospace</h4>
-                    <p class="text-brand-text text-sm font-light leading-relaxed max-w-2xl">
-                        Pioneering cognitive onboard mission agents running dynamic visual planning systems on Qualcomm and Nvidia hardware. Architecting high-reliability ROS2 robotic controllers interacting directly with specialized Ubuntu environments.
-                    </p>
                 </div>
 
                 <!-- Timeline Item 2 -->
-                <div class="relative pl-10 group">
-                    <div class="absolute -left-[3px] top-1.5 w-[5px] h-[5px] bg-brand-text group-hover:bg-white transition-all"></div>
-                    <div class="absolute left-[-140px] top-0 text-[11px] font-mono text-white/40 group-hover:text-white/60 uppercase tracking-widest hidden md:block text-right w-28 transition-colors">
-                        2024 — 2024
+                <div class="grid grid-cols-1 md:grid-cols-12 tech-border border-b relative hover:bg-brand-100/50 dark:hover:bg-brand-900/30 transition-colors">
+                    <div class="absolute -left-[4px] top-8 w-2 h-2 bg-brand-300 dark:bg-brand-700 hidden md:block"></div>
+                    
+                    <div class="md:col-span-3 p-8 border-r tech-border flex flex-col justify-start">
+                        <div class="font-mono text-sm font-bold text-brand-950 dark:text-white uppercase tracking-widest mb-2">2024 — 2024</div>
+                        <div class="font-mono text-[10px] text-brand-500 dark:text-brand-400 uppercase tracking-widest">Archived</div>
                     </div>
-                    <div class="md:hidden text-[10px] font-mono text-white/40 uppercase tracking-widest mb-3">
-                        2024 — 2024
+                    
+                    <div class="md:col-span-9 p-8">
+                        <h3 class="font-sans text-2xl font-bold text-brand-950 dark:text-white mb-2 uppercase">AI-ML Intern</h3>
+                        <h4 class="font-mono text-xs font-bold tracking-widest uppercase text-brand-600 dark:text-brand-400 mb-6">Tsalla Aerospace</h4>
+                        <p class="text-brand-700 dark:text-brand-300 text-base font-medium leading-relaxed max-w-3xl">
+                            Designed real-time vision algorithms (SLAM/VIO) for robust, GPS-denied autonomous ground scanning. Scaled physics-compliant robot fleet simulations inside Gazebo, running massive parameter test matrices.
+                        </p>
                     </div>
-                    <h3 class="font-display text-xl font-medium text-brand-highlight group-hover:text-white transition-colors mb-1">AI-ML Intern</h3>
-                    <h4 class="font-mono text-[10px] tracking-widest uppercase text-white/40 mb-4">Tsalla Aerospace</h4>
-                    <p class="text-brand-text text-sm font-light leading-relaxed max-w-2xl">
-                        Designed real-time vision algorithms (SLAM/VIO) for robust, GPS-denied autonomous ground scanning. Scaled physics-compliant robot fleet simulations inside Gazebo, running massive parameter test matrices.
-                    </p>
                 </div>
 
                 <!-- Timeline Item 3 -->
-                <div class="relative pl-10 group">
-                    <div class="absolute -left-[3px] top-1.5 w-[5px] h-[5px] bg-brand-text group-hover:bg-white transition-all"></div>
-                    <div class="absolute left-[-140px] top-0 text-[11px] font-mono text-white/40 group-hover:text-white/60 uppercase tracking-widest hidden md:block text-right w-28 transition-colors">
-                        2024 — 2025
+                <div class="grid grid-cols-1 md:grid-cols-12 tech-border border-b relative hover:bg-brand-100/50 dark:hover:bg-brand-900/30 transition-colors">
+                    <div class="absolute -left-[4px] top-8 w-2 h-2 bg-brand-300 dark:bg-brand-700 hidden md:block"></div>
+                    
+                    <div class="md:col-span-3 p-8 border-r tech-border flex flex-col justify-start">
+                        <div class="font-mono text-sm font-bold text-brand-950 dark:text-white uppercase tracking-widest mb-2">2024 — 2025</div>
+                        <div class="font-mono text-[10px] text-brand-500 dark:text-brand-400 uppercase tracking-widest">Archived</div>
                     </div>
-                    <div class="md:hidden text-[10px] font-mono text-white/40 uppercase tracking-widest mb-3">
-                        2024 — 2025
+                    
+                    <div class="md:col-span-9 p-8">
+                        <h3 class="font-sans text-2xl font-bold text-brand-950 dark:text-white mb-2 uppercase">SWE Consultant</h3>
+                        <h4 class="font-mono text-xs font-bold tracking-widest uppercase text-brand-600 dark:text-brand-400 mb-6">Freelance / Startups</h4>
+                        <p class="text-brand-700 dark:text-brand-300 text-base font-medium leading-relaxed max-w-3xl">
+                            Built embedded camera streaming integrations, low-latency sensor drivers, and hardware-in-the-loop validation setups on Nvidia Jetson Nano and Orin evaluation platforms using ROS.
+                        </p>
                     </div>
-                    <h3 class="font-display text-xl font-medium text-brand-highlight group-hover:text-white transition-colors mb-1">SWE Consultant</h3>
-                    <h4 class="font-mono text-[10px] tracking-widest uppercase text-white/40 mb-4">Freelance / Startup</h4>
-                    <p class="text-brand-text text-sm font-light leading-relaxed max-w-2xl">
-                        Built embedded camera streaming integrations, low-latency sensor drivers, and hardware-in-the-loop validation setups on Nvidia Jetson Nano and Orin evaluation platforms using ROS.
-                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="py-32 schematic-border-t relative z-10">
-        <div class="max-w-[1400px] mx-auto px-6">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+    <section id="projects" class="py-32 tech-border border-t relative z-10 bg-brand-50 dark:bg-brand-950">
+        <div class="max-w-[1400px] mx-auto px-6 md:px-12">
+            <div class="flex flex-col xl:flex-row xl:items-end justify-between mb-16 gap-10">
                 <div>
-                    <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-white/50 block mb-4">[03] // ENGINEERING LEDGER</span>
-                    <h2 class="font-display text-3xl md:text-4xl font-medium text-brand-highlight tracking-tight">Technical Registry</h2>
+                    <span class="font-mono text-[10px] uppercase tracking-widest text-brand-500 dark:text-brand-400 font-bold block mb-4">[03] // ENGINEERING LEDGER</span>
+                    <h2 class="font-sans text-3xl md:text-5xl font-bold text-brand-950 dark:text-white tracking-tighter uppercase">Technical Registry</h2>
                 </div>
                 
-                <!-- Filter Controls -->
-                <div class="flex flex-wrap gap-3 font-mono text-[10px] uppercase tracking-widest">
-                    <button onclick="filterProjects('all')" id="filter-btn-all" class="filter-btn text-white border-b border-white pb-1 transition-all">All</button>
-                    <button onclick="filterProjects('robotics')" id="filter-btn-robotics" class="filter-btn text-brand-text hover:text-white pb-1 border-b border-transparent hover:border-white/50 transition-all">Robotics/Control</button>
-                    <button onclick="filterProjects('vision')" id="filter-btn-vision" class="filter-btn text-brand-text hover:text-white pb-1 border-b border-transparent hover:border-white/50 transition-all">Vision/Localization</button>
-                    <button onclick="filterProjects('genai')" id="filter-btn-genai" class="filter-btn text-brand-text hover:text-white pb-1 border-b border-transparent hover:border-white/50 transition-all">Generative/Agentic</button>
-                    <button onclick="filterProjects('quant')" id="filter-btn-quant" class="filter-btn text-brand-text hover:text-white pb-1 border-b border-transparent hover:border-white/50 transition-all">Quant</button>
+                <!-- Filter Controls - Sharp rectangular buttons -->
+                <div class="flex flex-wrap gap-2 font-mono text-[10px] uppercase tracking-widest font-bold">
+                    <button onclick="filterProjects('all')" id="filter-btn-all" class="filter-btn px-6 py-3 border border-brand-950 bg-brand-950 text-white dark:border-white dark:bg-white dark:text-brand-950 transition-colors">All Files</button>
+                    <button onclick="filterProjects('robotics')" id="filter-btn-robotics" class="filter-btn px-6 py-3 border border-brand-300 text-brand-600 hover:bg-brand-200 dark:border-brand-700 dark:text-brand-400 dark:hover:bg-brand-800 transition-colors">Robotics/Control</button>
+                    <button onclick="filterProjects('vision')" id="filter-btn-vision" class="filter-btn px-6 py-3 border border-brand-300 text-brand-600 hover:bg-brand-200 dark:border-brand-700 dark:text-brand-400 dark:hover:bg-brand-800 transition-colors">Vision/Localization</button>
+                    <button onclick="filterProjects('genai')" id="filter-btn-genai" class="filter-btn px-6 py-3 border border-brand-300 text-brand-600 hover:bg-brand-200 dark:border-brand-700 dark:text-brand-400 dark:hover:bg-brand-800 transition-colors">Gen AI/Agentic</button>
+                    <button onclick="filterProjects('quant')" id="filter-btn-quant" class="filter-btn px-6 py-3 border border-brand-300 text-brand-600 hover:bg-brand-200 dark:border-brand-700 dark:text-brand-400 dark:hover:bg-brand-800 transition-colors">Quantitative</button>
                 </div>
             </div>
 
-            <!-- Project Grid -->
-            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 schematic-border">
+            <!-- Project Grid - Strict 1px border grid layout -->
+            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[1px] bg-brand-200 dark:bg-brand-800 tech-border border">
                 <!-- Dynamically populated via JS -->
             </div>
             
-            <div id="projects-empty-state" class="hidden text-center py-24 schematic-border bg-brand-dark/50">
-                <i class="fa-solid fa-satellite-dish text-white/20 text-3xl mb-4"></i>
-                <p class="font-mono text-[10px] tracking-widest uppercase text-white/40">0 records matching parameters.</p>
+            <!-- Empty State -->
+            <div id="projects-empty-state" class="hidden text-center py-32 tech-border border bg-brand-50 dark:bg-brand-950">
+                <i class="fa-solid fa-triangle-exclamation text-brand-400 dark:text-brand-600 text-4xl mb-6"></i>
+                <p class="font-mono text-xs tracking-widest uppercase text-brand-500 dark:text-brand-400 font-bold">0 records matching telemetry parameters.</p>
             </div>
         </div>
     </section>
 
-    <section id="skills" class="py-32 schematic-border-t relative z-10 bg-brand-dark/30">
-        <div class="max-w-[1400px] mx-auto px-6">
+    <section id="skills" class="py-32 tech-border border-t relative z-10">
+        <div class="max-w-[1400px] mx-auto px-6 md:px-12">
             <div class="mb-16">
-                <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-white/50 block mb-4">[04] // EXPERTISE</span>
-                <h2 class="font-display text-3xl md:text-4xl font-medium text-brand-highlight tracking-tight">Capability Matrix</h2>
+                <span class="font-mono text-[10px] uppercase tracking-widest text-brand-500 dark:text-brand-400 font-bold block mb-4">[04] // SYSTEM ARCHITECTURE EXPERTISE</span>
+                <h2 class="font-sans text-3xl md:text-5xl font-bold text-brand-950 dark:text-white tracking-tighter uppercase">Capability Matrix</h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-px bg-white/10 schematic-border">
+            <!-- Stacked grid format -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-[1px] bg-brand-200 dark:bg-brand-800 tech-border border">
                 
                 <!-- Skill Block 1 -->
-                <div class="md:col-span-8 bg-brand-black p-8 md:p-12 relative overflow-hidden group">
-                    <div class="absolute -right-10 -bottom-10 text-white/5 group-hover:text-white/10 transition-colors pointer-events-none">
-                        <i class="fa-solid fa-microchip text-[180px]"></i>
+                <div class="lg:col-span-8 bg-brand-50 dark:bg-brand-950 p-8 md:p-12 relative group">
+                    <div class="absolute right-8 bottom-8 text-brand-200 dark:text-brand-800/50 pointer-events-none">
+                        <i class="fa-solid fa-microchip text-[120px]"></i>
                     </div>
-                    <div class="relative z-10">
-                        <span class="font-mono text-[10px] uppercase tracking-widest text-white/50 block mb-3">Domain 01</span>
-                        <h3 class="font-display text-2xl font-medium text-white mb-4">Embedded Systems & Compute</h3>
-                        <p class="text-brand-text text-sm font-light leading-relaxed max-w-xl mb-10">
-                            Experienced in configuring and deploying navigation stacks on NVIDIA Jetson AGX Orin / Nano and Qualcomm boards. Mastering high-speed serial bus integration, hardware-accelerated deep learning pipelines, and real-time sensor loops.
-                        </p>
-                        <div class="flex flex-wrap gap-2 font-mono text-[10px] uppercase tracking-wider">
-                            <span class="px-3 py-1.5 schematic-border bg-white/[0.02] text-white/80">Jetson Orin/Nano</span>
-                            <span class="px-3 py-1.5 schematic-border bg-white/[0.02] text-white/80">Qualcomm</span>
-                            <span class="px-3 py-1.5 schematic-border bg-white/[0.02] text-white/80">Ubuntu OS</span>
-                            <span class="px-3 py-1.5 schematic-border bg-white/[0.02] text-white/80">PX4 / Micro-ROS</span>
-                            <span class="px-3 py-1.5 schematic-border bg-white/[0.02] text-white/80">CUDA / Gstreamer</span>
+                    <div class="relative z-10 h-full flex flex-col justify-between">
+                        <div>
+                            <span class="font-mono text-[10px] uppercase tracking-widest text-brand-500 dark:text-brand-400 font-bold block mb-4">Domain 01</span>
+                            <h3 class="font-sans text-3xl font-bold text-brand-950 dark:text-white mb-6 uppercase">Embedded Systems & Compute</h3>
+                            <p class="text-brand-700 dark:text-brand-300 text-base font-medium leading-relaxed max-w-2xl mb-12">
+                                Experienced in configuring and deploying navigation stacks on NVIDIA Jetson AGX Orin / Nano and Qualcomm boards. Mastering high-speed serial bus integration, hardware-accelerated deep learning pipelines, and real-time sensor loops.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-2 font-mono text-[10px] uppercase tracking-widest font-bold">
+                            <span class="px-4 py-2 border tech-border text-brand-950 dark:text-white bg-white dark:bg-brand-900">Jetson Orin/Nano</span>
+                            <span class="px-4 py-2 border tech-border text-brand-950 dark:text-white bg-white dark:bg-brand-900">Qualcomm</span>
+                            <span class="px-4 py-2 border tech-border text-brand-950 dark:text-white bg-white dark:bg-brand-900">Ubuntu OS</span>
+                            <span class="px-4 py-2 border tech-border text-brand-950 dark:text-white bg-white dark:bg-brand-900">PX4 / Micro-ROS</span>
+                            <span class="px-4 py-2 border tech-border text-brand-950 dark:text-white bg-white dark:bg-brand-900">CUDA / Gstreamer</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Skill Block 2 -->
-                <div class="md:col-span-4 bg-brand-black p-8 md:p-12 relative overflow-hidden group">
+                <div class="lg:col-span-4 bg-brand-50 dark:bg-brand-950 p-8 md:p-12 relative group">
                      <div class="relative z-10 h-full flex flex-col justify-between">
                         <div>
-                            <span class="font-mono text-[10px] uppercase tracking-widest text-white/50 block mb-3">Domain 02</span>
-                            <h3 class="font-display text-2xl font-medium text-white mb-4">ROS Architecture</h3>
-                            <p class="text-brand-text text-sm font-light leading-relaxed mb-10">
-                                Architecting distributed publish-subscribe networks utilizing ROS/ROS2 node topologies, custom DDS profiles, and real-time lifecycle configurations.
+                            <span class="font-mono text-[10px] uppercase tracking-widest text-brand-500 dark:text-brand-400 font-bold block mb-4">Domain 02</span>
+                            <h3 class="font-sans text-2xl font-bold text-brand-950 dark:text-white mb-4 uppercase">ROS Architecture</h3>
+                            <p class="text-brand-700 dark:text-brand-300 text-sm font-medium leading-relaxed mb-10">
+                                Architecting distributed networks utilizing ROS/ROS2 node topologies, custom DDS profiles, and real-time lifecycle configurations.
                             </p>
                         </div>
-                        <div class="flex flex-wrap gap-2 font-mono text-[10px] uppercase tracking-wider">
-                            <span class="px-3 py-1.5 schematic-border bg-white/[0.02] text-white/80">ROS2 Humble</span>
-                            <span class="px-3 py-1.5 schematic-border bg-white/[0.02] text-white/80">DDS Tuning</span>
-                            <span class="px-3 py-1.5 schematic-border bg-white/[0.02] text-white/80">rclcpp</span>
+                        <div class="flex flex-wrap gap-2 font-mono text-[10px] uppercase tracking-widest font-bold">
+                            <span class="px-4 py-2 border tech-border text-brand-950 dark:text-white bg-white dark:bg-brand-900">ROS2 Humble</span>
+                            <span class="px-4 py-2 border tech-border text-brand-950 dark:text-white bg-white dark:bg-brand-900">DDS Tuning</span>
+                            <span class="px-4 py-2 border tech-border text-brand-950 dark:text-white bg-white dark:bg-brand-900">rclcpp</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Skill Block 3 -->
-                <div class="md:col-span-4 bg-brand-black p-8 md:p-12 relative overflow-hidden group">
+                <div class="lg:col-span-4 bg-brand-50 dark:bg-brand-950 p-8 md:p-12 relative group">
                      <div class="relative z-10 h-full flex flex-col justify-between">
                         <div>
-                            <span class="font-mono text-[10px] uppercase tracking-widest text-white/50 block mb-3">Domain 03</span>
-                            <h3 class="font-display text-2xl font-medium text-white mb-4">Sensing & Vision</h3>
-                            <p class="text-brand-text text-sm font-light leading-relaxed mb-10">
-                                Designing custom CV algorithms for visual tracking, real-time spatial mapping, and Visual Inertial Odometry (VIO) localization modules.
+                            <span class="font-mono text-[10px] uppercase tracking-widest text-brand-500 dark:text-brand-400 font-bold block mb-4">Domain 03</span>
+                            <h3 class="font-sans text-2xl font-bold text-brand-950 dark:text-white mb-4 uppercase">Sensing & Vision</h3>
+                            <p class="text-brand-700 dark:text-brand-300 text-sm font-medium leading-relaxed mb-10">
+                                Designing custom CV algorithms for visual tracking, real-time mapping, and VIO localization modules.
                             </p>
                         </div>
-                        <div class="flex flex-wrap gap-2 font-mono text-[10px] uppercase tracking-wider">
-                            <span class="px-3 py-1.5 schematic-border bg-white/[0.02] text-white/80">OpenCV</span>
-                            <span class="px-3 py-1.5 schematic-border bg-white/[0.02] text-white/80">SLAM/VIO</span>
-                            <span class="px-3 py-1.5 schematic-border bg-white/[0.02] text-white/80">YOLO Arch</span>
+                        <div class="flex flex-wrap gap-2 font-mono text-[10px] uppercase tracking-widest font-bold">
+                            <span class="px-4 py-2 border tech-border text-brand-950 dark:text-white bg-white dark:bg-brand-900">OpenCV</span>
+                            <span class="px-4 py-2 border tech-border text-brand-950 dark:text-white bg-white dark:bg-brand-900">SLAM/VIO</span>
+                            <span class="px-4 py-2 border tech-border text-brand-950 dark:text-white bg-white dark:bg-brand-900">YOLO Arch</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Skill Block 4 -->
-                <div class="md:col-span-8 bg-brand-black p-8 md:p-12 relative overflow-hidden group">
-                    <div class="absolute -right-10 -bottom-10 text-white/5 group-hover:text-white/10 transition-colors pointer-events-none">
-                        <i class="fa-solid fa-network-wired text-[180px]"></i>
+                <div class="lg:col-span-8 bg-brand-50 dark:bg-brand-950 p-8 md:p-12 relative group">
+                    <div class="absolute right-8 bottom-8 text-brand-200 dark:text-brand-800/50 pointer-events-none">
+                        <i class="fa-solid fa-network-wired text-[120px]"></i>
                     </div>
-                    <div class="relative z-10">
-                        <span class="font-mono text-[10px] uppercase tracking-widest text-white/50 block mb-3">Domain 04</span>
-                        <h3 class="font-display text-2xl font-medium text-white mb-4">Embodied Cognition & Sim</h3>
-                        <p class="text-brand-text text-sm font-light leading-relaxed max-w-xl mb-10">
-                            Pioneering integration of onboard Large Language Models (LLMs) and Agentic reasoning graphs to act as autonomous payload planners. Simulating frameworks inside Gazebo and PX4 SITL physics environments.
-                        </p>
-                        <div class="flex flex-wrap gap-2 font-mono text-[10px] uppercase tracking-wider">
-                            <span class="px-3 py-1.5 schematic-border bg-white/[0.02] text-white/80">Agentic Workflows</span>
-                            <span class="px-3 py-1.5 schematic-border bg-white/[0.02] text-white/80">Onboard LLMs</span>
-                            <span class="px-3 py-1.5 schematic-border bg-white/[0.02] text-white/80">Gazebo Sim</span>
-                            <span class="px-3 py-1.5 schematic-border bg-white/[0.02] text-white/80">HIL Testing</span>
+                    <div class="relative z-10 h-full flex flex-col justify-between">
+                        <div>
+                            <span class="font-mono text-[10px] uppercase tracking-widest text-brand-500 dark:text-brand-400 font-bold block mb-4">Domain 04</span>
+                            <h3 class="font-sans text-3xl font-bold text-brand-950 dark:text-white mb-6 uppercase">Embodied Cognition</h3>
+                            <p class="text-brand-700 dark:text-brand-300 text-base font-medium leading-relaxed max-w-2xl mb-12">
+                                Pioneering integration of onboard Large Language Models (LLMs) and Agentic reasoning graphs to act as autonomous payload planners. Simulating frameworks inside Gazebo and PX4 SITL environments.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-2 font-mono text-[10px] uppercase tracking-widest font-bold">
+                            <span class="px-4 py-2 border tech-border text-brand-950 dark:text-white bg-white dark:bg-brand-900">Agentic Workflows</span>
+                            <span class="px-4 py-2 border tech-border text-brand-950 dark:text-white bg-white dark:bg-brand-900">Onboard LLMs</span>
+                            <span class="px-4 py-2 border tech-border text-brand-950 dark:text-white bg-white dark:bg-brand-900">Gazebo Sim</span>
+                            <span class="px-4 py-2 border tech-border text-brand-950 dark:text-white bg-white dark:bg-brand-900">HIL Testing</span>
                         </div>
                     </div>
                 </div>
@@ -447,73 +473,72 @@
         </div>
     </section>
 
-    <footer id="contact" class="py-32 schematic-border-t relative z-10 bg-brand-black">
-        <div class="max-w-[1400px] mx-auto px-6 flex flex-col items-center">
-            <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-white/50 block mb-6">[05] // TERMINAL</span>
-            <h2 class="font-display text-4xl md:text-5xl font-medium text-white tracking-tight mb-8">
-                Initiate Connection.
+    <footer id="contact" class="pt-32 pb-16 tech-border border-t relative z-10 bg-brand-100 dark:bg-brand-900">
+        <div class="max-w-[1400px] mx-auto px-6 md:px-12 flex flex-col items-center">
+            <span class="font-mono text-[10px] uppercase tracking-widest text-brand-500 dark:text-brand-400 font-bold block mb-6">[05] // COMMUNICATIONS TERMINAL</span>
+            <h2 class="font-sans text-5xl md:text-7xl font-bold text-brand-950 dark:text-white tracking-tighter uppercase mb-10 text-center">
+                Initiate Sync.
             </h2>
-            <p class="text-brand-text text-sm md:text-base font-light max-w-lg text-center mb-12">
-                Available for discussions regarding Robotic automation stacks, Edge cognitive AI systems, or visual navigation consulting.
+            <p class="text-brand-700 dark:text-brand-300 text-base font-medium max-w-xl text-center mb-16">
+                Available for high-level discussions regarding Robotic automation stacks, Edge cognitive AI systems, or visual navigation consulting architectures.
             </p>
             
-            <a href="mailto:anirudhjbabu@gmail.com" class="font-mono text-lg md:text-xl text-white tracking-widest hover:opacity-70 transition-opacity border-b border-white/30 pb-2 mb-24">
+            <a href="mailto:anirudhjbabu@gmail.com" class="font-mono text-xl md:text-3xl font-bold text-brand-950 dark:text-white tracking-widest hover:opacity-70 transition-opacity border-b-2 tech-border pb-2 mb-32 uppercase">
                 ANIRUDHJBABU@GMAIL.COM
             </a>
             
-            <div class="w-full flex flex-col md:flex-row justify-between items-center schematic-border-t pt-8">
-                <div class="font-mono text-[10px] text-white/40 uppercase tracking-widest mb-4 md:mb-0">
+            <div class="w-full flex flex-col md:flex-row justify-between items-center tech-border border-t pt-8">
+                <div class="font-mono text-[10px] text-brand-600 dark:text-brand-400 font-bold uppercase tracking-widest mb-6 md:mb-0">
                     SYS_BUILD 2026 // ALL RIGHTS RESERVED
                 </div>
-                <div class="flex space-x-6 text-white/60">
-                    <a href="#" target="_blank" class="hover:text-white transition-colors text-lg"><i class="fa-brands fa-github"></i></a>
-                    <a href="#" target="_blank" class="hover:text-white transition-colors text-lg"><i class="fa-brands fa-linkedin-in"></i></a>
+                <div class="flex space-x-8 text-brand-600 dark:text-brand-400">
+                    <a href="#" target="_blank" class="hover:text-brand-950 dark:hover:text-white transition-colors text-xl"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" target="_blank" class="hover:text-brand-950 dark:hover:text-white transition-colors text-xl"><i class="fa-brands fa-linkedin-in"></i></a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <div id="modal-overlay" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-brand-black/80">
-        <div id="modal-content" class="bg-brand-black schematic-border w-full max-w-5xl max-h-[90vh] overflow-hidden flex flex-col md:flex-row relative shadow-[0_0_50px_rgba(0,0,0,0.8)]">
+    <div id="modal-overlay" class="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-brand-50/90 dark:bg-brand-950/90 backdrop-blur-md">
+        <!-- Sharp rectangle, high contrast borders -->
+        <div id="modal-content" class="bg-brand-50 dark:bg-brand-950 tech-border border w-full max-w-5xl max-h-[90vh] overflow-hidden flex flex-col md:flex-row relative shadow-2xl">
             
             <!-- Close Button -->
-            <button onclick="closeModal()" class="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center bg-brand-black schematic-border text-white/50 hover:text-white transition-colors group">
-                <i class="fa-solid fa-xmark text-sm"></i>
+            <button onclick="closeModal()" class="absolute top-0 right-0 z-10 w-12 h-12 flex items-center justify-center bg-brand-100 dark:bg-brand-900 tech-border border-l border-b text-brand-600 dark:text-brand-400 hover:text-brand-950 dark:hover:text-white hover:bg-brand-200 dark:hover:bg-brand-800 transition-colors">
+                <i class="fa-solid fa-xmark text-lg"></i>
             </button>
             
             <!-- Icon/Visual Section -->
-            <div class="w-full md:w-2/5 h-48 md:h-auto bg-brand-dark schematic-border-r relative flex items-center justify-center overflow-hidden">
-                <div class="absolute inset-0 bg-grid-pattern opacity-30"></div>
-                <div class="relative z-10 w-24 h-24 schematic-border bg-brand-black flex items-center justify-center text-white text-4xl shadow-[0_0_30px_rgba(255,255,255,0.05)]">
+            <div class="w-full md:w-2/5 h-48 md:h-auto bg-brand-100 dark:bg-brand-900 tech-border md:border-r relative flex items-center justify-center overflow-hidden">
+                <div class="absolute inset-0 bg-grid opacity-50"></div>
+                <!-- Boxed icon -->
+                <div class="relative z-10 w-32 h-32 tech-border border bg-brand-50 dark:bg-brand-950 flex items-center justify-center text-brand-950 dark:text-white text-5xl shadow-xl">
                     <i id="modal-icon" class="fa-solid fa-microchip"></i>
                 </div>
-                <!-- Scanning line effect in modal -->
-                <div class="absolute top-0 bottom-0 left-1/2 w-[1px] bg-white/10 -translate-x-1/2"></div>
-                <div class="absolute left-0 right-0 top-1/2 h-[1px] bg-white/10 -translate-y-1/2"></div>
             </div>
 
             <!-- Details Section -->
-            <div class="w-full md:w-3/5 p-8 md:p-12 overflow-y-auto custom-scrollbar">
-                <div id="modal-tag" class="font-mono text-[10px] text-white/40 tracking-[0.2em] uppercase mb-4">CATEGORY // TAG</div>
-                <h3 id="modal-title" class="font-display text-2xl md:text-3xl font-medium text-white mb-6 tracking-tight">Project Title</h3>
+            <div class="w-full md:w-3/5 p-8 md:p-12 overflow-y-auto">
+                <div id="modal-tag" class="font-mono text-[10px] font-bold text-brand-500 dark:text-brand-400 tracking-widest uppercase mb-4">CATEGORY // TAG</div>
+                <h3 id="modal-title" class="font-sans text-3xl font-bold text-brand-950 dark:text-white mb-6 uppercase tracking-tighter">Project Title</h3>
                 
-                <p id="modal-desc" class="text-brand-text text-sm font-light leading-relaxed mb-10 pb-10 schematic-border-b">
+                <p id="modal-desc" class="text-brand-700 dark:text-brand-300 text-sm font-medium leading-relaxed mb-10 pb-10 tech-border border-b">
                     Description...
                 </p>
                 
                 <div class="space-y-10">
                     <div>
-                        <h4 class="font-mono text-[10px] uppercase tracking-widest text-white/60 mb-5 flex items-center gap-2">
-                            <span class="w-2 h-2 border border-white/40 block"></span> System Specs
+                        <h4 class="font-mono text-[10px] uppercase tracking-widest font-bold text-brand-950 dark:text-white mb-6 flex items-center gap-3">
+                            <span class="w-3 h-3 bg-brand-950 dark:bg-white block"></span> System Specs
                         </h4>
                         <ul id="modal-features" class="space-y-4">
                             <!-- Injected Features -->
                         </ul>
                     </div>
                     
-                    <div>
-                        <h4 class="font-mono text-[10px] uppercase tracking-widest text-white/60 mb-5 flex items-center gap-2">
-                            <span class="w-2 h-2 bg-white/40 block"></span> Tech Stack
+                    <div class="pt-6">
+                        <h4 class="font-mono text-[10px] uppercase tracking-widest font-bold text-brand-950 dark:text-white mb-6 flex items-center gap-3">
+                            <span class="w-3 h-3 border-2 border-brand-950 dark:border-white block"></span> Tech Stack Architecture
                         </h4>
                         <div id="modal-stack" class="flex flex-wrap gap-2">
                             <!-- Injected Stack -->
@@ -525,6 +550,37 @@
     </div>
 
     <script>
+        // Theme Management Logic
+        const systemState = {
+            isDarkMode: true, // Default to dark for that classified look
+            init() {
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme === 'light') {
+                    this.setTheme(false);
+                } else {
+                    this.setTheme(true); // Default dark
+                }
+
+                document.getElementById('theme-toggle').addEventListener('click', () => {
+                    this.setTheme(!this.isDarkMode);
+                });
+            },
+            setTheme(dark) {
+                this.isDarkMode = dark;
+                if (dark) {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                    document.getElementById('theme-toggle-light').classList.remove('hidden');
+                    document.getElementById('theme-toggle-dark').classList.add('hidden');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                    document.getElementById('theme-toggle-light').classList.add('hidden');
+                    document.getElementById('theme-toggle-dark').classList.remove('hidden');
+                }
+            }
+        };
+
         // Project Data Configuration
         const projects = [
             { 
@@ -657,27 +713,28 @@
                 if (selectedCategory === 'all' || p.category === selectedCategory) {
                     visibleCount++;
                     const card = document.createElement('div');
-                    card.className = "bg-brand-black p-8 group cursor-pointer hover:bg-white/[0.02] transition-colors relative flex flex-col justify-between";
+                    // Sharp cards, zero rounding, tech-borders, hover inverse effects
+                    card.className = "bg-brand-50 dark:bg-brand-950 p-8 group cursor-pointer hover:bg-brand-950 hover:text-white dark:hover:bg-white dark:hover:text-brand-950 transition-colors duration-300 relative flex flex-col justify-between";
                     card.onclick = () => openModal(idx);
 
                     card.innerHTML = `
                         <div>
                             <div class="flex justify-between items-start mb-8">
-                                <div class="text-white/40 group-hover:text-white transition-colors text-xl">
+                                <div class="text-brand-400 dark:text-brand-600 group-hover:text-white dark:group-hover:text-brand-950 transition-colors text-2xl">
                                     <i class="fa-solid ${p.icon}"></i>
                                 </div>
-                                <span class="font-mono text-[9px] text-brand-text tracking-widest uppercase border border-white/10 px-2 py-1">${p.category}</span>
+                                <span class="font-mono text-[9px] font-bold tracking-widest uppercase border tech-border px-3 py-1 group-hover:border-white dark:group-hover:border-brand-950 transition-colors">${p.category}</span>
                             </div>
-                            <h3 class="font-display text-lg font-medium mb-3 text-white group-hover:text-brand-highlight transition-colors leading-tight">${p.title}</h3>
-                            <p class="text-brand-text font-light text-xs leading-relaxed line-clamp-3 mb-8">${p.desc}</p>
+                            <h3 class="font-sans text-xl font-bold mb-3 text-brand-950 dark:text-white group-hover:text-white dark:group-hover:text-brand-950 transition-colors leading-tight uppercase tracking-tighter">${p.title}</h3>
+                            <p class="text-brand-600 dark:text-brand-400 font-medium text-sm leading-relaxed line-clamp-3 mb-8 group-hover:text-brand-300 dark:group-hover:text-brand-700 transition-colors">${p.desc}</p>
                         </div>
                         <div>
                             <div class="flex flex-wrap gap-2 mb-6">
-                                ${p.stack.slice(0, 3).map(s => `<span class="font-mono text-[9px] text-white/50 uppercase tracking-wider">${s}</span>`).join('<span class="text-white/20">/</span>')}
+                                ${p.stack.slice(0, 3).map(s => `<span class="font-mono text-[9px] font-bold uppercase tracking-widest text-brand-500 dark:text-brand-500 group-hover:text-brand-400 dark:group-hover:text-brand-600 transition-colors">${s}</span>`).join('<span class="text-brand-300 dark:text-brand-700 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">/</span>')}
                             </div>
-                            <div class="flex justify-between items-center pt-4 schematic-border-t">
-                                <span class="font-mono text-[9px] text-white/40 tracking-widest uppercase group-hover:text-white/80 transition-colors">View Spec</span>
-                                <i class="fa-solid fa-arrow-right text-[10px] text-white/40 group-hover:text-white group-hover:translate-x-1 transition-all"></i>
+                            <div class="flex justify-between items-center pt-4 tech-border border-t group-hover:border-brand-800 dark:group-hover:border-brand-200 transition-colors">
+                                <span class="font-mono text-[9px] font-bold tracking-widest uppercase text-brand-500 dark:text-brand-400 group-hover:text-white dark:group-hover:text-brand-950 transition-colors">View Record</span>
+                                <i class="fa-solid fa-arrow-right text-xs text-brand-400 group-hover:text-white dark:group-hover:text-brand-950 group-hover:translate-x-1 transition-all"></i>
                             </div>
                         </div>
                     `;
@@ -698,14 +755,14 @@
         function filterProjects(cat) {
             selectedCategory = cat;
             
-            // Update UI buttons
+            // Update UI filter buttons (Stark aesthetic)
             document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.className = "filter-btn text-brand-text hover:text-white pb-1 border-b border-transparent hover:border-white/50 transition-all";
+                btn.className = "filter-btn px-6 py-3 border border-brand-300 text-brand-600 hover:bg-brand-200 dark:border-brand-700 dark:text-brand-400 dark:hover:bg-brand-800 transition-colors";
             });
             
             const activeBtn = document.getElementById(`filter-btn-${cat}`);
             if (activeBtn) {
-                activeBtn.className = "filter-btn text-white border-b border-white pb-1 transition-all";
+                activeBtn.className = "filter-btn px-6 py-3 border border-brand-950 bg-brand-950 text-white dark:border-white dark:bg-white dark:text-brand-950 transition-colors";
             }
             
             buildProjectsGrid();
@@ -721,14 +778,14 @@
             const featuresList = document.getElementById('modal-features');
             featuresList.innerHTML = p.features.map(f => `
                 <li class="flex items-start gap-3">
-                    <span class="text-white/30 font-mono text-xs mt-0.5">></span>
-                    <span class="text-brand-text text-xs md:text-sm font-light leading-relaxed">${f}</span>
+                    <span class="text-brand-400 dark:text-brand-600 font-mono text-sm mt-0.5 font-bold">></span>
+                    <span class="text-brand-700 dark:text-brand-300 text-sm font-medium leading-relaxed">${f}</span>
                 </li>
             `).join('');
             
             const stackContainer = document.getElementById('modal-stack');
             stackContainer.innerHTML = p.stack.map(s => `
-                <span class="px-3 py-1.5 schematic-border bg-white/[0.02] text-[10px] font-mono text-white/70 uppercase tracking-widest">${s}</span>
+                <span class="px-4 py-2 tech-border border bg-brand-100 dark:bg-brand-900 text-[10px] font-mono font-bold text-brand-950 dark:text-white uppercase tracking-widest">${s}</span>
             `).join('');
             
             document.getElementById('modal-overlay').classList.add('active');
@@ -740,7 +797,6 @@
             document.body.style.overflow = '';
         }
 
-        // Close modal on outside click or Esc key
         document.getElementById('modal-overlay').addEventListener('click', (e) => {
             if (e.target === document.getElementById('modal-overlay')) closeModal();
         });
@@ -749,8 +805,9 @@
             if(e.key === 'Escape') closeModal(); 
         });
 
-        // Initialize
+        // Initialize Data
         window.onload = () => {
+            systemState.init();
             buildProjectsGrid();
         };
     </script>
