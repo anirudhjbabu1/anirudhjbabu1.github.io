@@ -112,10 +112,11 @@
             </div>
             
             <div class="flex items-center space-x-6 mono text-[10px] uppercase tracking-widest font-bold">
-                <a href="#about" class="text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 transition-colors hidden md:block">01. Profile</a>
-                <a href="#career" class="text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 transition-colors hidden md:block">02. Career</a>
-                <a href="#projects-section" class="text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 transition-colors hidden md:block">03. Archive</a>
-                <a href="#skills" class="text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 transition-colors hidden md:block">04. Systems</a>
+                <a href="#about" class="text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 transition-colors hidden lg:block">01. Profile</a>
+                <a href="#career" class="text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 transition-colors hidden lg:block">02. Career</a>
+                <a href="#projects-section" class="text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 transition-colors hidden lg:block">03. Archive</a>
+                <a href="#software-deployments" class="text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 transition-colors hidden lg:block">04. Software</a>
+                <a href="#skills" class="text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 transition-colors hidden lg:block">05. Systems</a>
                 
                 <!-- Tactical Theme Toggle -->
                 <button id="theme-toggle" class="w-8 h-8 flex items-center justify-center border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" aria-label="Toggle visual theme">
@@ -317,11 +318,85 @@
         </div>
     </section>
 
+    <section id="software-deployments" class="py-24 border-t border-slate-200 dark:border-slate-800 relative z-10 bg-white/40 dark:bg-slate-950/10 backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                <div>
+                    <span class="mono text-xs uppercase tracking-widest text-slate-500 font-bold block mb-4">04 // Deployments</span>
+                    <h2 class="heading-tech text-3xl md:text-5xl font-bold text-slate-900 dark:text-slate-100 tracking-tight uppercase">Web Applications</h2>
+                </div>
+                <div class="text-right">
+                    <p class="text-slate-500 dark:text-slate-400 font-light text-sm max-w-xs ml-auto">Live interfaces, diagnostic dashboards, and distributed web platforms.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-slate-200 dark:bg-slate-800 border border-slate-200 dark:border-slate-800">
+                
+                <!-- WebApp 1 -->
+                <div class="bg-white dark:bg-slate-950 p-8 md:p-10 flex flex-col justify-between group hover:bg-slate-50 dark:hover:bg-slate-900/80 transition-colors">
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="mb-4 inline-flex items-center gap-2 border border-slate-900 dark:border-slate-100 px-3 py-1 mono text-[10px] text-slate-900 dark:text-slate-100 font-bold uppercase tracking-widest">
+                                <div class="w-1.5 h-1.5 bg-emerald-500 animate-pulse"></div> Live
+                            </div>
+                            <a href="#" target="_blank" class="w-10 h-10 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors" title="Launch WebApp">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                        <h3 class="heading-tech text-2xl font-bold text-slate-900 dark:text-slate-100 mb-3 uppercase tracking-wide">Fleet Telemetry Dashboard</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-8 font-light">
+                            Real-time robotic fleet monitoring interface displaying live maps, VIO odometry paths, and SWaP diagnostics via low-latency WebSockets.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400">React</span>
+                            <span class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400">WebSockets</span>
+                            <span class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400">Tailwind</span>
+                        </div>
+                        <a href="#" target="_blank" class="inline-flex items-center gap-3 mono text-xs font-bold uppercase tracking-widest text-slate-900 dark:text-slate-100 hover:opacity-70 transition-opacity">
+                            Access Terminal <i class="fa-solid fa-angle-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- WebApp 2 -->
+                <div class="bg-white dark:bg-slate-950 p-8 md:p-10 flex flex-col justify-between group hover:bg-slate-50 dark:hover:bg-slate-900/80 transition-colors">
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="mb-4 inline-flex items-center gap-2 border border-slate-900 dark:border-slate-100 px-3 py-1 mono text-[10px] text-slate-900 dark:text-slate-100 font-bold uppercase tracking-widest">
+                                <div class="w-1.5 h-1.5 bg-emerald-500 animate-pulse"></div> Live
+                            </div>
+                            <a href="#" target="_blank" class="w-10 h-10 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors" title="Launch WebApp">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                        <h3 class="heading-tech text-2xl font-bold text-slate-900 dark:text-slate-100 mb-3 uppercase tracking-wide">Agentic Vision Interface</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-8 font-light">
+                            Interactive web sandbox for uploading geospatial visual datasets and generating autonomous reasoning graphs using cloud LLM APIs.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400">Next.js</span>
+                            <span class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400">LangChain</span>
+                            <span class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400">Vercel</span>
+                        </div>
+                        <a href="#" target="_blank" class="inline-flex items-center gap-3 mono text-xs font-bold uppercase tracking-widest text-slate-900 dark:text-slate-100 hover:opacity-70 transition-opacity">
+                            Access Terminal <i class="fa-solid fa-angle-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <section id="skills" class="py-24 border-t border-slate-200 dark:border-slate-800 relative z-10 bg-white dark:bg-slate-950">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
                 <div>
-                    <span class="mono text-xs uppercase tracking-widest text-slate-500 font-bold block mb-4">04 // Systems</span>
+                    <span class="mono text-xs uppercase tracking-widest text-slate-500 font-bold block mb-4">05 // Systems</span>
                     <h2 class="heading-tech text-3xl md:text-5xl font-bold text-slate-900 dark:text-slate-100 tracking-tight uppercase">Technical Arsenal</h2>
                 </div>
                 <div class="text-right">
@@ -418,7 +493,7 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
                 <div>
-                    <span class="mono text-xs uppercase tracking-widest text-slate-500 font-bold block mb-4">05 // Continuous Integration</span>
+                    <span class="mono text-xs uppercase tracking-widest text-slate-500 font-bold block mb-4">06 // Continuous Integration</span>
                     <h2 class="heading-tech text-3xl md:text-5xl font-bold text-slate-900 dark:text-slate-100 tracking-tight uppercase">Active Development</h2>
                 </div>
                 <div class="text-right">
