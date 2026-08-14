@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anirudh J Babu | Robotics Software & Cognitive AI Engineer</title>
-    <!-- Tailwind CSS with custom configuration capabilities -->
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -13,316 +13,313 @@
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        heading: ['Space Grotesk', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
                         mono: ['JetBrains Mono', 'monospace'],
                     },
+                    colors: {
+                        brand: {
+                            black: '#030303',
+                            dark: '#0a0a0a',
+                            border: 'rgba(255, 255, 255, 0.1)',
+                            text: '#a1a1aa', // zinc-400
+                            highlight: '#f4f4f5', // zinc-100
+                        }
+                    },
+                    backgroundImage: {
+                        'grid-pattern': 'linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px)',
+                    },
                     animation: {
-                        'spin-slow': 'spin 12s linear infinite',
+                        'scan-line': 'scan 8s linear infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        scan: {
+                            '0%': { transform: 'translateY(-100%)' },
+                            '100%': { transform: 'translateY(100vh)' }
+                        }
                     }
                 }
             }
         }
     </script>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Premium Fonts: Space Grotesk for engineering headlines, Inter for readable body text, JetBrains Mono for system metrics -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=300;400;500;600;700&family=Space+Grotesk:wght=400;500;600;700&family=JetBrains+Mono:wght=400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     
     <style>
-        :root {
-            --bg-base: #f9fafb;
-            --accent: #10b981; /* Emerald Green */
-            --accent-glow: rgba(16, 185, 129, 0.15);
-            --text-heading: #0f172a;
-            --text-body: #475569;
-            --text-muted: #94a3b8;
-            --border-ui: rgba(226, 232, 240, 0.8);
-        }
-
-        .dark {
-            --bg-base: #030712; /* Extreme dark / Gray 950 */
-            --accent: #34d399; /* Mint / Emerald Green 400 */
-            --accent-glow: rgba(52, 211, 153, 0.2);
-            --text-heading: #f8fafc; /* Slate 50 / Crisp White */
-            --text-body: #94a3b8; /* Slate 400 */
-            --text-muted: #475569; /* Slate 600 */
-            --border-ui: rgba(30, 41, 59, 0.8); /* Slate 800 */
-        }
-
         body {
+            background-color: #030303;
+            color: #a1a1aa;
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-base);
-            color: var(--text-body);
-            margin: 0;
             overflow-x: hidden;
-            -webkit-tap-highlight-color: transparent;
-            transition: background-color 0.5s ease, color 0.5s ease;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        .heading-tech {
-            font-family: 'Space Grotesk', sans-serif;
-        }
+        .font-display { font-family: 'Space Grotesk', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
 
-        .mono { 
-            font-family: 'JetBrains Mono', monospace; 
-        }
+        /* Custom Scrollbar for technical feel */
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar-track { background: #030303; }
+        ::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 0; }
+        ::-webkit-scrollbar-thumb:hover { background: #71717a; }
 
-        #bg-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            transition: background 0.5s ease;
-        }
+        /* Structural lines to emulate schematic diagrams */
+        .schematic-border { border: 1px solid rgba(255, 255, 255, 0.08); }
+        .schematic-border-b { border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+        .schematic-border-t { border-top: 1px solid rgba(255, 255, 255, 0.08); }
+        .schematic-border-l { border-left: 1px solid rgba(255, 255, 255, 0.08); }
+        .schematic-border-r { border-right: 1px solid rgba(255, 255, 255, 0.08); }
 
+        /* Modal Transitions */
         #modal-overlay {
-            transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
+            transition: opacity 0.3s ease, backdrop-filter 0.3s ease;
             opacity: 0;
-            visibility: hidden;
+            pointer-events: none;
+            backdrop-filter: blur(0px);
         }
         #modal-overlay.active {
             opacity: 1;
-            visibility: visible;
+            pointer-events: auto;
+            backdrop-filter: blur(8px);
         }
         #modal-content {
-            transform: scale(0.95) translateY(20px);
-            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: scale(0.98) translateY(10px);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
         #modal-overlay.active #modal-content {
             transform: scale(1) translateY(0);
         }
 
-        .nav-item-pill {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0;
-            max-width: 36px;
-            height: 36px;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            border-radius: 9999px;
+        /* Hover effects */
+        .hover-invert {
+            transition: all 0.2s ease;
         }
-        .nav-item-pill:hover {
-            max-width: 130px;
-            padding-left: 0.75rem;
-            padding-right: 1rem;
-            background-color: rgba(16, 185, 129, 0.08);
-            border-color: rgba(16, 185, 129, 0.3);
-        }
-        .dark .nav-item-pill:hover {
-            background-color: rgba(52, 211, 153, 0.12);
-            border-color: rgba(52, 211, 153, 0.4);
-        }
-        .nav-text-label {
-            width: 0;
-            opacity: 0;
-            overflow: hidden;
-            transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
-            white-space: nowrap;
-        }
-        .nav-item-pill:hover .nav-text-label {
-            width: auto;
-            opacity: 1;
-            margin-left: 0.5rem;
+        .hover-invert:hover {
+            background-color: #f4f4f5;
+            color: #030303;
         }
 
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-        .dark ::-webkit-scrollbar-thumb { background: #334155; }
-        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        /* Background Grid Setup */
+        #bg-container {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background-size: 40px 40px;
+            background-position: center top;
+            pointer-events: none;
+        }
+        
+        .glow-point {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            box-shadow: 0 0 10px 2px rgba(255,255,255,0.5);
+        }
     </style>
 </head>
-<body class="selection:bg-emerald-100 dark:selection:bg-emerald-950/50 selection:text-emerald-900 dark:selection:text-emerald-200">
-    <!-- Spatial Mapping background simulation canvas -->
-    <canvas id="bg-canvas"></canvas>
+<body class="selection:bg-white selection:text-black">
 
-    <nav id="main-nav" class="fixed top-0 w-full z-40 border-b border-slate-200/20 dark:border-slate-800/40 bg-white/30 dark:bg-slate-950/30 backdrop-blur-md transition-transform duration-300">
-        <div class="max-w-7xl mx-auto px-6 h-16 md:h-20 flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <a href="#" class="heading-tech text-lg md:text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
-                    Anirudh<span class="text-emerald-600 dark:text-emerald-400">.J Babu</span>
+    <div id="bg-container" class="bg-grid-pattern opacity-50 relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-brand-black/80 to-brand-black"></div>
+        <!-- Scanning line -->
+        <div class="absolute left-0 right-0 h-[1px] bg-white/20 shadow-[0_0_15px_rgba(255,255,255,0.3)] animate-scan-line"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#030303_100%)]"></div>
+    </div>
+
+    <nav id="main-nav" class="fixed top-0 w-full z-40 bg-brand-black/90 backdrop-blur-md schematic-border-b transition-transform duration-300">
+        <div class="max-w-[1400px] mx-auto px-6 h-16 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <a href="#" class="font-display text-lg font-semibold tracking-wide text-brand-highlight hover:opacity-80 transition-opacity">
+                    ANIRUDH J BABU
                 </a>
-                <span class="hidden sm:inline-block w-[1px] h-4 bg-slate-300 dark:bg-slate-700"></span>
-                <div class="hidden sm:flex mono text-[9px] tracking-tighter font-semibold items-center gap-2 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/20">
-                    <div class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
+                <div class="hidden sm:flex items-center gap-2 schematic-border-l pl-4 py-1">
+                    <div class="w-1.5 h-1.5 bg-white animate-pulse-slow"></div>
+                    <span class="font-mono text-[9px] tracking-widest uppercase text-white/50">Sys_Online</span>
                 </div>
             </div>
             
-            <!-- Icon-First Minimalist Navigation Control Menu with expanded spacing -->
-            <div class="flex items-center space-x-4 sm:space-x-5 md:space-x-6 mono text-[10px] uppercase tracking-wider font-semibold">
-                <a href="#about" class="nav-item-pill border border-slate-200/60 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400" title="About Me">
-                    <i class="fa-solid fa-user-gear text-xs flex items-center justify-center w-[34px] h-[34px]"></i>
-                    <span class="nav-text-label text-[9px]">About</span>
-                </a>
+            <div class="hidden md:flex items-center space-x-8 font-mono text-[10px] uppercase tracking-widest">
+                <a href="#about" class="text-brand-text hover:text-white transition-colors">Philosophy</a>
+                <a href="#career" class="text-brand-text hover:text-white transition-colors">Operations</a>
+                <a href="#projects" class="text-brand-text hover:text-white transition-colors">Registry</a>
+                <a href="#skills" class="text-brand-text hover:text-white transition-colors">Matrix</a>
+            </div>
 
-                <a href="#career" class="nav-item-pill border border-slate-200/60 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400" title="Professional Experience">
-                    <i class="fa-solid fa-timeline text-xs flex items-center justify-center w-[34px] h-[34px]"></i>
-                    <span class="nav-text-label text-[9px]">Experience</span>
+            <div class="flex items-center gap-4">
+                <a href="#contact" class="px-5 py-2 schematic-border text-white text-[10px] font-mono tracking-widest uppercase hover-invert">
+                    Initiate Sync
                 </a>
-
-                <a href="#projects-section" class="nav-item-pill border border-slate-200/60 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400" title="Projects Registry">
-                    <i class="fa-solid fa-terminal text-xs flex items-center justify-center w-[34px] h-[34px]"></i>
-                    <span class="nav-text-label text-[9px]">Projects</span>
-                </a>
-
-                <a href="#skills" class="nav-item-pill border border-slate-200/60 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400" title="Technical Skills & Tools">
-                    <i class="fa-solid fa-layer-group text-xs flex items-center justify-center w-[34px] h-[34px]"></i>
-                    <span class="nav-text-label text-[9px]">Skills</span>
-                </a>
-                
-                <button id="theme-toggle" class="relative w-[36px] h-[36px] flex items-center justify-center rounded-full border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all hover:scale-105 active:scale-95" aria-label="Toggle visual theme">
-                    <svg id="theme-toggle-light" class="hidden w-3.5 h-3.5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 17.95a1 1 0 01-1.414 0l-.707-.707a1 1 0 011.414-1.414l.707.707a1 1 0 010 1.414zm0-12.728a1 1 0 010-1.414l.707-.707a1 1 0 111.414 1.414l-.707.707a1 1 0 01-1.414 0zM4 11a1 1 0 100-2H3a1 1 0 100 2h1z"></path></svg>
-                    <svg id="theme-toggle-dark" class="hidden w-3.5 h-3.5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-                </button>
-
-                <a href="#contact" class="hidden sm:inline-block px-4 py-2 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-950 rounded-full text-[9px] hover:bg-emerald-600 dark:hover:bg-emerald-400 hover:scale-105 transition-all">Connect</a>
             </div>
         </div>
     </nav>
 
     <header class="relative min-h-screen flex items-center justify-center px-6 pt-24 pb-12 overflow-hidden">
-        <div class="max-w-5xl w-full text-center relative z-10">
-            <div class="inline-flex items-center gap-2 mono text-emerald-600 dark:text-emerald-400 text-[10px] mb-6 md:mb-8 tracking-[0.25em] uppercase font-bold py-2 px-5 border border-emerald-100 dark:border-emerald-950/50 rounded-full bg-emerald-50/50 dark:bg-emerald-950/20 backdrop-blur-sm shadow-sm">
-                <i class="fa-solid fa-microchip animate-pulse text-emerald-500"></i> Autonomous Systems & Cognitive Embodied AI
+        <!-- Technical Crosshairs -->
+        <div class="absolute top-1/4 left-1/4 w-4 h-4 border-t border-l border-white/20"></div>
+        <div class="absolute top-1/4 right-1/4 w-4 h-4 border-t border-r border-white/20"></div>
+        <div class="absolute bottom-1/4 left-1/4 w-4 h-4 border-b border-l border-white/20"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-4 h-4 border-b border-r border-white/20"></div>
+
+        <div class="max-w-[1200px] w-full relative z-10 flex flex-col items-start">
+            <div class="font-mono text-[10px] text-white/50 tracking-[0.3em] uppercase mb-6 flex items-center gap-3">
+                <span class="w-8 h-[1px] bg-white/30"></span>
+                Identification // Robotics Software & Cognitive AI
             </div>
             
-            <h1 class="heading-tech text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-8 text-slate-900 dark:text-slate-100 leading-[1.1] md:leading-[1.05]">
-                Under<br><span class="text-emerald-600 dark:text-emerald-400 bg-clip-text">Development.</span>
+            <h1 class="font-display text-5xl sm:text-7xl md:text-[5.5rem] font-medium tracking-tight text-brand-highlight leading-[1.05] mb-8 max-w-5xl">
+                Bridging physical control with <br />
+                <span class="text-white/60">cognitive intelligence.</span>
             </h1>
-            <h1 class="heading-tech text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-8 text-slate-900 dark:text-slate-100 leading-[1.1] md:leading-[1.05]">
-                 Bridging physical control with cognitive intelligence:<br><span class="text-emerald-600 dark:text-emerald-400 bg-clip-text">Connecting generative AI and algorithmic logic to real-time physical systems.</span>
-            </h1>
-            <p class="text-slate-600 dark:text-slate-400 text-base sm:text-lg md:text-xl leading-relaxed mb-12 max-w-3xl mx-auto font-light">
-                Passionate about engineering fast, intelligent, and highly adaptive decision systems. Specialize in transforming complex, real-time data streams into low-latency, high-frequency execution.
-            </p>
             
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#projects-section" class="w-full sm:w-auto px-8 py-4 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-950 rounded-full font-medium shadow-lg hover:shadow-emerald-500/10 hover:bg-emerald-600 dark:hover:bg-emerald-400 hover:-translate-y-0.5 transition-all">
-                    Explore Projects
-                </a>
-                <a href="#contact" class="w-full sm:w-auto px-8 py-4 border border-slate-200/80 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm rounded-full font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:-translate-y-0.5 transition-all">
-                    Initiate Connection
-                </a>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl">
+                <p class="text-brand-text text-sm md:text-base leading-relaxed font-light">
+                    Connecting generative AI and algorithmic logic to real-time physical systems. Specializing in transforming complex, real-time data streams into low-latency, high-frequency execution for autonomous agents.
+                </p>
+                <div class="flex flex-col sm:flex-row items-start gap-4 pt-2 md:pt-0">
+                    <a href="#projects" class="px-6 py-3 bg-white text-black font-mono text-[11px] uppercase tracking-widest font-semibold hover:bg-gray-200 transition-colors w-full sm:w-auto text-center">
+                        Access Registry
+                    </a>
+                    <a href="#about" class="px-6 py-3 schematic-border text-white font-mono text-[11px] uppercase tracking-widest hover:bg-white/5 transition-colors w-full sm:w-auto text-center">
+                        View Specs
+                    </a>
+                </div>
             </div>
         </div>
 
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 text-slate-400 dark:text-slate-500 text-[10px] mono tracking-widest uppercase">
-            <span>Diagnostics</span>
-            <div class="w-1 h-8 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden relative">
-                <div class="w-full h-1/2 bg-emerald-500 absolute top-0 animate-bounce"></div>
+        <div class="absolute bottom-12 left-6 md:left-12 font-mono text-[9px] text-white/30 tracking-widest uppercase">
+            <div class="flex flex-col gap-1">
+                <span>Lat: 12.9716° N</span>
+                <span>Lon: 77.5946° E</span>
+                <span>Status: Optimal</span>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-12 right-6 md:right-12">
+            <div class="w-[1px] h-16 bg-white/20 relative overflow-hidden">
+                <div class="w-full h-1/3 bg-white absolute top-0 animate-scan-line"></div>
             </div>
         </div>
     </header>
 
-    <section id="about" class="py-24 border-t border-slate-100 dark:border-slate-900/60 bg-white/50 dark:bg-slate-950/10 backdrop-blur-sm relative z-10">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-                <div class="lg:col-span-5">
-                    <span class="mono text-xs uppercase tracking-widest text-emerald-500 dark:text-emerald-400 font-bold block mb-4">Philosophy // Embodied Autonomy</span>
-                    <h2 class="heading-tech text-3xl md:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-6 leading-tight">
-                        Cognitive decisions, real-time control.
-                    </h2>
-                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
-                        My development focuses on running large vision-language models and high-frequency spatial localization loops simultaneously on size, weight, and power-constrained (SWaP) edge systems—ranging from ground robotic agents to automated aerial vehicles.
-                    </p>
-                    <div class="flex items-center gap-4 border-l-2 border-emerald-500 dark:border-emerald-400 pl-4 py-2">
-                        <div class="text-slate-900 dark:text-slate-100 font-medium italic text-sm">
+    <section id="about" class="py-32 schematic-border-t relative z-10">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-x-8 gap-y-16">
+                
+                <div class="lg:col-span-4">
+                    <div class="sticky top-32">
+                        <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-white/50 block mb-4">[01] // PHILOSOPHY</span>
+                        <h2 class="font-display text-3xl md:text-4xl font-medium text-brand-highlight leading-tight mb-6">
+                            Embodied Autonomy
+                        </h2>
+                        <div class="w-12 h-[1px] bg-white/30 mb-6"></div>
+                        <p class="text-brand-text text-sm leading-relaxed mb-6 font-light">
+                            My development focuses on running large vision-language models and high-frequency spatial localization loops simultaneously on size, weight, and power-constrained (SWaP) edge systems—ranging from ground robotic agents to automated aerial vehicles.
+                        </p>
+                        <blockquote class="font-mono text-xs text-white/70 italic schematic-border-l pl-4 py-2 bg-white/[0.02]">
                             "Modern robotics requires the unification of deterministic motion stacks with adaptive, LLM-driven reasoners."
-                        </div>
+                        </blockquote>
                     </div>
                 </div>
                 
-                <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div class="p-6 bg-white/80 dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800/80 rounded-2xl shadow-sm hover:shadow-md transition-all">
-                        <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 flex items-center justify-center text-emerald-600 dark:text-emerald-400 mb-4">
-                            <i class="fa-solid fa-brain text-lg"></i>
+                <div class="lg:col-span-8 lg:col-start-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-px bg-white/10 schematic-border">
+                        
+                        <div class="bg-brand-black p-8 group hover:bg-brand-dark transition-colors">
+                            <div class="mb-6 text-white/40 group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-brain text-2xl"></i>
+                            </div>
+                            <h4 class="font-mono text-[11px] uppercase tracking-widest text-white mb-3">Cognitive Autonomy</h4>
+                            <p class="text-brand-text text-sm font-light leading-relaxed">Implementing Agentic AI workflows and onboard LLM action-planners to solve unstructured physical environment objectives.</p>
                         </div>
-                        <h4 class="font-bold text-slate-900 dark:text-slate-100 mb-2">Cognitive Autonomy</h4>
-                        <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">Implementing Agentic AI workflows and onboard LLM action-planners to solve unstructured physical environment objectives.</p>
-                    </div>
-                    <div class="p-6 bg-white/80 dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800/80 rounded-2xl shadow-sm hover:shadow-md transition-all">
-                        <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 flex items-center justify-center text-emerald-600 dark:text-emerald-400 mb-4">
-                            <i class="fa-solid fa-location-crosshairs text-lg"></i>
+                        
+                        <div class="bg-brand-black p-8 group hover:bg-brand-dark transition-colors">
+                            <div class="mb-6 text-white/40 group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-location-crosshairs text-2xl"></i>
+                            </div>
+                            <h4 class="font-mono text-[11px] uppercase tracking-widest text-white mb-3">State Estimation</h4>
+                            <p class="text-brand-text text-sm font-light leading-relaxed">Fusing wheel odometry, Visual Inertial Odometry (VIO), GNSS, and LiDAR data to maintain centimeter-level accuracy in complex grids.</p>
                         </div>
-                        <h4 class="font-bold text-slate-900 dark:text-slate-100 mb-2">State Estimation</h4>
-                        <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">Fusing wheel odometry, Visual Inertial Odometry (VIO), GNSS, and LiDAR data to maintain centimeter-level accuracy in complex grids.</p>
-                    </div>
-                    <div class="p-6 bg-white/80 dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800/80 rounded-2xl shadow-sm hover:shadow-md transition-all">
-                        <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 flex items-center justify-center text-emerald-600 dark:text-emerald-400 mb-4">
-                            <i class="fa-solid fa-microchip text-lg"></i>
+                        
+                        <div class="bg-brand-black p-8 group hover:bg-brand-dark transition-colors">
+                            <div class="mb-6 text-white/40 group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-microchip text-2xl"></i>
+                            </div>
+                            <h4 class="font-mono text-[11px] uppercase tracking-widest text-white mb-3">Heterogeneous Edge</h4>
+                            <p class="text-brand-text text-sm font-light leading-relaxed">Developing cross-platform deployment pipelines targeted for NVIDIA Jetson Orin/Nano and Qualcomm compute boards.</p>
                         </div>
-                        <h4 class="font-bold text-slate-900 dark:text-slate-100 mb-2">Heterogeneous Edge</h4>
-                        <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">Developing cross-platform deployment pipelines targeted for NVIDIA Jetson Orin/Nano and Qualcomm compute boards.</p>
-                    </div>
-                    <div class="p-6 bg-white/80 dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800/80 rounded-2xl shadow-sm hover:shadow-md transition-all">
-                        <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 flex items-center justify-center text-emerald-600 dark:text-emerald-400 mb-4">
-                            <i class="fa-solid fa-circle-nodes text-lg"></i>
+                        
+                        <div class="bg-brand-black p-8 group hover:bg-brand-dark transition-colors">
+                            <div class="mb-6 text-white/40 group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-circle-nodes text-2xl"></i>
+                            </div>
+                            <h4 class="font-mono text-[11px] uppercase tracking-widest text-white mb-3">Physics & Sim</h4>
+                            <p class="text-brand-text text-sm font-light leading-relaxed">Simulating complex rigid-body kinetics, obstacle interaction, and vehicle-specific dynamics inside Gazebo grid setups.</p>
                         </div>
-                        <h4 class="font-bold text-slate-900 dark:text-slate-100 mb-2">Physics & Simulation</h4>
-                        <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">Simulating complex rigid-body kinetics, obstacle interaction, and vehicle-specific dynamics inside Gazebo grid setups.</p>
+
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="career" class="py-24 border-t border-slate-100 dark:border-slate-900/60 relative z-10 bg-white/40 dark:bg-slate-950/10 backdrop-blur-sm">
-        <div class="max-w-4xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <span class="mono text-xs uppercase tracking-widest text-emerald-500 dark:text-emerald-400 font-bold block mb-4">Milestones // Operational Hours</span>
-                <h2 class="heading-tech text-3xl md:text-4xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">Professional Operations</h2>
+    <section id="career" class="py-32 schematic-border-t relative z-10 bg-brand-dark/50">
+        <div class="max-w-[1000px] mx-auto px-6">
+            <div class="mb-16">
+                <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-white/50 block mb-4">[02] // OPERATIONAL HOURS</span>
+                <h2 class="font-display text-3xl md:text-4xl font-medium text-brand-highlight tracking-tight">Professional Operations</h2>
             </div>
 
-            <div class="relative border-l border-slate-200/80 dark:border-slate-800/80 ml-4 md:ml-32 space-y-12">
-                <!-- Timeline item 1 -->
-                <div class="relative pl-8 group">
-                    <div class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-emerald-600 dark:bg-emerald-400 group-hover:scale-150 transition-transform"></div>
-                    <div class="absolute left-[-115px] top-1 text-[10px] mono text-slate-400 dark:text-slate-500 font-bold uppercase tracking-wider hidden md:block text-right w-24">
+            <div class="relative schematic-border-l ml-2 md:ml-32 space-y-16 py-4">
+                
+                <!-- Timeline Item 1 -->
+                <div class="relative pl-10 group">
+                    <div class="absolute -left-[3.5px] top-1.5 w-1.5 h-1.5 bg-white group-hover:shadow-[0_0_8px_rgba(255,255,255,0.8)] transition-all"></div>
+                    <div class="absolute left-[-140px] top-0 text-[11px] font-mono text-white/60 uppercase tracking-widest hidden md:block text-right w-28">
+                        2024 — Pres
+                    </div>
+                    <div class="md:hidden text-[10px] font-mono text-white/60 uppercase tracking-widest mb-3">
                         2024 — Present
                     </div>
-                    <div class="md:hidden text-[10px] mono text-emerald-500 dark:text-emerald-400 font-bold uppercase tracking-wider mb-2">
-                        2024 — Present
-                    </div>
-                    <h3 class="heading-tech text-xl font-bold text-slate-900 dark:text-slate-100">Software Engineer</h3>
-                    <h4 class="mono text-xs text-emerald-600 dark:text-emerald-400 font-medium mb-3">Tsalla Aerospace</h4>
-                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed max-w-2xl">
+                    <h3 class="font-display text-xl font-medium text-white mb-1">Software Engineer</h3>
+                    <h4 class="font-mono text-[10px] tracking-widest uppercase text-white/40 mb-4">Tsalla Aerospace</h4>
+                    <p class="text-brand-text text-sm font-light leading-relaxed max-w-2xl">
                         Pioneering cognitive onboard mission agents running dynamic visual planning systems on Qualcomm and Nvidia hardware. Architecting high-reliability ROS2 robotic controllers interacting directly with specialized Ubuntu environments.
                     </p>
                 </div>
 
-                <!-- Timeline item 2 -->
-                <div class="relative pl-8 group">
-                    <div class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-slate-700 group-hover:bg-emerald-600 dark:group-hover:bg-emerald-400 group-hover:scale-150 transition-all"></div>
-                    <div class="absolute left-[-115px] top-1 text-[10px] mono text-slate-400 dark:text-slate-500 font-bold uppercase tracking-wider hidden md:block text-right w-24">
+                <!-- Timeline Item 2 -->
+                <div class="relative pl-10 group">
+                    <div class="absolute -left-[3px] top-1.5 w-[5px] h-[5px] bg-brand-text group-hover:bg-white transition-all"></div>
+                    <div class="absolute left-[-140px] top-0 text-[11px] font-mono text-white/40 group-hover:text-white/60 uppercase tracking-widest hidden md:block text-right w-28 transition-colors">
                         2024 — 2024
                     </div>
-                    <div class="md:hidden text-[10px] mono text-emerald-500 dark:text-emerald-400 font-bold uppercase tracking-wider mb-2">
+                    <div class="md:hidden text-[10px] font-mono text-white/40 uppercase tracking-widest mb-3">
                         2024 — 2024
                     </div>
-                    <h3 class="heading-tech text-xl font-bold text-slate-900 dark:text-slate-100">AI-ML Intern</h3>
-                    <h4 class="mono text-xs text-emerald-600 dark:text-emerald-400 font-medium mb-3">Tsalla Aerospace</h4>
-                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed max-w-2xl">
+                    <h3 class="font-display text-xl font-medium text-brand-highlight group-hover:text-white transition-colors mb-1">AI-ML Intern</h3>
+                    <h4 class="font-mono text-[10px] tracking-widest uppercase text-white/40 mb-4">Tsalla Aerospace</h4>
+                    <p class="text-brand-text text-sm font-light leading-relaxed max-w-2xl">
                         Designed real-time vision algorithms (SLAM/VIO) for robust, GPS-denied autonomous ground scanning. Scaled physics-compliant robot fleet simulations inside Gazebo, running massive parameter test matrices.
                     </p>
                 </div>
 
-                <!-- Timeline item 3 -->
-                <div class="relative pl-8 group">
-                    <div class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-slate-700 group-hover:bg-emerald-600 dark:group-hover:bg-emerald-400 group-hover:scale-150 transition-all"></div>
-                    <div class="absolute left-[-115px] top-1 text-[10px] mono text-slate-400 dark:text-slate-500 font-bold uppercase tracking-wider hidden md:block text-right w-24">
+                <!-- Timeline Item 3 -->
+                <div class="relative pl-10 group">
+                    <div class="absolute -left-[3px] top-1.5 w-[5px] h-[5px] bg-brand-text group-hover:bg-white transition-all"></div>
+                    <div class="absolute left-[-140px] top-0 text-[11px] font-mono text-white/40 group-hover:text-white/60 uppercase tracking-widest hidden md:block text-right w-28 transition-colors">
                         2024 — 2025
                     </div>
-                    <div class="md:hidden text-[10px] mono text-emerald-500 dark:text-emerald-400 font-bold uppercase tracking-wider mb-2">
+                    <div class="md:hidden text-[10px] font-mono text-white/40 uppercase tracking-widest mb-3">
                         2024 — 2025
                     </div>
-                    <h3 class="heading-tech text-xl font-bold text-slate-900 dark:text-slate-100">Software Engineer - Consultant</h3>
-                    <h4 class="mono text-xs text-emerald-600 dark:text-emerald-400 font-medium mb-3">Freelancing - a startup</h4>
-                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed max-w-2xl">
+                    <h3 class="font-display text-xl font-medium text-brand-highlight group-hover:text-white transition-colors mb-1">SWE Consultant</h3>
+                    <h4 class="font-mono text-[10px] tracking-widest uppercase text-white/40 mb-4">Freelance / Startup</h4>
+                    <p class="text-brand-text text-sm font-light leading-relaxed max-w-2xl">
                         Built embedded camera streaming integrations, low-latency sensor drivers, and hardware-in-the-loop validation setups on Nvidia Jetson Nano and Orin evaluation platforms using ROS.
                     </p>
                 </div>
@@ -330,181 +327,196 @@
         </div>
     </section>
 
-    <section id="projects-section" class="py-24 border-t border-slate-100 dark:border-slate-900/60 overflow-hidden relative z-10">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-12">
-                <span class="mono text-xs uppercase tracking-widest text-emerald-500 dark:text-emerald-400 font-bold block mb-4">Engineering ledger // Portfolio Hub</span>
-                <h2 class="heading-tech text-3xl md:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-4 tracking-tight">Technical Projects Registry</h2>
-                <p class="text-slate-500 dark:text-slate-400 font-light text-sm md:text-base max-w-xl mx-auto">Explore structured project listings filtered by field and core system technology.</p>
+    <section id="projects" class="py-32 schematic-border-t relative z-10">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+                <div>
+                    <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-white/50 block mb-4">[03] // ENGINEERING LEDGER</span>
+                    <h2 class="font-display text-3xl md:text-4xl font-medium text-brand-highlight tracking-tight">Technical Registry</h2>
+                </div>
                 
-                <!-- Premium Minimalist Category Selectors -->
-                <div class="flex flex-wrap justify-center gap-2 mt-8">
-                    <button id="filter-btn-all" onclick="filterProjects('all')" class="project-filter-pill px-5 py-2.5 rounded-full text-xs mono uppercase tracking-wider font-semibold border bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-950 transition-all">All</button>
-                    <button id="filter-btn-robotics" onclick="filterProjects('robotics')" class="project-filter-pill px-5 py-2.5 rounded-full text-xs mono uppercase tracking-wider font-semibold border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 hover:border-emerald-500 hover:text-emerald-500 dark:hover:text-emerald-400 transition-all">Robotics & Control</button>
-                    <button id="filter-btn-vision" onclick="filterProjects('vision')" class="project-filter-pill px-5 py-2.5 rounded-full text-xs mono uppercase tracking-wider font-semibold border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 hover:border-emerald-500 hover:text-emerald-500 dark:hover:text-emerald-400 transition-all">Vision & Localization</button>
-                    <button id="filter-btn-genai" onclick="filterProjects('genai')" class="project-filter-pill px-5 py-2.5 rounded-full text-xs mono uppercase tracking-wider font-semibold border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 hover:border-emerald-500 hover:text-emerald-500 dark:hover:text-emerald-400 transition-all">Generative & Agentic AI</button>
-                    <button id="filter-btn-quant" onclick="filterProjects('quant')" class="project-filter-pill px-5 py-2.5 rounded-full text-xs mono uppercase tracking-wider font-semibold border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 hover:border-emerald-500 hover:text-emerald-500 dark:hover:text-emerald-400 transition-all">Quantitative Finance</button>
+                <!-- Filter Controls -->
+                <div class="flex flex-wrap gap-3 font-mono text-[10px] uppercase tracking-widest">
+                    <button onclick="filterProjects('all')" id="filter-btn-all" class="filter-btn text-white border-b border-white pb-1 transition-all">All</button>
+                    <button onclick="filterProjects('robotics')" id="filter-btn-robotics" class="filter-btn text-brand-text hover:text-white pb-1 border-b border-transparent hover:border-white/50 transition-all">Robotics/Control</button>
+                    <button onclick="filterProjects('vision')" id="filter-btn-vision" class="filter-btn text-brand-text hover:text-white pb-1 border-b border-transparent hover:border-white/50 transition-all">Vision/Localization</button>
+                    <button onclick="filterProjects('genai')" id="filter-btn-genai" class="filter-btn text-brand-text hover:text-white pb-1 border-b border-transparent hover:border-white/50 transition-all">Generative/Agentic</button>
+                    <button onclick="filterProjects('quant')" id="filter-btn-quant" class="filter-btn text-brand-text hover:text-white pb-1 border-b border-transparent hover:border-white/50 transition-all">Quant</button>
                 </div>
             </div>
 
-            <!-- Pristine Zero-Blur Project Card Grid Showcase -->
-            <div id="projects-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 transition-all duration-500">
-                <!-- Dynamically populated via JS for categorized viewing -->
+            <!-- Project Grid -->
+            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 schematic-border">
+                <!-- Dynamically populated via JS -->
             </div>
             
-            <div id="projects-empty-state" class="hidden text-center py-16">
-                <i class="fa-solid fa-folder-open text-slate-300 dark:text-slate-700 text-4xl mb-4"></i>
-                <p class="mono text-xs text-slate-400">0 records matching telemetry category query.</p>
+            <div id="projects-empty-state" class="hidden text-center py-24 schematic-border bg-brand-dark/50">
+                <i class="fa-solid fa-satellite-dish text-white/20 text-3xl mb-4"></i>
+                <p class="font-mono text-[10px] tracking-widest uppercase text-white/40">0 records matching parameters.</p>
             </div>
         </div>
     </section>
 
-    <section id="skills" class="py-24 border-t border-slate-100 dark:border-slate-900/60 relative z-10">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <span class="mono text-xs uppercase tracking-widest text-emerald-500 dark:text-emerald-400 font-bold block mb-4">Stack // Expertise</span>
-                <h2 class="heading-tech text-3xl md:text-4xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">Technical Capability Matrix</h2>
+    <section id="skills" class="py-32 schematic-border-t relative z-10 bg-brand-dark/30">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <div class="mb-16">
+                <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-white/50 block mb-4">[04] // EXPERTISE</span>
+                <h2 class="font-display text-3xl md:text-4xl font-medium text-brand-highlight tracking-tight">Capability Matrix</h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-                <div class="md:col-span-8 p-8 bg-white/80 dark:bg-slate-900/60 border border-slate-200/50 dark:border-slate-800/80 rounded-3xl flex flex-col justify-between relative overflow-hidden group hover:border-emerald-300 dark:hover:border-emerald-700 transition-all shadow-sm">
-                    <div class="absolute -right-10 -bottom-10 opacity-5 group-hover:opacity-10 transition-opacity">
-                        <i class="fa-solid fa-microchip text-[180px] text-emerald-600"></i>
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-px bg-white/10 schematic-border">
+                
+                <!-- Skill Block 1 -->
+                <div class="md:col-span-8 bg-brand-black p-8 md:p-12 relative overflow-hidden group">
+                    <div class="absolute -right-10 -bottom-10 text-white/5 group-hover:text-white/10 transition-colors pointer-events-none">
+                        <i class="fa-solid fa-microchip text-[180px]"></i>
                     </div>
-                    <div>
-                        <div class="flex items-center gap-3 mb-6">
-                            <span class="px-3 py-1 bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-100 dark:border-emerald-900/40 rounded-full mono text-[9px] text-emerald-600 dark:text-emerald-400 font-bold">EMBEDDED SYSTEMS & COMPUTE</span>
-                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                        </div>
-                        <h3 class="heading-tech text-2xl font-bold text-slate-900 dark:text-slate-100 mb-3">Onboard Heterogeneous Compute</h3>
-                        <p class="text-slate-500 dark:text-slate-400 text-sm max-w-xl mb-8 leading-relaxed">
-                            Experienced in configuring and deploying navigation stacks on **NVIDIA Jetson AGX Orin / Nano** and **Qualcomm boards**. Mastering high-speed serial bus integration, hardware-accelerated deep learning pipelines, and real-time sensor loops.
+                    <div class="relative z-10">
+                        <span class="font-mono text-[10px] uppercase tracking-widest text-white/50 block mb-3">Domain 01</span>
+                        <h3 class="font-display text-2xl font-medium text-white mb-4">Embedded Systems & Compute</h3>
+                        <p class="text-brand-text text-sm font-light leading-relaxed max-w-xl mb-10">
+                            Experienced in configuring and deploying navigation stacks on NVIDIA Jetson AGX Orin / Nano and Qualcomm boards. Mastering high-speed serial bus integration, hardware-accelerated deep learning pipelines, and real-time sensor loops.
                         </p>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-4 py-2 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-900 text-xs font-semibold text-slate-600 dark:text-slate-400 rounded-xl">Jetson Orin/Nano</span>
-                        <span class="px-4 py-2 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-900 text-xs font-semibold text-slate-600 dark:text-slate-400 rounded-xl">Qualcomm Boards</span>
-                        <span class="px-4 py-2 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-900 text-xs font-semibold text-slate-600 dark:text-slate-400 rounded-xl">Ubuntu OS</span>
-                        <span class="px-4 py-2 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-900 text-xs font-semibold text-slate-600 dark:text-slate-400 rounded-xl">PX4 / Micro-ROS</span>
-                        <span class="px-4 py-2 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-900 text-xs font-semibold text-slate-600 dark:text-slate-400 rounded-xl">CUDA / Gstreamer</span>
+                        <div class="flex flex-wrap gap-2 font-mono text-[10px] uppercase tracking-wider">
+                            <span class="px-3 py-1.5 schematic-border bg-white/[0.02] text-white/80">Jetson Orin/Nano</span>
+                            <span class="px-3 py-1.5 schematic-border bg-white/[0.02] text-white/80">Qualcomm</span>
+                            <span class="px-3 py-1.5 schematic-border bg-white/[0.02] text-white/80">Ubuntu OS</span>
+                            <span class="px-3 py-1.5 schematic-border bg-white/[0.02] text-white/80">PX4 / Micro-ROS</span>
+                            <span class="px-3 py-1.5 schematic-border bg-white/[0.02] text-white/80">CUDA / Gstreamer</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="md:col-span-4 p-8 bg-white/80 dark:bg-slate-900/60 border border-slate-200/50 dark:border-slate-800/80 rounded-3xl flex flex-col justify-between group hover:border-emerald-300 dark:hover:border-emerald-700 transition-all shadow-sm">
-                    <div>
-                        <div class="flex items-center gap-3 mb-6">
-                            <span class="px-3 py-1 bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-100 dark:border-emerald-900/40 rounded-full mono text-[9px] text-emerald-600 dark:text-emerald-400 font-bold">MIDDLEWARE</span>
+                <!-- Skill Block 2 -->
+                <div class="md:col-span-4 bg-brand-black p-8 md:p-12 relative overflow-hidden group">
+                     <div class="relative z-10 h-full flex flex-col justify-between">
+                        <div>
+                            <span class="font-mono text-[10px] uppercase tracking-widest text-white/50 block mb-3">Domain 02</span>
+                            <h3 class="font-display text-2xl font-medium text-white mb-4">ROS Architecture</h3>
+                            <p class="text-brand-text text-sm font-light leading-relaxed mb-10">
+                                Architecting distributed publish-subscribe networks utilizing ROS/ROS2 node topologies, custom DDS profiles, and real-time lifecycle configurations.
+                            </p>
                         </div>
-                        <h3 class="heading-tech text-2xl font-bold text-slate-900 dark:text-slate-100 mb-3">ROS / ROS2 Architecture</h3>
-                        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-8">
-                            Architecting distributed publish-subscribe networks utilizing ROS/ROS2 node topologies, custom DDS profiles, action servers, and real-time lifecycle configurations.
-                        </p>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1.5 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-900 text-xs font-semibold text-slate-600 dark:text-slate-400 rounded-xl">ROS2 Humble</span>
-                        <span class="px-3 py-1.5 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-900 text-xs font-semibold text-slate-600 dark:text-slate-400 rounded-xl">DDS Tuning</span>
-                        <span class="px-3 py-1.5 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-900 text-xs font-semibold text-slate-600 dark:text-slate-400 rounded-xl">rclcpp</span>
+                        <div class="flex flex-wrap gap-2 font-mono text-[10px] uppercase tracking-wider">
+                            <span class="px-3 py-1.5 schematic-border bg-white/[0.02] text-white/80">ROS2 Humble</span>
+                            <span class="px-3 py-1.5 schematic-border bg-white/[0.02] text-white/80">DDS Tuning</span>
+                            <span class="px-3 py-1.5 schematic-border bg-white/[0.02] text-white/80">rclcpp</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="md:col-span-4 p-8 bg-white/80 dark:bg-slate-900/60 border border-slate-200/50 dark:border-slate-800/80 rounded-3xl flex flex-col justify-between group hover:border-emerald-300 dark:hover:border-emerald-700 transition-all shadow-sm">
-                    <div>
-                        <div class="flex items-center gap-3 mb-6">
-                            <span class="px-3 py-1 bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-100 dark:border-emerald-900/40 rounded-full mono text-[9px] text-emerald-600 dark:text-emerald-400 font-bold">SENSING & VISION</span>
+                <!-- Skill Block 3 -->
+                <div class="md:col-span-4 bg-brand-black p-8 md:p-12 relative overflow-hidden group">
+                     <div class="relative z-10 h-full flex flex-col justify-between">
+                        <div>
+                            <span class="font-mono text-[10px] uppercase tracking-widest text-white/50 block mb-3">Domain 03</span>
+                            <h3 class="font-display text-2xl font-medium text-white mb-4">Sensing & Vision</h3>
+                            <p class="text-brand-text text-sm font-light leading-relaxed mb-10">
+                                Designing custom CV algorithms for visual tracking, real-time spatial mapping, and Visual Inertial Odometry (VIO) localization modules.
+                            </p>
                         </div>
-                        <h3 class="heading-tech text-2xl font-bold text-slate-900 dark:text-slate-100 mb-3">CV & Localization</h3>
-                        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-8">
-                            Designing custom computer vision algorithms for visual object tracking, real-time spatial mapping, and Visual Inertial Odometry (VIO) localization modules.
-                        </p>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1.5 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-900 text-xs font-semibold text-slate-600 dark:text-slate-400 rounded-xl">OpenCV</span>
-                        <span class="px-3 py-1.5 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-900 text-xs font-semibold text-slate-600 dark:text-slate-400 rounded-xl">SLAM / VIO</span>
-                        <span class="px-3 py-1.5 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-900 text-xs font-semibold text-slate-600 dark:text-slate-400 rounded-xl">YOLOv5 & v10</span>
+                        <div class="flex flex-wrap gap-2 font-mono text-[10px] uppercase tracking-wider">
+                            <span class="px-3 py-1.5 schematic-border bg-white/[0.02] text-white/80">OpenCV</span>
+                            <span class="px-3 py-1.5 schematic-border bg-white/[0.02] text-white/80">SLAM/VIO</span>
+                            <span class="px-3 py-1.5 schematic-border bg-white/[0.02] text-white/80">YOLO Arch</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="md:col-span-8 p-8 bg-white/80 dark:bg-slate-900/60 border border-slate-200/50 dark:border-slate-800/80 rounded-3xl flex flex-col justify-between relative overflow-hidden group hover:border-emerald-300 dark:hover:border-emerald-700 transition-all shadow-sm">
-                    <div class="absolute -right-10 -bottom-10 opacity-5 group-hover:opacity-10 transition-opacity">
-                        <i class="fa-solid fa-brain text-[180px] text-emerald-600"></i>
+                <!-- Skill Block 4 -->
+                <div class="md:col-span-8 bg-brand-black p-8 md:p-12 relative overflow-hidden group">
+                    <div class="absolute -right-10 -bottom-10 text-white/5 group-hover:text-white/10 transition-colors pointer-events-none">
+                        <i class="fa-solid fa-network-wired text-[180px]"></i>
                     </div>
-                    <div>
-                        <div class="flex items-center gap-3 mb-6">
-                            <span class="px-3 py-1 bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-100 dark:border-emerald-900/40 rounded-full mono text-[9px] text-emerald-600 dark:text-emerald-400 font-bold">EMBODIED COGNITION & SIMULATION</span>
-                        </div>
-                        <h3 class="heading-tech text-2xl font-bold text-slate-900 dark:text-slate-100 mb-3">Generative AI, Agentic Systems & Gazebo</h3>
-                        <p class="text-slate-500 dark:text-slate-400 text-sm max-w-xl mb-8 leading-relaxed">
-                            Pioneering integration of onboard Large Language Models (LLMs) and Agentic reasoning graphs to act as autonomous payload planners. Simulating these frameworks inside highly detailed Gazebo and PX4 SITL physics environments.
+                    <div class="relative z-10">
+                        <span class="font-mono text-[10px] uppercase tracking-widest text-white/50 block mb-3">Domain 04</span>
+                        <h3 class="font-display text-2xl font-medium text-white mb-4">Embodied Cognition & Sim</h3>
+                        <p class="text-brand-text text-sm font-light leading-relaxed max-w-xl mb-10">
+                            Pioneering integration of onboard Large Language Models (LLMs) and Agentic reasoning graphs to act as autonomous payload planners. Simulating frameworks inside Gazebo and PX4 SITL physics environments.
                         </p>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-4 py-2 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-900 text-xs font-semibold text-slate-600 dark:text-slate-400 rounded-xl">Agentic AI Workflows</span>
-                        <span class="px-4 py-2 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-900 text-xs font-semibold text-slate-600 dark:text-slate-400 rounded-xl">Onboard LLMs / quantization</span>
-                        <span class="px-4 py-2 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-900 text-xs font-semibold text-slate-600 dark:text-slate-400 rounded-xl">Gazebo Sim Classic/Garden</span>
-                        <span class="px-4 py-2 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-900 text-xs font-semibold text-slate-600 dark:text-slate-400 rounded-xl">Hardware-in-the-Loop (HIL)</span>
+                        <div class="flex flex-wrap gap-2 font-mono text-[10px] uppercase tracking-wider">
+                            <span class="px-3 py-1.5 schematic-border bg-white/[0.02] text-white/80">Agentic Workflows</span>
+                            <span class="px-3 py-1.5 schematic-border bg-white/[0.02] text-white/80">Onboard LLMs</span>
+                            <span class="px-3 py-1.5 schematic-border bg-white/[0.02] text-white/80">Gazebo Sim</span>
+                            <span class="px-3 py-1.5 schematic-border bg-white/[0.02] text-white/80">HIL Testing</span>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <footer id="contact" class="py-24 border-t border-slate-100 dark:border-slate-900/60 px-6 relative z-10 bg-slate-50/50 dark:bg-slate-950/20">
-        <div class="max-w-4xl mx-auto text-center">
-            <span class="mono text-xs uppercase tracking-widest text-emerald-500 dark:text-emerald-400 font-bold block mb-4"> / Inquire /</span>
-            <h2 class="heading-tech text-4xl md:text-5xl font-bold mb-6 text-slate-900 dark:text-slate-100 tracking-tight">Sync requested.</h2>
-            <p class="text-slate-500 dark:text-slate-400 mb-10 max-w-md mx-auto font-light text-sm md:text-base">
-                Feel free to reach out regarding Robotic automation stacks, Edge cognitive AI systems, or visual navigation consulting.
+    <footer id="contact" class="py-32 schematic-border-t relative z-10 bg-brand-black">
+        <div class="max-w-[1400px] mx-auto px-6 flex flex-col items-center">
+            <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-white/50 block mb-6">[05] // TERMINAL</span>
+            <h2 class="font-display text-4xl md:text-5xl font-medium text-white tracking-tight mb-8">
+                Initiate Connection.
+            </h2>
+            <p class="text-brand-text text-sm md:text-base font-light max-w-lg text-center mb-12">
+                Available for discussions regarding Robotic automation stacks, Edge cognitive AI systems, or visual navigation consulting.
             </p>
             
-            <a href="mailto:anirudhjbabu@gmail.com" class="heading-tech text-2xl md:text-4xl font-bold text-slate-900 dark:text-slate-100 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all underline decoration-emerald-200 dark:decoration-emerald-900 underline-offset-8">
-                anirudhjbabu@gmail.com
+            <a href="mailto:anirudhjbabu@gmail.com" class="font-mono text-lg md:text-xl text-white tracking-widest hover:opacity-70 transition-opacity border-b border-white/30 pb-2 mb-24">
+                ANIRUDHJBABU@GMAIL.COM
             </a>
             
-            <div class="mt-24 pt-10 border-t border-slate-200/60 dark:border-slate-800/60 flex flex-col md:flex-row justify-between items-center gap-6">
-                <div class="mono text-[10px] text-slate-400 dark:text-slate-500 uppercase tracking-widest">
-                    &copy; 2026 Anirudh J Babu / Portfolio
+            <div class="w-full flex flex-col md:flex-row justify-between items-center schematic-border-t pt-8">
+                <div class="font-mono text-[10px] text-white/40 uppercase tracking-widest mb-4 md:mb-0">
+                    SYS_BUILD 2026 // ALL RIGHTS RESERVED
                 </div>
-                <div class="flex space-x-8 text-slate-400 dark:text-slate-500">
-                    <a href="https://github.com" target="_blank" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"><i class="fa-brands fa-github text-xl"></i></a>
-                    <a href="https://linkedin.com" target="_blank" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"><i class="fa-brands fa-linkedin-in text-xl"></i></a>
+                <div class="flex space-x-6 text-white/60">
+                    <a href="#" target="_blank" class="hover:text-white transition-colors text-lg"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" target="_blank" class="hover:text-white transition-colors text-lg"><i class="fa-brands fa-linkedin-in"></i></a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- COMPREHENSIVE MODAL SYSTEM -->
-    <div id="modal-overlay" class="fixed inset-0 z-[100] bg-slate-950/40 dark:bg-black/70 backdrop-blur-md flex items-center justify-center p-4 md:p-10">
-        <div id="modal-content" class="bg-white dark:bg-slate-900 rounded-3xl w-full max-w-4xl max-h-[90vh] overflow-hidden shadow-2xl relative flex flex-col md:flex-row border border-slate-200/50 dark:border-slate-800">
-            <!-- Modal Close button -->
-            <button onclick="closeModal()" class="absolute top-4 right-4 md:top-6 md:right-6 z-10 w-10 h-10 rounded-full bg-white/90 dark:bg-slate-850 border border-slate-200/60 dark:border-slate-700/60 flex items-center justify-center text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-all shadow-sm hover:scale-105 active:scale-95">
-                <i class="fa-solid fa-xmark"></i>
+    <div id="modal-overlay" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-brand-black/80">
+        <div id="modal-content" class="bg-brand-black schematic-border w-full max-w-5xl max-h-[90vh] overflow-hidden flex flex-col md:flex-row relative shadow-[0_0_50px_rgba(0,0,0,0.8)]">
+            
+            <!-- Close Button -->
+            <button onclick="closeModal()" class="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center bg-brand-black schematic-border text-white/50 hover:text-white transition-colors group">
+                <i class="fa-solid fa-xmark text-sm"></i>
             </button>
             
-            <!-- Modal graphic container -->
-            <div class="w-full md:w-1/2 h-44 md:h-auto bg-slate-50 dark:bg-slate-950 flex items-center justify-center border-b md:border-b-0 md:border-r border-slate-200/40 dark:border-slate-800 p-8 relative overflow-hidden">
-                <div class="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] dark:bg-[radial-gradient(#334155_1px,transparent_1px)] [background-size:16px_16px] opacity-40"></div>
-                <div id="modal-icon-container" class="w-20 h-20 md:w-32 md:h-32 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/30 dark:border-slate-800 shadow-sm flex items-center justify-center text-emerald-600 dark:text-emerald-400 text-3xl md:text-5xl relative z-10 hover:scale-105 transition-transform duration-500">
-                    <i id="modal-icon" class="fa-solid fa-plane"></i>
+            <!-- Icon/Visual Section -->
+            <div class="w-full md:w-2/5 h-48 md:h-auto bg-brand-dark schematic-border-r relative flex items-center justify-center overflow-hidden">
+                <div class="absolute inset-0 bg-grid-pattern opacity-30"></div>
+                <div class="relative z-10 w-24 h-24 schematic-border bg-brand-black flex items-center justify-center text-white text-4xl shadow-[0_0_30px_rgba(255,255,255,0.05)]">
+                    <i id="modal-icon" class="fa-solid fa-microchip"></i>
                 </div>
+                <!-- Scanning line effect in modal -->
+                <div class="absolute top-0 bottom-0 left-1/2 w-[1px] bg-white/10 -translate-x-1/2"></div>
+                <div class="absolute left-0 right-0 top-1/2 h-[1px] bg-white/10 -translate-y-1/2"></div>
             </div>
 
-            <!-- Modal text details container -->
-            <div class="w-full md:w-1/2 p-6 md:p-12 overflow-y-auto">
-                <div id="modal-tag" class="mono text-[10px] text-emerald-600 dark:text-emerald-400 font-bold tracking-widest uppercase mb-4">CATEGORY</div>
-                <h3 id="modal-title" class="heading-tech text-2xl md:text-3xl font-bold text-slate-900 dark:text-slate-100 mb-6">Project Title</h3>
-                <p id="modal-desc" class="text-slate-500 dark:text-slate-400 leading-relaxed mb-8 text-xs md:text-sm">Description...</p>
+            <!-- Details Section -->
+            <div class="w-full md:w-3/5 p-8 md:p-12 overflow-y-auto custom-scrollbar">
+                <div id="modal-tag" class="font-mono text-[10px] text-white/40 tracking-[0.2em] uppercase mb-4">CATEGORY // TAG</div>
+                <h3 id="modal-title" class="font-display text-2xl md:text-3xl font-medium text-white mb-6 tracking-tight">Project Title</h3>
                 
-                <div class="space-y-8">
+                <p id="modal-desc" class="text-brand-text text-sm font-light leading-relaxed mb-10 pb-10 schematic-border-b">
+                    Description...
+                </p>
+                
+                <div class="space-y-10">
                     <div>
-                        <h4 class="mono text-[10px] uppercase tracking-wider text-slate-400 dark:text-slate-500 font-bold mb-4">Core System Architecture Features</h4>
-                        <ul id="modal-features" class="space-y-3 text-xs md:text-sm text-slate-600 dark:text-slate-300">
-                            <!-- Dynamically injected features -->
+                        <h4 class="font-mono text-[10px] uppercase tracking-widest text-white/60 mb-5 flex items-center gap-2">
+                            <span class="w-2 h-2 border border-white/40 block"></span> System Specs
+                        </h4>
+                        <ul id="modal-features" class="space-y-4">
+                            <!-- Injected Features -->
                         </ul>
                     </div>
-                    <div class="pt-6 border-t border-slate-200/50 dark:border-slate-800">
-                        <h4 class="mono text-[10px] uppercase tracking-wider text-slate-400 dark:text-slate-500 font-bold mb-4">Onboard Platform Stack</h4>
+                    
+                    <div>
+                        <h4 class="font-mono text-[10px] uppercase tracking-widest text-white/60 mb-5 flex items-center gap-2">
+                            <span class="w-2 h-2 bg-white/40 block"></span> Tech Stack
+                        </h4>
                         <div id="modal-stack" class="flex flex-wrap gap-2">
-                            <!-- Dynamically injected stack pills -->
+                            <!-- Injected Stack -->
                         </div>
                     </div>
                 </div>
@@ -513,44 +525,12 @@
     </div>
 
     <script>
-        // System Config and State Manager
-        const systemState = {
-            isDarkMode: false,
-            init() {
-                const savedTheme = localStorage.getItem('theme');
-                const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                
-                if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
-                    this.setTheme(true);
-                } else {
-                    this.setTheme(false);
-                }
-
-                document.getElementById('theme-toggle').addEventListener('click', () => {
-                    this.setTheme(!this.isDarkMode);
-                });
-            },
-            setTheme(dark) {
-                this.isDarkMode = dark;
-                if (dark) {
-                    document.documentElement.classList.add('dark');
-                    localStorage.setItem('theme', 'dark');
-                    document.getElementById('theme-toggle-light').classList.remove('hidden');
-                    document.getElementById('theme-toggle-dark').classList.add('hidden');
-                } else {
-                    document.documentElement.classList.remove('dark');
-                    localStorage.setItem('theme', 'light');
-                    document.getElementById('theme-toggle-light').classList.add('hidden');
-                    document.getElementById('theme-toggle-dark').classList.remove('hidden');
-                }
-            }
-        };
-
+        // Project Data Configuration
         const projects = [
             { 
                 title: "Model-Context-Protocol Robot Agent", 
                 desc: "Implementation of Anthropic's Model Context Protocol (MCP) for remote tool use and telemetry reporting in distributed robot systems.", 
-                tag: "Robotics / Remote Tooling", 
+                tag: "Remote Tooling", 
                 category: "robotics",
                 icon: "fa-network-wired",
                 features: [
@@ -558,12 +538,12 @@
                     "Created robust security isolation protocol for shell executive action servers.",
                     "Implemented telemetry caching layer to minimize vehicle communication latency over LTE grids."
                 ],
-                stack: ["MCP Protocol", "ROS2 Nodes", "Python Asyncio", "LTE telemetry"]
+                stack: ["MCP Protocol", "ROS2 Nodes", "Python Asyncio", "LTE"]
             },
             { 
                 title: "ADAS Autonomous Pilot", 
                 desc: "Integrated lane keeping, visual hazard tracking, and dynamic trajectory planner matching advanced driver-assistance architectures.", 
-                tag: "Computer Vision / ADAS", 
+                tag: "ADAS Vision", 
                 category: "vision",
                 icon: "fa-car",
                 features: [
@@ -571,12 +551,12 @@
                     "Built adaptive speed control layer responding to dynamic obstacle kinematics.",
                     "Optimized network structures using TensorRT for 60 FPS performance."
                 ],
-                stack: ["Nvidia TensorRT", "OpenCV CUDA", "C++ Engine", "ROS2 Humble"]
+                stack: ["Nvidia TensorRT", "OpenCV CUDA", "C++ Engine", "ROS2"]
             },
             { 
                 title: "Instance-Segmentation Engine", 
                 desc: "Pixel-level classification layer deployed for real-time item sorting and dynamic object boundary detection.", 
-                tag: "Computer Vision / Segmentation", 
+                tag: "Segmentation", 
                 category: "vision",
                 icon: "fa-puzzle-piece",
                 features: [
@@ -584,38 +564,12 @@
                     "Achieved 20ms processing execution speed per frame on constrained embedded GPUs.",
                     "Created automatic synthesis pipeline for complex environmental edge rendering."
                 ],
-                stack: ["PyTorch", "Segment Anything", "CUDA Kernels", "Nvidia Orin"]
-            },
-            { 
-                title: "Counting Challenge Engine", 
-                desc: "High-accuracy crowd density and entity detection solver operating over high-resolution visual inputs.", 
-                tag: "Computer Vision / Analytics", 
-                category: "vision",
-                icon: "fa-calculator",
-                features: [
-                    "Utilized regression models predicting structural density matrices across clustered arrays.",
-                    "Integrated real-time tracking loops validating unique counts across boundaries.",
-                    "Configured dynamic scale layers adjusting to wide-angle lens distortion."
-                ],
-                stack: ["Density Regression", "YOLOv8 Detect", "C++ Pipelines", "Jetson Nano"]
-            },
-            { 
-                title: "LOD-3D Reconstruction", 
-                desc: "Multi-resolution spatial mesh mapping generating adaptive 3D structures from visual telemetry feeds.", 
-                tag: "Spatial Computing / 3D Mapping", 
-                category: "vision",
-                icon: "fa-cubes",
-                features: [
-                    "Created progressive Level-of-Detail (LOD) pipelines for terrain visualization.",
-                    "Fitted octree voxel mapping modules optimizing memory usage during 3D meshes.",
-                    "Compiled direct integrations for point cloud data imports."
-                ],
-                stack: ["Open3D", "Voxels", "CUDA Meshes", "C++ Engine"]
+                stack: ["PyTorch", "Segment Anything", "CUDA", "Nvidia Orin"]
             },
             { 
                 title: "VLA Autonomous Navigation Core", 
                 desc: "Vision-Language-Action navigation model coordinating real-time flight decisions directly from visual parameters and semantic inputs.", 
-                tag: "Agentic AI / VLA", 
+                tag: "VLA Systems", 
                 category: "genai",
                 icon: "fa-brain",
                 features: [
@@ -623,12 +577,12 @@
                     "Constructed dynamic action execution vectors using quantized models.",
                     "Fitted fallback control stacks managing erratic neural instructions."
                 ],
-                stack: ["VLA Models", "Onboard Quantization", "Nvidia Jetson Orin", "MAVSDK"]
+                stack: ["VLA Models", "Quantization", "Jetson Orin", "MAVSDK"]
             },
             { 
                 title: "VLA-MAVSDK Integration Node", 
                 desc: "Closed-loop visual planning flight controller connecting VLA outputs directly to PX4 avionics arrays via MAVSDK APIs.", 
-                tag: "Aerospace / Control", 
+                tag: "Aerospace Control", 
                 category: "robotics",
                 icon: "fa-paper-plane",
                 features: [
@@ -636,12 +590,12 @@
                     "Optimized payload flight loops ensuring constant safety check overrides.",
                     "Tested visual navigation inside high-fidelity simulated SITL setups."
                 ],
-                stack: ["MAVSDK API", "PX4 SITL", "ROS2 Nodes", "Python Control"]
+                stack: ["MAVSDK API", "PX4 SITL", "ROS2", "Python Control"]
             },
             { 
                 title: "Algorithmic Trading Engines", 
                 desc: "Multi-agent quantitative trading system deploying signal tracking, real-time analytics, and automated action execution.", 
-                tag: "Quantitative Finance", 
+                tag: "Quant Finance", 
                 category: "quant",
                 icon: "fa-chart-line",
                 features: [
@@ -649,25 +603,12 @@
                     "Integrated automated risk limits managing localized position exposures.",
                     "Built simulated backtesting engines reviewing structural price histories."
                 ],
-                stack: ["Quantitative Signals", "Pandas & Numpy", "Redis Queues", "Backtesting API"]
-            },
-            { 
-                title: "Paper Implementation Sandbox", 
-                desc: "An execution sandbox compiling, testing, and deploying cutting-edge deep learning papers directly on localized hardware.", 
-                tag: "Deep Learning Research", 
-                category: "genai",
-                icon: "fa-book-open",
-                features: [
-                    "Reproduced high-performance paper architectures detailing spatial mapping concepts.",
-                    "Compiled localized benchmarking metrics evaluating latency and memory allocations.",
-                    "Deployed multi-threading routines to handle parallel data ingestion profiles."
-                ],
-                stack: ["PyTorch Core", "TensorRT", "C++ Benchmarking", "Git Actions"]
+                stack: ["Quant Signals", "Pandas", "Redis", "Backtesting API"]
             },
             { 
                 title: "Custom Transformers Engine", 
                 desc: "Compact, hardware-optimized attention execution models configured for low-power edge computer targets.", 
-                tag: "Deep Learning / NLP", 
+                tag: "Edge NLP", 
                 category: "genai",
                 icon: "fa-microchip",
                 features: [
@@ -675,90 +616,25 @@
                     "Implemented flexible tokenization layers managing continuous sensor signals.",
                     "Tuned weight allocation profiles reducing operational RAM requirements."
                 ],
-                stack: ["Transformers C++", "ONNX Run", "Custom Kernels", "Nvidia AGX Orin"]
+                stack: ["Transformers C++", "ONNX", "Custom Kernels", "AGX Orin"]
             },
             { 
                 title: "RTOS Flight Scheduler", 
                 desc: "High-frequency real-time operating system task planner coordinating safety-critical drone tasks.", 
-                tag: "Embedded Systems / RTOS", 
+                tag: "Embedded RTOS", 
                 category: "robotics",
-                icon: "fa-microchip",
+                icon: "fa-tachometer-alt",
                 features: [
                     "Engineered preemptive scheduling systems dividing processor time among flight control loops.",
                     "Managed direct register allocations minimizing actuator latency parameters.",
                     "Wrote specialized fail-safe drivers securing power distribution states."
                 ],
-                stack: ["FreeRTOS", "STM32 Hardware", "C Programming", "Logic Analyzers"]
-            },
-            { 
-                title: "Attention Mechanism Analyzer", 
-                desc: "Interactive visual analytics engine mapping neural attention weights to pinpoint feature dependencies.", 
-                tag: "Deep Learning / Analysis", 
-                category: "genai",
-                icon: "fa-eye",
-                features: [
-                    "Engineered visual heatmaps tracing visual focus zones across segmentation sequences.",
-                    "Calculated real-time entropy metrics highlighting signal drift problems.",
-                    "Optimized gradient evaluation matrices over complex training runs."
-                ],
-                stack: ["Matplotlib", "React Dashboard", "PyTorch Analytics", "Flask"]
-            },
-            { 
-                title: "Twitter Sentiment Scanner", 
-                desc: "Real-time distributed scraper and transformer analyzing trending semantic dynamics across raw social posts.", 
-                tag: "NLP / Sentiment Analysis", 
-                category: "genai",
-                icon: "fa-hashtag",
-                features: [
-                    "Configured parallel pipeline engines indexing public social data vectors.",
-                    "Trained specialized models identifying localized dialect cues and idioms.",
-                    "Built streaming dashboard layers presenting active mood trends."
-                ],
-                stack: ["Apache Kafka", "Quantized BERT", "MongoDB", "Python Dash"]
-            },
-            { 
-                title: "YOLOv5 Edge Optimization", 
-                desc: "Deep visual detection models compiled and quantized to run at 60 FPS on constrained NVIDIA hardware.", 
-                tag: "Computer Vision / YOLO", 
-                category: "vision",
-                icon: "fa-crosshairs",
-                features: [
-                    "Converted floating point models to integer formats using TensorRT quantization.",
-                    "Slashed execution memory allocations without degrading accuracy metrics.",
-                    "Constructed streaming input layers handling multiple sensor outputs."
-                ],
-                stack: ["YOLOv5 Engine", "TensorRT Engine", "OpenCV", "Jetson Nano"]
-            },
-            { 
-                title: "Android Whisper Integration", 
-                desc: "Native Android implementation of OpenAI's Whisper model for low-latency, offline voice tracking.", 
-                tag: "Speech / Mobile AI", 
-                category: "genai",
-                icon: "fa-mobile-screen-button",
-                features: [
-                    "Compiled Whisper model libraries for native ARM processing platforms.",
-                    "Wrote efficient memory allocation loops preventing audio data leaks.",
-                    "Constructed speech-activated triggers operating inside low-power standby modes."
-                ],
-                stack: ["Whisper.cpp", "Android NDK", "Kotlin UI", "ARM Neon Instruction"]
-            },
-            { 
-                title: "Smart Glasses Compute Hub", 
-                desc: "Sleek embedded glasses platform incorporating visual tracking sensors, real-time HUDs, and localized voice systems.", 
-                tag: "Spatial Computing / IoT", 
-                category: "robotics",
-                icon: "fa-glasses",
-                features: [
-                    "Engineered low-profile electronic designs for localized power stability.",
-                    "Integrated bone conduction sound outputs communicating system notifications.",
-                    "Wrote lightweight display layers mapping context menus directly to HUD modules."
-                ],
-                stack: ["Raspberry Pi Zero", "Micro-OLED Modules", "C++ Engines", "BLE Protocol"]
+                stack: ["FreeRTOS", "STM32", "C Programming", "Logic Analyzers"]
             },
             { 
                 title: "Smart Camera Summarizer", 
                 desc: "Onboard visual parsing camera running continuous local processing to generate textual reports of scene changes.", 
-                tag: "Computer Vision / Edge AI", 
+                tag: "Edge Vision AI", 
                 category: "vision",
                 icon: "fa-camera-retro",
                 features: [
@@ -766,214 +642,11 @@
                     "Created delta frame tracking loops ensuring models run only when needed.",
                     "Configured dynamic compression modules preparing text data for IoT transmission."
                 ],
-                stack: ["Vision LLM", "Embedded C++", "GStreamer Core", "Raspberry Pi"]
-            },
-            { 
-                title: "TAC-GAN Asset Generator", 
-                desc: "Text-to-Attribute-to-Class Generative Adversarial Network compiling customized terrain models from textual directives.", 
-                tag: "Generative AI / GANs", 
-                category: "genai",
-                icon: "fa-images",
-                features: [
-                    "Formulated specific generator loss formulations stabilizing early epoch outputs.",
-                    "Designed granular attribute control layers defining mesh layouts.",
-                    "Accelerated processing using optimized multi-GPU training clusters."
-                ],
-                stack: ["TAC-GAN", "PyTorch Core", "TensorBoard", "Linux Clusters"]
-            },
-            { 
-                title: "Equity Research Assistant", 
-                desc: "Automated report analyzer parsing complex earnings filings, highlighting performance shifts.", 
-                tag: "NLP / Quant Finance", 
-                category: "quant",
-                icon: "fa-file-invoice-dollar",
-                features: [
-                    "Wrote parsing scripts processing complex data documents.",
-                    "Configured smart retrieval processes extracting critical financial telemetry metrics.",
-                    "Engineered automated summaries comparing report updates over time."
-                ],
-                stack: ["LangChain", "ChromaDB Vectors", "OpenAI API", "Python Streamlit"]
-            },
-            { 
-                title: "LangChain Tool Sandbox", 
-                desc: "Comprehensive testing arena for dynamic agent frameworks executing sequential system automation commands.", 
-                tag: "Agentic AI / LangChain", 
-                category: "genai",
-                icon: "fa-terminal",
-                features: [
-                    "Created structured multi-agent loops routing instructions across localized software arrays.",
-                    "Configured robust error fallback logic managing failed model queries.",
-                    "Implemented caching buffers reducing repetitive API call structures."
-                ],
-                stack: ["LangChain Library", "OpenAI LLM", "Python FastAPI", "WebSockets"]
-            },
-            { 
-                title: "Geospatial Analysis Pipeline", 
-                desc: "Continuous mapping systems processing visual inputs to categorize terrain dynamics and layout changes.", 
-                tag: "Spatial Computing / GIS", 
-                category: "vision",
-                icon: "fa-earth-americas",
-                features: [
-                    "Wrote specialized raster coordinate math processing geospatial datasets.",
-                    "Built classification layers mapping terrain transitions across years.",
-                    "Integrated high-speed coordinate translation libraries."
-                ],
-                stack: ["GDAL Core", "Python Geopandas", "OpenCV", "PostGIS Databases"]
-            },
-            { 
-                title: "Accident & Theft Scanner", 
-                desc: "Autonomous visual tracking pipeline detecting road accidents and dynamic security anomalies.", 
-                tag: "Computer Vision / Safety", 
-                category: "vision",
-                icon: "fa-shield-halved",
-                features: [
-                    "Trained anomaly detection networks classifying vehicle trajectory deformations.",
-                    "Integrated streaming communication systems initiating localized alerts.",
-                    "Optimized visual frames processing models to execute on edge hardware."
-                ],
-                stack: ["PyTorch Core", "OpenCV Pipelines", "Twilio API Node", "Ubuntu Server"]
-            },
-            { 
-                title: "Nifty50 Stock Predictor (LSTM)", 
-                desc: "Recurrent Neural Networks utilizing LSTM configurations to process indices momentum shifts.", 
-                tag: "Time Series / LSTM", 
-                category: "quant",
-                icon: "fa-arrow-trend-up",
-                features: [
-                    "Configured multiple sequence windows handling stock price trends.",
-                    "Wrote complex normalization modules handling volatile market data.",
-                    "Generated signal scoring parameters measuring model confidence scores."
-                ],
-                stack: ["Keras Core", "TensorFlow Node", "Time Series Models", "Python API"]
-            },
-            { 
-                title: "Whisper Speech Translator", 
-                desc: "Bilateral high-fidelity translator matching quantized Whisper inputs with localized voice generation modules.", 
-                tag: "Speech Synthesis / AI", 
-                category: "genai",
-                icon: "fa-volume-high",
-                features: [
-                    "Configured real-time sound processing buffers handling streaming audio signals.",
-                    "Integrated speech generation libraries creating realistic voice patterns.",
-                    "Reduced translation processing latency to sub-second parameters."
-                ],
-                stack: ["Whisper Node", "Tacotron 2 TTS", "PyAudio Hub", "C++ Buffers"]
+                stack: ["Vision LLM", "Embedded C++", "GStreamer", "Raspberry Pi"]
             }
         ];
 
         let selectedCategory = 'all';
-
-        // Background canvas elements configuration
-        const canvas = document.getElementById('bg-canvas');
-        const ctx = canvas.getContext('2d');
-        let width, height, points = [];
-        let mouse = { x: -1000, y: -1000 };
-        let sweepAngle = 0;
-
-        class SlamNode {
-            constructor() {
-                this.reset();
-                this.y = Math.random() * height;
-            }
-            reset() {
-                this.x = Math.random() * width;
-                this.y = height + 20;
-                this.size = Math.random() * 1.5 + 0.5;
-                this.speed = Math.random() * 0.4 + 0.1;
-                this.brightness = Math.random() * 0.3 + 0.1;
-                this.angle = Math.random() * Math.PI * 2;
-            }
-            update() {
-                this.y -= this.speed;
-                this.angle += 0.005;
-                if (this.y < -20) this.reset();
-            }
-            draw() {
-                const dist = Math.hypot(this.x - mouse.x, this.y - mouse.y);
-                const mouseRad = 200;
-                let finalX = this.x;
-                let finalY = this.y;
-                let opacity = this.brightness;
-
-                if (dist < mouseRad) {
-                    const factor = (mouseRad - dist) / mouseRad;
-                    finalX += Math.cos(Math.atan2(this.y - mouse.y, this.x - mouse.x)) * factor * 25;
-                    finalY += Math.sin(Math.atan2(this.y - mouse.y, this.x - mouse.x)) * factor * 25;
-                    opacity = this.brightness + (factor * 0.6);
-                }
-
-                if (systemState.isDarkMode) {
-                    ctx.fillStyle = `rgba(52, 211, 153, ${opacity})`; 
-                } else {
-                    ctx.fillStyle = `rgba(16, 185, 129, ${opacity})`; 
-                }
-                
-                ctx.beginPath();
-                ctx.arc(finalX, finalY, this.size, 0, Math.PI * 2);
-                ctx.fill();
-
-                return { x: finalX, y: finalY };
-            }
-        }
-
-        function initBackground() {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-            points = [];
-            const density = Math.min(100, Math.floor((width * height) / 10000));
-            for (let i = 0; i < density; i++) {
-                points.push(new SlamNode());
-            }
-        }
-
-        function animate() {
-            if (systemState.isDarkMode) {
-                ctx.fillStyle = 'rgba(3, 7, 18, 0.4)'; 
-            } else {
-                ctx.fillStyle = 'rgba(249, 250, 251, 0.4)'; 
-            }
-            ctx.fillRect(0, 0, width, height);
-            
-            sweepAngle += 0.003;
-            if (systemState.isDarkMode) {
-                ctx.strokeStyle = 'rgba(52, 211, 153, 0.025)';
-            } else {
-                ctx.strokeStyle = 'rgba(16, 185, 129, 0.015)';
-            }
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            ctx.moveTo(width / 2, height / 2);
-            ctx.lineTo(
-                width / 2 + Math.cos(sweepAngle) * Math.max(width, height),
-                height / 2 + Math.sin(sweepAngle) * Math.max(width, height)
-            );
-            ctx.stroke();
-
-            const renderedCoords = points.map(p => {
-                p.update();
-                return p.draw();
-            });
-
-            if (systemState.isDarkMode) {
-                ctx.strokeStyle = 'rgba(52, 211, 153, 0.08)';
-            } else {
-                ctx.strokeStyle = 'rgba(16, 185, 129, 0.05)';
-            }
-            ctx.lineWidth = 0.5;
-            for (let i = 0; i < renderedCoords.length; i++) {
-                for (let j = i + 1; j < renderedCoords.length; j++) {
-                    const dist = Math.hypot(renderedCoords[i].x - renderedCoords[j].x, renderedCoords[i].y - renderedCoords[j].y);
-                    if (dist < 100) {
-                        ctx.beginPath();
-                        ctx.moveTo(renderedCoords[i].x, renderedCoords[i].y);
-                        ctx.lineTo(renderedCoords[j].x, renderedCoords[j].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-
-            requestAnimationFrame(animate);
-        }
 
         function buildProjectsGrid() {
             const grid = document.getElementById('projects-grid');
@@ -981,34 +654,30 @@
             let visibleCount = 0;
             
             projects.forEach((p, idx) => {
-                const matchesCategory = (selectedCategory === 'all' || p.category === selectedCategory);
-                
-                if (matchesCategory) {
+                if (selectedCategory === 'all' || p.category === selectedCategory) {
                     visibleCount++;
                     const card = document.createElement('div');
-                    // ZERO BLUR STYLING: clean slate white/dark background card with sharp outlines
-                    card.className = "project-card bg-white dark:bg-slate-900/90 border border-slate-200/60 dark:border-slate-800 rounded-3xl p-6 flex flex-col justify-between hover:border-emerald-500 hover:shadow-lg transition-all duration-300 cursor-pointer shadow-sm relative overflow-hidden group";
+                    card.className = "bg-brand-black p-8 group cursor-pointer hover:bg-white/[0.02] transition-colors relative flex flex-col justify-between";
                     card.onclick = () => openModal(idx);
 
                     card.innerHTML = `
                         <div>
-                            <div class="flex justify-between items-start mb-6">
-                                <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-100/50 dark:border-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shadow-inner group-hover:scale-110 transition-transform">
-                                    <i class="fa-solid ${p.icon} text-md"></i>
+                            <div class="flex justify-between items-start mb-8">
+                                <div class="text-white/40 group-hover:text-white transition-colors text-xl">
+                                    <i class="fa-solid ${p.icon}"></i>
                                 </div>
-                                <span class="mono text-[8px] bg-slate-50 dark:bg-slate-950 text-slate-400 dark:text-slate-500 font-bold border border-slate-200 dark:border-slate-800 px-2.5 py-1 rounded-full tracking-wider uppercase">${p.category}</span>
+                                <span class="font-mono text-[9px] text-brand-text tracking-widest uppercase border border-white/10 px-2 py-1">${p.category}</span>
                             </div>
-                            <h3 class="heading-tech text-lg font-bold mb-2 text-slate-900 dark:text-slate-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">${p.title}</h3>
-                            <p class="text-slate-500 dark:text-slate-400 font-light text-xs leading-relaxed line-clamp-3 mb-6">${p.desc}</p>
+                            <h3 class="font-display text-lg font-medium mb-3 text-white group-hover:text-brand-highlight transition-colors leading-tight">${p.title}</h3>
+                            <p class="text-brand-text font-light text-xs leading-relaxed line-clamp-3 mb-8">${p.desc}</p>
                         </div>
                         <div>
-                            <div class="flex flex-wrap gap-1.5 mb-4">
-                                ${p.stack.slice(0, 3).map(s => `<span class="px-2 py-0.5 bg-slate-50 dark:bg-slate-950 text-[9px] font-semibold text-slate-400 rounded-lg">${s}</span>`).join('')}
-                                ${p.stack.length > 3 ? `<span class="px-2 py-0.5 bg-slate-50 dark:bg-slate-950 text-[9px] font-semibold text-slate-400 rounded-lg">+${p.stack.length - 3}</span>` : ''}
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                ${p.stack.slice(0, 3).map(s => `<span class="font-mono text-[9px] text-white/50 uppercase tracking-wider">${s}</span>`).join('<span class="text-white/20">/</span>')}
                             </div>
-                            <div class="flex justify-between items-center pt-3 border-t border-slate-100 dark:border-slate-800/80">
-                                <span class="mono text-[9px] text-slate-400 dark:text-slate-500 font-semibold">${p.tag}</span>
-                                <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                            <div class="flex justify-between items-center pt-4 schematic-border-t">
+                                <span class="font-mono text-[9px] text-white/40 tracking-widest uppercase group-hover:text-white/80 transition-colors">View Spec</span>
+                                <i class="fa-solid fa-arrow-right text-[10px] text-white/40 group-hover:text-white group-hover:translate-x-1 transition-all"></i>
                             </div>
                         </div>
                     `;
@@ -1019,22 +688,24 @@
             const emptyState = document.getElementById('projects-empty-state');
             if (visibleCount === 0) {
                 emptyState.classList.remove('hidden');
+                grid.classList.add('hidden');
             } else {
                 emptyState.classList.add('hidden');
+                grid.classList.remove('hidden');
             }
         }
 
         function filterProjects(cat) {
             selectedCategory = cat;
             
-            // Adjust active state of filter control navigation buttons
-            document.querySelectorAll('.project-filter-pill').forEach(pill => {
-                pill.className = "project-filter-pill px-5 py-2.5 rounded-full text-xs mono uppercase tracking-wider font-semibold border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 hover:border-emerald-500 hover:text-emerald-500 dark:hover:text-emerald-400 transition-all";
+            // Update UI buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.className = "filter-btn text-brand-text hover:text-white pb-1 border-b border-transparent hover:border-white/50 transition-all";
             });
             
             const activeBtn = document.getElementById(`filter-btn-${cat}`);
             if (activeBtn) {
-                activeBtn.className = "project-filter-pill px-5 py-2.5 rounded-full text-xs mono uppercase tracking-wider font-semibold border bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-950 transition-all";
+                activeBtn.className = "filter-btn text-white border-b border-white pb-1 transition-all";
             }
             
             buildProjectsGrid();
@@ -1044,78 +715,43 @@
             const p = projects[index];
             document.getElementById('modal-title').innerText = p.title;
             document.getElementById('modal-desc').innerText = p.desc;
-            document.getElementById('modal-tag').innerText = p.tag;
+            document.getElementById('modal-tag').innerText = `[ ${p.category.toUpperCase()} ] // ${p.tag}`;
             document.getElementById('modal-icon').className = `fa-solid ${p.icon}`;
             
             const featuresList = document.getElementById('modal-features');
             featuresList.innerHTML = p.features.map(f => `
                 <li class="flex items-start gap-3">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-2 shrink-0"></span>
-                    <span class="text-slate-600 dark:text-slate-300 text-xs md:text-sm leading-relaxed">${f}</span>
+                    <span class="text-white/30 font-mono text-xs mt-0.5">></span>
+                    <span class="text-brand-text text-xs md:text-sm font-light leading-relaxed">${f}</span>
                 </li>
             `).join('');
             
             const stackContainer = document.getElementById('modal-stack');
             stackContainer.innerHTML = p.stack.map(s => `
-                <span class="px-3 py-1 bg-slate-50 dark:bg-slate-950 border border-slate-200/60 dark:border-slate-800 rounded-xl text-[10px] mono text-slate-500 dark:text-slate-400 font-medium">${s}</span>
+                <span class="px-3 py-1.5 schematic-border bg-white/[0.02] text-[10px] font-mono text-white/70 uppercase tracking-widest">${s}</span>
             `).join('');
             
             document.getElementById('modal-overlay').classList.add('active');
-            document.body.style.overflow = 'hidden';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
         }
-
-        document.getElementById('modal-overlay').addEventListener('click', (e) => {
-            if (e.target === document.getElementById('modal-overlay')) {
-                closeModal();
-            }
-        });
 
         function closeModal() {
             document.getElementById('modal-overlay').classList.remove('active');
-            document.body.style.overflow = 'auto';
+            document.body.style.overflow = '';
         }
 
-        // Global Event listeners
-        window.addEventListener('resize', () => { 
-            initBackground(); 
+        // Close modal on outside click or Esc key
+        document.getElementById('modal-overlay').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('modal-overlay')) closeModal();
         });
-
-        window.addEventListener('mousemove', (e) => { 
-            mouse.x = e.clientX; 
-            mouse.y = e.clientY; 
-        });
-        
-        window.addEventListener('touchstart', (e) => { 
-            mouse.x = e.touches[0].clientX; 
-            mouse.y = e.touches[0].clientY; 
-        }, {passive: true});
 
         window.addEventListener('keydown', (e) => { 
             if(e.key === 'Escape') closeModal(); 
         });
 
-        let lastScrollY = window.scrollY;
-        const mainNav = document.getElementById('main-nav');
-        
-        window.addEventListener('scroll', () => {
-            const currentScrollY = window.scrollY;
-            
-            if (currentScrollY > lastScrollY && currentScrollY > 80) {
-                // Moving down: Translate nav menu out of bounds
-                mainNav.classList.add('-translate-y-full');
-            } else {
-                // Moving up: Pull menu back down
-                mainNav.classList.remove('-translate-y-full');
-            }
-            
-            lastScrollY = currentScrollY;
-        }, { passive: true });
-
+        // Initialize
         window.onload = () => {
-            systemState.init();
-            initBackground();
             buildProjectsGrid();
-            animate();
         };
     </script>
 </body>
