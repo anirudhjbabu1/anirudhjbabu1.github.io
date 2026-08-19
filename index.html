@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anirudh J Babu | Robotics Software & Cognitive AI Engineer</title>
-    
+
     <!-- Tailwind CSS configuration -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -26,16 +27,19 @@
             }
         }
     </script>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=300;400;500;600;700&family=Space+Grotesk:wght=400;500;600;700&family=JetBrains+Mono:wght=400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght=300;400;500;600;700&family=Space+Grotesk:wght=400;500;600;700&family=JetBrains+Mono:wght=400;500;600;700&display=swap"
+        rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
-    
+
     <style>
         :root {
             --border-tech: rgba(226, 232, 240, 1);
         }
+
         .dark {
             --border-tech: rgba(30, 41, 59, 1);
         }
@@ -50,7 +54,8 @@
         }
 
         .dark body {
-            background-color: #020617; /* Very dark slate, almost black */
+            background-color: #020617;
+            /* Very dark slate, almost black */
             color: #94a3b8;
         }
 
@@ -58,16 +63,18 @@
             font-family: 'Space Grotesk', sans-serif;
         }
 
-        .mono { 
-            font-family: 'JetBrains Mono', monospace; 
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
         }
 
         /* Sharp structural borders instead of rounded corners for tactical feel */
         .tech-panel {
             border: 1px solid var(--border-tech);
             background-color: rgba(255, 255, 255, 0.7);
-            border-radius: 0; /* Sharp corners */
+            border-radius: 0;
+            /* Sharp corners */
         }
+
         .dark .tech-panel {
             background-color: rgba(15, 23, 42, 0.6);
         }
@@ -77,49 +84,88 @@
             opacity: 0;
             visibility: hidden;
         }
+
         #modal-overlay.active {
             opacity: 1;
             visibility: visible;
         }
+
         #modal-content {
             transform: translateY(10px);
             transition: transform 0.3s ease;
-            border-radius: 0; /* Sharp corners for modal */
+            border-radius: 0;
+            /* Sharp corners for modal */
         }
+
         #modal-overlay.active #modal-content {
             transform: translateY(0);
         }
 
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: transparent; border-left: 1px solid var(--border-tech); }
-        ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 0; }
-        .dark ::-webkit-scrollbar-thumb { background: #475569; }
-        ::-webkit-scrollbar-thumb:hover { background: #64748b; }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+            border-left: 1px solid var(--border-tech);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 0;
+        }
+
+        .dark ::-webkit-scrollbar-thumb {
+            background: #475569;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
     </style>
 </head>
-<body class="selection:bg-slate-900 selection:text-white dark:selection:bg-slate-100 dark:selection:text-slate-900 transition-colors duration-300">
 
-    <nav id="main-nav" class="fixed top-0 w-full z-50 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md transition-transform duration-300">
+<body
+    class="selection:bg-slate-900 selection:text-white dark:selection:bg-slate-100 dark:selection:text-slate-900 transition-colors duration-300">
+
+    <nav id="main-nav"
+        class="fixed top-0 w-full z-50 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md transition-transform duration-300">
         <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
             <div class="flex items-center gap-4">
-                <a href="#" class="heading-tech text-xl font-bold tracking-tighter text-slate-900 dark:text-slate-100 uppercase">
+                <a href="#"
+                    class="heading-tech text-xl font-bold tracking-tighter text-slate-900 dark:text-slate-100 uppercase">
                     A.J.B <span class="text-slate-400 dark:text-slate-600 font-light">// Sys</span>
                 </a>
                 <span class="hidden sm:inline-block w-px h-4 bg-slate-300 dark:bg-slate-700"></span>
-                <div class="hidden sm:flex mono text-[10px] tracking-widest font-bold items-center gap-2 text-slate-500 uppercase">
-                    Status: <span class="text-slate-900 dark:text-slate-100 flex items-center gap-2"><div class="w-1.5 h-1.5 bg-slate-900 dark:bg-slate-100 animate-pulse"></div> Online</span>
-                </div>
+                <!--<div
+                    class="hidden sm:flex mono text-[10px] tracking-widest font-bold items-center gap-2 text-slate-500 uppercase">
+                    Status: <span class="text-slate-900 dark:text-slate-100 flex items-center gap-2">
+                        <div class="w-1.5 h-1.5 bg-slate-900 dark:bg-slate-100 animate-pulse"></div> Online
+                    </span>
+                </div>-->
             </div>
-            
+
             <div class="flex items-center space-x-6 mono text-[10px] uppercase tracking-widest font-bold">
-                <a href="#about" class="text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 transition-colors hidden lg:block">01. Profile</a>
-                <a href="#career" class="text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 transition-colors hidden lg:block">02. Career</a>
-                <a href="#projects-section" class="text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 transition-colors hidden lg:block">03. Archive</a>
-                <a href="#software-deployments" class="text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 transition-colors hidden lg:block">04. Software</a>
-                <a href="#skills" class="text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 transition-colors hidden lg:block">05. Systems</a>
-                
+                <a href="#about"
+                    class="text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 transition-colors hidden lg:block">01.
+                    Profile</a>
+                <a href="#career"
+                    class="text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 transition-colors hidden lg:block">02.
+                    Career</a>
+                <a href="#projects-section"
+                    class="text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 transition-colors hidden lg:block">03.
+                    Projects</a>
+                <a href="#software-deployments"
+                    class="text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 transition-colors hidden lg:block">04.
+                    Applications</a>
+                <a href="#Certifications"
+                    class="text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 transition-colors hidden lg:block">05.
+                    Certifications</a>
+
                 <!-- Tactical Theme Toggle -->
-                <button id="theme-toggle" class="w-8 h-8 flex items-center justify-center border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" aria-label="Toggle visual theme">
+                <button id="theme-toggle"
+                    class="w-8 h-8 flex items-center justify-center border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                    aria-label="Toggle visual theme">
                     <i id="theme-icon" class="fa-solid fa-moon text-slate-600 dark:text-slate-400 text-xs"></i>
                 </button>
             </div>
@@ -128,38 +174,49 @@
 
     <header class="relative min-h-screen flex items-center justify-center px-6 pt-24 pb-12 overflow-hidden">
         <!-- Grid overlay for stark technical feel -->
-        <div class="absolute inset-0 bg-[linear-gradient(rgba(226,232,240,0.4)_1px,transparent_1px),linear-gradient(90deg,rgba(226,232,240,0.4)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(30,41,59,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(30,41,59,0.5)_1px,transparent_1px)] bg-[size:40px_40px] z-0"></div>
-        
+        <div
+            class="absolute inset-0 bg-[linear-gradient(rgba(226,232,240,0.4)_1px,transparent_1px),linear-gradient(90deg,rgba(226,232,240,0.4)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(30,41,59,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(30,41,59,0.5)_1px,transparent_1px)] bg-[size:40px_40px] z-0">
+        </div>
+
         <div class="max-w-5xl w-full text-center relative z-10 mt-10">
-            <div class="inline-flex items-center gap-3 mono text-slate-500 text-[10px] mb-8 tracking-[0.2em] uppercase font-bold py-2 px-4 border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm shadow-[0_0_15px_rgba(0,0,0,0.05)] dark:shadow-[0_0_15px_rgba(255,255,255,0.02)]">
+            <!-- <div
+                class="inline-flex items-center gap-3 mono text-slate-500 text-[10px] mb-8 tracking-[0.2em] uppercase font-bold py-2 px-4 border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm shadow-[0_0_15px_rgba(0,0,0,0.05)] dark:shadow-[0_0_15px_rgba(255,255,255,0.02)]">
                 <div class="w-1.5 h-1.5 bg-slate-900 dark:bg-slate-100 animate-pulse"></div>
                 Personnel File: Active
-            </div>
-            
-            <h1 class="heading-tech text-5xl sm:text-7xl md:text-8xl font-bold tracking-tight mb-8 text-slate-900 dark:text-slate-100 leading-[1] uppercase">
+            </div> -->
+
+            <h1
+                class="heading-tech text-5xl sm:text-7xl md:text-8xl font-bold tracking-tight mb-8 text-slate-900 dark:text-slate-100 leading-[1] uppercase">
                 Anirudh J Babu
             </h1>
-            
-            <h2 class="heading-tech text-xl sm:text-2xl md:text-3xl font-medium tracking-tight mb-8 text-slate-700 dark:text-slate-300 leading-snug max-w-4xl mx-auto">
+
+            <h2
+                class="heading-tech text-xl sm:text-2xl md:text-3xl font-medium tracking-tight mb-8 text-slate-700 dark:text-slate-300 leading-snug max-w-4xl mx-auto">
                 Robotics Software & Cognitive AI Engineer.
-                <br><span class="text-slate-500 dark:text-slate-500">Bridging deterministic physical control with adaptive generative intelligence.</span>
+                <br><span class="text-slate-500 dark:text-slate-500">Bridging deterministic physical control with
+                    adaptive generative intelligence.</span>
             </h2>
-            
-            <p class="text-slate-600 dark:text-slate-400 text-sm md:text-base leading-relaxed mb-12 max-w-2xl mx-auto font-light">
-                Specializing in transforming complex, real-time data streams into low-latency, high-frequency execution for SWaP-constrained edge systems.
-            </p>
-            
+
+            <!-- <p
+                class="text-slate-600 dark:text-slate-400 text-sm md:text-base leading-relaxed mb-12 max-w-2xl mx-auto font-light">
+                Specializing in transforming complex, real-time data streams into low-latency, high-frequency execution
+                for SWaP-constrained edge systems.
+            </p> -->
+
             <div class="flex flex-col sm:flex-row items-center justify-center gap-0">
-                <a href="#projects-section" class="w-full sm:w-auto px-10 py-4 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-950 font-bold mono text-xs uppercase tracking-widest hover:bg-slate-800 dark:hover:bg-white transition-colors border border-slate-900 dark:border-slate-100">
-                    View Portfolio
+                <a href="#projects-section"
+                    class="w-full sm:w-auto px-10 py-4 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-950 font-bold mono text-xs uppercase tracking-widest hover:bg-slate-800 dark:hover:bg-white transition-colors border border-slate-900 dark:border-slate-100">
+                    View Projects
                 </a>
-                <a href="#contact" class="w-full sm:w-auto px-10 py-4 bg-transparent text-slate-900 dark:text-slate-100 font-bold mono text-xs uppercase tracking-widest hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors border border-l-0 sm:border-t border-slate-200 dark:border-slate-800 backdrop-blur-sm">
-                    Contact Me
+                <a href="#contact"
+                    class="w-full sm:w-auto px-10 py-4 bg-transparent text-slate-900 dark:text-slate-100 font-bold mono text-xs uppercase tracking-widest hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors border border-l-0 sm:border-t border-slate-200 dark:border-slate-800 backdrop-blur-sm">
+                    Connect With Me
                 </a>
             </div>
         </div>
-        
-        <div class="absolute bottom-8 right-8 flex flex-col items-end gap-2 text-slate-400 dark:text-slate-500 text-[10px] mono tracking-widest uppercase z-10">
+
+        <div
+            class="absolute bottom-8 right-8 flex flex-col items-end gap-2 text-slate-400 dark:text-slate-500 text-[10px] mono tracking-widest uppercase z-10">
             <span>Sys. Status</span>
             <div class="flex gap-1">
                 <div class="w-1 h-3 bg-slate-300 dark:bg-slate-700"></div>
@@ -169,220 +226,322 @@
         </div>
     </header>
 
-    <section id="about" class="py-24 border-t border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-950/50 backdrop-blur-sm relative z-10">
+    <section id="about"
+        class="py-24 border-t border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-950/50 backdrop-blur-sm relative z-10">
         <div class="max-w-6xl mx-auto px-6">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
                 <div class="lg:col-span-5">
-                    <span class="mono text-xs uppercase tracking-widest text-slate-500 font-bold block mb-4">01 // Profile</span>
-                    <h2 class="heading-tech text-3xl md:text-5xl font-bold text-slate-900 dark:text-slate-100 mb-6 leading-[1.1] uppercase tracking-tight">
+                    <span class="mono text-xs uppercase tracking-widest text-slate-500 font-bold block mb-4">01 //
+                        Profile</span>
+                    <h2
+                        class="heading-tech text-3xl md:text-5xl font-bold text-slate-900 dark:text-slate-100 mb-6 leading-[1.1] uppercase tracking-tight">
                         Mission<br>Statement
                     </h2>
                     <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6 font-light">
-                        My engineering focus centers on running large vision-language models and high-frequency spatial localization loops simultaneously on size, weight, and power-constrained (SWaP) edge systems—ranging from ground robotic agents to automated aerial vehicles.
+                        Building high-performance systems at the edge. I bridge the gap between heavy computational
+                        theory and real-world execution, deploying complex AI, Visual Inertial Odometry, and
+                        sub-millisecond architectures across autonomous robots and high-frequency trading platforms.
                     </p>
                     <div class="border-l-2 border-slate-900 dark:border-slate-100 pl-4 py-1">
-                        <div class="mono text-slate-900 dark:text-slate-100 font-bold text-[10px] uppercase tracking-widest">
+                        <div
+                            class="mono text-slate-900 dark:text-slate-100 font-bold text-[10px] uppercase tracking-widest">
                             Directive: Unification of deterministic motion stacks with adaptive reasoners.
                         </div>
                     </div>
                 </div>
-                
-                <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-px bg-slate-200 dark:bg-slate-800 border border-slate-200 dark:border-slate-800">
-                    <div class="p-8 bg-white dark:bg-slate-950 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors">
-                        <div class="text-slate-900 dark:text-slate-100 mb-4 border border-slate-200 dark:border-slate-800 w-10 h-10 flex items-center justify-center">
+
+                <div
+                    class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-px bg-slate-200 dark:bg-slate-800 border border-slate-200 dark:border-slate-800">
+                    <div
+                        class="p-8 bg-white dark:bg-slate-950 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors">
+                        <div
+                            class="text-slate-900 dark:text-slate-100 mb-4 border border-slate-200 dark:border-slate-800 w-10 h-10 flex items-center justify-center">
                             <i class="fa-solid fa-microchip text-sm"></i>
                         </div>
-                        <h4 class="heading-tech font-bold text-slate-900 dark:text-slate-100 mb-2 uppercase tracking-wide">Heterogeneous Edge</h4>
-                        <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed mono">Developing cross-platform deployment pipelines targeted for NVIDIA Jetson and Qualcomm compute boards.</p>
+                        <h4
+                            class="heading-tech font-bold text-slate-900 dark:text-slate-100 mb-2 uppercase tracking-wide">
+                            Robotic Software Engineer</h4>
+                        <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed mono">Developing
+                            cross-platform deployment pipelines targeted for NVIDIA Jetson and Qualcomm compute boards.
+                        </p>
                     </div>
-                    <div class="p-8 bg-white dark:bg-slate-950 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors">
-                        <div class="text-slate-900 dark:text-slate-100 mb-4 border border-slate-200 dark:border-slate-800 w-10 h-10 flex items-center justify-center">
+                    <div
+                        class="p-8 bg-white dark:bg-slate-950 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors">
+                        <div
+                            class="text-slate-900 dark:text-slate-100 mb-4 border border-slate-200 dark:border-slate-800 w-10 h-10 flex items-center justify-center">
                             <i class="fa-solid fa-brain text-sm"></i>
                         </div>
-                        <h4 class="heading-tech font-bold text-slate-900 dark:text-slate-100 mb-2 uppercase tracking-wide">Cognitive Autonomy</h4>
-                        <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed mono">Implementing Agentic AI workflows and onboard LLM action-planners to solve unstructured objectives.</p>
+                        <h4
+                            class="heading-tech font-bold text-slate-900 dark:text-slate-100 mb-2 uppercase tracking-wide">
+                            Forward Deployment Engineer</h4>
+                        <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed mono">Implementing Agentic
+                            AI workflows and onboard LLM action-planners to solve unstructured objectives.</p>
                     </div>
-                    <div class="p-8 bg-white dark:bg-slate-950 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors">
-                        <div class="text-slate-900 dark:text-slate-100 mb-4 border border-slate-200 dark:border-slate-800 w-10 h-10 flex items-center justify-center">
+                    <div
+                        class="p-8 bg-white dark:bg-slate-950 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors">
+                        <div
+                            class="text-slate-900 dark:text-slate-100 mb-4 border border-slate-200 dark:border-slate-800 w-10 h-10 flex items-center justify-center">
                             <i class="fa-solid fa-location-crosshairs text-sm"></i>
                         </div>
-                        <h4 class="heading-tech font-bold text-slate-900 dark:text-slate-100 mb-2 uppercase tracking-wide">State Estimation</h4>
-                        <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed mono">Fusing odometry, VIO, GNSS, and LiDAR data to maintain high-accuracy spatial awareness.</p>
+                        <h4
+                            class="heading-tech font-bold text-slate-900 dark:text-slate-100 mb-2 uppercase tracking-wide">
+                            AI Engineer</h4>
+                        <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed mono">Fusing odometry, VIO,
+                            GNSS, and LiDAR data to maintain high-accuracy spatial awareness.</p>
                     </div>
-                    <div class="p-8 bg-white dark:bg-slate-950 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors">
-                        <div class="text-slate-900 dark:text-slate-100 mb-4 border border-slate-200 dark:border-slate-800 w-10 h-10 flex items-center justify-center">
+                    <div
+                        class="p-8 bg-white dark:bg-slate-950 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors">
+                        <div
+                            class="text-slate-900 dark:text-slate-100 mb-4 border border-slate-200 dark:border-slate-800 w-10 h-10 flex items-center justify-center">
                             <i class="fa-solid fa-cube text-sm"></i>
                         </div>
-                        <h4 class="heading-tech font-bold text-slate-900 dark:text-slate-100 mb-2 uppercase tracking-wide">Simulation Environments</h4>
-                        <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed mono">Validating rigid-body kinetics and complex vehicle dynamics inside detailed Gazebo grids.</p>
+                        <h4
+                            class="heading-tech font-bold text-slate-900 dark:text-slate-100 mb-2 uppercase tracking-wide">
+                            High Frequency Trading Developer</h4>
+                        <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed mono">Validating rigid-body
+                            kinetics and complex vehicle dynamics inside detailed Gazebo grids.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="career" class="py-24 border-t border-slate-200 dark:border-slate-800 relative z-10 bg-white/40 dark:bg-slate-950/10 backdrop-blur-sm">
+    <section id="career"
+        class="py-24 border-t border-slate-200 dark:border-slate-800 relative z-10 bg-white/40 dark:bg-slate-950/10 backdrop-blur-sm">
         <div class="max-w-5xl mx-auto px-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
                 <div>
-                    <span class="mono text-xs uppercase tracking-widest text-slate-500 font-bold block mb-4">02 // Career</span>
-                    <h2 class="heading-tech text-3xl md:text-5xl font-bold text-slate-900 dark:text-slate-100 tracking-tight uppercase">Operational History</h2>
+                    <span class="mono text-xs uppercase tracking-widest text-slate-500 font-bold block mb-4">02 //
+                        Career</span>
+                    <h2
+                        class="heading-tech text-3xl md:text-5xl font-bold text-slate-900 dark:text-slate-100 tracking-tight uppercase">
+                        Operational History</h2>
                 </div>
                 <div class="text-right">
-                    <p class="text-slate-500 dark:text-slate-400 font-light text-sm max-w-xs ml-auto">Verified timeline of professional engagements and engineering deployments.</p>
+                    <p class="text-slate-500 dark:text-slate-400 font-light text-sm max-w-xs ml-auto">Verified timeline
+                        of professional engagements and engineering deployments.</p>
                 </div>
             </div>
 
             <div class="relative border-l border-slate-200 dark:border-slate-800 ml-4 md:ml-32 space-y-16">
                 <!-- Timeline item 1 -->
                 <div class="relative pl-8 group">
-                    <div class="absolute -left-[5px] top-1.5 w-2 h-2 bg-slate-900 dark:bg-slate-100 group-hover:scale-150 transition-transform"></div>
-                    <div class="absolute left-[-115px] top-1 text-[10px] mono text-slate-400 font-bold uppercase tracking-widest hidden md:block text-right w-24">
+                    <div
+                        class="absolute -left-[5px] top-1.5 w-2 h-2 bg-slate-900 dark:bg-slate-100 group-hover:scale-150 transition-transform">
+                    </div>
+                    <div
+                        class="absolute left-[-115px] top-1 text-[10px] mono text-slate-400 font-bold uppercase tracking-widest hidden md:block text-right w-24">
                         2024 — Pres
                     </div>
-                    <div class="md:hidden text-[10px] mono text-slate-900 dark:text-slate-100 font-bold uppercase tracking-widest mb-2 border border-slate-200 dark:border-slate-800 inline-block px-2 py-1">
+                    <div
+                        class="md:hidden text-[10px] mono text-slate-900 dark:text-slate-100 font-bold uppercase tracking-widest mb-2 border border-slate-200 dark:border-slate-800 inline-block px-2 py-1">
                         2024 — Present
                     </div>
-                    <h3 class="heading-tech text-2xl font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wide">Software Engineer</h3>
-                    <h4 class="mono text-xs text-slate-500 font-bold mb-4 uppercase tracking-wider">Tsalla Aerospace</h4>
+                    <h3
+                        class="heading-tech text-2xl font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wide">
+                        Software Engineer</h3>
+                    <h4 class="mono text-xs text-slate-500 font-bold mb-4 uppercase tracking-wider">Tsalla Aerospace
+                    </h4>
                     <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-2xl font-light">
-                        Pioneering cognitive onboard mission agents running dynamic visual planning systems on Qualcomm and Nvidia hardware. Architecting high-reliability ROS2 robotic controllers interacting directly with specialized Ubuntu environments.
+                        Pioneering cognitive onboard mission agents running dynamic visual planning systems on Qualcomm
+                        and Nvidia hardware. Architecting high-reliability ROS2 robotic controllers interacting directly
+                        with specialized Ubuntu environments.
                     </p>
                 </div>
 
                 <!-- Timeline item 2 -->
                 <div class="relative pl-8 group">
-                    <div class="absolute -left-[5px] top-1.5 w-2 h-2 bg-slate-300 dark:bg-slate-700 group-hover:bg-slate-900 dark:group-hover:bg-slate-100 transition-colors"></div>
-                    <div class="absolute left-[-115px] top-1 text-[10px] mono text-slate-400 font-bold uppercase tracking-widest hidden md:block text-right w-24">
+                    <div
+                        class="absolute -left-[5px] top-1.5 w-2 h-2 bg-slate-300 dark:bg-slate-700 group-hover:bg-slate-900 dark:group-hover:bg-slate-100 transition-colors">
+                    </div>
+                    <div
+                        class="absolute left-[-115px] top-1 text-[10px] mono text-slate-400 font-bold uppercase tracking-widest hidden md:block text-right w-24">
                         2024 — 2024
                     </div>
-                    <div class="md:hidden text-[10px] mono text-slate-500 font-bold uppercase tracking-widest mb-2 border border-slate-200 dark:border-slate-800 inline-block px-2 py-1">
+                    <div
+                        class="md:hidden text-[10px] mono text-slate-500 font-bold uppercase tracking-widest mb-2 border border-slate-200 dark:border-slate-800 inline-block px-2 py-1">
                         2024 — 2024
                     </div>
-                    <h3 class="heading-tech text-2xl font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wide">AI-ML Intern</h3>
-                    <h4 class="mono text-xs text-slate-500 font-bold mb-4 uppercase tracking-wider">Tsalla Aerospace</h4>
+                    <h3
+                        class="heading-tech text-2xl font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wide">
+                        AI-ML Intern</h3>
+                    <h4 class="mono text-xs text-slate-500 font-bold mb-4 uppercase tracking-wider">Tsalla Aerospace
+                    </h4>
                     <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-2xl font-light">
-                        Designed real-time vision algorithms (SLAM/VIO) for robust, GPS-denied autonomous ground scanning. Scaled physics-compliant robot fleet simulations inside Gazebo, running massive parameter test matrices.
+                        Designed real-time vision algorithms (SLAM/VIO) for robust, GPS-denied autonomous ground
+                        scanning. Scaled physics-compliant robot fleet simulations inside Gazebo, running massive
+                        parameter test matrices.
                     </p>
                 </div>
 
                 <!-- Timeline item 3 -->
                 <div class="relative pl-8 group">
-                    <div class="absolute -left-[5px] top-1.5 w-2 h-2 bg-slate-300 dark:bg-slate-700 group-hover:bg-slate-900 dark:group-hover:bg-slate-100 transition-colors"></div>
-                    <div class="absolute left-[-115px] top-1 text-[10px] mono text-slate-400 font-bold uppercase tracking-widest hidden md:block text-right w-24">
+                    <div
+                        class="absolute -left-[5px] top-1.5 w-2 h-2 bg-slate-300 dark:bg-slate-700 group-hover:bg-slate-900 dark:group-hover:bg-slate-100 transition-colors">
+                    </div>
+                    <div
+                        class="absolute left-[-115px] top-1 text-[10px] mono text-slate-400 font-bold uppercase tracking-widest hidden md:block text-right w-24">
                         2024 — 2025
                     </div>
-                    <div class="md:hidden text-[10px] mono text-slate-500 font-bold uppercase tracking-widest mb-2 border border-slate-200 dark:border-slate-800 inline-block px-2 py-1">
+                    <div
+                        class="md:hidden text-[10px] mono text-slate-500 font-bold uppercase tracking-widest mb-2 border border-slate-200 dark:border-slate-800 inline-block px-2 py-1">
                         2024 — 2025
                     </div>
-                    <h3 class="heading-tech text-2xl font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wide">Software Engineer (Contract)</h3>
-                    <h4 class="mono text-xs text-slate-500 font-bold mb-4 uppercase tracking-wider">Independent Consulting</h4>
+                    <h3
+                        class="heading-tech text-2xl font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wide">
+                        Software Engineer (Contract)</h3>
+                    <h4 class="mono text-xs text-slate-500 font-bold mb-4 uppercase tracking-wider">Independent
+                        Consulting</h4>
                     <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-2xl font-light">
-                        Built embedded camera streaming integrations, low-latency sensor drivers, and hardware-in-the-loop validation setups on Nvidia Jetson Nano and Orin evaluation platforms utilizing ROS.
+                        Built embedded camera streaming integrations, low-latency sensor drivers, and
+                        hardware-in-the-loop validation setups on Nvidia Jetson Nano and Orin evaluation platforms
+                        utilizing ROS.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="projects-section" class="py-24 border-t border-slate-200 dark:border-slate-800 overflow-hidden relative z-10 bg-slate-50/50 dark:bg-slate-950/20 backdrop-blur-sm">
+    <section id="projects-section"
+        class="py-24 border-t border-slate-200 dark:border-slate-800 overflow-hidden relative z-10 bg-slate-50/50 dark:bg-slate-950/20 backdrop-blur-sm">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
                 <div>
-                    <span class="mono text-xs uppercase tracking-widest text-slate-500 font-bold block mb-4">03 // Archive</span>
-                    <h2 class="heading-tech text-3xl md:text-5xl font-bold text-slate-900 dark:text-slate-100 mb-2 tracking-tight uppercase">Project Portfolio</h2>
+                    <span class="mono text-xs uppercase tracking-widest text-slate-500 font-bold block mb-4">03 //
+                        Archive</span>
+                    <h2
+                        class="heading-tech text-3xl md:text-5xl font-bold text-slate-900 dark:text-slate-100 mb-2 tracking-tight uppercase">
+                        Project Portfolio</h2>
                 </div>
                 <div class="text-right">
-                    <p class="text-slate-500 dark:text-slate-400 font-light text-sm max-w-xs ml-auto">Classified log of algorithms, frameworks, and structural architectures engineered.</p>
+                    <p class="text-slate-500 dark:text-slate-400 font-light text-sm max-w-xs ml-auto">Classified log of
+                        algorithms, frameworks, and structural architectures engineered.</p>
                 </div>
             </div>
-            
+
             <!-- Structural Category Selectors -->
             <div class="flex flex-wrap gap-0 mb-12 border border-slate-200 dark:border-slate-800 inline-flex">
-                <button id="filter-btn-all" onclick="filterProjects('all')" class="project-filter-btn px-6 py-3 text-[10px] mono uppercase tracking-widest font-bold bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 border-r border-slate-200 dark:border-slate-800 transition-colors">All</button>
-                <button id="filter-btn-robotics" onclick="filterProjects('robotics')" class="project-filter-btn px-6 py-3 text-[10px] mono uppercase tracking-widest font-bold text-slate-500 bg-white dark:bg-slate-950 hover:bg-slate-50 dark:hover:bg-slate-900 border-r border-slate-200 dark:border-slate-800 transition-colors">Robotics</button>
-                <button id="filter-btn-vision" onclick="filterProjects('vision')" class="project-filter-btn px-6 py-3 text-[10px] mono uppercase tracking-widest font-bold text-slate-500 bg-white dark:bg-slate-950 hover:bg-slate-50 dark:hover:bg-slate-900 border-r border-slate-200 dark:border-slate-800 transition-colors">Vision</button>
-                <button id="filter-btn-genai" onclick="filterProjects('genai')" class="project-filter-btn px-6 py-3 text-[10px] mono uppercase tracking-widest font-bold text-slate-500 bg-white dark:bg-slate-950 hover:bg-slate-50 dark:hover:bg-slate-900 border-r border-slate-200 dark:border-slate-800 transition-colors">Gen AI</button>
-                <button id="filter-btn-quant" onclick="filterProjects('quant')" class="project-filter-btn px-6 py-3 text-[10px] mono uppercase tracking-widest font-bold text-slate-500 bg-white dark:bg-slate-950 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors">Finance</button>
+                <button id="filter-btn-all" onclick="filterProjects('all')"
+                    class="project-filter-btn px-6 py-3 text-[10px] mono uppercase tracking-widest font-bold bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 border-r border-slate-200 dark:border-slate-800 transition-colors">All</button>
+                <button id="filter-btn-robotics" onclick="filterProjects('robotics')"
+                    class="project-filter-btn px-6 py-3 text-[10px] mono uppercase tracking-widest font-bold text-slate-500 bg-white dark:bg-slate-950 hover:bg-slate-50 dark:hover:bg-slate-900 border-r border-slate-200 dark:border-slate-800 transition-colors">Robotics</button>
+                <button id="filter-btn-vision" onclick="filterProjects('vision')"
+                    class="project-filter-btn px-6 py-3 text-[10px] mono uppercase tracking-widest font-bold text-slate-500 bg-white dark:bg-slate-950 hover:bg-slate-50 dark:hover:bg-slate-900 border-r border-slate-200 dark:border-slate-800 transition-colors">Vision</button>
+                <button id="filter-btn-genai" onclick="filterProjects('genai')"
+                    class="project-filter-btn px-6 py-3 text-[10px] mono uppercase tracking-widest font-bold text-slate-500 bg-white dark:bg-slate-950 hover:bg-slate-50 dark:hover:bg-slate-900 border-r border-slate-200 dark:border-slate-800 transition-colors">Gen
+                    AI</button>
+                <button id="filter-btn-quant" onclick="filterProjects('quant')"
+                    class="project-filter-btn px-6 py-3 text-[10px] mono uppercase tracking-widest font-bold text-slate-500 bg-white dark:bg-slate-950 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors">Finance</button>
             </div>
 
             <!-- Zero-Blur Project Card Grid -->
-            <div id="projects-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-slate-200 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 transition-all duration-500">
+            <div id="projects-grid"
+                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-slate-200 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 transition-all duration-500">
                 <!-- Dynamically populated via JS -->
             </div>
-            
-            <div id="projects-empty-state" class="hidden text-center py-20 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 mt-1">
+
+            <div id="projects-empty-state"
+                class="hidden text-center py-20 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 mt-1">
                 <i class="fa-solid fa-ban text-slate-300 dark:text-slate-700 text-3xl mb-4"></i>
-                <p class="mono text-[10px] text-slate-400 uppercase tracking-widest">No records found for specified query.</p>
+                <p class="mono text-[10px] text-slate-400 uppercase tracking-widest">No records found for specified
+                    query.</p>
             </div>
         </div>
     </section>
 
-    <section id="software-deployments" class="py-24 border-t border-slate-200 dark:border-slate-800 relative z-10 bg-white/40 dark:bg-slate-950/10 backdrop-blur-sm">
+    <section id="software-deployments"
+        class="py-24 border-t border-slate-200 dark:border-slate-800 relative z-10 bg-white/40 dark:bg-slate-950/10 backdrop-blur-sm">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
                 <div>
-                    <span class="mono text-xs uppercase tracking-widest text-slate-500 font-bold block mb-4">04 // Deployments</span>
-                    <h2 class="heading-tech text-3xl md:text-5xl font-bold text-slate-900 dark:text-slate-100 tracking-tight uppercase">Web Applications</h2>
+                    <span class="mono text-xs uppercase tracking-widest text-slate-500 font-bold block mb-4">04 //
+                        Deployments</span>
+                    <h2
+                        class="heading-tech text-3xl md:text-5xl font-bold text-slate-900 dark:text-slate-100 tracking-tight uppercase">
+                        Web Applications</h2>
                 </div>
                 <div class="text-right">
-                    <p class="text-slate-500 dark:text-slate-400 font-light text-sm max-w-xs ml-auto">Live interfaces, diagnostic dashboards, and distributed web platforms.</p>
+                    <p class="text-slate-500 dark:text-slate-400 font-light text-sm max-w-xs ml-auto">Live interfaces,
+                        diagnostic dashboards, and distributed web platforms.</p>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-slate-200 dark:bg-slate-800 border border-slate-200 dark:border-slate-800">
-                
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 gap-px bg-slate-200 dark:bg-slate-800 border border-slate-200 dark:border-slate-800">
+
                 <!-- WebApp 1 -->
-                <div class="bg-white dark:bg-slate-950 p-8 md:p-10 flex flex-col justify-between group hover:bg-slate-50 dark:hover:bg-slate-900/80 transition-colors">
+                <div
+                    class="bg-white dark:bg-slate-950 p-8 md:p-10 flex flex-col justify-between group hover:bg-slate-50 dark:hover:bg-slate-900/80 transition-colors">
                     <div>
                         <div class="flex justify-between items-start mb-6">
-                            <div class="mb-4 inline-flex items-center gap-2 border border-slate-900 dark:border-slate-100 px-3 py-1 mono text-[10px] text-slate-900 dark:text-slate-100 font-bold uppercase tracking-widest">
+                            <div
+                                class="mb-4 inline-flex items-center gap-2 border border-slate-900 dark:border-slate-100 px-3 py-1 mono text-[10px] text-slate-900 dark:text-slate-100 font-bold uppercase tracking-widest">
                                 <div class="w-1.5 h-1.5 bg-emerald-500 animate-pulse"></div> Live
                             </div>
-                            <a href="#" target="_blank" class="w-10 h-10 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors" title="Launch WebApp">
+                            <a href="#" target="_blank"
+                                class="w-10 h-10 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors"
+                                title="Launch WebApp">
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                             </a>
                         </div>
-                        <h3 class="heading-tech text-2xl font-bold text-slate-900 dark:text-slate-100 mb-3 uppercase tracking-wide">Fleet Telemetry Dashboard</h3>
+                        <h3
+                            class="heading-tech text-2xl font-bold text-slate-900 dark:text-slate-100 mb-3 uppercase tracking-wide">
+                            Fleet Telemetry Dashboard</h3>
                         <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-8 font-light">
-                            Real-time robotic fleet monitoring interface displaying live maps, VIO odometry paths, and SWaP diagnostics via low-latency WebSockets.
+                            Real-time robotic fleet monitoring interface displaying live maps, VIO odometry paths, and
+                            SWaP diagnostics via low-latency WebSockets.
                         </p>
                     </div>
                     <div>
                         <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400">React</span>
-                            <span class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400">WebSockets</span>
-                            <span class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400">Tailwind</span>
+                            <span
+                                class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400">React</span>
+                            <span
+                                class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400">WebSockets</span>
+                            <span
+                                class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400">Tailwind</span>
                         </div>
-                        <a href="#" target="_blank" class="inline-flex items-center gap-3 mono text-xs font-bold uppercase tracking-widest text-slate-900 dark:text-slate-100 hover:opacity-70 transition-opacity">
+                        <a href="#" target="_blank"
+                            class="inline-flex items-center gap-3 mono text-xs font-bold uppercase tracking-widest text-slate-900 dark:text-slate-100 hover:opacity-70 transition-opacity">
                             Access Terminal <i class="fa-solid fa-angle-right"></i>
                         </a>
                     </div>
                 </div>
 
                 <!-- WebApp 2 -->
-                <div class="bg-white dark:bg-slate-950 p-8 md:p-10 flex flex-col justify-between group hover:bg-slate-50 dark:hover:bg-slate-900/80 transition-colors">
+                <div
+                    class="bg-white dark:bg-slate-950 p-8 md:p-10 flex flex-col justify-between group hover:bg-slate-50 dark:hover:bg-slate-900/80 transition-colors">
                     <div>
                         <div class="flex justify-between items-start mb-6">
-                            <div class="mb-4 inline-flex items-center gap-2 border border-slate-900 dark:border-slate-100 px-3 py-1 mono text-[10px] text-slate-900 dark:text-slate-100 font-bold uppercase tracking-widest">
+                            <div
+                                class="mb-4 inline-flex items-center gap-2 border border-slate-900 dark:border-slate-100 px-3 py-1 mono text-[10px] text-slate-900 dark:text-slate-100 font-bold uppercase tracking-widest">
                                 <div class="w-1.5 h-1.5 bg-emerald-500 animate-pulse"></div> Live
                             </div>
-                            <a href="#" target="_blank" class="w-10 h-10 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors" title="Launch WebApp">
+                            <a href="#" target="_blank"
+                                class="w-10 h-10 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors"
+                                title="Launch WebApp">
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                             </a>
                         </div>
-                        <h3 class="heading-tech text-2xl font-bold text-slate-900 dark:text-slate-100 mb-3 uppercase tracking-wide">Agentic Vision Interface</h3>
+                        <h3
+                            class="heading-tech text-2xl font-bold text-slate-900 dark:text-slate-100 mb-3 uppercase tracking-wide">
+                            Agentic Vision Interface</h3>
                         <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-8 font-light">
-                            Interactive web sandbox for uploading geospatial visual datasets and generating autonomous reasoning graphs using cloud LLM APIs.
+                            Interactive web sandbox for uploading geospatial visual datasets and generating autonomous
+                            reasoning graphs using cloud LLM APIs.
                         </p>
                     </div>
                     <div>
                         <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400">Next.js</span>
-                            <span class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400">LangChain</span>
-                            <span class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400">Vercel</span>
+                            <span
+                                class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400">Next.js</span>
+                            <span
+                                class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400">LangChain</span>
+                            <span
+                                class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400">Vercel</span>
                         </div>
-                        <a href="#" target="_blank" class="inline-flex items-center gap-3 mono text-xs font-bold uppercase tracking-widest text-slate-900 dark:text-slate-100 hover:opacity-70 transition-opacity">
+                        <a href="#" target="_blank"
+                            class="inline-flex items-center gap-3 mono text-xs font-bold uppercase tracking-widest text-slate-900 dark:text-slate-100 hover:opacity-70 transition-opacity">
                             Access Terminal <i class="fa-solid fa-angle-right"></i>
                         </a>
                     </div>
@@ -391,81 +550,111 @@
             </div>
         </div>
     </section>
-    <section id="credentials" class="py-24 border-t border-slate-200 dark:border-slate-800 relative z-10 bg-slate-50/50 dark:bg-slate-950/20 backdrop-blur-sm">
+    <section id="Certifications"
+        class="py-24 border-t border-slate-200 dark:border-slate-800 relative z-10 bg-slate-50/50 dark:bg-slate-950/20 backdrop-blur-sm">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
                 <div>
-                    <span class="mono text-xs uppercase tracking-widest text-slate-500 font-bold block mb-4">06 // Credentials</span>
-                    <h2 class="heading-tech text-3xl md:text-5xl font-bold text-slate-900 dark:text-slate-100 tracking-tight uppercase">Certifications</h2>
+                    <span class="mono text-xs uppercase tracking-widest text-slate-500 font-bold block mb-4">05 //
+                        Credentials</span>
+                    <h2
+                        class="heading-tech text-3xl md:text-5xl font-bold text-slate-900 dark:text-slate-100 tracking-tight uppercase">
+                        Certifications</h2>
                 </div>
                 <div class="text-right">
-                    <p class="text-slate-500 dark:text-slate-400 font-light text-sm max-w-xs ml-auto">Verified technical competencies, authorized training completions, and professional endorsements.</p>
+                    <p class="text-slate-500 dark:text-slate-400 font-light text-sm max-w-xs ml-auto">Verified technical
+                        competencies, authorized training completions, and professional endorsements.</p>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-slate-200 dark:bg-slate-800 border border-slate-200 dark:border-slate-800">
-                
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-slate-200 dark:bg-slate-800 border border-slate-200 dark:border-slate-800">
+
                 <!-- Cert 1 -->
-                <div class="bg-white dark:bg-slate-950 p-8 flex flex-col justify-between group hover:bg-slate-50 dark:hover:bg-slate-900/80 transition-colors">
+                <div
+                    class="bg-white dark:bg-slate-950 p-8 flex flex-col justify-between group hover:bg-slate-50 dark:hover:bg-slate-900/80 transition-colors">
                     <div>
                         <div class="flex justify-between items-start mb-6">
-                            <div class="inline-flex items-center gap-2 border border-slate-200 dark:border-slate-800 px-3 py-1 mono text-[10px] text-slate-500 font-bold uppercase tracking-widest bg-slate-50 dark:bg-slate-900">
+                            <div
+                                class="inline-flex items-center gap-2 border border-slate-200 dark:border-slate-800 px-3 py-1 mono text-[10px] text-slate-500 font-bold uppercase tracking-widest bg-slate-50 dark:bg-slate-900">
                                 NVIDIA DLI
                             </div>
-                            <i class="fa-solid fa-microchip text-slate-300 dark:text-slate-700 text-xl group-hover:text-emerald-500 transition-colors"></i>
+                            <i
+                                class="fa-solid fa-microchip text-slate-300 dark:text-slate-700 text-xl group-hover:text-emerald-500 transition-colors"></i>
                         </div>
-                        <h3 class="heading-tech text-xl font-bold text-slate-900 dark:text-slate-100 mb-3 uppercase tracking-wide">Fundamentals of Deep Learning</h3>
+                        <h3
+                            class="heading-tech text-xl font-bold text-slate-900 dark:text-slate-100 mb-3 uppercase tracking-wide">
+                            Fundamentals of Deep Learning</h3>
                         <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed mb-8 font-light">
-                            Computer vision and natural language processing network architectures deployed and optimized on hardware-accelerated embedded platforms.
+                            Computer vision and natural language processing network architectures deployed and optimized
+                            on hardware-accelerated embedded platforms.
                         </p>
                     </div>
-                    <div class="flex items-center justify-between border-t border-slate-100 dark:border-slate-900 pt-4 mt-auto">
+                    <div
+                        class="flex items-center justify-between border-t border-slate-100 dark:border-slate-900 pt-4 mt-auto">
                         <span class="mono text-[10px] text-slate-400 uppercase tracking-widest">Issued: 2024</span>
-                        <a href="#" target="_blank" class="inline-flex items-center gap-2 mono text-[10px] font-bold uppercase tracking-widest text-slate-900 dark:text-slate-100 hover:opacity-70 transition-opacity">
+                        <a href="#" target="_blank"
+                            class="inline-flex items-center gap-2 mono text-[10px] font-bold uppercase tracking-widest text-slate-900 dark:text-slate-100 hover:opacity-70 transition-opacity">
                             Verify File <i class="fa-solid fa-arrow-up-right-from-square"></i>
                         </a>
                     </div>
                 </div>
 
                 <!-- Cert 2 -->
-                <div class="bg-white dark:bg-slate-950 p-8 flex flex-col justify-between group hover:bg-slate-50 dark:hover:bg-slate-900/80 transition-colors">
+                <div
+                    class="bg-white dark:bg-slate-950 p-8 flex flex-col justify-between group hover:bg-slate-50 dark:hover:bg-slate-900/80 transition-colors">
                     <div>
                         <div class="flex justify-between items-start mb-6">
-                            <div class="inline-flex items-center gap-2 border border-slate-200 dark:border-slate-800 px-3 py-1 mono text-[10px] text-slate-500 font-bold uppercase tracking-widest bg-slate-50 dark:bg-slate-900">
+                            <div
+                                class="inline-flex items-center gap-2 border border-slate-200 dark:border-slate-800 px-3 py-1 mono text-[10px] text-slate-500 font-bold uppercase tracking-widest bg-slate-50 dark:bg-slate-900">
                                 DeepLearning.AI
                             </div>
-                            <i class="fa-solid fa-brain text-slate-300 dark:text-slate-700 text-xl group-hover:text-emerald-500 transition-colors"></i>
+                            <i
+                                class="fa-solid fa-brain text-slate-300 dark:text-slate-700 text-xl group-hover:text-emerald-500 transition-colors"></i>
                         </div>
-                        <h3 class="heading-tech text-xl font-bold text-slate-900 dark:text-slate-100 mb-3 uppercase tracking-wide">Deep Learning Specialization</h3>
+                        <h3
+                            class="heading-tech text-xl font-bold text-slate-900 dark:text-slate-100 mb-3 uppercase tracking-wide">
+                            Deep Learning Specialization</h3>
                         <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed mb-8 font-light">
-                            Comprehensive 5-course certification covering neural network tuning, CNNs, Sequence Models (LSTM/Transformers), and hyperparameter optimization.
+                            Comprehensive 5-course certification covering neural network tuning, CNNs, Sequence Models
+                            (LSTM/Transformers), and hyperparameter optimization.
                         </p>
                     </div>
-                    <div class="flex items-center justify-between border-t border-slate-100 dark:border-slate-900 pt-4 mt-auto">
+                    <div
+                        class="flex items-center justify-between border-t border-slate-100 dark:border-slate-900 pt-4 mt-auto">
                         <span class="mono text-[10px] text-slate-400 uppercase tracking-widest">Issued: 2024</span>
-                        <a href="#" target="_blank" class="inline-flex items-center gap-2 mono text-[10px] font-bold uppercase tracking-widest text-slate-900 dark:text-slate-100 hover:opacity-70 transition-opacity">
+                        <a href="#" target="_blank"
+                            class="inline-flex items-center gap-2 mono text-[10px] font-bold uppercase tracking-widest text-slate-900 dark:text-slate-100 hover:opacity-70 transition-opacity">
                             Verify File <i class="fa-solid fa-arrow-up-right-from-square"></i>
                         </a>
                     </div>
                 </div>
 
                 <!-- Cert 3 -->
-                <div class="bg-white dark:bg-slate-950 p-8 flex flex-col justify-between group hover:bg-slate-50 dark:hover:bg-slate-900/80 transition-colors">
+                <div
+                    class="bg-white dark:bg-slate-950 p-8 flex flex-col justify-between group hover:bg-slate-50 dark:hover:bg-slate-900/80 transition-colors">
                     <div>
                         <div class="flex justify-between items-start mb-6">
-                            <div class="inline-flex items-center gap-2 border border-slate-200 dark:border-slate-800 px-3 py-1 mono text-[10px] text-slate-500 font-bold uppercase tracking-widest bg-slate-50 dark:bg-slate-900">
+                            <div
+                                class="inline-flex items-center gap-2 border border-slate-200 dark:border-slate-800 px-3 py-1 mono text-[10px] text-slate-500 font-bold uppercase tracking-widest bg-slate-50 dark:bg-slate-900">
                                 Coursera / Univ
                             </div>
-                            <i class="fa-solid fa-robot text-slate-300 dark:text-slate-700 text-xl group-hover:text-emerald-500 transition-colors"></i>
+                            <i
+                                class="fa-solid fa-robot text-slate-300 dark:text-slate-700 text-xl group-hover:text-emerald-500 transition-colors"></i>
                         </div>
-                        <h3 class="heading-tech text-xl font-bold text-slate-900 dark:text-slate-100 mb-3 uppercase tracking-wide">Modern Robotics: Control & Kinematics</h3>
+                        <h3
+                            class="heading-tech text-xl font-bold text-slate-900 dark:text-slate-100 mb-3 uppercase tracking-wide">
+                            Modern Robotics: Control & Kinematics</h3>
                         <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed mb-8 font-light">
-                            Rigid-body motions, forward/inverse kinematics, and trajectory generation formulas for robotic manipulation and path planning.
+                            Rigid-body motions, forward/inverse kinematics, and trajectory generation formulas for
+                            robotic manipulation and path planning.
                         </p>
                     </div>
-                    <div class="flex items-center justify-between border-t border-slate-100 dark:border-slate-900 pt-4 mt-auto">
+                    <div
+                        class="flex items-center justify-between border-t border-slate-100 dark:border-slate-900 pt-4 mt-auto">
                         <span class="mono text-[10px] text-slate-400 uppercase tracking-widest">Issued: 2025</span>
-                        <a href="#" target="_blank" class="inline-flex items-center gap-2 mono text-[10px] font-bold uppercase tracking-widest text-slate-900 dark:text-slate-100 hover:opacity-70 transition-opacity">
+                        <a href="#" target="_blank"
+                            class="inline-flex items-center gap-2 mono text-[10px] font-bold uppercase tracking-widest text-slate-900 dark:text-slate-100 hover:opacity-70 transition-opacity">
                             Verify File <i class="fa-solid fa-arrow-up-right-from-square"></i>
                         </a>
                     </div>
@@ -476,60 +665,90 @@
     </section>
 
 
-    <footer id="contact" class="py-24 border-t border-slate-200 dark:border-slate-800 px-6 relative z-10 bg-white dark:bg-slate-950">
+    <footer id="contact"
+        class="py-24 border-t border-slate-200 dark:border-slate-800 px-6 relative z-10 bg-white dark:bg-slate-950">
         <div class="max-w-4xl mx-auto text-center">
-            <span class="mono text-xs uppercase tracking-widest text-slate-500 font-bold block mb-4"> // Transmission //</span>
-            <h2 class="heading-tech text-4xl md:text-5xl font-bold mb-6 text-slate-900 dark:text-slate-100 tracking-tight uppercase">Initiate Contact</h2>
+            <!--<span class="mono text-xs uppercase tracking-widest text-slate-500 font-bold block mb-4"> // Transmission
+                //</span>-->
+            <h2
+                class="heading-tech text-4xl md:text-5xl font-bold mb-6 text-slate-900 dark:text-slate-100 tracking-tight uppercase">
+                Initiate Contact</h2>
             <p class="text-slate-500 dark:text-slate-400 mb-10 max-w-md mx-auto font-light text-sm md:text-base">
-                Available for inquiries regarding robotics automation stacks, edge cognitive AI systems, or visual navigation consulting.
+                Available for inquiries regarding robotics automation stacks, edge cognitive AI systems, or visual
+                navigation consulting.
             </p>
-            
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=anirudhjbabu@gmail.com" target="_blank" class="heading-tech text-xl md:text-3xl font-bold text-slate-900 dark:text-slate-100 hover:text-slate-500 dark:hover:text-slate-400 transition-all border-b-2 border-slate-900 dark:border-slate-100 pb-1 uppercase tracking-wider">
+
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=anirudhjbabu@gmail.com" target="_blank"
+                class="heading-tech text-xl md:text-3xl font-bold text-slate-900 dark:text-slate-100 hover:text-slate-500 dark:hover:text-slate-400 transition-all border-b-2 border-slate-900 dark:border-slate-100 pb-1 uppercase tracking-wider">
                 anirudhjbabu@gmail.com
             </a>
-            
-            <div class="mt-24 pt-10 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-6">
+
+            <div
+                class="mt-24 pt-10 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-6">
                 <div class="mono text-[10px] text-slate-400 dark:text-slate-500 uppercase tracking-widest">
                     &copy; 2026 Anirudh J Babu / Software Engineer
                 </div>
                 <div class="flex space-x-6 text-slate-400 dark:text-slate-500">
-                    <a href="https://github.com/anirudhjbabu1" target="_blank" class="hover:text-slate-900 dark:hover:text-slate-100 transition-colors border border-slate-200 dark:border-slate-800 p-3 hover:bg-slate-100 dark:hover:bg-slate-900"><i class="fa-brands fa-github text-lg"></i></a>
-                    <a href="https://www.linkedin.com/in/anirudh-j-babu-117ab6202" target="_blank" class="hover:text-slate-900 dark:hover:text-slate-100 transition-colors border border-slate-200 dark:border-slate-800 p-3 hover:bg-slate-100 dark:hover:bg-slate-900"><i class="fa-brands fa-linkedin-in text-lg"></i></a>
-                    <a href="https://anirudhjbabu1.github.io/" target="_blank" class="hover:text-slate-900 dark:hover:text-slate-100 transition-colors border border-slate-200 dark:border-slate-800 p-3 hover:bg-slate-100 dark:hover:bg-slate-900"><i class="fa-solid fa-globe text-lg"></i></a>
+                    <a href="https://github.com/anirudhjbabu1" target="_blank"
+                        class="hover:text-slate-900 dark:hover:text-slate-100 transition-colors border border-slate-200 dark:border-slate-800 p-3 hover:bg-slate-100 dark:hover:bg-slate-900"><i
+                            class="fa-brands fa-github text-lg"></i></a>
+                    <a href="https://www.linkedin.com/in/anirudh-j-babu-117ab6202" target="_blank"
+                        class="hover:text-slate-900 dark:hover:text-slate-100 transition-colors border border-slate-200 dark:border-slate-800 p-3 hover:bg-slate-100 dark:hover:bg-slate-900"><i
+                            class="fa-brands fa-linkedin-in text-lg"></i></a>
+                    <a href="https://anirudhjbabu1.github.io/" target="_blank"
+                        class="hover:text-slate-900 dark:hover:text-slate-100 transition-colors border border-slate-200 dark:border-slate-800 p-3 hover:bg-slate-100 dark:hover:bg-slate-900"><i
+                            class="fa-solid fa-globe text-lg"></i></a>
                 </div>
             </div>
         </div>
     </footer>
 
     <!-- COMPREHENSIVE MODAL SYSTEM -->
-    <div id="modal-overlay" class="fixed inset-0 z-[100] bg-slate-100/80 dark:bg-slate-950/90 backdrop-blur-sm flex items-center justify-center p-4 md:p-10">
-        <div id="modal-content" class="bg-white dark:bg-slate-900 w-full max-w-4xl max-h-[90vh] overflow-hidden relative flex flex-col md:flex-row border border-slate-900 dark:border-slate-100 shadow-[0_0_30px_rgba(0,0,0,0.1)] dark:shadow-[0_0_30px_rgba(255,255,255,0.05)]">
+    <div id="modal-overlay"
+        class="fixed inset-0 z-[100] bg-slate-100/80 dark:bg-slate-950/90 backdrop-blur-sm flex items-center justify-center p-4 md:p-10">
+        <div id="modal-content"
+            class="bg-white dark:bg-slate-900 w-full max-w-4xl max-h-[90vh] overflow-hidden relative flex flex-col md:flex-row border border-slate-900 dark:border-slate-100 shadow-[0_0_30px_rgba(0,0,0,0.1)] dark:shadow-[0_0_30px_rgba(255,255,255,0.05)]">
             <!-- Close button -->
-            <button onclick="closeModal()" class="absolute top-4 right-4 z-10 w-8 h-8 bg-slate-900 dark:bg-slate-100 border border-slate-900 dark:border-slate-100 flex items-center justify-center text-white dark:text-slate-900 hover:bg-transparent hover:text-slate-900 dark:hover:text-slate-100 transition-colors">
+            <button onclick="closeModal()"
+                class="absolute top-4 right-4 z-10 w-8 h-8 bg-slate-900 dark:bg-slate-100 border border-slate-900 dark:border-slate-100 flex items-center justify-center text-white dark:text-slate-900 hover:bg-transparent hover:text-slate-900 dark:hover:text-slate-100 transition-colors">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-            
-            <div class="w-full md:w-2/5 h-48 md:h-auto bg-slate-50 dark:bg-slate-950 flex items-center justify-center border-b md:border-b-0 md:border-r border-slate-200 dark:border-slate-800 p-8 relative overflow-hidden">
-                <div class="absolute inset-0 bg-[linear-gradient(rgba(226,232,240,0.4)_1px,transparent_1px),linear-gradient(90deg,rgba(226,232,240,0.4)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(30,41,59,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(30,41,59,0.5)_1px,transparent_1px)] bg-[size:10px_10px] opacity-50"></div>
-                <div id="modal-icon-container" class="w-24 h-24 bg-white dark:bg-slate-900 border border-slate-900 dark:border-slate-100 flex items-center justify-center text-slate-900 dark:text-slate-100 text-4xl relative z-10">
+
+            <div
+                class="w-full md:w-2/5 h-48 md:h-auto bg-slate-50 dark:bg-slate-950 flex items-center justify-center border-b md:border-b-0 md:border-r border-slate-200 dark:border-slate-800 p-8 relative overflow-hidden">
+                <div
+                    class="absolute inset-0 bg-[linear-gradient(rgba(226,232,240,0.4)_1px,transparent_1px),linear-gradient(90deg,rgba(226,232,240,0.4)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(30,41,59,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(30,41,59,0.5)_1px,transparent_1px)] bg-[size:10px_10px] opacity-50">
+                </div>
+                <div id="modal-icon-container"
+                    class="w-24 h-24 bg-white dark:bg-slate-900 border border-slate-900 dark:border-slate-100 flex items-center justify-center text-slate-900 dark:text-slate-100 text-4xl relative z-10">
                     <i id="modal-icon" class="fa-solid fa-plane"></i>
                 </div>
             </div>
 
             <div class="w-full md:w-3/5 p-8 md:p-12 overflow-y-auto">
-                <div id="modal-tag" class="mono text-[10px] text-slate-500 font-bold tracking-widest uppercase mb-4 border border-slate-200 dark:border-slate-800 inline-block px-2 py-1">CATEGORY</div>
-                <h3 id="modal-title" class="heading-tech text-3xl font-bold text-slate-900 dark:text-slate-100 mb-6 uppercase tracking-tight">Project Title</h3>
-                <p id="modal-desc" class="text-slate-600 dark:text-slate-400 leading-relaxed mb-8 text-sm font-light">Description...</p>
-                
+                <div id="modal-tag"
+                    class="mono text-[10px] text-slate-500 font-bold tracking-widest uppercase mb-4 border border-slate-200 dark:border-slate-800 inline-block px-2 py-1">
+                    CATEGORY</div>
+                <h3 id="modal-title"
+                    class="heading-tech text-3xl font-bold text-slate-900 dark:text-slate-100 mb-6 uppercase tracking-tight">
+                    Project Title</h3>
+                <p id="modal-desc" class="text-slate-600 dark:text-slate-400 leading-relaxed mb-8 text-sm font-light">
+                    Description...</p>
+
                 <div class="space-y-8">
                     <div>
-                        <h4 class="mono text-[10px] uppercase tracking-widest text-slate-900 dark:text-slate-100 font-bold mb-4 border-b border-slate-200 dark:border-slate-800 pb-2">Core System Features</h4>
-                        <ul id="modal-features" class="space-y-3 text-sm text-slate-600 dark:text-slate-400 font-light list-none pl-0">
+                        <h4
+                            class="mono text-[10px] uppercase tracking-widest text-slate-900 dark:text-slate-100 font-bold mb-4 border-b border-slate-200 dark:border-slate-800 pb-2">
+                            Core System Features</h4>
+                        <ul id="modal-features"
+                            class="space-y-3 text-sm text-slate-600 dark:text-slate-400 font-light list-none pl-0">
                             <!-- Injected features -->
                         </ul>
                     </div>
                     <div class="pt-6">
-                        <h4 class="mono text-[10px] uppercase tracking-widest text-slate-900 dark:text-slate-100 font-bold mb-4 border-b border-slate-200 dark:border-slate-800 pb-2">Onboard Stack</h4>
+                        <h4
+                            class="mono text-[10px] uppercase tracking-widest text-slate-900 dark:text-slate-100 font-bold mb-4 border-b border-slate-200 dark:border-slate-800 pb-2">
+                            Onboard Stack</h4>
                         <div id="modal-stack" class="flex flex-wrap gap-2">
                             <!-- Injected stack -->
                         </div>
@@ -545,7 +764,7 @@
             init() {
                 const savedTheme = localStorage.getItem('theme');
                 const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                
+
                 if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
                     this.setTheme(true);
                 } else if (savedTheme === 'light') {
@@ -576,10 +795,10 @@
         };
 
         const projects = [
-            { 
-                title: "Model-Context-Protocol Robot Agent", 
-                desc: "Implementation of Anthropic's Model Context Protocol (MCP) for remote tool use and telemetry reporting in distributed robot systems.", 
-                tag: "Robotics / Remote Tooling", 
+            {
+                title: "Model-Context-Protocol Robot Agent",
+                desc: "Implementation of Anthropic's Model Context Protocol (MCP) for remote tool use and telemetry reporting in distributed robot systems.",
+                tag: "Robotics / Remote Tooling",
                 category: "robotics",
                 icon: "fa-network-wired",
                 features: [
@@ -589,10 +808,10 @@
                 ],
                 stack: ["MCP Protocol", "ROS2 Nodes", "Python Asyncio", "LTE telemetry"]
             },
-            { 
-                title: "ADAS Autonomous Pilot", 
-                desc: "Integrated lane keeping, visual hazard tracking, and dynamic trajectory planner matching advanced driver-assistance architectures.", 
-                tag: "Computer Vision / ADAS", 
+            {
+                title: "ADAS Autonomous Pilot",
+                desc: "Integrated lane keeping, visual hazard tracking, and dynamic trajectory planner matching advanced driver-assistance architectures.",
+                tag: "Computer Vision / ADAS",
                 category: "vision",
                 icon: "fa-car",
                 features: [
@@ -602,10 +821,10 @@
                 ],
                 stack: ["Nvidia TensorRT", "OpenCV CUDA", "C++ Engine", "ROS2 Humble"]
             },
-            { 
-                title: "Instance-Segmentation Engine", 
-                desc: "Pixel-level classification layer deployed for real-time item sorting and dynamic object boundary detection.", 
-                tag: "Computer Vision / Segmentation", 
+            {
+                title: "Instance-Segmentation Engine",
+                desc: "Pixel-level classification layer deployed for real-time item sorting and dynamic object boundary detection.",
+                tag: "Computer Vision / Segmentation",
                 category: "vision",
                 icon: "fa-puzzle-piece",
                 features: [
@@ -615,10 +834,10 @@
                 ],
                 stack: ["PyTorch", "Segment Anything", "CUDA Kernels", "Nvidia Orin"]
             },
-            { 
-                title: "Counting Challenge Engine", 
-                desc: "High-accuracy crowd density and entity detection solver operating over high-resolution visual inputs.", 
-                tag: "Computer Vision / Analytics", 
+            {
+                title: "Counting Challenge Engine",
+                desc: "High-accuracy crowd density and entity detection solver operating over high-resolution visual inputs.",
+                tag: "Computer Vision / Analytics",
                 category: "vision",
                 icon: "fa-calculator",
                 features: [
@@ -628,10 +847,10 @@
                 ],
                 stack: ["Density Regression", "YOLOv8 Detect", "C++ Pipelines", "Jetson Nano"]
             },
-            { 
-                title: "LOD-3D Reconstruction", 
-                desc: "Multi-resolution spatial mesh mapping generating adaptive 3D structures from visual telemetry feeds.", 
-                tag: "Spatial Computing / 3D Mapping", 
+            {
+                title: "LOD-3D Reconstruction",
+                desc: "Multi-resolution spatial mesh mapping generating adaptive 3D structures from visual telemetry feeds.",
+                tag: "Spatial Computing / 3D Mapping",
                 category: "vision",
                 icon: "fa-cubes",
                 features: [
@@ -641,10 +860,10 @@
                 ],
                 stack: ["Open3D", "Voxels", "CUDA Meshes", "C++ Engine"]
             },
-            { 
-                title: "VLA Autonomous Navigation Core", 
-                desc: "Vision-Language-Action navigation model coordinating real-time flight decisions directly from visual parameters and semantic inputs.", 
-                tag: "Agentic AI / VLA", 
+            {
+                title: "VLA Autonomous Navigation Core",
+                desc: "Vision-Language-Action navigation model coordinating real-time flight decisions directly from visual parameters and semantic inputs.",
+                tag: "Agentic AI / VLA",
                 category: "genai",
                 icon: "fa-brain",
                 features: [
@@ -654,10 +873,10 @@
                 ],
                 stack: ["VLA Models", "Onboard Quantization", "Nvidia Jetson Orin", "MAVSDK"]
             },
-            { 
-                title: "VLA-MAVSDK Integration Node", 
-                desc: "Closed-loop visual planning flight controller connecting VLA outputs directly to PX4 avionics arrays via MAVSDK APIs.", 
-                tag: "Aerospace / Control", 
+            {
+                title: "VLA-MAVSDK Integration Node",
+                desc: "Closed-loop visual planning flight controller connecting VLA outputs directly to PX4 avionics arrays via MAVSDK APIs.",
+                tag: "Aerospace / Control",
                 category: "robotics",
                 icon: "fa-paper-plane",
                 features: [
@@ -667,10 +886,10 @@
                 ],
                 stack: ["MAVSDK API", "PX4 SITL", "ROS2 Nodes", "Python Control"]
             },
-            { 
-                title: "Algorithmic Trading Engines", 
-                desc: "Multi-agent quantitative trading system deploying signal tracking, real-time analytics, and automated action execution.", 
-                tag: "Quantitative Finance", 
+            {
+                title: "Algorithmic Trading Engines",
+                desc: "Multi-agent quantitative trading system deploying signal tracking, real-time analytics, and automated action execution.",
+                tag: "Quantitative Finance",
                 category: "quant",
                 icon: "fa-chart-line",
                 features: [
@@ -680,10 +899,10 @@
                 ],
                 stack: ["Quantitative Signals", "Pandas & Numpy", "Redis Queues", "Backtesting API"]
             },
-            { 
-                title: "Paper Implementation Sandbox", 
-                desc: "An execution sandbox compiling, testing, and deploying cutting-edge deep learning papers directly on localized hardware.", 
-                tag: "Deep Learning Research", 
+            {
+                title: "Paper Implementation Sandbox",
+                desc: "An execution sandbox compiling, testing, and deploying cutting-edge deep learning papers directly on localized hardware.",
+                tag: "Deep Learning Research",
                 category: "genai",
                 icon: "fa-book-open",
                 features: [
@@ -693,10 +912,10 @@
                 ],
                 stack: ["PyTorch Core", "TensorRT", "C++ Benchmarking", "Git Actions"]
             },
-            { 
-                title: "Custom Transformers Engine", 
-                desc: "Compact, hardware-optimized attention execution models configured for low-power edge computer targets.", 
-                tag: "Deep Learning / NLP", 
+            {
+                title: "Custom Transformers Engine",
+                desc: "Compact, hardware-optimized attention execution models configured for low-power edge computer targets.",
+                tag: "Deep Learning / NLP",
                 category: "genai",
                 icon: "fa-microchip",
                 features: [
@@ -706,10 +925,10 @@
                 ],
                 stack: ["Transformers C++", "ONNX Run", "Custom Kernels", "Nvidia AGX Orin"]
             },
-            { 
-                title: "RTOS Flight Scheduler", 
-                desc: "High-frequency real-time operating system task planner coordinating safety-critical drone tasks.", 
-                tag: "Embedded Systems / RTOS", 
+            {
+                title: "RTOS Flight Scheduler",
+                desc: "High-frequency real-time operating system task planner coordinating safety-critical drone tasks.",
+                tag: "Embedded Systems / RTOS",
                 category: "robotics",
                 icon: "fa-microchip",
                 features: [
@@ -719,10 +938,10 @@
                 ],
                 stack: ["FreeRTOS", "STM32 Hardware", "C Programming", "Logic Analyzers"]
             },
-            { 
-                title: "Attention Mechanism Analyzer", 
-                desc: "Interactive visual analytics engine mapping neural attention weights to pinpoint feature dependencies.", 
-                tag: "Deep Learning / Analysis", 
+            {
+                title: "Attention Mechanism Analyzer",
+                desc: "Interactive visual analytics engine mapping neural attention weights to pinpoint feature dependencies.",
+                tag: "Deep Learning / Analysis",
                 category: "genai",
                 icon: "fa-eye",
                 features: [
@@ -732,10 +951,10 @@
                 ],
                 stack: ["Matplotlib", "React Dashboard", "PyTorch Analytics", "Flask"]
             },
-            { 
-                title: "Twitter Sentiment Scanner", 
-                desc: "Real-time distributed scraper and transformer analyzing trending semantic dynamics across raw social posts.", 
-                tag: "NLP / Sentiment Analysis", 
+            {
+                title: "Twitter Sentiment Scanner",
+                desc: "Real-time distributed scraper and transformer analyzing trending semantic dynamics across raw social posts.",
+                tag: "NLP / Sentiment Analysis",
                 category: "genai",
                 icon: "fa-hashtag",
                 features: [
@@ -745,10 +964,10 @@
                 ],
                 stack: ["Apache Kafka", "Quantized BERT", "MongoDB", "Python Dash"]
             },
-            { 
-                title: "YOLOv5 Edge Optimization", 
-                desc: "Deep visual detection models compiled and quantized to run at 60 FPS on constrained NVIDIA hardware.", 
-                tag: "Computer Vision / YOLO", 
+            {
+                title: "YOLOv5 Edge Optimization",
+                desc: "Deep visual detection models compiled and quantized to run at 60 FPS on constrained NVIDIA hardware.",
+                tag: "Computer Vision / YOLO",
                 category: "vision",
                 icon: "fa-crosshairs",
                 features: [
@@ -758,10 +977,10 @@
                 ],
                 stack: ["YOLOv5 Engine", "TensorRT Engine", "OpenCV", "Jetson Nano"]
             },
-            { 
-                title: "Android Whisper Integration", 
-                desc: "Native Android implementation of OpenAI's Whisper model for low-latency, offline voice tracking.", 
-                tag: "Speech / Mobile AI", 
+            {
+                title: "Android Whisper Integration",
+                desc: "Native Android implementation of OpenAI's Whisper model for low-latency, offline voice tracking.",
+                tag: "Speech / Mobile AI",
                 category: "genai",
                 icon: "fa-mobile-screen-button",
                 features: [
@@ -771,10 +990,10 @@
                 ],
                 stack: ["Whisper.cpp", "Android NDK", "Kotlin UI", "ARM Neon Instruction"]
             },
-            { 
-                title: "Smart Glasses Compute Hub", 
-                desc: "Sleek embedded glasses platform incorporating visual tracking sensors, real-time HUDs, and localized voice systems.", 
-                tag: "Spatial Computing / IoT", 
+            {
+                title: "Smart Glasses Compute Hub",
+                desc: "Sleek embedded glasses platform incorporating visual tracking sensors, real-time HUDs, and localized voice systems.",
+                tag: "Spatial Computing / IoT",
                 category: "robotics",
                 icon: "fa-glasses",
                 features: [
@@ -784,10 +1003,10 @@
                 ],
                 stack: ["Raspberry Pi Zero", "Micro-OLED Modules", "C++ Engines", "BLE Protocol"]
             },
-            { 
-                title: "Smart Camera Summarizer", 
-                desc: "Onboard visual parsing camera running continuous local processing to generate textual reports of scene changes.", 
-                tag: "Computer Vision / Edge AI", 
+            {
+                title: "Smart Camera Summarizer",
+                desc: "Onboard visual parsing camera running continuous local processing to generate textual reports of scene changes.",
+                tag: "Computer Vision / Edge AI",
                 category: "vision",
                 icon: "fa-camera-retro",
                 features: [
@@ -797,10 +1016,10 @@
                 ],
                 stack: ["Vision LLM", "Embedded C++", "GStreamer Core", "Raspberry Pi"]
             },
-            { 
-                title: "TAC-GAN Asset Generator", 
-                desc: "Text-to-Attribute-to-Class Generative Adversarial Network compiling customized terrain models from textual directives.", 
-                tag: "Generative AI / GANs", 
+            {
+                title: "TAC-GAN Asset Generator",
+                desc: "Text-to-Attribute-to-Class Generative Adversarial Network compiling customized terrain models from textual directives.",
+                tag: "Generative AI / GANs",
                 category: "genai",
                 icon: "fa-images",
                 features: [
@@ -810,10 +1029,10 @@
                 ],
                 stack: ["TAC-GAN", "PyTorch Core", "TensorBoard", "Linux Clusters"]
             },
-            { 
-                title: "Equity Research Assistant", 
-                desc: "Automated report analyzer parsing complex earnings filings, highlighting performance shifts.", 
-                tag: "NLP / Quant Finance", 
+            {
+                title: "Equity Research Assistant",
+                desc: "Automated report analyzer parsing complex earnings filings, highlighting performance shifts.",
+                tag: "NLP / Quant Finance",
                 category: "quant",
                 icon: "fa-file-invoice-dollar",
                 features: [
@@ -823,10 +1042,10 @@
                 ],
                 stack: ["LangChain", "ChromaDB Vectors", "OpenAI API", "Python Streamlit"]
             },
-            { 
-                title: "LangChain Tool Sandbox", 
-                desc: "Comprehensive testing arena for dynamic agent frameworks executing sequential system automation commands.", 
-                tag: "Agentic AI / LangChain", 
+            {
+                title: "LangChain Tool Sandbox",
+                desc: "Comprehensive testing arena for dynamic agent frameworks executing sequential system automation commands.",
+                tag: "Agentic AI / LangChain",
                 category: "genai",
                 icon: "fa-terminal",
                 features: [
@@ -836,10 +1055,10 @@
                 ],
                 stack: ["LangChain Library", "OpenAI LLM", "Python FastAPI", "WebSockets"]
             },
-            { 
-                title: "Geospatial Analysis Pipeline", 
-                desc: "Continuous mapping systems processing visual inputs to categorize terrain dynamics and layout changes.", 
-                tag: "Spatial Computing / GIS", 
+            {
+                title: "Geospatial Analysis Pipeline",
+                desc: "Continuous mapping systems processing visual inputs to categorize terrain dynamics and layout changes.",
+                tag: "Spatial Computing / GIS",
                 category: "vision",
                 icon: "fa-earth-americas",
                 features: [
@@ -849,10 +1068,10 @@
                 ],
                 stack: ["GDAL Core", "Python Geopandas", "OpenCV", "PostGIS Databases"]
             },
-            { 
-                title: "Accident & Theft Scanner", 
-                desc: "Autonomous visual tracking pipeline detecting road accidents and dynamic security anomalies.", 
-                tag: "Computer Vision / Safety", 
+            {
+                title: "Accident & Theft Scanner",
+                desc: "Autonomous visual tracking pipeline detecting road accidents and dynamic security anomalies.",
+                tag: "Computer Vision / Safety",
                 category: "vision",
                 icon: "fa-shield-halved",
                 features: [
@@ -862,10 +1081,10 @@
                 ],
                 stack: ["PyTorch Core", "OpenCV Pipelines", "Twilio API Node", "Ubuntu Server"]
             },
-            { 
-                title: "Nifty50 Stock Predictor (LSTM)", 
-                desc: "Recurrent Neural Networks utilizing LSTM configurations to process indices momentum shifts.", 
-                tag: "Time Series / LSTM", 
+            {
+                title: "Nifty50 Stock Predictor (LSTM)",
+                desc: "Recurrent Neural Networks utilizing LSTM configurations to process indices momentum shifts.",
+                tag: "Time Series / LSTM",
                 category: "quant",
                 icon: "fa-arrow-trend-up",
                 features: [
@@ -875,10 +1094,10 @@
                 ],
                 stack: ["Keras Core", "TensorFlow Node", "Time Series Models", "Python API"]
             },
-            { 
-                title: "Whisper Speech Translator", 
-                desc: "Bilateral high-fidelity translator matching quantized Whisper inputs with localized voice generation modules.", 
-                tag: "Speech Synthesis / AI", 
+            {
+                title: "Whisper Speech Translator",
+                desc: "Bilateral high-fidelity translator matching quantized Whisper inputs with localized voice generation modules.",
+                tag: "Speech Synthesis / AI",
                 category: "genai",
                 icon: "fa-volume-high",
                 features: [
@@ -896,10 +1115,10 @@
             const grid = document.getElementById('projects-grid');
             grid.innerHTML = '';
             let visibleCount = 0;
-            
+
             projects.forEach((p, idx) => {
                 const matchesCategory = (selectedCategory === 'all' || p.category === selectedCategory);
-                
+
                 if (matchesCategory) {
                     visibleCount++;
                     const card = document.createElement('div');
@@ -927,7 +1146,7 @@
                     grid.appendChild(card);
                 }
             });
-            
+
             const emptyState = document.getElementById('projects-empty-state');
             if (visibleCount === 0) {
                 emptyState.classList.remove('hidden');
@@ -938,17 +1157,17 @@
 
         function filterProjects(cat) {
             selectedCategory = cat;
-            
+
             // Adjust active state
             document.querySelectorAll('.project-filter-btn').forEach(btn => {
                 btn.className = "project-filter-btn px-6 py-3 text-[10px] mono uppercase tracking-widest font-bold text-slate-500 bg-white dark:bg-slate-950 hover:bg-slate-50 dark:hover:bg-slate-900 border-r border-slate-200 dark:border-slate-800 transition-colors";
             });
-            
+
             const activeBtn = document.getElementById(`filter-btn-${cat}`);
             if (activeBtn) {
                 activeBtn.className = "project-filter-btn px-6 py-3 text-[10px] mono uppercase tracking-widest font-bold bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 border-r border-slate-200 dark:border-slate-800 transition-colors";
             }
-            
+
             buildProjectsGrid();
         }
 
@@ -958,7 +1177,7 @@
             document.getElementById('modal-desc').innerText = p.desc;
             document.getElementById('modal-tag').innerText = p.tag;
             document.getElementById('modal-icon').className = `fa-solid ${p.icon}`;
-            
+
             const featuresList = document.getElementById('modal-features');
             featuresList.innerHTML = p.features.map(f => `
                 <li class="flex items-start gap-3">
@@ -966,12 +1185,12 @@
                     <span>${f}</span>
                 </li>
             `).join('');
-            
+
             const stackContainer = document.getElementById('modal-stack');
             stackContainer.innerHTML = p.stack.map(s => `
                 <span class="px-3 py-1 bg-transparent border border-slate-200 dark:border-slate-800 text-[10px] mono text-slate-600 dark:text-slate-400 font-bold uppercase tracking-widest">${s}</span>
             `).join('');
-            
+
             document.getElementById('modal-overlay').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -987,22 +1206,22 @@
             document.body.style.overflow = 'auto';
         }
 
-        window.addEventListener('keydown', (e) => { 
-            if(e.key === 'Escape') closeModal(); 
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
         });
 
         let lastScrollY = window.scrollY;
         const mainNav = document.getElementById('main-nav');
-        
+
         window.addEventListener('scroll', () => {
             const currentScrollY = window.scrollY;
-            
+
             if (currentScrollY > lastScrollY && currentScrollY > 80) {
                 mainNav.classList.add('-translate-y-full');
             } else {
                 mainNav.classList.remove('-translate-y-full');
             }
-            
+
             lastScrollY = currentScrollY;
         }, { passive: true });
 
@@ -1012,4 +1231,5 @@
         };
     </script>
 </body>
+
 </html>
