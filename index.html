@@ -869,6 +869,19 @@
 
         const projects = [
             {
+                title: "[YOUR NEW PROJECT TITLE]",
+                desc: "[Brief description of your project. What problem does it solve?]",
+                tag: "Domain / Sub-domain",
+                category: "robotics", // Options: 'robotics', 'vision', 'genai', 'quant'
+                icon: "fa-rocket", // Find icons at fontawesome.com (e.g., fa-code, fa-robot)
+                features: [
+                    "[Key achievement or feature 1]",
+                    "[Key achievement or feature 2]",
+                    "[Key achievement or feature 3]"
+                ],
+                stack: ["[Tech 1]", "[Tech 2]", "[Tech 3]", "[Tech 4]"]
+            },
+            {
                 title: "Model-Context-Protocol Robot Agent",
                 desc: "Implementation of Anthropic's Model Context Protocol (MCP) for remote tool use and telemetry reporting in distributed robot systems.",
                 tag: "Robotics / Remote Tooling",
@@ -961,12 +974,12 @@
             },
             {
                 title: "Enterprise Cloud ETL & Gen AI Analytics Platform",
-                desc: "Enterprise data integration and generative analytics solution.",
+                desc: "-----------",
                 tag: "ETL, GenAI Analytics",
                 category: "quant",
                 icon: "fa-chart-line",
                 features: [
-                    "Built an automated ETL/ELT data pipeline using PySpark and AWS Glue to transform and ingest enterprise datasets into AWS Redshift and PostgreSQL.",
+                    "Built an automated ETL/ELT data pipeline using PySpark and AWS Glue to transform and ingest enterprise datasets into AWS Redshift and PostgreSQL.", 
                     "Integrated a Gen AI retrieval interface leveraging LangChain and LLMs to query structured warehouse data using natural language prompts.",
                     "Developed interactive Tableau dashboards to provide real-time business intelligence and monitoring metrics."
                 ],
@@ -979,26 +992,13 @@
                 category: "quant",
                 icon: "fa-chart-line",
                 features: [
-                    "Formulated latency-sensitive signal generation algorithms evaluating stock anomalies.",
-                    "Integrated automated risk limits managing localized position exposures.",
-                    "Built simulated backtesting engines reviewing structural price histories."
-                ],
-                stack: ["Quantitative Signals", "Pandas & Numpy", "Redis Queues", "Backtesting API"]
-            },
-            {
-                title: "KhataAgent: Bounded Agentic Commerce for WhatsApp",
-                desc: "Indian SMBs lose revenue to dropped WhatsApp orders and manual khata (ledger) tracking. KhataAgent is a bounded AI assistant that handles natural language checkout over WhatsApp. It routes intents, checks real-time inventory, generates Razorpay Payment Links, and autonomously reconciles asynchronous payment webhooks against the store's digital ledger—without ever letting the LLM hallucinate prices or directly execute financial transactions",
-                tag: "Quantitative Finance",
-                category: "quant",
-                icon: "fa-chart-line",
-                features: [
                     "Brain: OpenAI API (GPT-4o-mini) with strict Native Function Calling.",
                     "Backend: FastAPI (Python) for asynchronous webhook handling.",
                     "Data & State: PostgreSQL (for strict schema validation) and Redis (for queueing).",
                     "I/O & Finance: Twilio WhatsApp API & Razorpay Payment Links API.",
                     "Agentic Guardrails (Crucial for Razorpay):",
                     "Read-Only LLM: The LLM only translates text to JSON. All math (calculating totals, applying tax) is handled by deterministic Python functions.",
-                    "Stateful Memory: The agent maps the customer's phone number to a temporary "cart" state in the database, allowing multi-turn conversations before payment."
+                    "Stateful Memory: The agent maps the customer's phone number to a temporary 'cart' state in the database, allowing multi-turn conversations before payment."
                 ],
                 stack: ["OpenAI", "API", "LLM", "PostgreSQL", "Redis"]
             },
