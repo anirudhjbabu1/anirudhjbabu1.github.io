@@ -986,6 +986,23 @@
                 stack: ["Quantitative Signals", "Pandas & Numpy", "Redis Queues", "Backtesting API"]
             },
             {
+                title: "KhataAgent: Bounded Agentic Commerce for WhatsApp",
+                desc: "Indian SMBs lose revenue to dropped WhatsApp orders and manual khata (ledger) tracking. KhataAgent is a bounded AI assistant that handles natural language checkout over WhatsApp. It routes intents, checks real-time inventory, generates Razorpay Payment Links, and autonomously reconciles asynchronous payment webhooks against the store's digital ledger—without ever letting the LLM hallucinate prices or directly execute financial transactions",
+                tag: "Quantitative Finance",
+                category: "quant",
+                icon: "fa-chart-line",
+                features: [
+                    "Brain: OpenAI API (GPT-4o-mini) with strict Native Function Calling.",
+                    "Backend: FastAPI (Python) for asynchronous webhook handling.",
+                    "Data & State: PostgreSQL (for strict schema validation) and Redis (for queueing).",
+                    "I/O & Finance: Twilio WhatsApp API & Razorpay Payment Links API.",
+                    "Agentic Guardrails (Crucial for Razorpay):",
+                    "Read-Only LLM: The LLM only translates text to JSON. All math (calculating totals, applying tax) is handled by deterministic Python functions.",
+                    "Stateful Memory: The agent maps the customer's phone number to a temporary "cart" state in the database, allowing multi-turn conversations before payment."
+                ],
+                stack: ["OpenAI", "API", "LLM", "PostgreSQL", "Redis"]
+            },
+            {
                 title: "Explainable AI & Multi-Agent Financial Decision Systems",
                 desc: "Transparent multi-agent LLM framework to interpret real-time market sentiment and surface reasoning.",
                 tag: "ETL, GenAI Analytics",
