@@ -869,6 +869,19 @@
 
         const projects = [
             {
+                title: "[YOUR NEW PROJECT TITLE]",
+                desc: "[Brief description of your project. What problem does it solve?]",
+                tag: "Domain / Sub-domain",
+                category: "robotics", // Options: 'robotics', 'vision', 'genai', 'quant'
+                icon: "fa-rocket", // Find icons at fontawesome.com (e.g., fa-code, fa-robot)
+                features: [
+                    "[Key achievement or feature 1]",
+                    "[Key achievement or feature 2]",
+                    "[Key achievement or feature 3]"
+                ],
+                stack: ["[Tech 1]", "[Tech 2]", "[Tech 3]", "[Tech 4]"]
+            },
+            {
                 title: "Model-Context-Protocol Robot Agent",
                 desc: "Implementation of Anthropic's Model Context Protocol (MCP) for remote tool use and telemetry reporting in distributed robot systems.",
                 tag: "Robotics / Remote Tooling",
@@ -973,23 +986,23 @@
                 stack: ["PySpark", "AWS (S3, Glue, Redshift)", "PostgreSQL", "Python", "LangChain", "Tableau"]
             },
             {
-                title: "Algorithmic Trading Engines",
-                desc: "Multi-agent quantitative trading system deploying signal tracking, real-time analytics, and automated action execution.",
-                tag: "Quantitative Finance",
-                category: "quant",
-                icon: "fa-chart-line",
+                title: "KhataAgent: Bounded Agentic Commerce for WhatsApp",
+                desc: "Indian SMBs lose revenue to dropped WhatsApp orders and manual khata (ledger) tracking. KhataAgent is a bounded AI assistant that handles natural language checkout over WhatsApp. It routes intents, checks real-time inventory, generates Razorpay Payment Links, and autonomously reconciles asynchronous payment webhooks against the store's digital ledger—without ever letting the LLM hallucinate prices or directly execute financial transactions.",
+                tag: "Domain / Sub-domain",
+                category: "quant", // Options: 'robotics', 'vision', 'genai', 'quant'
+                icon: "fa-rocket", // Find icons at fontawesome.com (e.g., fa-code, fa-robot)
                 features: [
                     "Brain: OpenAI API (GPT-4o-mini) with strict Native Function Calling.",
                     "Backend: FastAPI (Python) for asynchronous webhook handling.",
                     "Data & State: PostgreSQL (for strict schema validation) and Redis (for queueing).",
                     "I/O & Finance: Twilio WhatsApp API & Razorpay Payment Links API.",
-                    "Agentic Guardrails (Crucial for Razorpay):",
                     "Read-Only LLM: The LLM only translates text to JSON. All math (calculating totals, applying tax) is handled by deterministic Python functions.",
                     "Stateful Memory: The agent maps the customer's phone number to a temporary 'cart' state in the database, allowing multi-turn conversations before payment."
                 ],
-                stack: ["OpenAI", "API", "LLM", "PostgreSQL", "Redis"]
+                stack: ["OpenAI", "API", "PostgreSQL", "Whatsapp", "RazorPay"]
             },
             {
+                title: "[YOUR NEW PROJECT TITLE]",
                 title: "Explainable AI & Multi-Agent Financial Decision Systems",
                 desc: "Transparent multi-agent LLM framework to interpret real-time market sentiment and surface reasoning.",
                 tag: "ETL, GenAI Analytics",
@@ -1208,35 +1221,6 @@
                     "Reduced translation processing latency to sub-second parameters."
                 ],
                 stack: ["Whisper Node", "Tacotron 2 TTS", "PyAudio Hub", "C++ Buffers"]
-            },
-            {
-                title: "KhataAgent: Bounded Agentic Commerce for WhatsApp",
-                desc: "Indian SMBs lose revenue to dropped WhatsApp orders and manual khata (ledger) tracking. KhataAgent is a bounded AI assistant that handles natural language checkout over WhatsApp. It routes intents, checks real-time inventory, generates Razorpay Payment Links, and autonomously reconciles asynchronous payment webhooks against the store's digital ledger—without ever letting the LLM hallucinate prices or directly execute financial transactions.",
-                tag: "Domain / Sub-domain",
-                category: "quant", // Options: 'robotics', 'vision', 'genai', 'quant'
-                icon: "fa-rocket", // Find icons at fontawesome.com (e.g., fa-code, fa-robot)
-                features: [
-                    "Brain: OpenAI API (GPT-4o-mini) with strict Native Function Calling.",
-                    "Backend: FastAPI (Python) for asynchronous webhook handling.",
-                    "Data & State: PostgreSQL (for strict schema validation) and Redis (for queueing).",
-                    "I/O & Finance: Twilio WhatsApp API & Razorpay Payment Links API.",
-                    "Read-Only LLM: The LLM only translates text to JSON. All math (calculating totals, applying tax) is handled by deterministic Python functions.",
-                    "Stateful Memory: The agent maps the customer's phone number to a temporary "cart" state in the database, allowing multi-turn conversations before payment."
-                ],
-                stack: ["OpenAI", "API", "PostgreSQL", "Whatsapp", "RazorPay"]
-            },
-            {
-                title: "[YOUR NEW PROJECT TITLE]",
-                desc: "[Brief description of your project. What problem does it solve?]",
-                tag: "Domain / Sub-domain",
-                category: "robotics", // Options: 'robotics', 'vision', 'genai', 'quant'
-                icon: "fa-rocket", // Find icons at fontawesome.com (e.g., fa-code, fa-robot)
-                features: [
-                    "[Key achievement or feature 1]",
-                    "[Key achievement or feature 2]",
-                    "[Key achievement or feature 3]"
-                ],
-                stack: ["[Tech 1]", "[Tech 2]", "[Tech 3]", "[Tech 4]"]
             }
         ];
 
