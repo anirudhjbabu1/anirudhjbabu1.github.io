@@ -22,9 +22,9 @@
                     },
                     colors: {
                         accent: {
-                            DEFAULT: '#FF5500',
-                            hover: '#E04800',
-                            light: '#FF7733'
+                            DEFAULT: '#B91C1C',
+                            hover: '#991B1B',
+                            light: '#DC2626'
                         },
                         obsidian: {
                             950: '#060608',
@@ -48,7 +48,7 @@
 
     <style>
         :root {
-            --accent: #FF5500;
+            --accent: #B91C1C;
             --border-color: rgba(226, 232, 240, 1);
         }
 
@@ -93,7 +93,7 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: #FF5500;
+            background: #B91C1C;
         }
 
         /* Subtle Grid Background */
@@ -125,33 +125,33 @@
             transform: translateY(0) scale(1);
         }
 
-        /* Process Step Card Hover Effect (Inspired by Reference) */
+        /* Process Step Card Hover Effect */
         .process-card {
             transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .process-card.active-step,
         .process-card:hover {
-            background-color: #FF5500 !important;
-            color: #060608 !important;
-            border-color: #FF5500 !important;
+            background-color: #B91C1C !important;
+            color: #ffffff !important;
+            border-color: #B91C1C !important;
         }
 
         .process-card.active-step .process-muted,
         .process-card:hover .process-muted {
-            color: rgba(6, 6, 8, 0.8) !important;
+            color: rgba(255, 255, 255, 0.85) !important;
         }
 
         .process-card.active-step .process-num,
         .process-card:hover .process-num {
-            color: #060608 !important;
+            color: #ffffff !important;
         }
 
         .process-card.active-step .process-tag,
         .process-card:hover .process-tag {
-            border-color: rgba(6, 6, 8, 0.3) !important;
-            color: #060608 !important;
-            background-color: rgba(6, 6, 8, 0.08) !important;
+            border-color: rgba(255, 255, 255, 0.35) !important;
+            color: #ffffff !important;
+            background-color: rgba(0, 0, 0, 0.2) !important;
         }
 
         /* Manifesto word highlight */
@@ -171,22 +171,6 @@
 
         .tilted-card:hover {
             transform: rotate(0deg) translateY(-4px);
-        }
-
-        /* Marquee animation */
-        @keyframes marquee {
-            0% { transform: translateX(0%); }
-            100% { transform: translateX(-50%); }
-        }
-
-        .animate-marquee {
-            display: flex;
-            width: max-content;
-            animation: marquee 28s linear infinite;
-        }
-
-        .animate-marquee:hover {
-            animation-play-state: paused;
         }
     </style>
 </head>
@@ -228,7 +212,7 @@
             <!-- Right Actions -->
             <div class="flex items-center gap-3">
                 <button onclick="openFreelanceModal()"
-                    class="hidden sm:inline-flex items-center gap-2.5 bg-accent hover:bg-accent-hover text-obsidian-950 font-bold mono text-[10px] uppercase tracking-widest px-4 py-2.5 transition-all">
+                    class="hidden sm:inline-flex items-center gap-2.5 bg-accent hover:bg-accent-hover text-white font-bold mono text-[10px] uppercase tracking-widest px-4 py-2.5 transition-all">
                     <span>Hire / Commission</span>
                     <span class="bg-obsidian-950 text-white w-4 h-4 flex items-center justify-center text-[9px]">
                         <i class="fa-solid fa-arrow-right"></i>
@@ -261,7 +245,7 @@
                 <a href="#software-deployments" onclick="toggleMobileMenu(false)" class="py-1.5 text-zinc-600 dark:text-zinc-300 hover:text-accent">05. Web &amp; Apps</a>
                 <a href="#Certifications" onclick="toggleMobileMenu(false)" class="py-1.5 text-zinc-600 dark:text-zinc-300 hover:text-accent">06. Credentials</a>
                 <button onclick="toggleMobileMenu(false); openFreelanceModal();"
-                    class="mt-2 w-full inline-flex items-center justify-center gap-2.5 bg-accent hover:bg-accent-hover text-obsidian-950 font-bold mono text-xs uppercase tracking-widest px-4 py-3 transition-all">
+                    class="mt-2 w-full inline-flex items-center justify-center gap-2.5 bg-accent hover:bg-accent-hover text-white font-bold mono text-xs uppercase tracking-widest px-4 py-3 transition-all">
                     <span>Hire / Commission</span>
                     <i class="fa-solid fa-arrow-right"></i>
                 </button>
@@ -269,9 +253,9 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION (Inspired by Editorial Orange/Obsidian Split) -->
+    <!-- HERO SECTION -->
     <header class="relative min-h-screen flex flex-col justify-between pt-24 pb-10 px-6 overflow-hidden bg-tech-grid border-b border-zinc-300 dark:border-zinc-800">
-        <!-- Ambient Orange Glow -->
+        <!-- Ambient Dark Red Glow -->
         <div class="pointer-events-none absolute -top-40 right-1/4 w-[500px] h-[500px] rounded-full bg-accent/15 blur-[130px] z-0"></div>
         <div class="pointer-events-none absolute bottom-0 left-10 w-[350px] h-[350px] rounded-full bg-accent/10 blur-[100px] z-0"></div>
 
@@ -295,13 +279,13 @@
         <div class="max-w-7xl w-full mx-auto my-auto py-12 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
                 
-                <!-- Left Column: Giant Condensed Display Title -->
+                <!-- Left Column -->
                 <div class="lg:col-span-8">
                     <div class="mono text-xs uppercase tracking-widest text-accent font-bold mb-3 flex items-center gap-2">
                         <span>// ROBOTICS, AGENTIC AI & FULL-STACK SYSTEMS ARCHITECT</span>
                     </div>
                     <div class="mono text-xs uppercase tracking-widest text-accent font-bold mb-3 flex items-center gap-2">
-                        <span>// The website is still under development - data provided might be not true</span>
+                        <span>// The website is still under development</span>
                     </div>
                     <h1 class="font-condensed text-[4.5rem] sm:text-[7rem] md:text-[8.8rem] font-bold uppercase leading-[0.88] tracking-tight text-zinc-900 dark:text-white mb-8">
                         ANIRUDH<br>
@@ -330,7 +314,7 @@
                     <!-- Action Buttons -->
                     <div class="flex flex-wrap items-center gap-4">
                         <button onclick="openFreelanceModal()"
-                            class="group inline-flex items-center gap-4 bg-accent hover:bg-accent-hover text-obsidian-950 font-bold mono text-xs uppercase tracking-widest pl-7 pr-3 py-3.5 transition-all shadow-lg shadow-accent/20">
+                            class="group inline-flex items-center gap-4 bg-accent hover:bg-accent-hover text-white font-bold mono text-xs uppercase tracking-widest pl-7 pr-3 py-3.5 transition-all shadow-lg shadow-accent/20">
                             <span>Hire Me / Start A Project</span>
                             <span class="w-8 h-8 bg-obsidian-950 text-white flex items-center justify-center group-hover:translate-x-0.5 transition-transform">
                                 <i class="fa-solid fa-arrow-right"></i>
@@ -344,7 +328,7 @@
                     </div>
                 </div>
 
-                <!-- Right Column: Quick Services & Interactive Telemetry Panel -->
+                <!-- Right Column -->
                 <div class="lg:col-span-4 flex flex-col justify-end">
                     <div class="border border-zinc-300 dark:border-zinc-800 bg-white/80 dark:bg-obsidian-900/90 p-6 backdrop-blur-md">
                         <div class="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-800 pb-3 mb-4">
@@ -401,11 +385,9 @@
         </div>
     </header>
 
-    <!-- 01 // PROFILE & EDITORIAL MANIFESTO + IMPACT METRICS (Inspired by Reference "ABOUT ME" & Stats Grid) -->
+    <!-- 01 // PROFILE & MANIFESTO -->
     <section id="about" class="py-24 bg-obsidian-950 text-white border-b border-zinc-800 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-6">
-            
-            <!-- Editorial Statement Row -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-20">
                 <div class="lg:col-span-3">
                     <span class="mono text-xs uppercase tracking-widest text-accent font-bold block mb-2">01 // Profile</span>
@@ -431,7 +413,6 @@
 
             <!-- 4-Column Role & Capability Matrix Bar -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border border-zinc-800 bg-obsidian-900/60">
-                <!-- Stat 1 -->
                 <div class="p-8 border-b sm:border-b-0 sm:border-r border-zinc-800 flex flex-col justify-between h-64 group hover:bg-obsidian-800/60 transition-colors">
                     <p class="text-xs text-zinc-400 leading-relaxed font-light">
                         Custom ROS2 autonomy stacks, MAVSDK flight control, VIO/SLAM, and 60 FPS TensorRT edge vision on NVIDIA & Qualcomm boards.
@@ -442,7 +423,6 @@
                     </div>
                 </div>
 
-                <!-- Stat 2 -->
                 <div class="p-8 border-b lg:border-b-0 lg:border-r border-zinc-800 flex flex-col justify-between h-64 group hover:bg-obsidian-800/60 transition-colors">
                     <p class="text-xs text-zinc-400 leading-relaxed font-light">
                         Custom LLM, RAG, multi-step Reasoning, MCP tooling, and bounded Agentic AI applications built for people and teams.
@@ -453,7 +433,6 @@
                     </div>
                 </div>
 
-                <!-- Stat 3 -->
                 <div class="p-8 border-b sm:border-b-0 sm:border-r border-zinc-800 flex flex-col justify-between h-64 group hover:bg-obsidian-800/60 transition-colors">
                     <p class="text-xs text-zinc-400 leading-relaxed font-light">
                         High-performance websites, interactive telemetry dashboards, and full-stack web portals tailored for organizations.
@@ -464,7 +443,6 @@
                     </div>
                 </div>
 
-                <!-- Stat 4 -->
                 <div class="p-8 flex flex-col justify-between h-64 group hover:bg-obsidian-800/60 transition-colors">
                     <p class="text-xs text-zinc-400 leading-relaxed font-light">
                         Flexible availability for short-term project sprints, long-term full-time hiring, Founding Engineer, and R&D Consulting.
@@ -475,15 +453,12 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
     <!-- 02 // SERVICES, CUSTOM SOLUTIONS & HIRING HUB -->
     <section id="freelance" class="py-24 border-b border-zinc-300 dark:border-zinc-800 relative z-10">
         <div class="max-w-7xl mx-auto px-6">
-            
-            <!-- Section Header -->
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
                 <div>
                     <div class="flex items-center gap-3 mb-3">
@@ -499,22 +474,18 @@
                         Custom robotics, LLM/RAG/Agentic apps, and organization websites—plus availability as a Founding Engineer, R&D Engineer, or Consultant.
                     </p>
                     <button onclick="openFreelanceModal()"
-                        class="inline-flex items-center gap-3 bg-zinc-900 dark:bg-white text-white dark:text-obsidian-950 hover:bg-accent dark:hover:bg-accent dark:hover:text-obsidian-950 font-bold mono text-[10px] uppercase tracking-widest px-5 py-3.5 transition-colors shrink-0">
+                        class="inline-flex items-center gap-3 bg-zinc-900 dark:bg-white text-white dark:text-obsidian-950 hover:bg-accent dark:hover:bg-accent font-bold mono text-[10px] uppercase tracking-widest px-5 py-3.5 transition-colors shrink-0">
                         <span>Initiate Inquiry</span>
                         <i class="fa-solid fa-arrow-right"></i>
                     </button>
                 </div>
             </div>
 
-            <!-- Interactive Split Showcase (Inspired by "WHAT I OFFER" in Reference) -->
+            <!-- Interactive Split Showcase -->
             <div class="grid grid-cols-1 lg:grid-cols-12 border border-zinc-300 dark:border-zinc-800 bg-white dark:bg-obsidian-900 mb-20">
-                
-                <!-- Left Column: Interactive Service Selector List -->
                 <div class="lg:col-span-5 border-b lg:border-b-0 lg:border-r border-zinc-300 dark:border-zinc-800 divide-y divide-zinc-200 dark:divide-zinc-800" id="service-tabs-container">
                     <!-- Populated via JS -->
                 </div>
-
-                <!-- Right Column: Dynamic Service Deep-Dive & Deliverables -->
                 <div class="lg:col-span-7 p-8 md:p-12 flex flex-col justify-between bg-zinc-50/60 dark:bg-obsidian-950/60 relative overflow-hidden">
                     <div id="service-detail-panel">
                         <!-- Populated via JS -->
@@ -522,7 +493,7 @@
                 </div>
             </div>
 
-            <!-- "HOW I WORK" 4-Column Interactive Process Grid (Directly Inspired by Reference Image) -->
+            <!-- "HOW I WORK" 4-Column Interactive Process Grid -->
             <div class="mb-20">
                 <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
                     <div>
@@ -537,9 +508,7 @@
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border border-zinc-300 dark:border-zinc-800 bg-white dark:bg-obsidian-900">
-                    <!-- Step 1 -->
-                    <div class="process-card p-8 border-b sm:border-b-0 sm:border-r border-zinc-300 dark:border-zinc-800 flex flex-col justify-between min-h-[320px] cursor-pointer"
-                         onmouseenter="highlightProcess(0)">
+                    <div class="process-card p-8 border-b sm:border-b-0 sm:border-r border-zinc-300 dark:border-zinc-800 flex flex-col justify-between min-h-[320px] cursor-pointer" onmouseenter="highlightProcess(0)">
                         <div class="flex justify-between items-start">
                             <span class="process-num font-condensed text-5xl font-bold text-zinc-900 dark:text-white">1.</span>
                             <span class="process-tag mono text-[9px] uppercase tracking-widest px-2 py-1 border border-zinc-300 dark:border-zinc-800 text-zinc-500">Phase 01</span>
@@ -552,9 +521,7 @@
                         </div>
                     </div>
 
-                    <!-- Step 2 (Default Active Orange like in Reference Image!) -->
-                    <div class="process-card active-step p-8 border-b lg:border-b-0 lg:border-r border-zinc-300 dark:border-zinc-800 flex flex-col justify-between min-h-[320px] cursor-pointer"
-                         onmouseenter="highlightProcess(1)">
+                    <div class="process-card active-step p-8 border-b lg:border-b-0 lg:border-r border-zinc-300 dark:border-zinc-800 flex flex-col justify-between min-h-[320px] cursor-pointer" onmouseenter="highlightProcess(1)">
                         <div class="flex justify-between items-start">
                             <span class="process-num font-condensed text-5xl font-bold">2.</span>
                             <span class="process-tag mono text-[9px] uppercase tracking-widest px-2 py-1 border">Phase 02</span>
@@ -567,9 +534,7 @@
                         </div>
                     </div>
 
-                    <!-- Step 3 -->
-                    <div class="process-card p-8 border-b sm:border-b-0 sm:border-r border-zinc-300 dark:border-zinc-800 flex flex-col justify-between min-h-[320px] cursor-pointer"
-                         onmouseenter="highlightProcess(2)">
+                    <div class="process-card p-8 border-b sm:border-b-0 sm:border-r border-zinc-300 dark:border-zinc-800 flex flex-col justify-between min-h-[320px] cursor-pointer" onmouseenter="highlightProcess(2)">
                         <div class="flex justify-between items-start">
                             <span class="process-num font-condensed text-5xl font-bold text-zinc-900 dark:text-white">3.</span>
                             <span class="process-tag mono text-[9px] uppercase tracking-widest px-2 py-1 border border-zinc-300 dark:border-zinc-800 text-zinc-500">Phase 03</span>
@@ -582,9 +547,7 @@
                         </div>
                     </div>
 
-                    <!-- Step 4 -->
-                    <div class="process-card p-8 flex flex-col justify-between min-h-[320px] cursor-pointer"
-                         onmouseenter="highlightProcess(3)">
+                    <div class="process-card p-8 flex flex-col justify-between min-h-[320px] cursor-pointer" onmouseenter="highlightProcess(3)">
                         <div class="flex justify-between items-start">
                             <span class="process-num font-condensed text-5xl font-bold text-zinc-900 dark:text-white">4.</span>
                             <span class="process-tag mono text-[9px] uppercase tracking-widest px-2 py-1 border border-zinc-300 dark:border-zinc-800 text-zinc-500">Phase 04</span>
@@ -599,7 +562,7 @@
                 </div>
             </div>
 
-            <!-- Hiring & Engagement Models Strip (4 Comprehensive Options) -->
+            <!-- Hiring & Engagement Models Strip -->
             <div>
                 <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
                     <div>
@@ -614,7 +577,6 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Mode 1: Short-Term Hiring & Custom Builds -->
                     <div class="border border-zinc-300 dark:border-zinc-800 bg-white dark:bg-obsidian-900 p-7 flex flex-col justify-between hover:border-accent dark:hover:border-accent transition-colors">
                         <div>
                             <div class="flex items-center justify-between mb-3">
@@ -626,14 +588,13 @@
                                 Fixed-scope contracts (1–8 weeks) to build custom AI/LLM/RAG apps, organization websites, ROS2 packages, or TensorRT edge pipelines.
                             </p>
                         </div>
-                        <button onclick="openFreelanceModal('Short-Term Hiring / Sprint')" class="w-full py-3 border border-zinc-300 dark:border-zinc-700 hover:bg-accent hover:text-obsidian-950 hover:border-accent mono text-[10px] font-bold uppercase tracking-widest transition-colors">
+                        <button onclick="openFreelanceModal('Short-Term Hiring / Sprint')" class="w-full py-3 border border-zinc-300 dark:border-zinc-700 hover:bg-accent hover:text-white hover:border-accent mono text-[10px] font-bold uppercase tracking-widest transition-colors">
                             Book Short-Term Sprint &rarr;
                         </button>
                     </div>
 
-                    <!-- Mode 2: Founding Engineer -->
                     <div class="border-2 border-accent bg-white dark:bg-obsidian-900 p-7 flex flex-col justify-between relative shadow-lg shadow-accent/5">
-                        <span class="absolute -top-3 right-6 bg-accent text-obsidian-950 mono text-[9px] font-bold uppercase tracking-widest px-2.5 py-0.5">0 &rarr; 1 Leadership</span>
+                        <span class="absolute -top-3 right-6 bg-accent text-white mono text-[9px] font-bold uppercase tracking-widest px-2.5 py-0.5">0 &rarr; 1 Leadership</span>
                         <div>
                             <div class="flex items-center justify-between mb-3">
                                 <span class="mono text-[10px] uppercase tracking-widest text-accent font-bold">Mode 02 // Startup Core</span>
@@ -644,12 +605,11 @@
                                 Partnering with founders to architect core IP from day one—owning the robotics stack, agentic AI infrastructure, and full-stack product delivery.
                             </p>
                         </div>
-                        <button onclick="openFreelanceModal('Founding Engineer Role')" class="w-full py-3 bg-accent hover:bg-accent-hover text-obsidian-950 mono text-[10px] font-bold uppercase tracking-widest transition-colors">
+                        <button onclick="openFreelanceModal('Founding Engineer Role')" class="w-full py-3 bg-accent hover:bg-accent-hover text-white mono text-[10px] font-bold uppercase tracking-widest transition-colors">
                             Discuss Founding Role &rarr;
                         </button>
                     </div>
 
-                    <!-- Mode 3: R&D Engineer & Consultant -->
                     <div class="border border-zinc-300 dark:border-zinc-800 bg-white dark:bg-obsidian-900 p-7 flex flex-col justify-between hover:border-accent dark:hover:border-accent transition-colors">
                         <div>
                             <div class="flex items-center justify-between mb-3">
@@ -661,12 +621,11 @@
                                 Applied research, paper-to-production implementation, Gazebo SITL/HIL validation, custom reasoning models, and architecture consulting.
                             </p>
                         </div>
-                        <button onclick="openFreelanceModal('R&D Engineer / Technical Consultant')" class="w-full py-3 border border-zinc-300 dark:border-zinc-700 hover:bg-accent hover:text-obsidian-950 hover:border-accent mono text-[10px] font-bold uppercase tracking-widest transition-colors">
+                        <button onclick="openFreelanceModal('R&D Engineer / Technical Consultant')" class="w-full py-3 border border-zinc-300 dark:border-zinc-700 hover:bg-accent hover:text-white hover:border-accent mono text-[10px] font-bold uppercase tracking-widest transition-colors">
                             Engage for R&D / Advisory &rarr;
                         </button>
                     </div>
 
-                    <!-- Mode 4: Long-Term Hiring -->
                     <div class="border border-zinc-300 dark:border-zinc-800 bg-white dark:bg-obsidian-900 p-7 flex flex-col justify-between hover:border-accent dark:hover:border-accent transition-colors">
                         <div>
                             <div class="flex items-center justify-between mb-3">
@@ -678,7 +637,7 @@
                                 Open to long-term contracts, dedicated retainers, or full-time engineering roles building mission-critical Robotics, AI, and Cloud systems.
                             </p>
                         </div>
-                        <button onclick="openFreelanceModal('Long-Term / Full-Time Hiring')" class="w-full py-3 border border-zinc-300 dark:border-zinc-700 hover:bg-accent hover:text-obsidian-950 hover:border-accent mono text-[10px] font-bold uppercase tracking-widest transition-colors">
+                        <button onclick="openFreelanceModal('Long-Term / Full-Time Hiring')" class="w-full py-3 border border-zinc-300 dark:border-zinc-700 hover:bg-accent hover:text-white hover:border-accent mono text-[10px] font-bold uppercase tracking-widest transition-colors">
                             Inquire for Long-Term &rarr;
                         </button>
                     </div>
@@ -799,9 +758,9 @@
                 <!-- Bottom Pill CTA inside Experience Card -->
                 <div class="mt-10 pt-6 border-t border-zinc-200 dark:border-zinc-800 text-center">
                     <button onclick="openFreelanceModal()"
-                        class="inline-flex items-center gap-3 bg-obsidian-950 dark:bg-white text-white dark:text-obsidian-950 hover:bg-accent dark:hover:bg-accent dark:hover:text-obsidian-950 font-bold mono text-[11px] uppercase tracking-widest pl-6 pr-2.5 py-2.5 transition-colors">
+                        class="inline-flex items-center gap-3 bg-obsidian-950 dark:bg-white text-white dark:text-obsidian-950 hover:bg-accent dark:hover:bg-accent font-bold mono text-[11px] uppercase tracking-widest pl-6 pr-2.5 py-2.5 transition-colors">
                         <span>Hire For Short-Term, Long-Term, or Founding Role</span>
-                        <span class="w-6 h-6 bg-accent text-obsidian-950 flex items-center justify-center">
+                        <span class="w-6 h-6 bg-accent text-white flex items-center justify-center">
                             <i class="fa-solid fa-arrow-right text-[10px]"></i>
                         </span>
                     </button>
@@ -834,7 +793,7 @@
             <!-- Category Filter Bar -->
             <div class="flex flex-wrap gap-0 mb-10 border border-zinc-300 dark:border-zinc-800 inline-flex bg-white dark:bg-obsidian-900">
                 <button id="filter-btn-all" onclick="filterProjects('all')"
-                    class="project-filter-btn px-6 py-3 text-[10px] mono uppercase tracking-widest font-bold bg-accent text-obsidian-950 border-r border-zinc-300 dark:border-zinc-800 transition-colors">All (19)</button>
+                    class="project-filter-btn px-6 py-3 text-[10px] mono uppercase tracking-widest font-bold bg-accent text-white border-r border-zinc-300 dark:border-zinc-800 transition-colors">All (19)</button>
                 <button id="filter-btn-robotics" onclick="filterProjects('robotics')"
                     class="project-filter-btn px-6 py-3 text-[10px] mono uppercase tracking-widest font-bold text-zinc-500 hover:text-zinc-900 dark:hover:text-white border-r border-zinc-300 dark:border-zinc-800 transition-colors">Robotics</button>
                 <button id="filter-btn-vision" onclick="filterProjects('vision')"
@@ -883,7 +842,7 @@
                                 <span class="w-1.5 h-1.5 bg-accent animate-pulse"></span> Live System
                             </div>
                             <button onclick="openFreelanceModal('Custom Telemetry Dashboard')"
-                                class="w-10 h-10 border border-zinc-300 dark:border-zinc-800 flex items-center justify-center text-zinc-500 group-hover:bg-accent group-hover:text-obsidian-950 group-hover:border-accent transition-colors"
+                                class="w-10 h-10 border border-zinc-300 dark:border-zinc-800 flex items-center justify-center text-zinc-500 group-hover:bg-accent group-hover:text-white group-hover:border-accent transition-colors"
                                 title="Request Demo or Custom Build">
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                             </button>
@@ -917,7 +876,7 @@
                                 <span class="w-1.5 h-1.5 bg-accent animate-pulse"></span> Live System
                             </div>
                             <button onclick="openFreelanceModal('Custom LLM / RAG / Agentic AI App')"
-                                class="w-10 h-10 border border-zinc-300 dark:border-zinc-800 flex items-center justify-center text-zinc-500 group-hover:bg-accent group-hover:text-obsidian-950 group-hover:border-accent transition-colors"
+                                class="w-10 h-10 border border-zinc-300 dark:border-zinc-800 flex items-center justify-center text-zinc-500 group-hover:bg-accent group-hover:text-white group-hover:border-accent transition-colors"
                                 title="Request Custom AI App">
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                             </button>
@@ -951,7 +910,7 @@
                                 <span class="w-1.5 h-1.5 bg-emerald-500 animate-pulse"></span> Client Service
                             </div>
                             <button onclick="openFreelanceModal('Website for Organization')"
-                                class="w-10 h-10 border border-zinc-300 dark:border-zinc-800 flex items-center justify-center text-zinc-500 group-hover:bg-accent group-hover:text-obsidian-950 group-hover:border-accent transition-colors"
+                                class="w-10 h-10 border border-zinc-300 dark:border-zinc-800 flex items-center justify-center text-zinc-500 group-hover:bg-accent group-hover:text-white group-hover:border-accent transition-colors"
                                 title="Commission Organization Website">
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                             </button>
@@ -997,7 +956,6 @@
 
             <!-- Interactive Table Container -->
             <div class="border border-zinc-800 bg-obsidian-900/60 divide-y divide-zinc-800">
-                <!-- Table Header -->
                 <div class="hidden md:grid md:grid-cols-12 px-8 py-4 mono text-[10px] uppercase tracking-widest text-zinc-500 font-bold bg-obsidian-950">
                     <div class="md:col-span-3">Issuing Organization</div>
                     <div class="md:col-span-4">Credential Title</div>
@@ -1005,7 +963,6 @@
                     <div class="md:col-span-1 text-right">Year</div>
                 </div>
 
-                <!-- Row 1 -->
                 <div class="grid grid-cols-1 md:grid-cols-12 px-6 md:px-8 py-6 items-center gap-4 hover:bg-obsidian-800/70 transition-colors group">
                     <div class="md:col-span-3 flex items-center gap-3">
                         <span class="w-2 h-2 bg-accent opacity-0 group-hover:opacity-100 transition-opacity"></span>
@@ -1022,7 +979,6 @@
                     <div class="md:col-span-1 md:text-right mono text-xs text-zinc-400">2024</div>
                 </div>
 
-                <!-- Row 2 -->
                 <div class="grid grid-cols-1 md:grid-cols-12 px-6 md:px-8 py-6 items-center gap-4 hover:bg-obsidian-800/70 transition-colors group">
                     <div class="md:col-span-3 flex items-center gap-3">
                         <span class="w-2 h-2 bg-accent opacity-0 group-hover:opacity-100 transition-opacity"></span>
@@ -1039,7 +995,6 @@
                     <div class="md:col-span-1 md:text-right mono text-xs text-zinc-400">2024</div>
                 </div>
 
-                <!-- Row 3 -->
                 <div class="grid grid-cols-1 md:grid-cols-12 px-6 md:px-8 py-6 items-center gap-4 hover:bg-obsidian-800/70 transition-colors group">
                     <div class="md:col-span-3 flex items-center gap-3">
                         <span class="w-2 h-2 bg-accent opacity-0 group-hover:opacity-100 transition-opacity"></span>
@@ -1056,7 +1011,6 @@
                     <div class="md:col-span-1 md:text-right mono text-xs text-zinc-400">2024</div>
                 </div>
 
-                <!-- Row 4 -->
                 <div class="grid grid-cols-1 md:grid-cols-12 px-6 md:px-8 py-6 items-center gap-4 hover:bg-obsidian-800/70 transition-colors group">
                     <div class="md:col-span-3 flex items-center gap-3">
                         <span class="w-2 h-2 bg-accent opacity-0 group-hover:opacity-100 transition-opacity"></span>
@@ -1073,19 +1027,14 @@
                     <div class="md:col-span-1 md:text-right mono text-xs text-zinc-400">2025</div>
                 </div>
             </div>
-
         </div>
     </section>
 
     <!-- TILTED CTA CARD SECTION -->
     <section class="py-24 bg-obsidian-950 text-white relative overflow-hidden">
         <div class="max-w-5xl mx-auto px-6 text-center">
-
-            <!-- Floating Tilted White Card (Directly Inspired by Reference Image Bottom-Right!) -->
             <div class="relative max-w-3xl mx-auto my-4">
-                <!-- Back Shadow Card -->
                 <div class="absolute inset-0 bg-zinc-800 transform rotate-2"></div>
-                <!-- Foreground Card -->
                 <div class="tilted-card relative bg-[#f4f3ef] text-obsidian-950 p-10 sm:p-14 border-2 border-obsidian-950 shadow-2xl">
                     <div class="flex items-center justify-center gap-2 mono text-[10px] font-bold uppercase tracking-widest text-zinc-600 mb-3">
                         <span class="w-2 h-2 bg-accent inline-block"></span>
@@ -1099,7 +1048,7 @@
                     </p>
                     <div class="flex flex-wrap justify-center gap-4">
                         <button onclick="openFreelanceModal()"
-                            class="inline-flex items-center gap-3 bg-accent hover:bg-accent-hover text-obsidian-950 font-bold mono text-xs uppercase tracking-widest px-7 py-4 transition-all">
+                            class="inline-flex items-center gap-3 bg-accent hover:bg-accent-hover text-white font-bold mono text-xs uppercase tracking-widest px-7 py-4 transition-all">
                             <span>Hire Me / Start A Project</span>
                             <span class="bg-obsidian-950 text-white w-5 h-5 flex items-center justify-center text-[10px]">
                                 <i class="fa-solid fa-arrow-right"></i>
@@ -1112,25 +1061,24 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- BOLD ORANGE SIGNATURE FOOTER -->
-    <footer id="contact" class="bg-accent text-obsidian-950 pt-16 pb-10 px-6 relative z-10 overflow-hidden">
+    <!-- BOLD DARK RED SIGNATURE FOOTER -->
+    <footer id="contact" class="bg-accent text-white pt-16 pb-10 px-6 relative z-10 overflow-hidden">
         <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-obsidian-950/20 items-end">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-white/20 items-end">
                 <div class="md:col-span-6">
-                    <div class="mono text-xs font-bold uppercase tracking-widest mb-2">// DIRECT TRANSMISSION</div>
+                    <div class="mono text-xs font-bold uppercase tracking-widest mb-2 text-white/80">// DIRECT TRANSMISSION</div>
                     <a href="https://mail.google.com/mail/?view=cm&fs=1&to=anirudhjbabu@gmail.com" target="_blank"
-                        class="heading-tech text-2xl sm:text-4xl font-bold hover:underline uppercase tracking-tight block mb-2">
+                        class="heading-tech text-2xl sm:text-4xl font-bold hover:underline uppercase tracking-tight block mb-2 text-white">
                         anirudhjbabu@gmail.com
                     </a>
-                    <p class="text-obsidian-950/80 text-sm max-w-lg">
+                    <p class="text-white/85 text-sm max-w-lg">
                         Open for custom Robotics &amp; AI builds, LLM/RAG/Agentic applications, Organization Websites, and Short-Term / Long-Term hiring (Founding Engineer, R&amp;D Engineer, Consultant).
                     </p>
                 </div>
-                <div class="md:col-span-6 flex flex-wrap md:justify-end gap-6 mono text-xs font-bold uppercase tracking-widest">
+                <div class="md:col-span-6 flex flex-wrap md:justify-end gap-6 mono text-xs font-bold uppercase tracking-widest text-white">
                     <a href="#about" class="hover:underline">Profile</a>
                     <a href="#freelance" class="hover:underline">Freelance</a>
                     <a href="#career" class="hover:underline">Career</a>
@@ -1140,12 +1088,11 @@
                 </div>
             </div>
 
-            <!-- Giant Display Name in Footer -->
             <div class="pt-8 flex flex-col items-center">
-                <div class="font-condensed text-[15vw] leading-[0.82] font-bold uppercase tracking-tighter text-obsidian-950 select-none text-center w-full">
+                <div class="font-condensed text-[15vw] leading-[0.82] font-bold uppercase tracking-tighter text-white select-none text-center w-full">
                     ANIRUDH J BABU
                 </div>
-                <div class="w-full flex flex-col sm:flex-row justify-between items-center mt-6 pt-4 border-t border-obsidian-950/20 mono text-[10px] uppercase tracking-widest font-bold">
+                <div class="w-full flex flex-col sm:flex-row justify-between items-center mt-6 pt-4 border-t border-white/20 mono text-[10px] uppercase tracking-widest font-bold text-white/90">
                     <span>&copy; 2026 ANIRUDH J BABU // ALL RIGHTS RESERVED</span>
                     <span>ROBOTICS SOFTWARE & COGNITIVE AI ENGINEER</span>
                 </div>
@@ -1153,16 +1100,13 @@
         </div>
     </footer>
 
-    <!-- ========================================== -->
-    <!-- MODAL 1: PROJECT TECHNICAL SPEC MODAL      -->
-    <!-- ========================================== -->
+    <!-- MODAL 1: PROJECT TECHNICAL SPEC MODAL -->
     <div id="modal-overlay"
         class="overlay-fade fixed inset-0 z-[100] bg-obsidian-950/85 backdrop-blur-md flex items-center justify-center p-4 md:p-10">
         <div id="modal-content"
             class="modal-slide bg-white dark:bg-obsidian-900 w-full max-w-4xl max-h-[90vh] overflow-hidden relative flex flex-col md:flex-row border-2 border-zinc-900 dark:border-accent shadow-2xl">
-            <!-- Close button -->
             <button onclick="closeModal()"
-                class="absolute top-4 right-4 z-20 w-9 h-9 bg-accent text-obsidian-950 flex items-center justify-center font-bold hover:bg-white transition-colors">
+                class="absolute top-4 right-4 z-20 w-9 h-9 bg-accent text-white flex items-center justify-center font-bold hover:bg-accent-hover transition-colors">
                 <i class="fa-solid fa-xmark"></i>
             </button>
 
@@ -1210,14 +1154,12 @@
         </div>
     </div>
 
-    <!-- ========================================== -->
     <!-- MODAL 2: INTERACTIVE FREELANCE BRIEF MODAL -->
-    <!-- ========================================== -->
     <div id="freelance-modal-overlay"
         class="overlay-fade fixed inset-0 z-[110] bg-obsidian-950/90 backdrop-blur-md flex items-center justify-center p-4 md:p-8">
         <div class="modal-slide bg-white dark:bg-obsidian-900 w-full max-w-2xl max-h-[92vh] overflow-y-auto relative border-2 border-accent p-6 sm:p-10 shadow-2xl">
             <button onclick="closeFreelanceModal()"
-                class="absolute top-4 right-4 w-9 h-9 bg-zinc-200 dark:bg-obsidian-800 hover:bg-accent hover:text-obsidian-950 flex items-center justify-center transition-colors">
+                class="absolute top-4 right-4 w-9 h-9 bg-zinc-200 dark:bg-obsidian-800 hover:bg-accent hover:text-white flex items-center justify-center transition-colors">
                 <i class="fa-solid fa-xmark"></i>
             </button>
 
@@ -1233,32 +1175,30 @@
             </p>
 
             <form id="freelance-form" onsubmit="submitFreelanceBrief(event)" class="space-y-5">
-                <!-- Domain Checkboxes -->
                 <div>
                     <label class="block mono text-[10px] uppercase tracking-widest text-zinc-700 dark:text-zinc-300 font-bold mb-2">
                         1. Select Required Solution(s) or Role(s)
                     </label>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-2" id="domain-selector">
                         <label class="flex items-center gap-2.5 p-3 border border-zinc-300 dark:border-zinc-800 cursor-pointer hover:border-accent text-xs">
-                            <input type="checkbox" name="domain" value="Custom Robotic & Edge AI Solutions" checked class="accent-[#FF5500]">
+                            <input type="checkbox" name="domain" value="Custom Robotic & Edge AI Solutions" checked class="accent-[#B91C1C]">
                             <span>Custom Robotic &amp; Edge AI Solutions</span>
                         </label>
                         <label class="flex items-center gap-2.5 p-3 border border-zinc-300 dark:border-zinc-800 cursor-pointer hover:border-accent text-xs">
-                            <input type="checkbox" name="domain" value="Custom AI, LLM, RAG, Reasoning & Agentic Apps" class="accent-[#FF5500]">
+                            <input type="checkbox" name="domain" value="Custom AI, LLM, RAG, Reasoning & Agentic Apps" class="accent-[#B91C1C]">
                             <span>LLM, RAG, Reasoning &amp; Agentic AI Apps</span>
                         </label>
                         <label class="flex items-center gap-2.5 p-3 border border-zinc-300 dark:border-zinc-800 cursor-pointer hover:border-accent text-xs">
-                            <input type="checkbox" name="domain" value="Website / Web Platform for Organization" class="accent-[#FF5500]">
+                            <input type="checkbox" name="domain" value="Website / Web Platform for Organization" class="accent-[#B91C1C]">
                             <span>Website / Web App for Organization</span>
                         </label>
                         <label class="flex items-center gap-2.5 p-3 border border-zinc-300 dark:border-zinc-800 cursor-pointer hover:border-accent text-xs">
-                            <input type="checkbox" name="domain" value="Founding Engineer / R&D / Consultant Role" class="accent-[#FF5500]">
+                            <input type="checkbox" name="domain" value="Founding Engineer / R&D / Consultant Role" class="accent-[#B91C1C]">
                             <span>Founding Engineer / R&amp;D / Consultant</span>
                         </label>
                     </div>
                 </div>
 
-                <!-- Engagement Model & Timeline -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label class="block mono text-[10px] uppercase tracking-widest text-zinc-700 dark:text-zinc-300 font-bold mb-2">
@@ -1286,7 +1226,6 @@
                     </div>
                 </div>
 
-                <!-- Client Info -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label class="block mono text-[10px] uppercase tracking-widest text-zinc-700 dark:text-zinc-300 font-bold mb-2">
@@ -1304,7 +1243,6 @@
                     </div>
                 </div>
 
-                <!-- Project Details -->
                 <div>
                     <label class="block mono text-[10px] uppercase tracking-widest text-zinc-700 dark:text-zinc-300 font-bold mb-2">
                         4. Technical Objective & Constraints *
@@ -1317,7 +1255,7 @@
                 <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
                     <span class="mono text-[10px] text-zinc-400">Typical response time: &lt; 12 Hours</span>
                     <button type="submit"
-                        class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-accent hover:bg-accent-hover text-obsidian-950 font-bold mono text-xs uppercase tracking-widest px-8 py-3.5 transition-colors">
+                        class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-accent hover:bg-accent-hover text-white font-bold mono text-xs uppercase tracking-widest px-8 py-3.5 transition-colors">
                         <span>Transmit Project Brief</span>
                         <i class="fa-solid fa-paper-plane"></i>
                     </button>
@@ -1328,7 +1266,6 @@
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
-        // 1. Theme & Live Clock Controller
         const systemState = {
             isDarkMode: true,
             init() {
@@ -1368,7 +1305,6 @@
             }
         };
 
-        // 2. Freelance & Hiring Services Data ("WHAT I OFFER")
         const freelanceServices = [
             {
                 id: "01",
@@ -1457,19 +1393,19 @@
                 const isActive = idx === activeServiceIdx;
                 return `
                     <div onclick="selectService(${idx})"
-                         class="p-6 sm:p-7 cursor-pointer transition-all flex items-center justify-between group ${isActive ? 'bg-accent text-obsidian-950' : 'hover:bg-zinc-100 dark:hover:bg-obsidian-800/60'}">
+                         class="p-6 sm:p-7 cursor-pointer transition-all flex items-center justify-between group ${isActive ? 'bg-accent text-white' : 'hover:bg-zinc-100 dark:hover:bg-obsidian-800/60'}">
                         <div class="pr-4">
-                            <div class="mono text-[10px] font-bold uppercase tracking-widest mb-1 ${isActive ? 'text-obsidian-950/80' : 'text-accent'}">
+                            <div class="mono text-[10px] font-bold uppercase tracking-widest mb-1 ${isActive ? 'text-white/80' : 'text-accent'}">
                                 SERVICE // ${s.id}
                             </div>
-                            <h4 class="heading-tech text-lg font-bold uppercase tracking-tight ${isActive ? 'text-obsidian-950' : 'text-zinc-900 dark:text-white'}">
+                            <h4 class="heading-tech text-lg font-bold uppercase tracking-tight ${isActive ? 'text-white' : 'text-zinc-900 dark:text-white'}">
                                 ${s.title}
                             </h4>
-                            <p class="text-xs mt-1 font-light ${isActive ? 'text-obsidian-950/90' : 'text-zinc-500 dark:text-zinc-400'}">
+                            <p class="text-xs mt-1 font-light ${isActive ? 'text-white/90' : 'text-zinc-500 dark:text-zinc-400'}">
                                 ${s.short}
                             </p>
                         </div>
-                        <div class="w-9 h-9 shrink-0 flex items-center justify-center border ${isActive ? 'border-obsidian-950 bg-obsidian-950 text-white' : 'border-zinc-300 dark:border-zinc-700 text-zinc-400 group-hover:border-accent group-hover:text-accent'}">
+                        <div class="w-9 h-9 shrink-0 flex items-center justify-center border ${isActive ? 'border-white bg-obsidian-950 text-white' : 'border-zinc-300 dark:border-zinc-700 text-zinc-400 group-hover:border-accent group-hover:text-accent'}">
                             <i class="fa-solid fa-arrow-right text-xs"></i>
                         </div>
                     </div>
@@ -1513,7 +1449,7 @@
                         ${current.stack.map(t => `<span class="px-2.5 py-1 bg-zinc-200/70 dark:bg-obsidian-800 mono text-[9px] uppercase text-zinc-700 dark:text-zinc-300 font-bold">${t}</span>`).join('')}
                     </div>
                     <button onclick="openFreelanceModal('${current.title}')"
-                        class="inline-flex items-center justify-center gap-3 bg-accent hover:bg-accent-hover text-obsidian-950 font-bold mono text-[10px] uppercase tracking-widest px-6 py-3.5 transition-colors shrink-0">
+                        class="inline-flex items-center justify-center gap-3 bg-accent hover:bg-accent-hover text-white font-bold mono text-[10px] uppercase tracking-widest px-6 py-3.5 transition-colors shrink-0">
                         <span>Book This Service</span>
                         <i class="fa-solid fa-arrow-right"></i>
                     </button>
@@ -1543,11 +1479,6 @@
             });
         }
 
-        // 3. Complete Projects Archive (19 Projects, Cleaned & Polished)
-        /* 
-           NOTE: To add a new project in the future, simply copy any object block below 
-           and paste it at the top of the `projects` array!
-        */
         const projects = [
             {
                 title: "KhataAgent: Bounded Agentic Commerce for WhatsApp",
@@ -1828,7 +1759,7 @@
                         <div class="absolute top-0 left-0 w-full h-0.5 bg-accent scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
                         <div>
                             <div class="flex justify-between items-start mb-6">
-                                <div class="w-10 h-10 border border-zinc-300 dark:border-zinc-700 flex items-center justify-center text-zinc-900 dark:text-white group-hover:bg-accent group-hover:text-obsidian-950 group-hover:border-accent transition-colors">
+                                <div class="w-10 h-10 border border-zinc-300 dark:border-zinc-700 flex items-center justify-center text-zinc-900 dark:text-white group-hover:bg-accent group-hover:text-white group-hover:border-accent transition-colors">
                                     <i class="fa-solid ${p.icon} text-sm"></i>
                                 </div>
                                 <span class="mono text-[9px] text-zinc-500 dark:text-zinc-400 font-bold border border-zinc-200 dark:border-zinc-800 px-2.5 py-1 uppercase tracking-widest group-hover:border-accent/50 group-hover:text-accent transition-colors">${p.category}</span>
@@ -1864,13 +1795,12 @@
 
             const activeBtn = document.getElementById(`filter-btn-${cat}`);
             if (activeBtn) {
-                activeBtn.className = "project-filter-btn px-6 py-3 text-[10px] mono uppercase tracking-widest font-bold bg-accent text-obsidian-950 border-r border-zinc-300 dark:border-zinc-800 transition-colors";
+                activeBtn.className = "project-filter-btn px-6 py-3 text-[10px] mono uppercase tracking-widest font-bold bg-accent text-white border-r border-zinc-300 dark:border-zinc-800 transition-colors";
             }
 
             buildProjectsGrid();
         }
 
-        // 4. Project Spec Modal Functions
         function openModal(index) {
             const p = projects[index];
             currentModalProjectTitle = p.title;
@@ -1906,7 +1836,6 @@
             openFreelanceModal(`Similar to: ${currentModalProjectTitle}`);
         }
 
-        // Mobile Menu Controller
         function toggleMobileMenu(forceState) {
             const menu = document.getElementById('mobile-menu');
             const icon = document.getElementById('mobile-menu-icon');
@@ -1923,20 +1852,17 @@
             }
         }
 
-        // 5. Freelance & Hiring Configurator Modal Functions
         function openFreelanceModal(prefillContext = '') {
             if (prefillContext) {
                 const detailsEl = document.getElementById('brief-details');
                 const engagementEl = document.getElementById('brief-engagement');
                 const domainCheckboxes = Array.from(document.querySelectorAll('input[name="domain"]'));
 
-                // Match dropdown option if applicable
                 const matchingOption = Array.from(engagementEl.options).find(opt => opt.value === prefillContext);
                 if (matchingOption) {
                     engagementEl.value = prefillContext;
                 }
 
-                // Automatically check relevant domain checkbox based on context
                 const ctxLower = prefillContext.toLowerCase();
                 domainCheckboxes.forEach(cb => {
                     const valLower = cb.value.toLowerCase();
@@ -1992,7 +1918,6 @@ ${name}`
             closeFreelanceModal();
         }
 
-        // Close modals on backdrop click or Escape
         document.getElementById('modal-overlay').addEventListener('click', (e) => {
             if (e.target === document.getElementById('modal-overlay')) closeModal();
         });
@@ -2006,7 +1931,6 @@ ${name}`
             }
         });
 
-        // Smart Hide/Show Navbar on Scroll
         let lastScrollY = window.scrollY;
         const mainNav = document.getElementById('main-nav');
         window.addEventListener('scroll', () => {
@@ -2019,7 +1943,6 @@ ${name}`
             lastScrollY = currentScrollY;
         }, { passive: true });
 
-        // Initialize on Load
         window.onload = () => {
             systemState.init();
             renderServices();
